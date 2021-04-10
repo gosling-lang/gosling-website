@@ -8,23 +8,20 @@ module.exports = {
       type: 'category',
       label: 'Docs',
       collapsed: false,
-      // items: [
-      //   'create-a-page',
-      //   'create-a-document',
-      //   'create-a-blog-post',
-      //   'markdown-features',
-      //   'thank-you',
-      // ],
       items: [
         'data',
         'genome-builds',
         'mark',
+        'visual-channel',
         'layout',
         'composition',
         'user-interaction',
         'semantic-zoom',
-        'visual-channel'
       ],
+    },
+    {
+      type: 'doc',
+      id: 'public-datasets',
     },
   ],
 };
