@@ -8,32 +8,32 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Easy to Use',
+    title: 'Scalability',
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and 
+        by using the rendering and data access capabilities of our <a href="http://higlass.io/">HiGlass</a> genomics visualization framework.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Expressiveness',
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data, 
+        which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727">our taxonomy</a> of (epi)genomics data visualizations.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Interactivity',
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        EGosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking. 
+        This enables flexible visualizations that cover a wide range of visual analysis scenarios, like overview + detail views with brushes or comparative views.
       </>
     ),
   },
@@ -70,6 +70,7 @@ export default function Home() {
               className={clsx(
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
+                styles.buttonLink
               )}
               to={useBaseUrl('docs/')}>
               Get Started
