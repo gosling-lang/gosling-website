@@ -1,14 +1,16 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'GOSLING',
+  url: 'https://gosling-lang.github.io/gosling-website', // Your website URL
+  baseUrl: '/',
+  projectName: 'gosling-website',
+  organizationName: 'gosling-lang',
   tagline: 'A Grammar-based Toolkit for Interactive (Epi)Genomics Visualization',
   url: 'https://gosling.js.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'GehlenborgLab', // Usually your GitHub org/user name.
-  projectName: 'GOSLING', // Usually your repo name.
   themeConfig: {
     colorMode: {
       defaultMode: 'light',
