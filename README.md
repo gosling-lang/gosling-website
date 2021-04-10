@@ -2,6 +2,15 @@
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
+## Working with submodule
+this repo include github submodules: [gosling-docs](https://github.com/gosling-lang/gosling-docs)
+### colone with submodules
+```
+git clone --recursive https://github.com/gosling-lang/gosling-website
+```
+### pull all changes in the repo including changes in the submodules
+```git pull --recurse-submodules```
+
 ## Installation
 
 ```console
@@ -15,6 +24,8 @@ yarn start
 ```
 
 This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+
+
 
 ## Build
 
