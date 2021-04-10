@@ -1,0 +1,3 @@
+[submodule "gosling-docs"]
+	path = gosling-docs
+	url = https://github.com/gosling-lang/gosling-docs.git
