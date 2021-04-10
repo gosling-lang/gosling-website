@@ -6,7 +6,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Docusaurus Docs',
+      label: 'Docs',
       collapsed: false,
       // items: [
       //   'create-a-page',
