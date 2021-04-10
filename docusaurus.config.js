@@ -1,13 +1,11 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'GOSLING',
-  url: 'https://gosling-lang.github.io/', // Your website URL
+  url: 'https://gosling-lang.github.io', // Your website URL
   baseUrl: '/gosling-website/',
   projectName: 'gosling-website',
   organizationName: 'gosling-lang',
   tagline: 'A Grammar-based Toolkit for Interactive (Epi)Genomics Visualization',
-  url: 'https://gosling.js.org/',
-  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -43,7 +41,7 @@ module.exports = {
           position: 'left',
         },
         {to: 'tutorials/', label: 'Tutorials', position: 'left'},
-        {to: '/', label: 'Examples', position: 'left'},
+        {to: 'examples', label: 'Examples', position: 'left'},
         {
           href: 'https://github.com/gosling-lang/gosling.js',
           label: 'GitHub',
@@ -139,7 +137,7 @@ module.exports = {
   plugins: [
     // custmo plugin to fix the symlink bug in webpack 
     require.resolve('./my-plugin/index.js'),
-    // 
+    // gosling tutorials
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -149,7 +147,7 @@ module.exports = {
         routeBasePath: 'tutorials',
         include: ['*.md', '*.mdx']
       },
-    ],
+    ]
     
   ],
   customFields: {
