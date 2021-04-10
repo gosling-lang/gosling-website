@@ -1,8 +1,8 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'GOSLING',
-  url: 'https://gosling-lang.github.io/gosling-website', // Your website URL
-  baseUrl: '/',
+  url: 'https://gosling-lang.github.io/', // Your website URL
+  baseUrl: '/gosling-website/',
   projectName: 'gosling-website',
   organizationName: 'gosling-lang',
   tagline: 'A Grammar-based Toolkit for Interactive (Epi)Genomics Visualization',
