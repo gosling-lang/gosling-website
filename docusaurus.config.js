@@ -40,8 +40,8 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
+        {to: 'tutorials/', label: 'Tutorials', position: 'left'},
         {to: 'blog', label: 'Examples', position: 'left'},
-        {to: 'blog', label: 'Tutorials', position: 'left'},
         {
           href: 'https://github.com/gosling-lang/gosling.js',
           label: 'GitHub',
@@ -100,21 +100,38 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          path: 'gosling-docs/docs',
+          sidebarPath: require.resolve('./sidebarDocs.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
+  ],
+  plugins: [
+    // custmo plugin to fix the symlink bug in webpack 
+    require.resolve('./my-plugin/index.js'),
+    // 
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id:'tutorials',
+        path: 'gosling-docs/tutorials',
+        routeBasePath: 'tutorials',
+        include: ['*.md', '*.mdx'],
+        // ...
+      },
+    ],
+    
   ],
 }
