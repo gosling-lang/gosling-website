@@ -41,7 +41,7 @@ module.exports = {
           position: 'left',
         },
         {to: 'tutorials/', label: 'Tutorials', position: 'left'},
-        {to: '/', label: 'Examples', position: 'left'},
+        {to: 'examples/', label: 'Examples', position: 'left'},
         {
           href: 'https://github.com/gosling-lang/gosling.js',
           label: 'GitHub',
@@ -59,22 +59,13 @@ module.exports = {
               label: 'Getting Started',
               to: 'docs/',
             },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Tutorial',
+              to: 'tutorials/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Examples',
+              to: '/',
             },
           ],
         },
@@ -82,17 +73,42 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: 'blog',
+              label: 'Github',
+              href: 'https://github.com/gosling-lang/gosling.js',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Online Editor',
+              href: 'https://gosling.js.org/',
             },
+            {
+              label: "Road Map",
+              href: "https://github.com/gosling-lang/gosling.js/projects/1"
+            }
+          ],
+        },
+        {
+          title: 'Team',
+          items: [
+            {
+              label: 'Sehi L\'Yi',
+              href: 'http://sehilyi.com/',
+            },
+            {
+              label: 'Qianwen Wang',
+              href: 'http://wangqianwen0418.github.io/',
+            },
+            {
+              label: 'Fritz Lekschas',
+              href: 'https://lekschas.de',
+            },
+            {
+              label: "Nils Gehlenborg",
+              href: "http://gehlenborglab.org/team/members/nils-gehlenborg/"
+            }
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} GOSLING. Built with Docusaurus.`,
     },
   },
   presets: [
@@ -134,4 +150,7 @@ module.exports = {
     ],
     
   ],
+  customFields: {
+    themeColor: "#e18241",
+  }
 }
