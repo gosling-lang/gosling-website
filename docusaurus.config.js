@@ -41,7 +41,7 @@ module.exports = {
           position: 'left',
         },
         {to: 'tutorials/', label: 'Tutorials', position: 'left'},
-        {to: 'examples/', label: 'Examples', position: 'left'},
+        {to: '/', label: 'Examples', position: 'left'},
         {
           href: 'https://github.com/gosling-lang/gosling.js',
           label: 'GitHub',
