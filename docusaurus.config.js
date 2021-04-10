@@ -127,9 +127,9 @@ module.exports = {
       {
         id:'tutorials',
         path: 'gosling-docs/tutorials',
+        sidebarPath: require.resolve('./sidebarTutorial.js'),
         routeBasePath: 'tutorials',
-        include: ['*.md', '*.mdx'],
-        // ...
+        include: ['*.md', '*.mdx']
       },
     ],
     

@@ -5,9 +5,9 @@ module.exports = {
       label: 'Tutorials',
       collapsed: false,
       items: [
-        'tutorial',
-        'tutorial_multi_tracks',
-        'tutorial_multi_views'
+        'create-single-track-visualization',
+        'create-multi-track-visualization',
+        'create-multi-view-visualization',
       ],
     },
   ],
