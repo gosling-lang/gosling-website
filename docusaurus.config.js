@@ -10,6 +10,9 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   themeConfig: {
+    prism: {
+      theme: require('prism-react-renderer/themes/github'),
+    },
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
