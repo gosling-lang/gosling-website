@@ -43,11 +43,11 @@ function Feature({imageUrl, title, description}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
-      {imgUrl && (
+      {/* {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
-      )}
+      )} */}
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
@@ -79,6 +79,12 @@ export default function Home() {
         </div>
       </header>
       <main>
+        <section className={styles.galleryImage}>
+          <img className={styles.galleryImage}
+            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png" 
+            alt='gsoling_gallery' 
+          />
+        </section>
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="container">
