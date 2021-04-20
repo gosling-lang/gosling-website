@@ -20,6 +20,19 @@
   }
 }
 
+.sectionHeader {
+  text-align: center;
+  margin: 2rem;
+  padding: 2rem 0rem 0rem 0rem;
+  font-size: 2rem;
+  
+}
+
+.sectionHeader:not(:first-of-type){
+  border-top: 1px solid lightgray;
+}
+
+
 .features {
   display: flex;
   align-items: center;
@@ -27,7 +40,12 @@
   width: 100%;
 }
 
+.feature {
+  text-align: center;
+}
+
 .featureImage {
-  height: 200px;
-  width: 200px;
+  /* height: 200px; */
+  width: 350px;
+  object-fit: cover
 }
