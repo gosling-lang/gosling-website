@@ -21,11 +21,11 @@
   --ifm-color-primary: #faa433;
   --ifm-color-primary-dark: #FF9F4C;
   --ifm-color-primary-darker: #E18241;
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-darkest: #ae6504;
   --ifm-color-primary-light: #FFE496;
   --ifm-color-primary-lighter: #FFEEA5;
   --ifm-color-primary-lightest: #FFFCD6;
-  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-color: var(--ifm-color-primary-darker);
   --ifm-code-font-size: 95%;
 }
 .docusaurus-highlight-code-line {
