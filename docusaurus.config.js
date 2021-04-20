@@ -111,7 +111,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} GOSLING. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Harvard. Built with Docusaurus.`,
     },
   },
   presets: [
