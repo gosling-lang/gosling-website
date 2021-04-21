@@ -49,3 +49,7 @@
   width: 350px;
   object-fit: cover
 }
+
+.featureImage:hover {
+  width: 360px;
+}

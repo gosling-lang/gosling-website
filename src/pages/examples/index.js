@@ -11,7 +11,7 @@ function ExampleImage({imageUrl, title, url, description}) {
   return (
     <div className={clsx('col col--4', styles.feature)}>
       {imgUrl && (
-        <div className="text--center">
+        <div className={'text--center'}>
           <a href={url} target="_blank">
             <img className={styles.featureImage} src={imgUrl} alt={title} />
           </a>
