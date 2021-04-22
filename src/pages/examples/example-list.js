@@ -42,17 +42,75 @@ const basicExamples = [
     {
         title: 'Overview + Details',
         imageUrl: 'https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/tutorial/tutorial_multi_views.gif',
-        url: '',
+        url: 'https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL',
         description: ''
     },
     {
         title: 'Semantic Zoom',
-        imageUrl: '',
+        imageUrl: './img/example/semantic-zoom-sequence.png',
         url: '',
         description: ''
     }
   ];
-  
-  const gallery = []
 
-  export {basicExamples, interactionExamples, gallery}
+  const advancedExamples = [
+    {
+        title: 'Matrix',
+        imageUrl: './img/example/matrix.png',
+        url: '',
+        description: ''
+    },
+    {
+        title: 'Glyph',
+        imageUrl: './img/example/glyph.png',
+        url: '',
+        description: ''
+    },
+    {
+        title: 'Ideograms',
+        imageUrl: './img/example/Ideograms.png',
+        url: '',
+        description: ''
+    },
+  ];
+  
+  const gallery = [
+      {
+          title: `Gremlin`,
+          imageUrl: './img/example/GREMLIN.png',
+          url: 'https://gosling.js.org?example=GREMLIN',
+          description: `O'Brien et al. 2010`
+      },
+      {
+          title: 'GIVE',
+          imageUrl: './img/example/GIVE.png',
+          url: 'https://gosling.js.org?example=GIVE',
+          description: 'Cao et al. 2018'
+      },
+      {
+          title: 'Breast Cancer Variant',
+          imageUrl: './img/example/CANCER_VARIANT.png',
+          url: 'https://gosling.js.org?example=CANCER_VARIANT',
+          description: 'Staaf et al. 2019'
+      },
+      {
+        title: 'Single-cell Epigenomic Analysis',
+        imageUrl: './img/example/CORCES_ET_AL.png',
+        url: 'https://gosling.js.org?example=CORCES_ET_AL',
+        description: 'Corces et al. 2020'
+    },
+    {
+        title: 'Circos',
+        imageUrl: './img/example/Circos.png',
+        url: 'https://gosling.js.org?example=CIRCOS',
+        description: 'Circos'
+    },
+    {
+        title: 'SARS-CoV-2',
+        imageUrl: './img/example/SARS-CoV-2.png',
+        url: 'https://gosling.js.org?example=SARS_CoV_2',
+        description: 'WashU Virus Genome Browser, NCBI, GISAID'
+    }
+  ]
+
+  export {basicExamples, interactionExamples, gallery, advancedExamples}
