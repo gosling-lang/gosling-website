@@ -45,11 +45,25 @@
 }
 
 .featureImage {
-  /* height: 200px; */
   width: 350px;
-  object-fit: cover
+  object-fit: contain;
+  box-shadow: 0 1px 2px 0 rgb(65 69 73 / 30%), 0 3px 6px 2px rgb(65 69 73 / 15%);
+  padding: 5px 10px;
+}
+
+.basicExample {
+  height: 70px;
+  
+}
+
+.galleryExample{
+  height: 400px;
 }
 
 .featureImage:hover {
   width: 360px;
+}
+
+h3 {
+  margin: 0px;
 }

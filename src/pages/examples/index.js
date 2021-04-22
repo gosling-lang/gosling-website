@@ -4,16 +4,33 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
-import {basicExamples, interactionExamples, gallery} from './example-list.js';
+import {basicExamples, interactionExamples, gallery, advancedExamples} from './example-list.js';
 
-function ExampleImage({imageUrl, title, url, description}) {
+function BasicExampleImage({imageUrl, title, url, description}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
       {imgUrl && (
         <div className={'text--center'}>
           <a href={url} target="_blank">
-            <img className={styles.featureImage} src={imgUrl} alt={title} />
+            <img className={clsx(styles.featureImage, styles.basicExample)} src={imgUrl} alt={title} />
+          </a>
+        </div>
+      )}
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function GalleryExampleImage({imageUrl, title, url, description}) {
+  const imgUrl = useBaseUrl(imageUrl);
+  return (
+    <div className={clsx('col col--4', styles.feature)}>
+      {imgUrl && (
+        <div className={'text--center'}>
+          <a href={url} target="_blank">
+            <img className={clsx(styles.featureImage, styles.galleryExample)} src={imgUrl} alt={title} />
           </a>
         </div>
       )}
@@ -38,7 +55,7 @@ export default function Home() {
             <div className="container">
               <div className="row">
                 {basicExamples.map((props, idx) => (
-                  <ExampleImage key={idx} {...props} />
+                  <BasicExampleImage key={idx} {...props} />
                 ))}
               </div>
             </div>
@@ -53,7 +70,22 @@ export default function Home() {
             <div className="container">
               <div className="row">
                 {interactionExamples.map((props, idx) => (
-                  <ExampleImage key={idx} {...props} />
+                  <GalleryExampleImage key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <header className={styles.sectionHeader}>
+            <h1>Compositive Visualization</h1>
+          </header>
+        {advancedExamples && advancedExamples.length > 0 && (
+          <section className={styles.examples}>
+            <div className="container">
+              <div className="row">
+                {advancedExamples.map((props, idx) => (
+                  <GalleryExampleImage key={idx} {...props} />
                 ))}
               </div>
             </div>
@@ -68,7 +100,7 @@ export default function Home() {
             <div className="container">
               <div className="row">
                 {gallery.map((props, idx) => (
-                  <ExampleImage key={idx} {...props} />
+                  <GalleryExampleImage key={idx} {...props} />
                 ))}
               </div>
             </div>
