@@ -115,4 +115,4 @@ const basicExamples = [
     }
   ]
 
-  export {basicExamples, interactionExamples, advancedExamples, gallery}
+module.exports = {basicExamples, interactionExamples, advancedExamples, gallery}

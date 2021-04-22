@@ -4,7 +4,6 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
-import {basicExamples, interactionExamples, gallery, advancedExamples} from './example-list.js';
 
 function BasicExampleImage({imageUrl, title, url, description}) {
   const imgUrl = useBaseUrl(imageUrl);
@@ -43,6 +42,7 @@ function GalleryExampleImage({imageUrl, title, url, description}) {
 export default function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+  const {basicExamples, advancedExamples, interactionExamples, gallery} = siteConfig.customFields
   return (
     <Layout
       title={siteConfig.title}>
@@ -50,13 +50,13 @@ export default function Home() {
 
           {/* basic examples */}
           <header className={styles.sectionHeader}>
-            <h1>Basic Marks</h1>
+            <h1>{basicExamples.name}</h1>
           </header>
-        {basicExamples && basicExamples.length > 0 && (
+        {basicExamples.list && basicExamples.list.length > 0 && (
           <section className={styles.examples}>
             <div className="container">
               <div className="row">
-                {basicExamples.map((props, idx) => (
+                {basicExamples.list.map((props, idx) => (
                   <BasicExampleImage key={idx} {...props} />
                 ))}
               </div>
@@ -64,56 +64,29 @@ export default function Home() {
           </section>
         )}
 
+
+        {
+          [advancedExamples, interactionExamples, gallery].map(examples=>{
+            return (<><header className={styles.sectionHeader}>
+              <h1>{examples.name}</h1>
+            </header>
+          {examples.list && examples.list.length > 0 && (
+            <section className={styles.examples}>
+              <div className="container">
+                <div className="row">
+                  {examples.list.map((props, idx) => (
+                    <GalleryExampleImage key={idx} {...props} />
+                  ))}
+                </div>
+              </div>
+            </section>)
+          }
+          </>)
+        })
+        }
+
           
-                  {/* compositive visualization examples */}
-        <header className={styles.sectionHeader}>
-            <h1>Compositive Visualization</h1>
-          </header>
-        {advancedExamples && advancedExamples.length > 0 && (
-          <section className={styles.examples}>
-            <div className="container">
-              <div className="row">
-                {advancedExamples.map((props, idx) => (
-                  <GalleryExampleImage key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-
-                  {/* interaction examples */}
-          <header className={styles.sectionHeader}>
-            <h1>Interactions</h1>
-          </header>
-        {interactionExamples && interactionExamples.length > 0 && (
-          <section className={styles.examples}>
-            <div className="container">
-              <div className="row">
-                {interactionExamples.map((props, idx) => (
-                  <GalleryExampleImage key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-
-                  {/* gallery examples */}
-          <header className={styles.sectionHeader}>
-            <h1>Gallery</h1>
-          </header>
-        {gallery && gallery.length > 0 && (
-          <section className={styles.examples}>
-            <div className="container">
-              <div className="row">
-                {gallery.map((props, idx) => (
-                  <GalleryExampleImage key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+        
 
       </main>
     </Layout>
