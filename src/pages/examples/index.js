@@ -47,6 +47,8 @@ export default function Home() {
     <Layout
       title={siteConfig.title}>
         <main>
+
+          {/* basic examples */}
           <header className={styles.sectionHeader}>
             <h1>Basic Marks</h1>
           </header>
@@ -62,21 +64,8 @@ export default function Home() {
           </section>
         )}
 
-          <header className={styles.sectionHeader}>
-            <h1>Interactions</h1>
-          </header>
-        {interactionExamples && interactionExamples.length > 0 && (
-          <section className={styles.examples}>
-            <div className="container">
-              <div className="row">
-                {interactionExamples.map((props, idx) => (
-                  <GalleryExampleImage key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
+          
+                  {/* compositive visualization examples */}
         <header className={styles.sectionHeader}>
             <h1>Compositive Visualization</h1>
           </header>
@@ -92,6 +81,25 @@ export default function Home() {
           </section>
         )}
 
+
+                  {/* interaction examples */}
+          <header className={styles.sectionHeader}>
+            <h1>Interactions</h1>
+          </header>
+        {interactionExamples && interactionExamples.length > 0 && (
+          <section className={styles.examples}>
+            <div className="container">
+              <div className="row">
+                {interactionExamples.map((props, idx) => (
+                  <GalleryExampleImage key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+
+                  {/* gallery examples */}
           <header className={styles.sectionHeader}>
             <h1>Gallery</h1>
           </header>

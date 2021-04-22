@@ -38,6 +38,29 @@ const basicExamples = [
     },
   ];
   
+  
+
+  const advancedExamples = [
+    {
+        title: 'Matrix',
+        imageUrl: './img/example/matrix.png',
+        url: 'https://gosling.js.org?example=MATRIX_HFFC6',
+        description: ''
+    },
+    {
+        title: 'Glyph',
+        imageUrl: './img/example/glyph.png',
+        url: 'https://gosling.js.org?example=GENE_ANNOTATION',
+        description: ''
+    },
+    {
+        title: 'Ideograms',
+        imageUrl: './img/example/Ideograms.png',
+        url: 'https://gosling.js.org?example=CYTOBANDS',
+        description: ''
+    },
+  ];
+  
   const interactionExamples = [
     {
         title: 'Overview + Details',
@@ -48,30 +71,9 @@ const basicExamples = [
     {
         title: 'Semantic Zoom',
         imageUrl: './img/example/semantic-zoom-sequence.png',
-        url: '',
+        url: 'https://gosling.js.org?example=SEMANTIC_ZOOM',
         description: ''
     }
-  ];
-
-  const advancedExamples = [
-    {
-        title: 'Matrix',
-        imageUrl: './img/example/matrix.png',
-        url: '',
-        description: ''
-    },
-    {
-        title: 'Glyph',
-        imageUrl: './img/example/glyph.png',
-        url: '',
-        description: ''
-    },
-    {
-        title: 'Ideograms',
-        imageUrl: './img/example/Ideograms.png',
-        url: '',
-        description: ''
-    },
   ];
   
   const gallery = [
@@ -113,4 +115,4 @@ const basicExamples = [
     }
   ]
 
-  export {basicExamples, interactionExamples, gallery, advancedExamples}
+  export {basicExamples, interactionExamples, advancedExamples, gallery}
