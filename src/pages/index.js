@@ -32,7 +32,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        EGosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking. 
+        Gosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking. 
         This enables flexible visualizations that cover a wide range of visual analysis scenarios, like overview + detail views with brushes or comparative views.
       </>
     ),
