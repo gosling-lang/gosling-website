@@ -41,7 +41,7 @@ module.exports = {
     ]
   },
   interactionExamples: {
-    name: "Interaction Examples",
+    name: "Interactive Visualizations",
     list: [
       {
         title: "Overview + Details",
