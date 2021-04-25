@@ -154,21 +154,6 @@ module.exports = {
     
   ],
   customFields: {
-    basicExamples: {
-      name: 'Basic Examples',
-      list: require('./assets/example-list').basicExamples
-    },
-    advancedExamples: {
-      name: 'Compositive Examples',
-      list: require('./assets/example-list').advancedExamples
-    },
-    interactionExamples: {
-      name: 'Interaction Examples',
-      list: require('./assets/example-list').interactionExamples
-    },
-    gallery: {
-      name: 'Gallery',
-      list: require('./assets/example-list').gallery
-    }
+    examples: require('./assets/example-list')
   }
 }

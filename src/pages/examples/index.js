@@ -42,7 +42,7 @@ function GalleryExampleImage({imageUrl, title, url, description}) {
 export default function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
-  const {basicExamples, advancedExamples, interactionExamples, gallery} = siteConfig.customFields
+  const {basicExamples, advancedExamples, interactionExamples, gallery} = siteConfig.customFields.examples
   return (
     <Layout
       title={siteConfig.title}>
@@ -67,11 +67,11 @@ export default function Home() {
 
         {
           [advancedExamples, interactionExamples, gallery].map(examples=>{
-            return (<><header className={styles.sectionHeader}>
-              <h1>{examples.name}</h1>
+            return (<><header key={`header_${examples.name}`} className={styles.sectionHeader}>
+              <h1 >{examples.name}</h1>
             </header>
           {examples.list && examples.list.length > 0 && (
-            <section className={styles.examples}>
+            <section key={`section_${examples.name}`} className={clsx(styles.examples, examples.name)}>
               <div className="container">
                 <div className="row">
                   {examples.list.map((props, idx) => (
