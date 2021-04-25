@@ -1,3 +1,4 @@
+// Examples that we can use can be found at https://github.com/gosling-lang/gosling.js/blob/master/src/editor/example/index.ts
 
 const basicExamples = [
     {
@@ -39,19 +40,51 @@ const basicExamples = [
   ];
   
   
+  const interactionExamples = [
+    {
+        title: 'Overview + Details',
+        imageUrl: 'https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/tutorial/tutorial_multi_views.gif',
+        url: 'https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL',
+        description: ''
+    },
+    {
+        title: 'Multi-Scale Sequence Plot',
+        imageUrl: './img/example/semantic-zoom-sequence.png',
+        url: 'https://gosling.js.org?example=SEMANTIC_ZOOM',
+        description: ''
+    },
+    {
+      title: 'Multi-Scale Lollipop Plot',
+      imageUrl: './img/example/semantic-zoom-lollipop.png',
+      url: 'https://gosling.js.org?example=SEMANTIC_ZOOM',
+      description: ''
+    }
+  ];
 
   const advancedExamples = [
     {
-        title: 'Matrix',
+        title: 'Comparative Matrices',
         imageUrl: './img/example/matrix.png',
         url: 'https://gosling.js.org?example=MATRIX_HFFC6',
         description: ''
     },
     {
-        title: 'Glyph',
+        title: 'Gene Annotations',
         imageUrl: './img/example/glyph.png',
         url: 'https://gosling.js.org?example=GENE_ANNOTATION',
         description: ''
+    },
+    {
+      title: 'Transcript Annotations',
+      imageUrl: './img/example/Transcript.png',
+      url: 'https://gosling.js.org?example=MARK_DISPLACEMENT',
+      description: ''
+    },
+    {
+      title: 'Lollipop Plots',
+      imageUrl: './img/example/Spread_Lollipop.png',
+      url: 'https://gosling.js.org?example=MARK_DISPLACEMENT',
+      description: ''
     },
     {
         title: 'Ideograms',
@@ -61,33 +94,13 @@ const basicExamples = [
     },
   ];
   
-  const interactionExamples = [
-    {
-        title: 'Overview + Details',
-        imageUrl: 'https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/tutorial/tutorial_multi_views.gif',
-        url: 'https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL',
-        description: ''
-    },
-    {
-        title: 'Semantic Zoom',
-        imageUrl: './img/example/semantic-zoom-sequence.png',
-        url: 'https://gosling.js.org?example=SEMANTIC_ZOOM',
-        description: ''
-    }
-  ];
   
   const gallery = [
       {
-          title: `Gremlin`,
-          imageUrl: './img/example/GREMLIN.png',
-          url: 'https://gosling.js.org?example=GREMLIN',
-          description: `O'Brien et al. 2010`
-      },
-      {
-          title: 'GIVE',
-          imageUrl: './img/example/GIVE.png',
-          url: 'https://gosling.js.org?example=GIVE',
-          description: 'Cao et al. 2018'
+        title: 'Circos',
+        imageUrl: './img/example/Circos.png',
+        url: 'https://gosling.js.org?example=CIRCOS',
+        description: 'Circos-like Visualization'
       },
       {
           title: 'Breast Cancer Variant',
@@ -102,17 +115,24 @@ const basicExamples = [
         description: 'Corces et al. 2020'
     },
     {
-        title: 'Circos',
-        imageUrl: './img/example/Circos.png',
-        url: 'https://gosling.js.org?example=CIRCOS',
-        description: 'Circos'
-    },
-    {
         title: 'SARS-CoV-2',
         imageUrl: './img/example/SARS-CoV-2.png',
         url: 'https://gosling.js.org?example=SARS_CoV_2',
         description: 'WashU Virus Genome Browser, NCBI, GISAID'
-    }
+    },
+    {
+      title: `Gremlin`,
+      imageUrl: './img/example/GREMLIN.png',
+      url: 'https://gosling.js.org?example=GREMLIN',
+      description: `O'Brien et al. 2010`
+    },
+    // We can make this visible when we support vertical band connections
+    // {
+    //   title: 'GIVE',
+    //   imageUrl: './img/example/GIVE.png',
+    //   url: 'https://gosling.js.org?example=GIVE',
+    //   description: 'Cao et al. 2018'
+    // }
   ]
 
 module.exports = {basicExamples, interactionExamples, advancedExamples, gallery}
