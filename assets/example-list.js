@@ -1,6 +1,6 @@
 module.exports = {
   basicExamples: {
-    name: "Basic Examples",
+    name: "Basic Marks",
     list: [
       {
         title: "Bar Chart",
@@ -64,7 +64,7 @@ module.exports = {
     ]
   },
   advancedExamples: {
-    name: "Advanced Examples",
+    name: "Compositive Visualizations",
     list: [
       {
         title: "Comparative Matrices",
