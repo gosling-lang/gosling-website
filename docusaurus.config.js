@@ -1,11 +1,11 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'GOSLING',
+  title: 'Gosling.js',
   url: 'https://gosling-lang.github.io', // Your website URL
   baseUrl: '/gosling-website/',
   projectName: 'gosling-website',
   organizationName: 'gosling-lang',
-  tagline: 'A Grammar-based Toolkit for Interactive (Epi)Genomics Visualization',
+  tagline: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -31,9 +31,9 @@ module.exports = {
       }
     },
     navbar: {
-      title: 'GOSLING',
+      title: 'Gosling.js',
       logo: {
-        alt: 'GOSLING Logo',
+        alt: 'Gosling Logo',
         src: 'img/logo.svg',
       },
       items: [
