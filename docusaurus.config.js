@@ -113,6 +113,12 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Harvard. Built with Docusaurus.`,
     },
+    metadatas: [
+      {name: 'twitter:card', content: 'summary'},
+      {name: "twitter:title", content: "Gosling.js"},
+      {name: 'twitter:description', content: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization'},
+      {name: 'twitter:image', content: 'https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png'}
+    ],
     gtag: {
       trackingID: 'UA-96954979-4',
       // Optional fields.
@@ -161,8 +167,6 @@ module.exports = {
         include: ['*.md', '*.mdx']
       },
     ],
-    '@docusaurus/plugin-google-analytics',
-    '@docusaurus/plugin-google-gtag'
   ],
   customFields: {
     examples: require('./assets/example-list')
