@@ -113,6 +113,16 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Harvard. Built with Docusaurus.`,
     },
+    gtag: {
+      trackingID: 'UA-96954979-4',
+      // Optional fields.
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
+    googleAnalytics: {
+      trackingID: 'UA-96954979-4',
+      // Optional fields.
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
   },
   presets: [
     [
@@ -150,8 +160,9 @@ module.exports = {
         routeBasePath: 'tutorials',
         include: ['*.md', '*.mdx']
       },
-    ]
-    
+    ],
+    '@docusaurus/plugin-google-analytics',
+    '@docusaurus/plugin-google-gtag'
   ],
   customFields: {
     examples: require('./assets/example-list')
