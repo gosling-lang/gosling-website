@@ -25,7 +25,7 @@ Can you see the face of a baby goose in Photo 51?
 
 ---
 
-## Citation
+## How to Cite Gosling
 
 [L'Yi et al., 2021. “Gosling: A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization.”](https://osf.io/6evmb)
 
