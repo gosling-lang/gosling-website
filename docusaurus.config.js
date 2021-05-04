@@ -45,6 +45,7 @@ module.exports = {
         },
         {to: 'tutorials/', label: 'Tutorials', position: 'left'},
         {to: 'examples/', label: 'Examples', position: 'left'},
+        {to: 'about/', label: 'About', position: 'left'},
         {
           href: 'https://github.com/gosling-lang/gosling.js',
           label: 'GitHub',
@@ -78,6 +79,10 @@ module.exports = {
             {
               label: 'Github',
               href: 'https://github.com/gosling-lang/gosling.js',
+            },
+            {
+              label: 'Paper',
+              href: 'https://osf.io/6evmb/',
             },
             {
               label: 'Online Editor',
