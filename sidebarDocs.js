@@ -13,7 +13,6 @@ module.exports = {
         'genome-builds',
         'mark',
         'visual-channel',
-        'layout',
         'composition',
         'user-interaction',
         'semantic-zoom',
