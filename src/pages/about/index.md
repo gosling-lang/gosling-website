@@ -9,15 +9,15 @@ The combination of diverse data types and analysis tasks in genomics has resulte
 - Gosling is the abbreviation of **G**rammar **O**f **S**calable **L**inked **I**nteractive **Nu**cleotide **G**raphics. 
 - Gosling also means baby goose 🐥. You can see a lot of baby geese during the spring in Boston, where our team is based.  
   
-  <img src='/gosling-website/img/geese.png' width='800'/>
+  <img src='/img/geese.png' width='800'/>
 - Most importantly, Gosling is named after a British scientist, [Raymond Gosling](https://en.wikipedia.org/wiki/Raymond_Gosling), who took the X-ray diffraction image of DNA called [Photo 51](https://en.wikipedia.org/wiki/Photo_51) under the supervision of [Rosalind Franklin](https://en.wikipedia.org/wiki/Rosalind_Franklin). This image visualized the structure of DNA and was taken as critical evidence in inferring the double-helix model of DNA. For more details about their achievement, read [this long article](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2013-14-4-402).
 
-    <img src='/gosling-website/img/photo+gosling+franklin.png' width='800'/>
+    <img src='/img/photo+gosling+franklin.png' width='800'/>
 
 ## Gosling Logo: A Baby Goose in the Photo 51
 The logo of Gosling reflects both Photo 51 and a baby goose. Can you see the face of a baby goose in Photo 51?
 
-<img src='/gosling-website/img/gosling_intro.gif' width='800'/>
+<img src='/img/gosling_intro.gif' width='800'/>
 
 ## How to Cite Gosling
 
