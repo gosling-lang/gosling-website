@@ -2,7 +2,7 @@
 module.exports = {
   title: 'Gosling.js',
   url: 'https://gosling-lang.github.io', // Your website URL
-  baseUrl: '/gosling-website/',
+  baseUrl: '/',
   projectName: 'gosling-website',
   organizationName: 'gosling-lang',
   tagline: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization',

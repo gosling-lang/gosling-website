@@ -27,45 +27,33 @@ jobs:
           npm i
           fi
           npm run build
-  gh-release:
+  deploy-s3:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
-          submodules: 'true'
+            submodules: true
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
-      - name: Release to GitHub Pages
-        env:
-          USE_SSH: true
-          GIT_USER: git
+      - name: Test Build
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "gh-actions"
           if [ -e yarn.lock ]; then
+          npm i -g yarn
           yarn install --frozen-lockfile
           elif [ -e package-lock.json ]; then
           npm ci
           else
           npm i
           fi
-          npm run deploy
-  deploy:
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
+          npm run build
+      - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
-            submodules: 'true'
-      - uses: turnerlabs/s3-docusaurus-sync-action@master
+          args: --acl public-read --follow-symlinks --delete
         env:
-          AWS_DEFAULT_REGION: "us-east-1"
-          AWS_S3_BUCKET: 'gosling-lang.org'
+          AWS_S3_BUCKET: gosling-lang.org
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          PROJECT_NAME: 'gosling-website'
+          AWS_REGION: 'us-east-1'  
+          SOURCE_DIR: 'build'      # optional: defaults to entire repository
