@@ -62,7 +62,7 @@ jobs:
       - uses: actions/checkout@v1
         with:
             submodules: 'true'
-      - uses: turnerlabs/s3-docusaurus-sync-action@1.0.2
+      - uses: turnerlabs/s3-docusaurus-sync-action@v1.0.2
         env:
           AWS_DEFAULT_REGION: "us-east-1"
           AWS_S3_BUCKET: 'gosling-lang.org'
