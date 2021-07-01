@@ -9,6 +9,10 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+  stylesheets: [
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+    "https://unpkg.com/higlass@1.11.3/dist/hglib.css",
+  ],
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/github'),
