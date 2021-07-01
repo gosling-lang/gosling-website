@@ -1,8 +1,9 @@
 import { validateGoslingSpec, GoslingComponent } from "gosling.js";
+import React from 'react'
 import { render } from "react-dom";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-tomorrow";
+import "ace-builds/src-noconflict/theme-chrome";
 
 
 const debounce = (callback, wait) => {
@@ -19,14 +20,13 @@ export class GoslingEditor extends React.Component{
     constructor(prop){
         super(prop);
         this.state = {
-            spec: JSON.stringify(this.props.spec, null, 2)
+            spec: this.props.spec
         };
         this.onChange = this.onChange.bind(this)
         this.reset = this.reset.bind(this)
         this.WAIT = 500
     }
-    onChange(value, event){
-        console.info(value)
+    onChange(value, _){
         if (validateGoslingSpec(JSON.parse(this.stripJsonComments(value)))){
             this.setState({
                 spec: value
@@ -34,25 +34,27 @@ export class GoslingEditor extends React.Component{
         }
     }
     stripJsonComments(data){
-        data = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
-        return data
+        let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
+        return newData
     }
     reset () {
-        this.setState({spec: JSON.stringify(this.props.spec, null, 2)})
+        this.setState({spec: this.props.spec})
     }
     render(){
         return <>
             <div className='codeContainer' style={{position: "relative", width: "100%"}}>
                 <AceEditor  mode="javascript"
-                    theme="tomorrow"
+                    theme="chrome"
                     onChange={debounce(this.onChange, this.WAIT)}
                     fontSize={14}
                     showPrintMargin={true}
                     showGutter={true}
                     highlightActiveLine={true}
                     value = {this.state.spec}
+                    showPrintMargin={false}
                     width = '100%'
                     style={{width:'100%', border: "solid 1px lightgray", borderRadius: "5px"}}
+                    wrapEnabled={true}
                 /> 
                  <button type="button" className='reset-button' onClick={this.reset}>reset</button>
             </div>
