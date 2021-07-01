@@ -170,7 +170,7 @@ module.exports = {
       '@docusaurus/plugin-content-docs',
       {
         id:'tutorials',
-        path: 'gosling-docs/tutorials',
+        path: 'tutorials/',
         sidebarPath: require.resolve('./sidebarTutorial.js'),
         routeBasePath: 'tutorials',
         include: ['*.md', '*.mdx']
