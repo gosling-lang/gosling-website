@@ -49,3 +49,11 @@ a {
   right: calc(var(--ifm-pre-padding)/2);
   top: calc(var(--ifm-pre-padding)/2);
 }
+
+.gosling-container {
+  width:100%;
+  border: solid 1px lightgray; 
+  border-radius: 5px; 
+  margin: 15px 0px; 
+  overflow-x: scroll;
+}

@@ -9,8 +9,9 @@ import {stripJsonComments, GoslingEditor} from './GoslingEditor'
 
 In <a href='./create-multi-track-visualization'>Tutorial 2</a>, we introduce how to create a multi-track visualization, as shown below.
 
-<GoslingComponent spec={stripJsonComments(SPEC_CIRCULAR)}/>
-
+<div className='gosling-container'>
+    <GoslingComponent spec={stripJsonComments(SPEC_CIRCULAR)}/>
+</div>
 
 In Gosling, we call a visualization with several `tracks` as **a single view**.
 Sometimes, we may wish to create a visualization with **multiple views**, e.g., one overview + several detailed views.
