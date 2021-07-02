@@ -436,8 +436,8 @@ const SPEC_DETAIL = `{
      "layout": "linear",
      "tracks": [{ 
        "row": {"field": "sample", "type": "nominal"},
-       "width": 340,
-       "height": 300,  
+       "width": 240,
+       "height": 200,  
        "data": {
          "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
          "type": "multivec",
@@ -467,7 +467,7 @@ const SPEC_MULTI_VIEW = `{
                 "spacing": 5,
                 "tracks": [
                     {
-                        "width": 700,
+                        "width": 500,
                         "height": 40,
                         "data": {
                             "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
@@ -502,7 +502,7 @@ const SPEC_MULTI_VIEW = `{
                         ]
                     },
                     {
-                        "width": 700,
+                        "width": 500,
                         "height": 20,
                         "data": {
                             "url": "https://raw.githubusercontent.com/sehilyi/gemini-datasets/master/data/UCSC.HG38.Human.CytoBandIdeogram.csv",
@@ -588,8 +588,8 @@ const SPEC_MULTI_VIEW = `{
                         "tracks": [
                             {
                                 "row": { "field": "sample", "type": "nominal" },
-                                "width": 340,
-                                "height": 300,
+                                "width": 240,
+                                "height": 200,
                                 "data": {
                                     "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
                                     "type": "multivec",
@@ -616,8 +616,8 @@ const SPEC_MULTI_VIEW = `{
                         "layout": "linear",
                         "tracks": [{
                             "row": { "field": "sample", "type": "nominal" },
-                            "width": 340,
-                            "height": 300,
+                            "width": 240,
+                            "height": 200,
                             "data": {
                                 "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
                                 "type": "multivec",

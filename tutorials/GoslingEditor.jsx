@@ -43,7 +43,7 @@ export class GoslingEditor extends React.Component{
         this.setState({spec: this.props.spec})
     }
     render(){
-        return <>
+        return <div className='gosling-container'>
             <div className='codeContainer' style={{position: "relative", width: "100%"}}>
                 <AceEditor  mode="javascript"
                     theme="chrome"
@@ -55,19 +55,21 @@ export class GoslingEditor extends React.Component{
                     value = {this.state.spec}
                     showPrintMargin={false}
                     width = '100%'
-                    style={{width:'100%', border: "solid 1px lightgray", borderRadius: "5px"}}
+                    style={{width:'100%'}}
                     wrapEnabled={true}
                 /> 
                  <button type="button" className='reset-button' onClick={this.reset}>reset</button>
             </div>
             {/* <h4> Gosling Visualization</h4> */}
-            <span><b>You can modify the visualization below by changing the code above</b></span> <br/>
-            <div className='gosling-container'>
+            <div style={{margin: '5px 10px'}}>
+                <span><b>You can modify the visualization below by changing the code above</b></span>
+            </div>
+            {/* <div className='gosling-container'> */}
                 <GoslingComponent spec={stripJsonComments(this.state.spec)}
                     compiled={(spec, vConf) => { /* Callback function when compiled */ }}
                 />
-            </div>
-        </>
+            {/* </div> */}
+        </div>
     }
 }
 
