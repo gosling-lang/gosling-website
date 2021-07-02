@@ -16,6 +16,11 @@ const debounce = (callback, wait) => {
     };
 }
 
+export const stripJsonComments =(data)=>{
+    let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
+    return JSON.parse(newData)
+}
+
 export class GoslingEditor extends React.Component{
     constructor(prop){
         super(prop);
@@ -27,16 +32,13 @@ export class GoslingEditor extends React.Component{
         this.WAIT = 500
     }
     onChange(value, _){
-        if (validateGoslingSpec(JSON.parse(this.stripJsonComments(value)))){
+        if (validateGoslingSpec(stripJsonComments(value))){
             this.setState({
                 spec: value
             })
         }
     }
-    stripJsonComments(data){
-        let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
-        return newData
-    }
+    
     reset () {
         this.setState({spec: this.props.spec})
     }
@@ -58,9 +60,10 @@ export class GoslingEditor extends React.Component{
                 /> 
                  <button type="button" className='reset-button' onClick={this.reset}>reset</button>
             </div>
-            <h4> Gosling Visualization</h4>
-            <div style={{width:'100%', border: "solid 1px lightgray", borderRadius: "5px"}}>
-            <GoslingComponent spec={JSON.parse(this.stripJsonComments(this.state.spec))}
+            {/* <h4> Gosling Visualization</h4> */}
+            <span><b>You can modify the visualization below by changing the code above</b></span> <br/>
+            <div style={{width:'100%', border: "solid 1px lightgray", borderRadius: "5px", margin: '15px 0px'}}>
+            <GoslingComponent spec={stripJsonComments(this.state.spec)}
                 compiled={(spec, vConf) => { /* Callback function when compiled */ }}
             />
             </div>
