@@ -62,10 +62,10 @@ export class GoslingEditor extends React.Component{
             </div>
             {/* <h4> Gosling Visualization</h4> */}
             <span><b>You can modify the visualization below by changing the code above</b></span> <br/>
-            <div style={{width:'100%', border: "solid 1px lightgray", borderRadius: "5px", margin: '15px 0px'}}>
-            <GoslingComponent spec={stripJsonComments(this.state.spec)}
-                compiled={(spec, vConf) => { /* Callback function when compiled */ }}
-            />
+            <div style={{width:'100%', border: "solid 1px lightgray", borderRadius: "5px", margin: '15px 0px', overflowX: "scroll"}}>
+                <GoslingComponent spec={stripJsonComments(this.state.spec)}
+                    compiled={(spec, vConf) => { /* Callback function when compiled */ }}
+                />
             </div>
         </>
     }
