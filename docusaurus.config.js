@@ -164,7 +164,8 @@ module.exports = {
   ],
   plugins: [
     // custmo plugin to fix the symlink bug in webpack 
-    require.resolve('./my-plugin/index.js'),
+    require.resolve('./plugins/my-plugin/index.js'),
+    require.resolve('./plugins/monaco-plugin/index.js'),
     // gosling tutorials
     [
       '@docusaurus/plugin-content-docs',
