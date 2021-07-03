@@ -19,13 +19,13 @@
     "@docusaurus/plugin-google-gtag": "2.0.0-alpha.72",
     "@docusaurus/preset-classic": "2.0.0-alpha.72",
     "@mdx-js/react": "^1.6.21",
-    "ace-builds": "^1.4.12",
     "clsx": "^1.1.1",
     "gosling.js": "^0.8.3",
+    "monaco-editor-webpack-plugin": "^4.0.0",
     "pixi.js": "^6.0.4",
     "react": "^17.0.1",
-    "react-ace": "^9.4.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-monaco-editor": "^0.43.0"
   },
   "browserslist": {
     "production": [
