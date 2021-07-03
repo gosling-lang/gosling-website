@@ -61,13 +61,16 @@ export class GoslingEditor extends React.Component{
                  <button type="button" className='reset-button' onClick={this.reset}>reset</button>
             </div>
             <div style={{margin: '5px 10px'}}>
-                <span><b>You can modify the visualization below by changing the code above</b></span>
+                <span><b>You can interact with the visualization through zoom and pan, or modify it by changing the code above</b></span>
             </div>
+            <div style={{margin: '0 60px'}}>
                 <GoslingComponent 
                     spec={stripJsonComments(this.state.spec)}
                     padding={20}
                     compiled={(spec, vConf) => { /* Callback function when compiled */ }}
+                    className='gosling-component'
                 />
+            </div>
             {/* </div> */}
         </div>
     }

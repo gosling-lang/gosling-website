@@ -14,6 +14,12 @@ const SPEC1 = `{
         // specify the mark type
         "mark": "rect",
         // encoding data with visual channels
+        "color": {
+          "field": "Stain", 
+          "type": "nominal",
+          "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
+          "range": ["white","#D9D9D9","#979797","#636363", "black","#A0A0F2"]
+        },
         "x": {
             "field": "chromStart",
             "type": "genomic",
@@ -21,12 +27,6 @@ const SPEC1 = `{
             "axis": "top"
         },
         "xe": {"field": "chromEnd", "type": "genomic"},
-        "color": {
-            "field": "Stain", 
-            "type": "nominal",
-            "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
-            "range": ["white","#D9D9D9","#979797","#636363", "black","#A0A0F2"]
-        },
         // customize the style of the visual marks. 
         // default values will be used if not specifyed.
         "size": {"value": 20},
@@ -49,6 +49,12 @@ const SPEC_TRANSFORM_DATA = `{
         "dataTransform": [{"type": "filter", "field": "Stain", "oneOf": ["gpos25", "gpos50", "gpos75", "gpos100"]}],
         // end of the data transform
         "mark": "rect",
+        "color": {
+          "field": "Stain", 
+          "type": "nominal",
+          "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
+          "range": ["white","#D9D9D9","#979797","#636363", "black","#A0A0F2"]
+        },
         "x": {
             "field": "chromStart",
             "type": "genomic",
@@ -56,12 +62,6 @@ const SPEC_TRANSFORM_DATA = `{
             "axis": "top"
         },
         "xe": {"field": "chromEnd", "type": "genomic"},
-        "color": {
-            "field": "Stain", 
-            "type": "nominal",
-            "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
-            "range": ["white","#D9D9D9","#979797","#636363", "black","#A0A0F2"]
-        },
         "size": {"value": 20},
         "stroke": {"value": "gray"},
         "strokeWidth": {"value": 0.5}
@@ -78,27 +78,31 @@ const SPEC_OVERLAP = `{
             "chromosomeField": "Chromosome",
             "genomicFields": ["chromStart", "chromEnd"]
         },   
-//***** removed
+//***** move the rect track to overlaid tracks
 //      "dataTransform": [{"type":"filter", "field": "Stain", "oneOf": ["acen"], "not": true}],
 //      "mark": "rect",
-        "x": {
-            "field": "chromStart",
-            "type": "genomic",
-            "domain": {"chromosome": "1"},
-            "axis": "top"
-        },
-        "xe": {"field": "chromEnd", "type": "genomic"},
-// ***** removed
 //      "color": {
 //          "field": "Stain", 
 //          "type": "nominal",
 //          "domain": ["gpos25", "gpos50", "gpos75", "gpos100"],
 //          "range": ["#D9D9D9","#979797","#636363", "black"]
 //      },
-
-    // start of the added code
+      "x": {
+            "field": "chromStart",
+            "type": "genomic",
+            "domain": {"chromosome": "1"},
+            "axis": "top"
+        },
+      "xe": {"field": "chromEnd", "type": "genomic"},
+      "size": {"value": 20},
+      "stroke": {"value": "gray"},
+      "strokeWidth": {"value": 0.5},
+ 
+//****** overlay three tracks
+//****** the above visual properties are shared by the three tracks 
        "alignment": "overlay",
        "tracks":[
+        //*** the first rect track
            {
              "mark": "rect",
              "dataTransform": [{"type":"filter", "field": "Stain", "oneOf": ["acen"], "not": true}],
@@ -109,6 +113,7 @@ const SPEC_OVERLAP = `{
                  "range": ["white","#D9D9D9","#979797","#636363", "black","#A0A0F2"]
               }
            },
+        //*** the second right triangle track 
            {
              "mark": "triangleRight",
              "dataTransform": [
@@ -117,6 +122,7 @@ const SPEC_OVERLAP = `{
                ],
              "color": {"value": "#B70101"}
            },
+        //*** the thrid left triangle track
            {
              "mark": "triangleLeft",
              "dataTransform": [
@@ -125,11 +131,7 @@ const SPEC_OVERLAP = `{
                ],
              "color": {"value": "#B70101"}
            }
-       ],
-    // end of added code
-        "size": {"value": 20},
-        "stroke": {"value": "gray"},
-        "strokeWidth": {"value": 0.5}
+       ]
     }]
 }`
 
@@ -152,29 +154,10 @@ const SPEC_ZOOM = `{
         },
         "xe": {"field": "chromEnd", "type": "genomic"},
         "alignment": "overlay",
+        "size": {"value": 20},
+        "stroke": {"value": "gray"},
+        "strokeWidth": {"value": 0.5},
         "tracks": [
-        // start of the added code 
-         {
-           "mark": "text",
-           "dataTransform": [{"type":"filter", "field": "Stain", "oneOf": ["acen"], "not": true}],
-           "text": {"field": "Name", "type": "nominal"},
-           "color": {
-             "field": "Stain",
-             "type": "nominal",
-             "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
-             "range": ["black", "black", "black", "black", "white", "black"]
-           },
-           "visibility": [
-             {
-               "operation": "less-than",
-               "measure": "width",
-               "threshold": "|xe-x|",
-               "target": "mark"
-             }
-           ],
-           "style": {"textStrokeWidth": 0}
-         },
-        // end of the added code
           {
             "mark": "rect",
             "dataTransform": [{"type":"filter", "field": "Stain", "oneOf": ["acen"], "not": true}],
@@ -207,11 +190,31 @@ const SPEC_ZOOM = `{
                 {"type":"filter", "field": "Name", "include": "p"}
               ],
             "color": {"value": "#B40101"}
+          },
+          // add a text track  
+          {
+            "mark": "text",
+            "dataTransform": [{"type":"filter", "field": "Stain", "oneOf": ["acen"], "not": true}],
+            "text": {"field": "Name", "type": "nominal"},
+            "color": {
+              "field": "Stain",
+              "type": "nominal",
+              "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
+              "range": ["black", "black", "black", "black", "white", "black"]
+            },
+           //  semantic zoom by controlling the visiblity of the text mark
+            "visibility": [
+              {
+                "operation": "less-than",
+                "measure": "width",
+                "threshold": "|xe-x|",
+                "target": "mark"
+              }
+            ],
+            "style": {"textStrokeWidth": 0}
           }
-        ],
-        "size": {"value": 20},
-        "stroke": {"value": "gray"},
-        "strokeWidth": {"value": 0.5}
+         // end of the added track
+        ]
       }
     ]
   }`
@@ -220,7 +223,7 @@ const SPEC_ZOOM = `{
 const SPEC_LINK = `{
       "spacing": 5,  // add space between tracks
       "tracks": [
-        //   add a new track
+      //******  add an area chart as a new track
         {
          "width": 700,
          "height": 40,  
@@ -325,7 +328,7 @@ const SPEC_LINK = `{
     }`
 
 const SPEC_CIRCULAR = `{
-    // you only need two lines to change the layout
+    // you only need to add two lines to change the layout
     "layout": "circular", // specify the circular layout
     "centerRadius": 0.6, // set radius of the center white space
     "spacing": 5,  
@@ -461,6 +464,7 @@ const SPEC_DETAIL = `{
 const SPEC_MULTI_VIEW = `{
     "arrangement": "vertical",
         "views": [
+          // the circular overview
             {
                 "layout": "circular",
                 "centerRadius": 0.6,
@@ -579,10 +583,12 @@ const SPEC_MULTI_VIEW = `{
                     }
                 ]
             },
+          // the two detail views
             {
                 "arrangement": "serial",
                 "spacing": 20,
                 "views": [
+                  // detail view 1
                     {
                         "layout": "linear",
                         "tracks": [
@@ -612,6 +618,7 @@ const SPEC_MULTI_VIEW = `{
                             }
                         ]
                     },
+                  // detail view 2
                     {
                         "layout": "linear",
                         "tracks": [{
