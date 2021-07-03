@@ -56,7 +56,7 @@ export class GoslingEditor extends React.Component{
                           { token: 'string.key.json', foreground: '#222222' }, // all keys
                           { token: 'string.value.json', foreground: '#035CC5' }, // all values
                           { token: 'number', foreground: '#E32A4F' },
-                          { token: 'keyword.json', foreground: '#E32A4F' } // true and false
+                        //   { token: 'keyword.json', foreground: '#E32A4F' } // true and false
                       ],
                       colors: {
                           // ...
@@ -72,30 +72,29 @@ export class GoslingEditor extends React.Component{
     }
     editorWillMount() {
         this.updateTheme();
-        // Monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
-        //     allowComments: true,
-        //     enableSchemaRequest: true,
-        //     validate: true,
-        //     schemas: [
-        //         {
-        //             uri: 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.schema.json',
-        //             fileMatch: ['*'],
-        //             schema: GoslingSchema
-        //         }
-        //     ]
-        // });
-        // Monaco.languages.json.jsonDefaults.setModeConfiguration({
-        //     diagnostics: true,
-        //     documentFormattingEdits: false,
-        //     documentRangeFormattingEdits: false,
-        //     documentSymbols: true,
-        //     completionItems: true,
-        //     hovers: true,
-        //     tokens: true,
-        //     colors: true,
-        //     foldingRanges: true,
-        //     selectionRanges: false
-        // });
+        Monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+            allowComments: true,
+            enableSchemaRequest: true,
+            validate: true,
+            schemas: [
+                {
+                    uri: 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.schema.json',
+                    fileMatch: ['*']
+                }
+            ]
+        });
+        Monaco.languages.json.jsonDefaults.setModeConfiguration({
+            diagnostics: true,
+            documentFormattingEdits: false,
+            documentRangeFormattingEdits: false,
+            documentSymbols: true,
+            completionItems: true,
+            hovers: true,
+            tokens: true,
+            colors: true,
+            foldingRanges: true,
+            selectionRanges: false
+        });
     }
     onChange(value, _){
         if (validateGoslingSpec(stripJsonComments(value))){
@@ -117,10 +116,10 @@ export class GoslingEditor extends React.Component{
                     language='json'
                     value = {this.state.spec}
                     onChange={debounce(this.onChange, this.WAIT)}
-                    theme="vs"
+                    theme="gosling"
                     editorDidMount={this.editorDidMount.bind(this)}
                     editorWillMount={this.editorWillMount.bind(this)}
-                    options={{minimap:{enabled: false}, wordWrap: 'on', folding: true, scrollBeyondLastLine: false}}
+                    options={{minimap:{enabled: false}, wordWrap: 'on', scrollBeyondLastLine: false}}
                 />
                  <button type="button" className='reset-button' onClick={this.reset}>reset</button>
             </div>
