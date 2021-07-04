@@ -1,0 +1,37 @@
+.compile-message {
+    position: absolute;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    opacity: 0.75;
+    transition: margin-top 500ms;
+    right: calc(var(--ifm-pre-padding));
+    top: calc( var(--ifm-pre-padding) + 30px );
+}
+
+.compile-message-error {
+    background: #ff6a63;
+    border-left: 6px solid #dd3c34;
+    color: white;
+    margin-top: 0;
+}
+
+.compile-message-warn {
+    background: #e9a80a;
+    border-left: 6px solid #a07508;
+    color: black;
+    margin-top: 0;
+}
+
+.reset-button {
+    background-color: #bbb;
+    border: none;
+    color: white;
+    border-radius: var(--ifm-global-radius);
+    color: var(--ifm-color-white);
+    padding: 0.4rem 0.5rem;
+    position: absolute;
+    right: calc(var(--ifm-pre-padding));
+    top: calc(var(--ifm-pre-padding));
+    font-size: 14px;
+  }

@@ -40,15 +40,7 @@ a {
   font-weight: 600;
 }
 
-.reset-button {
-  background-color: #bbb;
-  border: none;
-  color: white;
-  border-radius: 10%;
-  position: absolute;
-  right: calc(var(--ifm-pre-padding)/2);
-  top: calc(var(--ifm-pre-padding)/2);
-}
+
 
 .gosling-container {
   width:100%;

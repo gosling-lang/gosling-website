@@ -7,7 +7,9 @@ module.exports = function(context, options) {
       configureWebpack(config, isServer) {
         return {
             plugins: [
-              new MonacoWebpackPlugin()
+              new MonacoWebpackPlugin({
+                languages: ['json'],
+              })
             ]
         };
       },
