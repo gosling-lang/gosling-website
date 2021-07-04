@@ -2,14 +2,13 @@
 title: Multi-view Visualizations
 ---
 
-import { validateGoslingSpec, GoslingComponent } from "gosling.js";
 import {SPEC_CIRCULAR, SPEC_DETAIL, SPEC_MULTI_VIEW} from './GoslingEditor/SPECS.js';
-import {stripJsonComments, GoslingEditor} from './GoslingEditor'
+import {stripJsonComments, GoslingEditor, BrowserGosling} from './GoslingEditor'
 
 
 In <a href='./create-multi-track-visualization'>Tutorial 2</a>, we introduce how to create a multi-track visualization, as shown below.
 
-<GoslingComponent spec={stripJsonComments(SPEC_CIRCULAR)} padding={20}/>
+<BrowserGosling spec={SPEC_CIRCULAR} />
 
 
 In Gosling, we call a visualization with several `tracks` as **a single view**.
