@@ -19,11 +19,11 @@ module.exports = {
     },
     colorMode: {
       defaultMode: 'light',
-      disableSwitch: true,
+      disableSwitch: false,
       respectPrefersColorScheme: true,
       switchConfig: {
         darkIcon: '🌙',
-        lightIcon: '\u2600',
+        lightIcon: '🌞',
         // React inline style object
         // see https://reactjs.org/docs/dom-elements.html#style
         darkIconStyle: {
@@ -38,7 +38,7 @@ module.exports = {
       title: 'Gosling.js',
       logo: {
         alt: 'Gosling Logo',
-        src: 'img/logo.svg',
+        src: 'img/gosling-bg.svg',
       },
       items: [
         {
