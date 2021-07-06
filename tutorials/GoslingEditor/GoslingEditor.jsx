@@ -133,7 +133,7 @@ export const GoslingEditor = (spec) => {
                     }
 
                     reset() {
-                        this.setState({ spec: stripJsonComments(this.props.spec) })
+                        this.setState({ spec: stripJsonComments(this.props.spec), code: this.props.spec})
                     }
                     render() {
                         const { log } = this.state
