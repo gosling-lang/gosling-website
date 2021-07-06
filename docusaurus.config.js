@@ -8,7 +8,7 @@ module.exports = {
   tagline: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/gosling-dark.png',
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/github'),
@@ -34,7 +34,7 @@ module.exports = {
       title: 'Gosling.js',
       logo: {
         alt: 'Gosling Logo',
-        src: 'img/logo.svg',
+        src: 'img/gosling-dark.svg',
       },
       items: [
         {
