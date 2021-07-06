@@ -8,7 +8,7 @@ module.exports = {
   tagline: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/gosling-dark.png',
   stylesheets: [
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
     "https://unpkg.com/higlass@1.11.3/dist/hglib.css",
@@ -20,7 +20,7 @@ module.exports = {
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
       switchConfig: {
         darkIcon: '🌙',
         lightIcon: '🌞',
@@ -38,7 +38,7 @@ module.exports = {
       title: 'Gosling.js',
       logo: {
         alt: 'Gosling Logo',
-        src: 'img/gosling-bg.svg',
+        src: 'img/gosling-dark.svg',
       },
       items: [
         {
