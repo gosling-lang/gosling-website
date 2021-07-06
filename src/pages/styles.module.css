@@ -30,8 +30,9 @@
   color: var(--ifm-color-primary-darker);
 }
 
-.buttonLink{
+.getStarted{
   background-color: white;
+  color: black !important;
 }
 
 .features {
