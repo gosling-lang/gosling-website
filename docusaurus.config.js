@@ -15,11 +15,11 @@ module.exports = {
   ],
   themeConfig: {
     prism: {
-      theme: require('prism-react-renderer/themes/github'),
+      // theme: require('prism-react-renderer/themes/github'),
     },
     colorMode: {
       defaultMode: 'light',
-      disableSwitch: true,
+      disableSwitch: false,
       respectPrefersColorScheme: false,
       switchConfig: {
         darkIcon: '🌙',
