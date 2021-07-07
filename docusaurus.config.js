@@ -9,6 +9,10 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/gosling-dark.png',
+  stylesheets: [
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+    "https://unpkg.com/higlass@1.11.3/dist/hglib.css",
+  ],
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/github'),
@@ -16,10 +20,10 @@ module.exports = {
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
       switchConfig: {
         darkIcon: '🌙',
-        lightIcon: '\u2600',
+        lightIcon: '🌞',
         // React inline style object
         // see https://reactjs.org/docs/dom-elements.html#style
         darkIconStyle: {
@@ -160,13 +164,14 @@ module.exports = {
   ],
   plugins: [
     // custmo plugin to fix the symlink bug in webpack 
-    require.resolve('./my-plugin/index.js'),
+    require.resolve('./plugins/my-plugin/index.js'),
+    require.resolve('./plugins/monaco-plugin/index.js'),
     // gosling tutorials
     [
       '@docusaurus/plugin-content-docs',
       {
         id:'tutorials',
-        path: 'gosling-docs/tutorials',
+        path: 'tutorials/',
         sidebarPath: require.resolve('./sidebarTutorial.js'),
         routeBasePath: 'tutorials',
         include: ['*.md', '*.mdx']

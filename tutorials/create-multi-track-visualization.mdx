@@ -1,0 +1,47 @@
+---
+title: Multi-track Visualizations
+---
+
+import {SPEC_OVERLAP, SPEC_ZOOM, SPEC_LINK, SPEC_CIRCULAR} from './GoslingEditor/SPECS.js';
+import {stripJsonComments, GoslingEditor, BrowserGosling} from './GoslingEditor'
+
+In <a href='./'>Tutorial 1</a>, we introduce how to load data, encode data with marks, transform data, overlay multiple marks and obtain the following visualization.
+
+<BrowserGosling spec={SPEC_OVERLAP} />
+
+
+This tutorial continues from this example and introduces more advances functions: 
+- [Semantic Zooming](#semantic-zooming)
+- [Multiple Linked Tracks](#multiple-linked-tracks)
+- [Circular Layout](#circular-layout)
+
+
+## Semantic Zooming
+
+Apart from the default zoom and pan interactions, [semantic zoom](https://github.com/gosling-lang/gosling-docs/blob/master/docs/semantic-zoom.md) is supported in Gosling and allows users to switch between different visualizations of the same data through zooming in/out. When zooming in, the same data will be represented in a different way in which more details are shown. 
+
+Let's say, for this visualization, we want text annotations to show up when zooming in.
+We add `text` marks to the `overlay` property and specify when the `text` marks should appear through the `visibility` property.
+We may wish the text marks to appear when the distance between chromStart and chromEnd is big enough to place a text mark.
+In other words, the text marks appear when the width (`measure`) of the text mark (`target`) is less than (`operation`) than `|xe-x|`.
+
+<GoslingEditor spec={SPEC_ZOOM}/>
+
+
+
+## Multiple Linked Tracks
+
+We may wish to represent the same data from different aspects using different types of visualization.
+To achieve this, we add an area chart (i.e., a new `track`) to the `tracks` property. 
+Since these tracks share the same `x` coordinate, we wish to link these two tracks: the zooming and panning performed in one track will be automatically applied to the linked track.  
+In Gosling, `tracks` can be linked by assigning `x` the same  `linkingId`. 
+
+<GoslingEditor spec={SPEC_LINK}/>
+
+
+## Circular Layout
+
+We can easily turn the visualization into a circular layout through the `layout` property.
+
+<GoslingEditor spec={SPEC_CIRCULAR} />
+

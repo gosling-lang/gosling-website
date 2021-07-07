@@ -69,8 +69,7 @@ export default function Home() {
             <Link
               className={clsx(
                 'button button--outline button--secondary button--lg',
-                styles.getStarted,
-                styles.buttonLink
+                styles.getStarted
               )}
               to={useBaseUrl('docs/')}>
               Get Started

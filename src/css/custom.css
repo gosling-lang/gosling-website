@@ -29,6 +29,12 @@
   --ifm-code-font-size: 95%;
   --ifm-h2-font-size: 2rem;
 }
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #faa433;
+  /* any other colors you wish to overwrite */
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -38,4 +44,18 @@
 
 a {
   font-weight: 600;
+}
+
+
+
+.gosling-container {
+  width:100%;
+  border: solid 1px lightgray; 
+  border-radius: 5px; 
+  margin: 15px 0px; 
+  overflow-x: scroll;
+}
+
+.navbar__brand:hover{
+  color: var(--ifm-navbar-link-hover-color);
 }
