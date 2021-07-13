@@ -4,20 +4,21 @@ import React from 'react'
 import GoslingSchema from './gosling.schema.json';
 import './editor.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-
+// 
 export const stripJsonComments = (data) => {
     let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
     return JSON.parse(newData)
 }
 
 
-export const BrowserGosling = (spec) => {
+export const BrowserGosling = (props) => {
     return <BrowserOnly
     fallback={<div>The fallback content to display on prerendering</div>}>
         {()=>{
             // to excluded from server side build
             const { GoslingComponent } = require("gosling.js");
-            return <GoslingComponent spec={stripJsonComments(spec.spec)} padding={20}/>
+
+            return <GoslingComponent spec={stripJsonComments(props.spec)} padding={20} theme={props.theme}/>
         }}
     </BrowserOnly>
 }

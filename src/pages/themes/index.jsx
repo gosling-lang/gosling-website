@@ -13,7 +13,7 @@ export default function Themes() {
   const { siteConfig = {} } = context;
   const { themes } = siteConfig.customFields.themes
   const visList = ['SPEC_CIRCULAR', 'SPEC_LINK']
-  const [ vis, setVis] = useState('SPEC_CIRCULAR')
+  const [ vis, setVis] = useState('SPEC_LINK')
 
 
   const selectPanel = <><label htmlFor="cars">Choose a Visualization: </label>
@@ -34,9 +34,10 @@ export default function Themes() {
           {selectPanel}
           <div className="row">
 
-            {themes.map((theme, idx) => (
-              <div key={theme.name}>
-              <BrowserGosling spec={SPECs[vis]} />
+            {themes.map((theme) => (
+              <div key={theme} className={clsx(styles.themeContainer)}>
+                 <h4>Theme: {theme}</h4>
+              <BrowserGosling spec={SPECs[vis]} theme={theme} />
               </div>
             ))}
           </div>
