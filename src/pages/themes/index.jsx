@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
-import { BrowserGosling } from '../../../GoslingEditor';
+import { GoslingStyle } from '../../../GoslingEditor';
 import * as SPECs from '../../../GoslingEditor/SPECS.js';
 
 
@@ -32,15 +32,16 @@ export default function Themes() {
         
         <div className="container">
           {selectPanel}
-          <div className="row">
 
             {themes.map((theme) => (
-              <div key={theme} className={clsx(styles.themeContainer)}>
-                 <h4>Theme: {theme}</h4>
-              <BrowserGosling spec={SPECs[vis]} theme={theme} />
+              <div key={theme}>
+              <h4>Theme: {theme}</h4>
+              <div  className={clsx(styles.themeContainer)}>
+                 
+              <GoslingStyle spec={SPECs[vis]} theme={theme} />
+              </div>
               </div>
             ))}
-          </div>
         </div>
       </main>
     </Layout>

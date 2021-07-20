@@ -1,2 +1,2 @@
 
-export {stripJsonComments, GoslingEditor, BrowserGosling} from './GoslingEditor'
+export * from './GoslingEditor'
