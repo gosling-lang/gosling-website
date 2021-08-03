@@ -39,13 +39,13 @@ function GalleryExampleImage({imageUrl, title, url, description}) {
   );
 }
 
-export default function Home() {
+export default function Examples() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
   const {basicExamples, advancedExamples, interactionExamples, gallery} = siteConfig.customFields.examples
   return (
     <Layout
-      title={siteConfig.title}>
+      title="Examples">
         <main>
 
           {/* basic examples */}

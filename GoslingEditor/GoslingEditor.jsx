@@ -4,37 +4,48 @@ import React from 'react'
 import GoslingSchema from './gosling.schema.json';
 import './editor.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-
+// 
 export const stripJsonComments = (data) => {
-    let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
+    let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m); // remove comments if exist
     return JSON.parse(newData)
 }
 
+export const isJSON = (data) => {
+    try {
+        JSON.parse(data)
+    } catch (e) {
+        return false
+    }
+    return true
+}
 
-export const BrowserGosling = (spec) => {
+
+export const BrowserGosling = (props) => {
     return <BrowserOnly
-    fallback={<div>The fallback content to display on prerendering</div>}>
-        {()=>{
+        fallback={<div>The fallback content to display on prerendering</div>}>
+        {() => {
             // to excluded from server side build
             const { GoslingComponent } = require("gosling.js");
-            return <GoslingComponent spec={stripJsonComments(spec.spec)} padding={20}/>
+
+            return <GoslingComponent spec={stripJsonComments(props.spec)} padding={20} theme={props.theme} />
         }}
     </BrowserOnly>
 }
 
-export const GoslingEditor = (spec) => {
+// editor used in the tutorial
+export const GoslingEditor = (props) => {
     return (
         <BrowserOnly
             fallback={<div>The fallback content to display on prerendering</div>}>
 
-            
+
             {() => {
                 // to excluded from server side build
                 // find more at https://github.com/facebook/docusaurus/issues/2494
                 const { validateGoslingSpec, GoslingComponent } = require("gosling.js");
-                const {debounce} = require('lodash')
+                const { debounce } = require('lodash')
                 const MonacoEditor = require('react-monaco-editor').default;
-                const {editor, languages} = require('monaco-editor/esm/vs/editor/editor.api');
+                const { editor, languages } = require('monaco-editor/esm/vs/editor/editor.api');
 
                 class GoslingEditorPre extends React.Component {
                     constructor(prop) {
@@ -133,7 +144,7 @@ export const GoslingEditor = (spec) => {
                     }
 
                     reset() {
-                        this.setState({ spec: stripJsonComments(this.props.spec), code: this.props.spec})
+                        this.setState({ spec: stripJsonComments(this.props.spec), code: this.props.spec })
                     }
                     render() {
                         const { log } = this.state
@@ -150,7 +161,7 @@ export const GoslingEditor = (spec) => {
                                     options={{ minimap: { enabled: false }, wordWrap: 'on', scrollBeyondLastLine: false }}
                                 />
                                 <div className={`compile-message compile-message-${log.state}`}>{log.message}</div>
-                                <button type="button" className='reset-button' onClick={this.reset}>Reset</button>
+                                <button type="button" className='float-button' onClick={this.reset}>Reset</button>
                             </div>
                             <div style={{ margin: '5px 10px' }}>
                                 <span><b>You can interact with the visualization through zoom and pan, or modify it by changing the code above</b></span>
@@ -168,9 +179,70 @@ export const GoslingEditor = (spec) => {
                     }
                 }
 
-                return <GoslingEditorPre {...spec} />
+                return <GoslingEditorPre {...props} />
             }
             }
         </BrowserOnly>
     );
 };
+
+
+// theme editor used in the themes page
+export const GoslingStyle = (props) => {
+    return <BrowserOnly
+        fallback={<div>The fallback content to display on prerendering</div>}>
+        {() => {
+            // to excluded from server side build
+            const { GoslingComponent } = require("gosling.js");
+            const { Themes } = require('gosling-theme');
+            const MonacoEditor = require('react-monaco-editor').default;
+            const { debounce } = require('lodash')
+
+            class GoslingStyleEditorPre extends React.Component {
+                constructor(prop) {
+                    super(prop);
+                    this.state = {
+                        themeString: JSON.stringify(Themes[this.props.theme], null, 4)
+                    };
+                    this.WAIT = 500 // 500 ms until refresh the vis
+                    this.onChange = this.onChange.bind(this)
+                    this.reset = this.reset.bind(this)
+                }
+                onChange(themeString, _) {
+                    if (isJSON(themeString)) {
+                        this.setState({
+                            themeString
+                        })
+                    }
+
+                }
+                reset() {
+                    this.setState({ themeString: JSON.stringify(Themes[this.props.theme], null, 4) })
+                }
+                render() {
+                    return <div className='row'>
+                        <div className="col col--12">
+                            <GoslingComponent spec={stripJsonComments(props.spec)} padding={20} theme={stripJsonComments(this.state.themeString)} />
+                        </div>
+                        <div className="col col--12" style={{ position: "relative" }}>
+                            <MonacoEditor
+                                height={300}
+                                width='100%'
+                                language='json'
+                                value={this.state.themeString}
+                                onChange={debounce(this.onChange, this.WAIT)}
+                                theme="gosling"
+                                // editorWillMount={this.editorWillMount.bind(this)}
+                                options={{ minimap: { enabled: false }, wordWrap: 'on', scrollBeyondLastLine: false }}
+                            />
+
+                            <button type="button" className='float-button' onClick={this.reset}>Reset</button>
+                        </div>
+
+                    </div>
+                }
+            }
+            return < GoslingStyleEditorPre {...props} />
+        }}
+    </BrowserOnly>
+}
