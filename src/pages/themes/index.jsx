@@ -59,8 +59,7 @@ export default function Themes() {
                  
               <GoslingStyle spec={SPECs[vis]} theme={theme} />
               </div>
-              </div>
-            
+              </div>))}
         </div>
       </main>
     </Layout>
