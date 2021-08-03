@@ -17,14 +17,14 @@ export default function Themes() {
   const [ theme, setTheme] = useState('light')
 
 
-  const selectPanel = <><label htmlFor="cars">Choose a Visualization: </label>
+  const selectPanel = <><label htmlFor="cars">Visualization: </label>
   <select name="vis" id="vis" onChange={ (event) => setVis(event.target.value)}>
   <option value="MAIN_SPEC"> Main Example </option>
     <option value="SPEC_CIRCULAR"> Circular</option>
     <option value="SPEC_LINK"> Linking </option>
   </select> </>
       
-  const selectTheme = <><label htmlFor="cars">Choose a Visualization: </label>
+  const selectTheme = <><label htmlFor="cars">Theme: </label>
   <select name="theme" onChange={ (event) => setTheme(event.target.value)}>
   <option value="light"> Light </option>
     <option value="dark"> Dark</option>
@@ -45,21 +45,21 @@ export default function Themes() {
       title="Theme">
       <main>
         <header className={styles.sectionHeader}>
-          <h1 >Theme Gallery</h1>
+          <h1 >Theme Playground</h1>
         </header>
         
         <div className="container">
           {selectPanel}
+          <br/>
           {selectTheme}
 
-            {themes.map((theme) => (
+          
               <div key={theme}>
-              <h4>Theme: {theme}</h4>
               <div  className={clsx(styles.themeContainer)}>
                  
               <GoslingStyle spec={SPECs[vis]} theme={theme} />
               </div>
-              </div>))}
+        </div>
         </div>
       </main>
     </Layout>
