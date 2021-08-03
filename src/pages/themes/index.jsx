@@ -12,15 +12,33 @@ export default function Themes() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   const { themes } = siteConfig.customFields.themes
-  const visList = ['SPEC_CIRCULAR', 'SPEC_LINK']
-  const [ vis, setVis] = useState('SPEC_LINK')
+  const visList = ['SPEC_CIRCULAR', 'SPEC_LINK','MAIN_SPEC']
+  const [ vis, setVis] = useState('MAIN_SPEC')
+  const [ theme, setTheme] = useState('light')
 
 
   const selectPanel = <><label htmlFor="cars">Choose a Visualization: </label>
   <select name="vis" id="vis" onChange={ (event) => setVis(event.target.value)}>
+  <option value="MAIN_SPEC"> Main Example </option>
     <option value="SPEC_CIRCULAR"> Circular</option>
     <option value="SPEC_LINK"> Linking </option>
   </select> </>
+      
+  const selectTheme = <><label htmlFor="cars">Choose a Visualization: </label>
+  <select name="theme" onChange={ (event) => setTheme(event.target.value)}>
+  <option value="light"> Light </option>
+    <option value="dark"> Dark</option>
+    <option value="warm"> Warm</option>
+    <option value="excel"> Excel</option>
+    <option value="ggplot"> ggplot</option>
+    <option value="google"> Google</option>
+    <option value="ensembl"> Ensembl</option>
+    <option value="igv"> IGV</option>
+    <option value="jbrowse"> JBrowse</option>
+    <option value="ucsc"> UCSC</option>
+    <option value="washu"> WashU</option>
+  </select> </>    
+   
 
   return (
     <Layout
@@ -32,6 +50,7 @@ export default function Themes() {
         
         <div className="container">
           {selectPanel}
+          {selectTheme}
 
             {themes.map((theme) => (
               <div key={theme}>
@@ -41,7 +60,7 @@ export default function Themes() {
               <GoslingStyle spec={SPECs[vis]} theme={theme} />
               </div>
               </div>
-            ))}
+            
         </div>
       </main>
     </Layout>
