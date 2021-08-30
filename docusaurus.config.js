@@ -52,6 +52,11 @@ module.exports = {
         {to: 'themes/', label: 'Themes', position: 'left'},
         {to: 'about/', label: 'About', position: 'left'},
         {
+          href: 'https://github.com/gosling-lang/gosling.js/issues/new',
+          label: 'Ask Questions',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/gosling-lang/gosling.js',
           label: 'GitHub',
           position: 'right',
