@@ -150,11 +150,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          path: 'gosling-docs/docs',
+          path: 'docs',
           sidebarPath: require.resolve('./sidebarDocs.js'),
-          // Please change this to your repo.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         blog: {
           showReadingTime: true,
