@@ -9,16 +9,16 @@ Advanced zooming technique, called Semantic Zooming, allows you to dynamically s
 For example, detailed information of nucleotide bases can be shown with textual labels when zoomed in while it can be switched to show the overall distribution of the bases using a stacked bar chart when zoomed out.
 
 ## Example: Sequence Visualization
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/semantic_zoom_1.png" alt="semantic_zoom_fine" width="700"/>
+<img src="/img/doc_images/semantic_zoom_1.png" alt="semantic_zoom_fine" width="700"/>
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/semantic_zoom_0.png" alt="semantic_zoom_coarse" width="700"/>  
+<img src="/img/doc_images/semantic_zoom_0.png" alt="semantic_zoom_coarse" width="700"/>  
 
 [Try this example in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/aa231b87458369ea53d071ad59c81812>)
 
 ## Example: Cyto Band
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/semantic_zoom_2.png" alt="semantic_zoom_coarse" height="60" width="700"/>  
+<img src="/img/doc_images/semantic_zoom_2.png" alt="semantic_zoom_coarse" height="60" width="700"/>  
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/semantic_zoom_3.png" alt="semantic_zoom_fine" height="60" width="700"/> 
+<img src="/img/doc_images/semantic_zoom_3.png" alt="semantic_zoom_fine" height="60" width="700"/> 
 
 **Top**: only `rect` marks are represented; **Bottom:** `text` and `triangle` marks are presented when zooming in to show more details.  
 [Try this example in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/509f253bf1b815d225f593218ee13211>)

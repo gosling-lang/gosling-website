@@ -51,7 +51,7 @@ In each view, genomic coordinate can be represented in either a **circular** or 
 
 In the following figure the upper track is using a linear layout while the bottom one is a circular layout.
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/linear_circular.png" alt="linear vs circular" width="600"/>    
+<img src="/img/doc_images/linear_circular.png" alt="linear vs circular" width="600"/>    
 
 Users can either specify the layout of all views in the root level
 
@@ -107,7 +107,7 @@ When setting `alignment` as `"overlay"`, multiple `tracks` are overlaid on top o
 When setting `alignment` as `"stack"`, multiple `tracks` are vertically concantenated.
 The default value of `alignment` is `"stack"`.
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/alignment.png" alt="alignment of multiple tracks" width="700"/> 
+<img src="/img/doc_images/alignment.png" alt="alignment of multiple tracks" width="700"/> 
 
 Multiple `tracks` can compose one single `view`, which has the following properties:
 
@@ -154,7 +154,7 @@ Goslings supports multi-view visualizations. How multiple views are arranged is 
 ```
 
 Gosling supports four types of arrangemet: `"parallel"`, `"serial"`, `"vertical"`, `"horizontal"`.
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/multi_views.png" alt="arrangement of multiple views" width="700"/> 
+<img src="/img/doc_images/multi_views.png" alt="arrangement of multiple views" width="700"/> 
 
 
 ## Inherit Property in Nested Structure 

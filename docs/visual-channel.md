@@ -129,7 +129,7 @@ Apart from the properties shared by all channels, `y` channel have the following
 ## x1 x1e y1 y1e
 The four channels are used together only in `link` mark. In this case, `x` and `xe` are used with `x1` and `x1e` to specify a pair of genomic intervals that needs to be connected using band representations. Similarly, `y` and `ye` can be used with `y1` and `y1e` to show band connection along vertical axis.
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/x_x1_example.png" width="400" alt="x x1 example"/>  
+<img src="/img/doc_images/x_x1_example.png" width="400" alt="x x1 example"/>  
 
 
 
@@ -139,11 +139,11 @@ Channel `row` is used with channel `y` to stratify a visualization with categori
 
 Without specifying `row`:
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/without_row.png" width="500" alt="with row example"/>  
+<img src="/img/doc_images/without_row.png" width="500" alt="with row example"/>  
 
 Line charts are stratified with sample names.
 
-<img src="https://raw.githubusercontent.com/gosling-lang/gosling-docs/master/images/with_row.png" width="500" alt="without row example"/>  
+<img src="/img/doc_images/with_row.png" width="500" alt="without row example"/>  
 
 ```javascript
 {
