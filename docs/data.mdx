@@ -2,9 +2,8 @@
 title: Data
 ---
 
+import GoslingSchema from '../assets/gosling.schema.json';
 import {TableWrapper} from './DocComponments/table'
-
-
 
 Users can specify the data of each visualization (i.e., `track`) through a `track.data` property.
 ```javascript
@@ -199,8 +198,16 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
 
 
 ## Data Transform
-Gosling supports data transform through a set of data filters.  
-Only data points that pass the tests in all filters will be visualized.  
+Gosling supports a diverse set of data transforms, including 
+<span>
+    {GoslingSchema["definitions"]['DataTransform'].anyOf.map(d=>{
+      let name = d.$ref.replace('#/definitions/', '')
+      name = name.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
+        return <span key={d}> <a href={`#${name.replace(' ', '-').toLowerCase()}`}>
+            {name}
+        </a> <br/> </span>})
+    }
+</span>
 
 
 ```javascript
@@ -220,6 +227,8 @@ Only data points that pass the tests in all filters will be visualized.
 }
 ```
 
+### Filter Transform
+
 Users can apply three types of filters: `oneOf`, `inRange`, `include`.
 One filter has the following properties:
 
@@ -231,4 +240,33 @@ One filter has the following properties:
 | include  | string               | check whether the value includes a substring                                         |
 | not      | boolean              | when `not = true`, apply a NOT logical operation to the filter test. default = false |
 
-Apart from filters, users can aggregate data values (min, max, bin, mean, and count). [Read more about data aggregation](#x)
+
+### Str Concat Transform
+
+<TableWrapper objName='StrConcatTransform' includeDescription={true}/>
+
+### Str Replace Transform 
+
+<TableWrapper objName='StrReplaceTransform' includeDescription={true}/>
+
+### Log Transform
+
+<TableWrapper objName='LogTransform' includeDescription={true}/>
+
+### Displace Transform 
+
+<TableWrapper objName='DisplaceTransform' includeDescription={true}/>
+
+### Exon Split Transform 
+
+<TableWrapper objName='ExonSplitTransform' includeDescription={true}/>
+
+### Coverage Transform
+
+<TableWrapper objName='CoverageTransform' includeDescription={true}/>
+
+### JSON Parse Transform
+
+<TableWrapper objName='JSONParseTransform' includeDescription={true}/>
+
+Apart from these data transforms, users can also aggregate data values (min, max, bin, mean, and count). [Read more about data aggregation](#x)
