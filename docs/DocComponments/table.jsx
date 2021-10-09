@@ -43,15 +43,20 @@ const obj2str = (defs)=>{
     const pConst = 'const' in propertyInfo ? propertyInfo['const']  : ''
     
     let notes = []
+    
     // write description
-    if ((objDef['required']||'').includes(key)) notes.push(<b key="requiredInfo">required. </b>)
+    // check whether the property is required
+    if ((objDef['required']||'').includes(key)) notes.push(<b key="requiredInfo">Required. </b>)
+    // whether the property needs to be a constant value
     if (pConst != '') notes.push(<span key="constInfo">must be <code>"{pConst}"</code>. </span>)
+    // read description from json if exist
     if ('description' in propertyInfo) {
       const description = propertyInfo['description']
       if (description.includes('Deprecated') || description.includes('Experimental')){
+        // ignore properties that are deprecated or experimental
         return null
       } else {
-        notes.push(<ReactMarkdown key='desription' children = {description} />)
+        notes.push(<ReactMarkdown key='desription' children = {description.replace(/\n\n/g, '\n')} />)
       }
     }
 
