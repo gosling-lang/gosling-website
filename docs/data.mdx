@@ -203,13 +203,11 @@ Gosling supports a diverse set of data transforms, including
 {
   "tracks":[{
     "data": ...,
-    // only use data whose type is 'gene' and whose strand is NOT '+' 
-    "dataTransform": {
-      "filter": [
-          { "field": "type", "oneOf": ["gene"] },
-          { "field": "strand", "oneOf": ["+"], "not": true }
-      ]
-  },
+    // a list of data transforms can be applied to the data
+    "dataTransform": [
+          { "type": "filter", "field": "type", "oneOf": ["gene"] },
+          { "type": "filter", "field": "strand", "oneOf": ["+"], "not": true }
+    ],
     "mark": "rect",
     ...,
   }]
