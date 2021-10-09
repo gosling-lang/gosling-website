@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import GoslingSchema from '../../assets/gosling.schema.json';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
@@ -15,10 +16,10 @@ export const TableWrapper = (props) => {
   </BrowserOnly>
 }
 
-const PropertyTable = ({ objName }) => {
+const PropertyTable = ({ objName, includeDescription=false }) => {
 
   const objDef = GoslingSchema["definitions"][objName]
-  let propertyList = Object.keys(objDef['properties']).sort((a,b)=>objDef['required'].includes(a) - objDef['required'].includes(b) ).reverse()
+  let propertyList = Object.keys(objDef['properties']).sort((a,b)=>(objDef.required||'').includes(a) - (objDef.required||'').includes(b) ).reverse()
 
   const tableHead = <tr>
     <th> property </th>
@@ -43,10 +44,15 @@ const obj2str = (defs)=>{
     
     let notes = []
     // write description
-    if (objDef['required'].includes(key)) notes.push(<b key="requiredInfo">required. </b>)
+    if ((objDef['required']||'').includes(key)) notes.push(<b key="requiredInfo">required. </b>)
     if (pConst != '') notes.push(<span key="constInfo">must be <code>"{pConst}"</code>. </span>)
     if ('description' in propertyInfo) {
-      notes.push(<span key='desription'>{propertyInfo['description']}. </span>)
+      const description = propertyInfo['description']
+      if (description.includes('Deprecated') || description.includes('Experimental')){
+        return null
+      } else {
+        notes.push(<ReactMarkdown key='desription' children = {description} />)
+      }
     }
 
     // propertiy type
@@ -74,11 +80,11 @@ const obj2str = (defs)=>{
     return <tr key={key}>
       <td>{key}</td>
       <td> {pType} </td>
-      <td> {notes} </td>
+      <td>{notes} </td>
     </tr>
   })
 
-  return <table>
+  return <table key={objName}>
     <thead>
       {tableHead}
     </thead>
