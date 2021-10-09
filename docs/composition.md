@@ -39,12 +39,6 @@ In Gosling, you can compose multiple tracks and views in diverse ways using the 
 ```
 
 
-- [Specify the View Layout](#specify-the-view-layout)
-- [Align Multiple Tracks in One View](#align-multiple-tracks-in-one-view)
-- [Arrange Multiple Views](#arrange-multiple-views)
-- [Inherit Property in Nested Structure](#inherit-property-in-nested-structure)
-
-
 ## Specify the View Layout
 
 In each view, genomic coordinate can be represented in either a **circular** or **linear** layout. 
