@@ -1,6 +1,9 @@
 ---
 title: Visual Channel
 ---
+
+import {TableWrapper} from './DocComponments/table'
+
 The visual appearance of a mark is controlled by a set of visual channels (e.g., size, position, and color). One visual channel can be bound with either a data field or just a constant value.
 
 ```javascript
@@ -139,11 +142,11 @@ Channel `row` is used with channel `y` to stratify a visualization with categori
 
 Without specifying `row`:
 
-<img src="/img/doc_images/without_row.png" width="500" alt="with row example"/>  
+<img src="/img/doc_images/without_row.png" width="500" alt="without row example"/>  
 
 Line charts are stratified with sample names.
 
-<img src="/img/doc_images/with_row.png" width="500" alt="without row example"/>  
+<img src="/img/doc_images/with_row.png" width="500" alt="with row example"/>  
 
 ```javascript
 {
@@ -212,18 +215,4 @@ Channel `opacity` specifies the opacity of the mark shape.
 
 `style` specifies the visual appearances of a track that are not bound with data fields.
 
-| style properties | type                                                   | description                              |
-| ---------------- | ------------------------------------------------------ | ---------------------------------------- |
-| background       | string                                                 | color of the background                  |
-| dashed           | [number, number]                                       |
-| linePatterns     | { "type": "triangleLeft" \| "triangleRight"; size: number } |
-| curve            | string                                                 | support "top", "bottom", "left", "right" |
-| align            | string                                                 | support "left", "right"                  |
-| dy               | number                                                 |
-| outline          | string                                                 |
-| outlineWidth     | number                                                 |
-| circularLink     | boolean                                                |
-| textFontSize     | number                                                 |
-| textStroke       | string                                                 |
-| textStrokeWidth  | number                                                 |
-| textFontWeight   | string                                                 | support "bold", "normal"                 |
+<TableWrapper objName="Style"/>
