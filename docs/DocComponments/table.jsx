@@ -5,6 +5,12 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 
 const dataList = GoslingSchema["definitions"]['DataDeep']['anyOf'].map(d => d["$ref"].replace('#/definitions/', ''))
 
+const isIgnored = (descriptionInfo) => {
+  const keywords = ['deprecated', 'experimental', 'not supported', 'internal']
+  return keywords.some(keyword => descriptionInfo.toLowerCase().includes(keyword))
+
+}
+
 export const TableWrapper = (props) => {
   return <BrowserOnly
     fallback={<div>The fallback content to display on prerendering</div>}>
@@ -52,7 +58,7 @@ const obj2str = (defs)=>{
     // read description from json if exist
     if ('description' in propertyInfo) {
       const description = propertyInfo['description']
-      if (description.toLowerCase().includes('deprecated') || description.toLowerCase().includes('experimental')){
+      if (isIgnored(description)){
         // ignore properties that are deprecated or experimental
         return null
       } else {

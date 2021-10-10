@@ -2,8 +2,9 @@
 title: Composition
 ---
 
-<!-- Overview -->
-A **track** is a unit building block in Gosling which can be represented as a bar chart, a line chart, or an ideogram. For the concurrent analysis of multiple datasets, multiple tracks can be grouped into **views** and navigated synchronously. In other words, a view defines the genomic location for all the tracks it contains, and the tracks define the data to be visualized.
+import {TableWrapper} from './DocComponments/table'
+
+A **`track`** is a unit building block in Gosling which can be represented as a bar chart, a line chart, or an ideogram. For the concurrent analysis of multiple datasets, multiple tracks can be grouped into **`views`** and navigated synchronously. In other words, a view defines the genomic location for all the tracks it contains, and the tracks define the data to be visualized.
 
 <!-- :pushpin: `mark + channel` :arrow_forward: `one track` :arrow_forward:`tracks` :arrow_forward: `one view` :arrow_forward: `views` :arrow_forward: `a multi-view visualization` -->
 
@@ -82,13 +83,7 @@ A `circular` layout is controlled by the following properties:
 | height       | number | you need to specify the height of each track to control the ratio of their ticknesses |
 | centerRadius | number | `radius of the center white space` / `radius of the whole view`. default = 0.3  |
 
-<!-- 
-|              |        | <a> the below properties, if specified, will override the above properties </a> |
-| outerRadius  | number | default = min(track.width, track.height) / 2                                    |
-| innerRadius  | number | default = max(outerRadius - 80, 0)                                              |
-| startAngle   | number | default = 0                                                                     |
-| endAngle     | number | default = 360                                                                   |
- -->
+
 
 
 ## Align Multiple Tracks in One View
@@ -120,7 +115,9 @@ Multiple `tracks` can compose one single `view`, which has the following propert
 
 
 ## Arrange Multiple Views
-Goslings supports multi-view visualizations. How multiple views are arranged is controlled by the `arrangement` property.
+Goslings supports multi-view visualizations. 
+Users can specify the visualizations in `"views"` and arrange them through the `arrangement` property.
+
 ```javascript
 {
   "arrangement": "parallel",
@@ -150,6 +147,8 @@ Goslings supports multi-view visualizations. How multiple views are arranged is 
 Gosling supports four types of arrangemet: `"parallel"`, `"serial"`, `"vertical"`, `"horizontal"`.
 <img src="/img/doc_images/multi_views.png" alt="arrangement of multiple views" width="700"/> 
 
+**Below are the properties that are supported in a multi-view gosling visualization**
+<TableWrapper objName="MultipleViews" />
 
 ## Inherit Property in Nested Structure 
 
@@ -160,8 +159,7 @@ Both `view` and `track` supports nested structures: One `view` can have several 
 {
   "arrangement": "parallel",
   "views": [
-    {/** view **/ }, 
-    {/** view **/ }, 
+    {/** a single view **/ }, 
     {
       // a view with children views
       "arrangement": "parallel",
@@ -175,8 +173,8 @@ Both `view` and `track` supports nested structures: One `view` can have several 
 // nested structures in tracks
 {
   "alignment":"overlay",
-  "tracks": [
-    {
+  "views":[{
+    "tracks": [{
       // the parent track
       "data": ... , // specify data
       "x": ...,
@@ -195,8 +193,8 @@ Both `view` and `track` supports nested structures: One `view` can have several 
           "size": {"field": "peak", "type": "quantitative", "range": [0, 6]} 
         }
       ]
-    }
-  ]
+    }]
+  }]
 }
 ```
 
