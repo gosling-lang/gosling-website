@@ -45,7 +45,7 @@ module.exports = {
     list: [
       {
         title: "Overview + Details",
-        imageUrl: "/img/doc_images/tutorial/tutorial_multi_views.gif",
+        imageUrl: "/img/example/multi_views.gif",
         url: "https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL",
         description: ""
       },
