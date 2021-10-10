@@ -59,3 +59,7 @@ a {
 .navbar__brand:hover{
   color: var(--ifm-navbar-link-hover-color);
 }
+
+.propertyTable p {
+  margin: 0px !important;
+}

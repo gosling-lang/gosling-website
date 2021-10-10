@@ -52,7 +52,7 @@ const obj2str = (defs)=>{
     // read description from json if exist
     if ('description' in propertyInfo) {
       const description = propertyInfo['description']
-      if (description.includes('Deprecated') || description.includes('Experimental')){
+      if (description.toLowerCase().includes('deprecated') || description.toLowerCase().includes('experimental')){
         // ignore properties that are deprecated or experimental
         return null
       } else {
@@ -89,7 +89,7 @@ const obj2str = (defs)=>{
     </tr>
   })
 
-  return <table key={objName}>
+  return <table key={objName} className='propertyTable'>
     <thead>
       {tableHead}
     </thead>
