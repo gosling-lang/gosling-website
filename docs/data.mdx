@@ -25,7 +25,7 @@ For the flexible data exploration, Gosling supports two different kinds of datas
 including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), and [BigWig](#bigwig-no-higlass-server). 
 
 2. **Pre-aggregated Datasets** (HiGlass Server): These datasets are preprocessed for the scalable data exploration and require a HiGlass server to access them in Gosling,
-including [Vector](#vector-no-higlass-server), [Multivec](#multivec-no-higlass-server), and [BEDDE](#beddb-no-higlass-server).
+including [Vector](#vector-require-higlass-server), [Multivec](#multivec-require-higlass-server), and [BEDDE](#beddb-require-higlass-server).
 To learn more about preprocessing your data and setting up the server, please visit the [HiGlass website](https://docs.higlass.io/).
 
 
@@ -219,15 +219,16 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
 ### Filter Transform
 
 Users can apply three types of filters: `oneOf`, `inRange`, `include`.
-One filter has the following properties:
+Each filter transform has the following properties:
 
 | property | type                 | description                                                                          |
 | -------- | -------------------- | ------------------------------------------------------------------------------------ |
+| type    | string               | **Required**, must be `"filter"`    |
 | field    | string               | **required**, a filter is applied based on the values of the specified data field    |
 | inRange  | number[]             | check whether the value is in a number range                                         |
 | oneOf    | string[] \| number[] | check whether the value is an element in the provided list                           |
 | include  | string               | check whether the value includes a substring                                         |
-| not      | boolean              | when `not = true`, apply a NOT logical operation to the filter test. default = false |
+| not      | boolean              | when `{"not": true}`, apply a NOT logical operation to the filter test. default = false |
 
 
 ### Str Concat Transform
