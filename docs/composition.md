@@ -110,9 +110,9 @@ Multiple `tracks` can compose one single `view`, which has the following propert
 | layout       | string  | specify the layout type of all tracks, either "linear" or "circular"   |
 | alignment    | string  | specify how to align tracks, either "stack" or "overlay". default="stack"|
 | spacing      | number  | specify the space between tracks in pixels (if `layout` is `linear`) or in percentage ranging from `0` to `100` (if `layout` is `circular`)                     |
-| static       | boolean | whether to disable [Zooming and Panning](https://github.com/gosling-lang/gosling-docs/blob/master/docs/user-interaction.md#zooming-and-panning), default=false. |
+| static       | boolean | whether to disable <a href="http://gosling-lang.org/docs/user-interaction#zooming-and-panning" target="_blank">Zooming and Panning</a>, default=false. |
 | assembly     | string  | currently support "hg38", "hg19", "hg18", "hg17", "hg16", "mm10", "mm9"                                                                                         |
-| linkingId    | string  | specify an ID for [linking multiple views](https://github.com/gosling-lang/gosling-docs/blob/master/docs/user-interaction.md#linking-views)                     |
+| linkingId    | string  | specify an ID for <a href="http://gosling-lang.org/docs/user-interaction#linking-views" target="_blank">linking multiple views</a>                 |
 | centerRadius | number  | specify the proportion of the radius of the center white space. A number between [0,1], default=0.3                                                             |
 | width        | number  | required when setting `alignment: overlay`                                                                                                                      |
 | height       | number  | required when setting `alignment: overlay`                                                                                                                      |
