@@ -67,7 +67,9 @@ const PropertyTable = ({ objName, includeDescription=false }) => {
     </tr>
   })
 
-  return <table key={objName} className='propertyTable'>
+  return <div key={objName}>
+  {includeDescription?<p>{objDef['description']}</p>:''}
+  <table key={objName} className='propertyTable'>
     <thead>
       {tableHead}
     </thead>
@@ -75,6 +77,7 @@ const PropertyTable = ({ objName, includeDescription=false }) => {
       {tableRows}
     </tbody>
   </table>
+  </div>
 }
 
 
