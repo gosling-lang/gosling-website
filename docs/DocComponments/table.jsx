@@ -107,17 +107,17 @@ const parsePType = (propertyInfo, notes, propertyName)=>{
     let pType = propertyInfo['type']
     if (Array.isArray(pType)){
       // type is an array 
-      pType = pType.join('| ')
+      pType = pType.join('|')
     } else if (pType === 'array'){
         /** an array of objects */
         if (propertyInfo?.items?.type=='object'){
           const res = parsePType(propertyInfo.items, [], '')
-          pType = `${res['pType']} []`
+          pType = `${res['pType']}[]`
           notes = res['description']
         }
         /** an array of number or strings  */
         else if (['number', 'string'].includes(propertyInfo?.items?.type)){
-          pType = `${propertyInfo.items.type} []`
+          pType = `${propertyInfo.items.type}[]`
         } 
         /** an array of different items */
         else if (Array.isArray(propertyInfo?.items)){
@@ -131,7 +131,8 @@ const parsePType = (propertyInfo, notes, propertyName)=>{
         }
 
     } else if (pType === 'object'){
-      if (propertyInfo['properties'] && Object.keys(propertyInfo['properties']).length <3){
+      /** if the number of properties is less than 3 or if the property do not have a type name */
+      if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length <3 || propertyName=='')){
           pType = 'object'
           notes.push(<span key="type">Each object follows the format <code>{obj2str(propertyInfo)}</code></span>)
         
