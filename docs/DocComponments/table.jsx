@@ -62,7 +62,7 @@ const PropertyTable = ({ objName, includeDescription=false }) => {
 
     return <tr key={key}>
       <td>{key}</td>
-      <td> <ReactMarkdown children={pType} /> </td>
+      <td className='type'> <ReactMarkdown children={pType} /> </td>
       <td>{ description} </td>
     </tr>
   })

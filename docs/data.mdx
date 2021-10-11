@@ -194,7 +194,7 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
     {GoslingSchema["definitions"]['DataTransform'].anyOf.map((d, i)=>{
       let name = d.$ref.replace('#/definitions/', '')
       name = name.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
-        return <span key={d}> <a href={`#${name.replace(' ', '-').toLowerCase()}`}>
+        return <span key={name}> <a href={`#${name.replace(' ', '-').toLowerCase()}`}>
             {name}
         </a> {i==GoslingSchema["definitions"]['DataTransform'].anyOf.length-1 ? '. ': ', '} </span>})
     }

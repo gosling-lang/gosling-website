@@ -63,3 +63,8 @@ a {
 .propertyTable p {
   margin: 0px !important;
 }
+
+.propertyTable td.type a {
+  /* color: black; */
+  font-weight: 400;
+}
