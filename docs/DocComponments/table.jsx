@@ -5,6 +5,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 
 const dataList = GoslingSchema["definitions"]['DataDeep']['anyOf'].map(d => d["$ref"].replace('#/definitions/', ''))
 
+// decide whether a property should be ignored based on keywords in the property description
 const isIgnored = (descriptionInfo) => {
   const keywords = ['deprecated', 'experimental', 'not supported', 'internal']
   return keywords.some(keyword => descriptionInfo.toLowerCase().includes(keyword))
@@ -22,6 +23,7 @@ export const TableWrapper = (props) => {
   </BrowserOnly>
 }
 
+
 const PropertyTable = ({ objName, includeDescription=false }) => {
 
   const objDef = GoslingSchema["definitions"][objName]
@@ -33,19 +35,8 @@ const PropertyTable = ({ objName, includeDescription=false }) => {
     <th> description </th>
   </tr>
 
-
-const obj2str = (defs)=>{
-  var objString = {}
-  Object.keys(defs['properties']).forEach(
-    (k)=>objString[k] = defs['properties'][k]['type']
-  )
-    return JSON.stringify(objString)
-}
-
-
   const tableRows = propertyList.map(key => {
     const propertyInfo = objDef['properties'][key]
-    let pType = propertyInfo['type']
     const pConst = 'const' in propertyInfo ? propertyInfo['const']  : ''
     
     let notes = []
@@ -66,32 +57,13 @@ const obj2str = (defs)=>{
       }
     }
 
-    // propertiy type
-    if (pType === 'array'){
-      const itemType = propertyInfo['items']['type']
-      if (itemType == 'object') {
-        // array of objects
-        if (propertyInfo?.items?.properties?.type?.$ref){
-          pType = <span> <a>{propertyInfo['items']['properties']['type']['$ref'].replace('#/definitions/', '')}</a>[] </span>
-        }
-        else {
-          // simple obj type
-          notes.push(<span key="type">Each object in the array follows the format {obj2str(propertyInfo['items'])}</span>)
-        }
-        
-      } else {
-        // array of numbers or strings
-        pType = <span> {itemType} [] </span>
-      }
-    } else if (pType === 'object'){
-      pType = <a>{key.toUpperCase()}</a>
-    }
+    const {pType, description} = parsePType(propertyInfo, notes, key)
 
 
     return <tr key={key}>
       <td>{key}</td>
-      <td> {pType} </td>
-      <td>{notes} </td>
+      <td> <ReactMarkdown children={pType} /> </td>
+      <td>{ description} </td>
     </tr>
   })
 
@@ -103,4 +75,78 @@ const obj2str = (defs)=>{
       {tableRows}
     </tbody>
   </table>
+}
+
+
+/**
+ * parse property types
+ */
+
+const obj2str = (defs)=>{
+  var objString = {}
+  Object.keys(defs['properties']).forEach(
+    (k)=>objString[k] = defs['properties'][k]['type']
+  )
+    return JSON.stringify(objString)
+}
+
+
+
+/**
+ * 
+ * @param {object} propertyInfo
+ * @param {ReactElement[]} notes
+ * @param {string} propertyName
+ * @returns 
+ */
+const parsePType = (propertyInfo, notes, propertyName)=>{ 
+
+    let pType = propertyInfo['type']
+    if (Array.isArray(pType)){
+      // type is an array 
+      pType = pType.join('| ')
+    } else if (pType === 'array'){
+        /** an array of objects */
+        if (propertyInfo?.items?.type=='object'){
+          const res = parsePType(propertyInfo.items, [], '')
+          pType = `${res['pType']} []`
+          notes = res['description']
+        }
+        /** an array of number or strings  */
+        else if (['number', 'string'].includes(propertyInfo?.items?.type)){
+          pType = `${propertyInfo.items.type} []`
+        } 
+        /** an array of different items */
+        else if (Array.isArray(propertyInfo?.items)){
+          pType = `[${propertyInfo.items
+            .map(item=>parsePType(item, [], '')['pType']
+            ).join(', ')}]`
+        } 
+        /** if an array of type reference */
+        else if (propertyInfo?.items?.$ref != undefined){
+          pType = `[${propertyInfo['items']['$ref'].replace('#/definitions/', '')}]()`
+        }
+
+    } else if (pType === 'object'){
+      if (propertyInfo['properties'] && Object.keys(propertyInfo['properties']).length <3){
+          pType = 'object'
+          notes.push(<span key="type">Each object follows the format <code>{obj2str(propertyInfo)}</code></span>)
+        
+      } else {
+        pType = `[${propertyName.toUpperCase()}]()`
+      }
+    } 
+    // else ptype = 'number' or 'string', do nothing
+    /**  */
+    else if (pType == undefined && propertyInfo['anyOf']){
+      pType = propertyInfo['anyOf'].map(p => parsePType(p, [], '')['pType']).join('| ')
+    } else if (pType == undefined && propertyInfo['$ref']){
+      // if a referenced object
+      const refType = propertyInfo['$ref'].replace('#/definitions/', '')
+      const res = parsePType(GoslingSchema['definitions'][refType], notes, refType)
+      pType = res['pType']
+      notes = res['description']
+    }
+
+  return {pType, description: notes}
 }

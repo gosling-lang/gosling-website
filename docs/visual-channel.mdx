@@ -87,8 +87,8 @@ Apart from the properties shared by all channels, `x` channel have the following
 
 | unique properties | type   | description                                                                                                        |
 | ----------------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
-| aggregate         | string | support "max", "min", "count", "mean", "bin"                                                                       |
-| axis              | string | specify the axis position, support "none", "top", "bottom", "left", "right"                                        |
+| aggregate         | string | support `"max"`, `"min"`, `"count"`, `"mean"`, `"bin"`                                                             |
+| axis              | string | specify the axis position, support `"none"`, `"top"`, `"bottom"`, `"left"`, `"right"`                                        |
 | linkingId         | string | a unique linkingId is needed for [linking views](#linking-views) and [Brushing and Linking](#brushing-and-linking) |
 
 
@@ -99,7 +99,7 @@ Apart from the properties shared by all channels, `xe` channel have the followin
 
 | unique properties | type   | description                                                                 |
 | ----------------- | ------ | --------------------------------------------------------------------------- |
-| aggregate         | string | support "max", "min", "count", "mean", "bin"                                |
+| aggregate         | string | support `"max"`, `"min"`, `"count"`, `"mean"`, `"bin"`                      |
 | axis              | string | specify the axis position, support "none", "top", "bottom", "left", "right" |
 
 ## y
@@ -109,7 +109,7 @@ Apart from the properties shared by all channels, `y` channel have the following
 
 | unique properties | type             | description                                                                 |
 | ----------------- | ---------------- | --------------------------------------------------------------------------- |
-| axis              | string           | specify the axis position, support "none", "top", "bottom", "left", "right" |
+| axis              | string           | specify the axis position, support `"none"`, `"top"`, `"bottom"`, `"left"`, `"right"` |
 | baseline          | string \| number |                                                                             |
 
 ## ye
@@ -198,6 +198,28 @@ Channel `opacity` specifies the opacity of the mark shape.
 
 
 ## style-related properties
+
+```javascript
+{
+  "style": {
+    /** 
+     * style-related properties 
+     * specify the style of all tracks
+     */
+  }
+  "tracks": [
+    {
+      ...,
+      "style": {
+        /** specify the style of a single track */
+      }
+    },
+    ...
+  ],
+  ...
+}
+
+```
 
 These properties specify the visual appearances of a track that are not bound with data fields.
 
