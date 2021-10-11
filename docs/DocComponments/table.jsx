@@ -24,10 +24,18 @@ export const TableWrapper = (props) => {
 }
 
 
-const PropertyTable = ({ objName, includeDescription=false }) => {
+const PropertyTable = ({ objName, includeDescription = false }) => {
 
-  const objDef = GoslingSchema["definitions"][objName]
-  let propertyList = Object.keys(objDef['properties']).sort((a,b)=>(objDef.required||'').includes(a) - (objDef.required||'').includes(b) ).reverse()
+  /**
+   *  enable the parse of nested properties
+   * e.g., For type boundingBox
+   * objName: DisplacementTransform-properties-boundingBox 
+   * => goslingSchema['definitions']['DisplaceTransform']['properties']['boundingBox]
+   */
+  var objDef = GoslingSchema["definitions"]
+  objName.split('-').forEach(k => {
+    objDef = objDef[k]
+  })
 
   const tableHead = <tr>
     <th> property </th>
@@ -35,49 +43,74 @@ const PropertyTable = ({ objName, includeDescription=false }) => {
     <th> description </th>
   </tr>
 
-  const tableRows = propertyList.map(key => {
-    const propertyInfo = objDef['properties'][key]
-    const pConst = 'const' in propertyInfo ? propertyInfo['const']  : ''
-    
-    let notes = []
-    
-    // write description
-    // check whether the property is required
-    if ((objDef['required']||'').includes(key)) notes.push(<b key="requiredInfo">Required. </b>)
-    // whether the property needs to be a constant value
-    if (pConst != '') notes.push(<span key="constInfo">must be <code>"{pConst}"</code>. </span>)
-    // read description from json if exist
-    if ('description' in propertyInfo) {
-      const description = propertyInfo['description']
-      if (isIgnored(description)){
-        // ignore properties that are deprecated or experimental
-        return null
-      } else {
-        notes.push(<ReactMarkdown key='desription' children = {description.replace(/\n\n/g, '\n')} />)
+  let tableRows = []
+
+  
+  if (objDef['properties']) {
+
+    //// sort properties based on whether it is required
+    const propertyList = Object.keys(objDef['properties']).sort((a, b) => (objDef.required || '').includes(a) - (objDef.required || '').includes(b)).reverse()
+
+
+
+    const propertyTableRows = propertyList.map(key => {
+      const propertyInfo = objDef['properties'][key]
+      const pConst = 'const' in propertyInfo ? propertyInfo['const'] : ''
+
+      let notes = []
+
+      // write description
+      // check whether the property is required
+      if ((objDef['required'] || '').includes(key)) notes.push(<b key="requiredInfo">Required. </b>)
+      // whether the property needs to be a constant value
+      if (pConst != '') notes.push(<span key="constInfo">must be <code>"{pConst}"</code>. </span>)
+      // read description from json if exist
+      if ('description' in propertyInfo) {
+        const description = propertyInfo['description']
+        if (isIgnored(description)) {
+          // ignore properties that are deprecated or experimental
+          return null
+        } else {
+          notes.push(<ReactMarkdown key='desription' children={description.replace(/\n\n/g, '\n')} />)
+        }
       }
-    }
 
-    const {pType, description} = parsePType(propertyInfo, notes, key)
+      const { pType, description } = parsePType(propertyInfo, notes, key)
 
 
-    return <tr key={key}>
-      <td>{key}</td>
-      <td className='type'> <ReactMarkdown children={pType} /> </td>
-      <td>{ description} </td>
+      return <tr key={key}>
+        <td>{key}</td>
+        <td className='type'> <ReactMarkdown children={pType} /> </td>
+        <td>{description} </td>
+      </tr>
+    })
+    tableRows = tableRows.concat(propertyTableRows)
+    
+  }
+  // if property only has addtional properties
+  else if (objDef['additionalProperties']) {
+    const pType = parsePType(objDef['additionalProperties'], [], '')['pType']
+
+    const addtionalRow = <tr key='additional'>
+      <td> stringKey </td>
+      <td className='type'>  <ReactMarkdown children={pType} /> </td>
+      <td> <ReactMarkdown children= {objDef['description']} /> </td>
     </tr>
-  })
+
+    tableRows.push(addtionalRow)
+  }
 
   return <div key={objName}>
-  {includeDescription?<p>{objDef['description']}</p>:''}
-  <table key={objName} className='propertyTable'>
-    <thead>
-      {tableHead}
-    </thead>
-    <tbody>
-      {tableRows}
-    </tbody>
-  </table>
-  </div>
+      {includeDescription ? <p>{objDef['description']}</p> : ''}
+      <table key={objName} className='propertyTable'>
+        <thead>
+          {tableHead}
+        </thead>
+        <tbody>
+          {tableRows}
+        </tbody>
+      </table>
+    </div>
 }
 
 
@@ -85,12 +118,13 @@ const PropertyTable = ({ objName, includeDescription=false }) => {
  * parse property types
  */
 
-const obj2str = (defs)=>{
+const obj2str = (defs) => {
   var objString = {}
-  Object.keys(defs['properties']).forEach(
-    (k)=>objString[k] = defs['properties'][k]['type']
+  console.info(defs['properties'])
+  Object.keys(defs['properties']).forEach((k) =>
+    objString[k] = parsePType(defs['properties'][k], [], '')['pType']
   )
-    return JSON.stringify(objString)
+  return JSON.stringify(objString)
 }
 
 
@@ -102,55 +136,77 @@ const obj2str = (defs)=>{
  * @param {string} propertyName
  * @returns 
  */
-const parsePType = (propertyInfo, notes, propertyName)=>{ 
+const parsePType = (propertyInfo, notes, propertyName) => {
 
-    let pType = propertyInfo['type']
-    if (Array.isArray(pType)){
-      // type is an array 
-      pType = pType.join('|')
-    } else if (pType === 'array'){
-        /** an array of objects */
-        if (propertyInfo?.items?.type=='object'){
-          const res = parsePType(propertyInfo.items, [], '')
-          pType = `${res['pType']}[]`
-          notes = res['description']
-        }
-        /** an array of number or strings  */
-        else if (['number', 'string'].includes(propertyInfo?.items?.type)){
-          pType = `${propertyInfo.items.type}[]`
-        } 
-        /** an array of different items */
-        else if (Array.isArray(propertyInfo?.items)){
-          pType = `[${propertyInfo.items
-            .map(item=>parsePType(item, [], '')['pType']
-            ).join(', ')}]`
-        } 
-        /** if an array of type reference */
-        else if (propertyInfo?.items?.$ref != undefined){
-          pType = `[${propertyInfo['items']['$ref'].replace('#/definitions/', '')}]()`
-        }
+  let pType = propertyInfo['type']
 
-    } else if (pType === 'object'){
-      /** if the number of properties is less than 3 or if the property do not have a type name */
-      if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length <3 || propertyName=='')){
-          pType = 'object'
-          notes.push(<span key="type">Each object follows the format <code>{obj2str(propertyInfo)}</code></span>)
-        
-      } else {
-        pType = `[${propertyName.toUpperCase()}]()`
-      }
-    } 
-    // else ptype = 'number' or 'string', do nothing
-    /**  */
-    else if (pType == undefined && propertyInfo['anyOf']){
-      pType = propertyInfo['anyOf'].map(p => parsePType(p, [], '')['pType']).join('| ')
-    } else if (pType == undefined && propertyInfo['$ref']){
-      // if a referenced object
-      const refType = propertyInfo['$ref'].replace('#/definitions/', '')
-      const res = parsePType(GoslingSchema['definitions'][refType], notes, refType)
-      pType = res['pType']
+  /**
+   * multiple types
+   */
+  if (Array.isArray(pType)) {
+    // type is an array 
+    pType = pType.join('|')
+  }
+  /** 
+   * type == array 
+   */
+  else if (pType === 'array') {
+    /** an array of objects */
+    if (propertyInfo?.items?.type == 'object') {
+      const res = parsePType(propertyInfo.items, [], '')
+      pType = `${res['pType']}[]`
       notes = res['description']
     }
+    /** an array of number or strings  */
+    else if (['number', 'string'].includes(propertyInfo?.items?.type)) {
+      pType = `${propertyInfo.items.type}[]`
+    }
+    /** an array of different items */
+    else if (Array.isArray(propertyInfo?.items)) {
+      pType = `[${propertyInfo.items
+        .map(item => parsePType(item, [], '')['pType']
+        ).join(', ')}]`
+    }
+    /** if an array of type reference */
+    else if (propertyInfo?.items?.$ref != undefined) {
+      const typename = propertyInfo['items']['$ref'].replace('#/definitions/', '')
+      pType = `[${typename.toUpperCase()}](#type${typename.toLowerCase()})`
+    }
+  }
+  /**
+   * type == 'object'
+   */
+  else if (pType === 'object') {
+    /** if the number of properties is less than 3 or if the property do not have a type name */
+    if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length < 3 || propertyName == '')) {
+      pType = 'object'
+      notes.push(<span key="type">Each object follows the format <code>{obj2str(propertyInfo)}</code></span>)
 
-  return {pType, description: notes}
+    }
+    // type is {[key: string]: xxx}
+    else if (propertyInfo['additionalProperties']) {
+      pType = `{[k: string]: ${parsePType(propertyInfo['additionalProperties'], [], '')['pType']}}`
+    } else {
+      pType = `[${propertyName.toUpperCase()}](#type${propertyName.toLowerCase()})`
+    }
+  }
+  // else ptype = 'number' or 'string', do nothing
+  /** 
+   * noType but an anyOf Array
+   */
+  else if (pType == undefined && propertyInfo['anyOf']) {
+    pType = propertyInfo['anyOf'].map(p => parsePType(p, [], '')['pType']).join('| ')
+  }
+  /**
+   * no type but a reference 
+   */
+  else if (pType == undefined && propertyInfo['$ref']) {
+    // if a referenced object
+    const refType = propertyInfo['$ref'].replace('#/definitions/', '')
+    const res = parsePType(GoslingSchema['definitions'][refType], notes, refType)
+    pType = res['pType']
+    notes = res['description']
+  }
+
+  return { pType, description: notes }
 }
