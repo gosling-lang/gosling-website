@@ -43,6 +43,12 @@
           "description": "URL link to the index file of the BAM file",
           "type": "string"
         },
+        "loadMates": {
+          "type": "boolean"
+        },
+        "maxInsertSize": {
+          "type": "number"
+        },
         "type": {
           "const": "bam",
           "type": "string"
@@ -448,6 +454,33 @@
       ],
       "type": "string"
     },
+    "CombineMatesTransform": {
+      "additionalProperties": false,
+      "description": "By looking up ids, combine mates (a pair of reads) into a single row, performing long-to-wide operation. Result data have `{field}` and `{field}_2` names.",
+      "properties": {
+        "idField": {
+          "type": "string"
+        },
+        "isLongField": {
+          "type": "string"
+        },
+        "maintainDuplicates": {
+          "type": "boolean"
+        },
+        "maxInsertSize": {
+          "type": "number"
+        },
+        "type": {
+          "const": "combineMates",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "idField"
+      ],
+      "type": "object"
+    },
     "CoverageTransform": {
       "additionalProperties": false,
       "description": "Aggregate rows and calculate coverage",
@@ -519,7 +552,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -565,11 +598,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "spacing": {
@@ -586,7 +614,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -623,6 +651,9 @@
         "yOffset": {
           "description": "specify the y offset of views in the unit of pixels",
           "type": "number"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -653,7 +684,13 @@
           "$ref": "#/definitions/ExonSplitTransform"
         },
         {
+          "$ref": "#/definitions/GenomicLengthTransform"
+        },
+        {
           "$ref": "#/definitions/CoverageTransform"
+        },
+        {
+          "$ref": "#/definitions/CombineMatesTransform"
         },
         {
           "$ref": "#/definitions/JSONParseTransform"
@@ -957,7 +994,7 @@
       "properties": {
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -985,7 +1022,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "tracks": {
           "items": {
@@ -1017,10 +1054,39 @@
         "yOffset": {
           "description": "specify the y offset of views in the unit of pixels",
           "type": "number"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
         "tracks"
+      ],
+      "type": "object"
+    },
+    "GenomicLengthTransform": {
+      "additionalProperties": false,
+      "description": "Calculate genomic length using two genomic fields",
+      "properties": {
+        "endField": {
+          "type": "string"
+        },
+        "newField": {
+          "type": "string"
+        },
+        "startField": {
+          "type": "string"
+        },
+        "type": {
+          "const": "genomicLength",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "startField",
+        "endField",
+        "newField"
       ],
       "type": "object"
     },
@@ -1323,12 +1389,15 @@
       "additionalProperties": false,
       "properties": {
         "field": {
+          "description": "a filter is applied based on the values of the specified data field",
           "type": "string"
         },
         "include": {
+          "description": "check whether the value includes a substring",
           "type": "string"
         },
         "not": {
+          "description": "when `{\"not\": true}`, apply a NOT logical operation to the filter.\n\n__Default:__ false",
           "type": "boolean"
         },
         "type": {
@@ -1337,9 +1406,9 @@
         }
       },
       "required": [
-        "type",
         "field",
-        "include"
+        "include",
+        "type"
       ],
       "type": "object"
     },
@@ -1673,7 +1742,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -1701,7 +1770,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "views": {
           "description": "An array of view specifications",
@@ -1741,6 +1810,9 @@
         "yOffset": {
           "description": "specify the y offset of views in the unit of pixels",
           "type": "number"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -1805,9 +1877,11 @@
       "additionalProperties": false,
       "properties": {
         "field": {
+          "description": "a filter is applied based on the values of the specified data field",
           "type": "string"
         },
         "not": {
+          "description": "when `{\"not\": true}`, apply a NOT logical operation to the filter.\n\n__Default:__ false",
           "type": "boolean"
         },
         "oneOf": {
@@ -1824,7 +1898,8 @@
               },
               "type": "array"
             }
-          ]
+          ],
+          "description": "check whether the value is an element in the provided list"
         },
         "type": {
           "const": "filter",
@@ -1832,9 +1907,9 @@
         }
       },
       "required": [
-        "type",
         "field",
-        "oneOf"
+        "oneOf",
+        "type"
       ],
       "type": "object"
     },
@@ -1859,7 +1934,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -1937,7 +2012,7 @@
               },
               "assembly": {
                 "$ref": "#/definitions/Assembly",
-                "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+                "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
               },
               "centerRadius": {
                 "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -2002,11 +2077,6 @@
               "prerelease": {
                 "additionalProperties": false,
                 "description": "internal",
-                "properties": {
-                  "testUsingNewRectRenderingForBAM": {
-                    "type": "boolean"
-                  }
-                },
                 "type": "object"
               },
               "row": {
@@ -2038,7 +2108,7 @@
               },
               "style": {
                 "$ref": "#/definitions/Style",
-                "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+                "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
               },
               "text": {
                 "$ref": "#/definitions/Channel"
@@ -2103,6 +2173,9 @@
               },
               "ye": {
                 "$ref": "#/definitions/Channel"
+              },
+              "zoomLimits": {
+                "$ref": "#/definitions/ZoomLimits"
               }
             },
             "type": "object"
@@ -2118,11 +2191,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "row": {
@@ -2154,7 +2222,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -2230,6 +2298,9 @@
         },
         "ye": {
           "$ref": "#/definitions/Channel"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -2256,7 +2327,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -2329,11 +2400,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "row": {
@@ -2365,7 +2431,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -2447,6 +2513,9 @@
         },
         "ye": {
           "$ref": "#/definitions/Channel"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -2482,7 +2551,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -2566,7 +2635,7 @@
               },
               "assembly": {
                 "$ref": "#/definitions/Assembly",
-                "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+                "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
               },
               "centerRadius": {
                 "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -2631,11 +2700,6 @@
               "prerelease": {
                 "additionalProperties": false,
                 "description": "internal",
-                "properties": {
-                  "testUsingNewRectRenderingForBAM": {
-                    "type": "boolean"
-                  }
-                },
                 "type": "object"
               },
               "row": {
@@ -2667,7 +2731,7 @@
               },
               "style": {
                 "$ref": "#/definitions/Style",
-                "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+                "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
               },
               "text": {
                 "$ref": "#/definitions/Channel"
@@ -2732,6 +2796,9 @@
               },
               "ye": {
                 "$ref": "#/definitions/Channel"
+              },
+              "zoomLimits": {
+                "$ref": "#/definitions/ZoomLimits"
               }
             },
             "type": "object"
@@ -2747,11 +2814,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "row": {
@@ -2783,7 +2845,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -2862,6 +2924,9 @@
         },
         "ye": {
           "$ref": "#/definitions/Channel"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "type": "object"
@@ -2889,15 +2954,18 @@
       "additionalProperties": false,
       "properties": {
         "field": {
+          "description": "a filter is applied based on the values of the specified data field",
           "type": "string"
         },
         "inRange": {
+          "description": "check whether the value is in a number range",
           "items": {
             "type": "number"
           },
           "type": "array"
         },
         "not": {
+          "description": "when `{\"not\": true}`, apply a NOT logical operation to the filter.\n\n__Default:__ false",
           "type": "boolean"
         },
         "type": {
@@ -2906,9 +2974,9 @@
         }
       },
       "required": [
-        "type",
         "field",
-        "inRange"
+        "inRange",
+        "type"
       ],
       "type": "object"
     },
@@ -2927,7 +2995,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -2958,7 +3026,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -3004,6 +3072,9 @@
         "yOffset": {
           "description": "specify the y offset of views in the unit of pixels",
           "type": "number"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -3030,7 +3101,7 @@
             },
             "assembly": {
               "$ref": "#/definitions/Assembly",
-              "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+              "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
             },
             "centerRadius": {
               "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -3106,11 +3177,6 @@
             "prerelease": {
               "additionalProperties": false,
               "description": "internal",
-              "properties": {
-                "testUsingNewRectRenderingForBAM": {
-                  "type": "boolean"
-                }
-              },
               "type": "object"
             },
             "row": {
@@ -3142,7 +3208,7 @@
             },
             "style": {
               "$ref": "#/definitions/Style",
-              "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+              "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
             },
             "subtitle": {
               "type": "string"
@@ -3224,6 +3290,9 @@
             },
             "ye": {
               "$ref": "#/definitions/Channel"
+            },
+            "zoomLimits": {
+              "$ref": "#/definitions/ZoomLimits"
             }
           },
           "required": [
@@ -3251,7 +3320,7 @@
             },
             "assembly": {
               "$ref": "#/definitions/Assembly",
-              "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+              "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
             },
             "centerRadius": {
               "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -3327,11 +3396,6 @@
             "prerelease": {
               "additionalProperties": false,
               "description": "internal",
-              "properties": {
-                "testUsingNewRectRenderingForBAM": {
-                  "type": "boolean"
-                }
-              },
               "type": "object"
             },
             "row": {
@@ -3363,7 +3427,7 @@
             },
             "style": {
               "$ref": "#/definitions/Style",
-              "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+              "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
             },
             "subtitle": {
               "type": "string"
@@ -3452,6 +3516,9 @@
             },
             "ye": {
               "$ref": "#/definitions/Channel"
+            },
+            "zoomLimits": {
+              "$ref": "#/definitions/ZoomLimits"
             }
           },
           "required": [
@@ -3464,7 +3531,7 @@
           "properties": {
             "assembly": {
               "$ref": "#/definitions/Assembly",
-              "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+              "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
             },
             "centerRadius": {
               "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -3495,7 +3562,7 @@
             },
             "style": {
               "$ref": "#/definitions/Style",
-              "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+              "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
             },
             "subtitle": {
               "type": "string"
@@ -3533,6 +3600,9 @@
             "yOffset": {
               "description": "specify the y offset of views in the unit of pixels",
               "type": "number"
+            },
+            "zoomLimits": {
+              "$ref": "#/definitions/ZoomLimits"
             }
           },
           "required": [
@@ -3555,7 +3625,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -3628,11 +3698,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "row": {
@@ -3664,7 +3729,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -3740,6 +3805,9 @@
         },
         "ye": {
           "$ref": "#/definitions/Channel"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -3832,7 +3900,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -3905,11 +3973,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "row": {
@@ -3941,7 +4004,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -4030,6 +4093,9 @@
         },
         "ye": {
           "$ref": "#/definitions/Channel"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -4257,7 +4323,7 @@
         },
         "assembly": {
           "$ref": "#/definitions/Assembly",
-          "description": "currently support \"hg38\", \"hg19\", \"hg18\", \"hg17\", \"hg16\", \"mm10\", \"mm9\""
+          "description": "A string that specifies the genome builds to use. Currently support `\"hg38\"`, `\"hg19\"`, `\"hg18\"`, `\"hg17\"`, `\"hg16\"`, `\"mm10\"`, `\"mm9\"`, and `\"unknown\"`.\n\n__Note:__: with `\"unknown\"` assembly, genomic axes do not show chrN: in labels."
         },
         "centerRadius": {
           "description": "Proportion of the radius of the center white space.\n\n__Default:__ 0.3",
@@ -4309,11 +4375,6 @@
         "prerelease": {
           "additionalProperties": false,
           "description": "internal",
-          "properties": {
-            "testUsingNewRectRenderingForBAM": {
-              "type": "boolean"
-            }
-          },
           "type": "object"
         },
         "spacing": {
@@ -4330,7 +4391,7 @@
         },
         "style": {
           "$ref": "#/definitions/Style",
-          "description": "Define the [style](/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
+          "description": "Define the [style](http://gosling-lang.org/docs/visual-channel#style-related-properties) of multive views. Will be overriden by the style of children elements (e.g., view, track)."
         },
         "subtitle": {
           "type": "string"
@@ -4370,6 +4431,9 @@
         "yOffset": {
           "description": "specify the y offset of views in the unit of pixels",
           "type": "number"
+        },
+        "zoomLimits": {
+          "$ref": "#/definitions/ZoomLimits"
         }
       },
       "required": [
@@ -4509,6 +4573,25 @@
         "threshold"
       ],
       "type": "object"
+    },
+    "ZoomLimits": {
+      "items": [
+        {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
     }
   }
 }
