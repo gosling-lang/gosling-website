@@ -13,4 +13,5 @@ You can specify genome builds through an `assembly` property (default: `"hg38"`)
 }
 ```
 
-Gosling currently supports the following six genome builds: `hg38`, `hg19`, `hg17`, `hg16`, `mm10`, and `mm9`.
+Gosling currently supports the following six genome builds: `"hg38"`, `"hg19"`, `"hg17"`, `"hg16"`, `"mm10"`, `"mm9"`, and `"unknown"`.  
+When `{"assembly": "unknown"}`, the genomic axes do not display `chrN:` in labels.
