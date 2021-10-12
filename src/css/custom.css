@@ -60,6 +60,10 @@ a {
   color: var(--ifm-navbar-link-hover-color);
 }
 
+.propertyTable {
+  display: table;
+}
+
 .propertyTable p {
   margin: 0px !important;
 }
