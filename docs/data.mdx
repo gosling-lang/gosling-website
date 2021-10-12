@@ -195,7 +195,7 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
       let name = d.$ref.replace('#/definitions/', '')
       /** 
         seperate camel-case names. 
-        e.g., JSONParseTransform => JSON Parse Transform  
+        e.g., "JSONParseTransform" => "JSON Parse Transform"  
       */
       name = name.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
         // replace white space ' ' to '-' to avoid the %20 in url
