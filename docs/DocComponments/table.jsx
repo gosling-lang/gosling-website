@@ -45,7 +45,7 @@ const PropertyTable = ({ objName, includeDescription = false }) => {
 
   let tableRows = []
 
-  
+
   if (objDef['properties']) {
 
     //// sort properties based on whether it is required
@@ -57,13 +57,17 @@ const PropertyTable = ({ objName, includeDescription = false }) => {
       const propertyInfo = objDef['properties'][key]
       const pConst = 'const' in propertyInfo ? propertyInfo['const'] : ''
 
-      let notes = []
+      let { pType, notes } = parsePType(propertyInfo, [], key)
 
       // write description
       // check whether the property is required
-      if ((objDef['required'] || '').includes(key)) notes.push(<b key="requiredInfo">Required. </b>)
+      if ((objDef['required'] || '').includes(key)) {
+        notes.unshift(`**Required**.`)
+      }
       // whether the property needs to be a constant value
-      if (pConst != '') notes.push(<span key="constInfo">must be <code>"{pConst}"</code>. </span>)
+      if (pConst != '') {
+        notes.push(`Must be \`"${pConst}"\`.`)
+      }
       // read description from json if exist
       if ('description' in propertyInfo) {
         const description = propertyInfo['description']
@@ -71,21 +75,22 @@ const PropertyTable = ({ objName, includeDescription = false }) => {
           // ignore properties that are deprecated or experimental
           return null
         } else {
-          notes.push(<ReactMarkdown key='desription' children={description.replace(/\n\n/g, '\n')} />)
+          notes.push(description.replace(/\n\n/g, '\n'))
+          // notes.push(<ReactMarkdown key='desription' children={description.replace(/\n\n/g, '\n')} />)
         }
       }
 
-      const { pType, description } = parsePType(propertyInfo, notes, key)
+      
 
 
       return <tr key={key}>
         <td>{key}</td>
         <td className='type'> <ReactMarkdown children={pType} /> </td>
-        <td>{description} </td>
+        <td><ReactMarkdown children={notes.join(' ')} /> </td>
       </tr>
     })
     tableRows = tableRows.concat(propertyTableRows)
-    
+
   }
   // if property only has addtional properties
   else if (objDef['additionalProperties']) {
@@ -94,23 +99,23 @@ const PropertyTable = ({ objName, includeDescription = false }) => {
     const addtionalRow = <tr key='additional'>
       <td> stringKey </td>
       <td className='type'>  <ReactMarkdown children={pType} /> </td>
-      <td> <ReactMarkdown children= {objDef['description']} /> </td>
+      <td> <ReactMarkdown children={objDef['description']} /> </td>
     </tr>
 
     tableRows.push(addtionalRow)
   }
 
   return <div key={objName}>
-      {includeDescription ? <p>{objDef['description']}</p> : ''}
-      <table key={objName} className='propertyTable'>
-        <thead>
-          {tableHead}
-        </thead>
-        <tbody>
-          {tableRows}
-        </tbody>
-      </table>
-    </div>
+    {includeDescription ? <p>{objDef['description']}</p> : ''}
+    <table key={objName} className='propertyTable'>
+      <thead>
+        {tableHead}
+      </thead>
+      <tbody>
+        {tableRows}
+      </tbody>
+    </table>
+  </div>
 }
 
 
@@ -120,7 +125,6 @@ const PropertyTable = ({ objName, includeDescription = false }) => {
 
 const obj2str = (defs) => {
   var objString = {}
-  console.info(defs['properties'])
   Object.keys(defs['properties']).forEach((k) =>
     objString[k] = parsePType(defs['properties'][k], [], '')['pType']
   )
@@ -155,7 +159,7 @@ const parsePType = (propertyInfo, notes, propertyName) => {
     if (propertyInfo?.items?.type == 'object') {
       const res = parsePType(propertyInfo.items, [], '')
       pType = `${res['pType']}[]`
-      notes = res['description']
+      notes = notes.concat(res['notes'])
     }
     /** an array of number or strings  */
     else if (['number', 'string'].includes(propertyInfo?.items?.type)) {
@@ -180,7 +184,7 @@ const parsePType = (propertyInfo, notes, propertyName) => {
     /** if the number of properties is less than 3 or if the property do not have a type name */
     if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length < 3 || propertyName == '')) {
       pType = 'object'
-      notes.push(<span key="type">Each object follows the format <code>{obj2str(propertyInfo)}</code></span>)
+      notes.push(`Each object follows the format \`${obj2str(propertyInfo)}\``)
 
     }
     // type is {[key: string]: xxx}
@@ -190,7 +194,13 @@ const parsePType = (propertyInfo, notes, propertyName) => {
       pType = `[${propertyName.toUpperCase()}](#type${propertyName.toLowerCase()})`
     }
   }
-  // else ptype = 'number' or 'string', do nothing
+  else if (pType === 'string') {
+    // if the property only accept certain strings
+    if (propertyInfo['enum']) {
+      notes.push(`One of ${propertyInfo['enum'].map(d => `\`"${d}"\``).join(', ')}.`)
+    }
+  }
+  // else ptype = 'number', do nothing
   /** 
    * noType but an anyOf Array
    */
@@ -205,8 +215,8 @@ const parsePType = (propertyInfo, notes, propertyName) => {
     const refType = propertyInfo['$ref'].replace('#/definitions/', '')
     const res = parsePType(GoslingSchema['definitions'][refType], notes, refType)
     pType = res['pType']
-    notes = res['description']
+    notes = res['notes']
   }
 
-  return { pType, description: notes }
+  return { pType, notes }
 }
