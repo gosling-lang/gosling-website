@@ -226,15 +226,14 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
 Users can apply three types of filters: `oneOf`, `inRange`, `include`.
 Each filter transform has the following properties:
 
-| property | type                 | description                                                                          |
-| -------- | -------------------- | ------------------------------------------------------------------------------------ |
-| type    | string               | **Required**, must be `"filter"`    |
-| field    | string               | **required**, a filter is applied based on the values of the specified data field    |
-| inRange  | number[]             | check whether the value is in a number range                                         |
-| oneOf    | string[] \| number[] | check whether the value is an element in the provided list                           |
-| include  | string               | check whether the value includes a substring                                         |
-| not      | boolean              | when `{"not": true}`, apply a NOT logical operation to the filter test. __Default:__ false |
+**Properties of One Of Filter**
+<TableWrapper objName='OneOfFilter' includeDescription={true}/>
 
+**Properties of In Range Filter**
+<TableWrapper objName='RangeFilter' includeDescription={true}/>
+
+**Properties of Include Filter**
+<TableWrapper objName='IncludeFilter' includeDescription={true}/>
 
 ### Str Concat Transform
 
