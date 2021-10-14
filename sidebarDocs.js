@@ -22,5 +22,9 @@ module.exports = {
       type: 'doc',
       id: 'public-datasets',
     },
+    {
+      type: 'doc',
+      id: 'FQA',
+    },
   ],
 };
