@@ -59,3 +59,16 @@ a {
 .navbar__brand:hover{
   color: var(--ifm-navbar-link-hover-color);
 }
+
+.propertyTable {
+  display: table;
+}
+
+.propertyTable p {
+  margin: 0px !important;
+}
+
+.propertyTable td.type a {
+  /* color: black; */
+  font-weight: 400;
+}
