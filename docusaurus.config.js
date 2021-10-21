@@ -1,6 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Gosling.js',
+  title: 'Gosling',
   url: 'https://gosling-lang.github.io', // Your website URL
   baseUrl: '/',
   projectName: 'gosling-website',
@@ -35,7 +35,7 @@ module.exports = {
       }
     },
     navbar: {
-      title: 'Gosling.js',
+      title: 'Gosling',
       logo: {
         alt: 'Gosling Logo',
         src: 'img/gosling-dark.svg',
@@ -57,7 +57,7 @@ module.exports = {
           position: 'right',
         },
         {
-          href: 'https://github.com/gosling-lang/gosling.js',
+          href: 'https://github.com/gosling-lang',
           label: 'GitHub',
           position: 'right',
         },
@@ -113,7 +113,11 @@ module.exports = {
             },
             {
               label: 'Qianwen Wang',
-              href: 'http://wangqianwen0418.github.io/',
+              href: 'https://qianwen.info/',
+            },
+            {
+              label: 'Trevor Manz',
+              href: 'https://trevorma.nz/',
             },
             {
               label: 'Fritz Lekschas',
