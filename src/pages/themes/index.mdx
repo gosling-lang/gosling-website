@@ -1,0 +1,39 @@
+# Theme 
+
+import Themes from './Themes'
+
+Users can use themes to change and customize the looking of their Gosling visualizations.
+
+## How to Use
+
+```javascript
+import { Themes, getTheme } from 'gosling-theme';
+import { GoslingComponent } from 'gosling.js';
+
+<GoslingComponent spec={spec} theme={Themes.dark}>
+
+// or
+
+<GoslingComponent spec={spec} theme={getTheme('dark')}>
+
+// or just
+
+<GoslingComponent spec={spec} theme={'dark'}>
+
+// to modify an existing theme
+
+<GoslingComponent spec={spec} theme={{base: 'dark', axis: { baselineColor: 'green' }}>
+
+// to modify an existing theme
+
+<GoslingComponent spec={spec} theme={{root: {background: 'black'}, axis: { baselineColor: 'green' }}>
+
+```
+## Theme Playground
+In the Theme Playground below, you can explore a set of themes that are currently supported in Gosling.
+You can also customize the theme by changing the theme specification in the code editor. 
+The visualization will be automatically updated.
+
+Please refer to the [Gosling-Theme Repo](https://github.com/gosling-lang/gosling-theme) for more details.
+
+<Themes />
