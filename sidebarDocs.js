@@ -21,7 +21,7 @@ module.exports = {
     {
       type: 'doc',
       label: 'JavaScript API Functions',
-      id: 'js-pai',
+      id: 'js-api',
     },
     {
       type: 'doc',
