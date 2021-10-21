@@ -3,7 +3,7 @@ title: Getting Started
 slug: /
 ---
 We currently support the following ways of using Gosling.
-- [Create Your Visualization in Gosling Online Editor](#create-your-visualization-in-gosling-online-editor)
+- [Create Your Visualization on Online Editor](#create-your-visualization-in-gosling-online-editor)
 - [Load a Gosling Spec From Your Github Gist](#load-a-gosling-spec-from-your-github-gist)
 - [Embed Gosling Component in a HTML File](#embed-gosling-component-in-a-html-file)
 - [Use Gosling.js in React App](#use-goslingjs-in-react-app)

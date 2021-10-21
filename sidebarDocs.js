@@ -6,7 +6,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Docs',
+      label: 'Grammar',
       collapsed: false,
       items: [
         'data',
@@ -17,6 +17,11 @@ module.exports = {
         'user-interaction',
         'semantic-zoom',
       ],
+    },
+    {
+      type: 'doc',
+      label: 'JavaScript API Functions',
+      id: 'js-pai',
     },
     {
       type: 'doc',
