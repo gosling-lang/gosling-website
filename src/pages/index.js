@@ -72,7 +72,7 @@ export default function Home() {
                 styles.getStarted
               )}
               to={useBaseUrl('docs/')}>
-              <b>Gosling.js:</b> a javascript library
+              <b>Gosling.js:</b> JavaScript library for Gosling
             </Link>
           </div>
           <div className={styles.buttons}>
@@ -82,7 +82,7 @@ export default function Home() {
                 styles.getStarted
               )}
               to={'https://gosling-lang.github.io/gos/'}>
-              <b>Gos.py:</b> use Gosling in python
+              <b>Gos:</b> Python package for Gosling
             </Link>
           </div>
         </div>
