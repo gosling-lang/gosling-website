@@ -30,6 +30,58 @@
   --ifm-h2-font-size: 2rem;
 }
 
+
+/* Code Blocks */
+code, .prism-code {
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  background-color: #F6F8FA;
+  border: none;
+}
+
+.comment, 
+.doctype, 
+.doctype-type {
+  font-style: normal !important;
+}
+
+.comment {
+  color: #6F7781 !important; /* GitHub color */
+}
+
+.doctype,
+.doctype-type,
+.number {
+  color: #0450AE !important; /* GitHub color */
+}
+
+.tag {
+  color: #146229 !important; /* GiHub color */
+}
+
+.maybe-class-name {
+  color: #146229 !important; /* GitHub color  */
+}
+
+.attr-name {
+  color: #0450AE !important; /* darker than original */
+}
+
+.attr-value {
+  color: #0A2F69 !important; /* GiHub color */
+}
+
+.dom, .variable {
+  color: black !important; /* GitHub color */
+}
+
+.method, .function, .property-access {
+  color: #8250DF !important; /* GitHub color */
+}
+
+.plain, .constant, .string, .operator {
+ color: #0A2F69 !important; /* GitHub color */
+}
+
 html[data-theme='dark'] {
   --ifm-color-primary: #faa433;
   /* any other colors you wish to overwrite */
