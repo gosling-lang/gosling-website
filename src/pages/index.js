@@ -87,11 +87,11 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <main>
+      <main className={styles.main}>
         <section className={styles.galleryImage}>
           <img className={styles.galleryImage}
             src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png" 
-            alt='gsoling_gallery' 
+            alt='gosling_gallery' 
           />
         </section>
         {features && features.length > 0 && (

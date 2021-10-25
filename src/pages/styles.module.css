@@ -56,6 +56,10 @@
   align-items: center;
 }
 
+.main {
+  margin-top: 24px;
+}
+
 .galleryImage{
   width: var(--ifm-container-width);
   display: block;

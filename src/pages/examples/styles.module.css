@@ -5,7 +5,7 @@
  * and scoped locally.
  */
 
- .heroBanner {
+.heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
@@ -25,13 +25,11 @@
   margin: 2rem;
   padding: 2rem 0rem 0rem 0rem;
   font-size: 2rem;
-  
 }
 
 .sectionHeader:not(:first-of-type){
   border-top: 1px solid lightgray;
 }
-
 
 .features {
   display: flex;
@@ -53,7 +51,6 @@
 
 .basicExample {
   height: 70px;
-  
 }
 
 .galleryExample{
