@@ -4,7 +4,8 @@ title: Visual Channel
 
 import {TableWrapper} from './DocComponments/table'
 
-The visual appearance of a mark is controlled by a set of visual channels (e.g., size, position, and color). One visual channel can be bound with either a data field or just a constant value.
+The visual appearance of a mark is controlled by a set of visual channels (e.g., size, position, and color). 
+One visual channel can be bound with either a data field or just a constant value.
 
 ```javascript
 // an example configuration for a line chart (x and y are encoded)
@@ -17,12 +18,12 @@ The visual appearance of a mark is controlled by a set of visual channels (e.g.,
       },
       // specify the mark type
       "mark": "line",
-      // visual channel x is bound with the data field genomic
+      // visual channel x is bound with the data field "genomic"
       "x": {
         "field": "position",
         "type": "genomic"
       },
-      // visual channel y is bound with the data field peak
+      // visual channel y is bound with the data field "peak"
       "y": {
           "field": "peak", 
           "type": "quantitative"
@@ -48,20 +49,8 @@ As the table shown below, different marks have different visual channels.
 | [`triangle`](/docs/mark#triangle) | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`size`](#size), [`color`](#color), [`opacity`](#opacity)                              |
 | [`text`](/docs/mark#text)         | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`color`](#color), [`opacity`](#opacity)                                               |
 
-A visual channel can be either assigned a constant value or bound with a data field. When a visual channel is bound with a data field, Gosling creates a mapping from the values of the data field (e.g., [gnes, gpos25, gpos50, ...]) to the values of the visual channel (e.g., position of a bar). We call the values of data field **domain** and the values of the visual channel **range**.
-
-**Table: Properties shared by all visual channels**
-
-| visual channel properties | type                        | description                                                                        |
-| ------------------------- | --------------------------- | ---------------------------------------------------------------------------------- |
-| field                     | string                      | specify name of the data field                                                     |
-| type                      | string                      | specify type of the data field. support `"genomic"`, `"nominal"`, `"quantitative"` |
-| aggregate                 | string                      | support `"max"`, `"min"`, `"mean"`, `"bin"`, `"count"`                             |
-| domain                    | [number, number]\| string[] | specify values of the data field                                                   |
-| range                     | [number, number]\| string[] | specify values of the visual channel                                               |
-| value                     | string \| number            | assign a constant value to the visual channel                                      |
-
-
+To bind a visual channel with a data field, Gosling creates a mapping from the values of the data field (e.g., [gnes, gpos25, gpos50, ...]) to the values of the visual channel (e.g., position of a bar). 
+We call the values of data field **domain** and the values of the visual channel **range**.
 
 For example, the code below creates a mapping from the data `field` "Stain" to the color of the `rect` mark. 
 "gneg" will show as a white rect mark, "gpos100" will show as a black rect mark.
@@ -85,7 +74,6 @@ For example, the code below creates a mapping from the data `field` "Stain" to t
 Following the common practice in genomic visluazation, Gosling uses `x` axis inclusively for genomic coordinates. 
 
 <TableWrapper objName="X" />
-
 
 `xe` stands for the end of x axis. `xe` is usually used with `x` to specify the start position and the end position of a visual mark in the horizontal direction, respectively.
 
@@ -162,12 +150,13 @@ Channel `size` indicates the size of the visual mark. It determines either the r
 <TableWrapper objName="Text" />
 
 ## color
-Channel `color` specifies the filling color of the mark. Binding `color` with categorical values in `bar` and `area` marks stack marks that are positioned in the same genomic intervals to better show their cumulative values.
+Channel `color` specifies the filling color of the specified mark. 
+<!-- Binding `color` with categorical values in `bar` and `area` marks stack marks that are positioned in the same genomic intervals to better show their cumulative values. -->
 
 <TableWrapper objName="Color" />
 
 ## stroke
-Channel `stroke` defines the outline color of the mark. Gosling supports `stroke` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
+Channel `stroke` defines the outline color of the specified mark. Gosling supports `stroke` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
 <TableWrapper objName="Stroke" />
 
 ## strokeWidth
@@ -175,7 +164,7 @@ Channel `strokeWidth` defines the outline thickness of the mark shape. Gosling s
 <TableWrapper objName="StrokeWidth" />
 
 ## opacity
-Channel `opacity` specifies the opacity of the mark shape.
+Channel `opacity` specifies the opacity of the specified mark.
 <!-- will it be better if we merge stroke, strokeWidth, background, opacity into a style option? -->
 <TableWrapper objName="Opacity" />
 
