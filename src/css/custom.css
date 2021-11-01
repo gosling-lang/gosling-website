@@ -36,6 +36,20 @@ code, .prism-code {
   font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   background-color: #F6F8FA;
   border: none;
+  counter-reset: line-number;
+}
+
+/* add number line */
+.prism-code.language-javascript .token-line::before {
+  counter-increment: line-number;
+  content: counter(line-number);
+  margin-right: calc(var(--ifm-pre-padding) * 1.5);
+  text-align: right;
+  min-width: 2.5rem;
+  display: inline-block;
+  opacity: .3;
+  position: sticky;
+  left: var(--ifm-pre-padding);
 }
 
 .comment, 
@@ -88,10 +102,14 @@ html[data-theme='dark'] {
 }
 
 .docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
+  background-color: rgb(222, 227, 241);;
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.docusaurus-highlight-code-line[data-theme='dark']{
+  background-color: rgb(72, 77, 91);
 }
 
 a {
