@@ -22,7 +22,7 @@ Users can specify the data of each visualization (i.e., `track`) through a `trac
 For the flexible data exploration, Gosling supports two different kinds of datasets:
 
 1. **Plain Datasets** (No HiGlass Server): These datasets can be directly used in Gosling without requiring any data preprocessing, 
-including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), and [BigWig](#bigwig-no-higlass-server). 
+including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), [BigWig](#bigwig-no-higlass-server), [BAM](#bam-no-higlass-server). 
 
 2. **Pre-aggregated Datasets** (HiGlass Server): These datasets are preprocessed for the scalable data exploration and require a HiGlass server to access them in Gosling,
 including [Vector](#vector-require-higlass-server), [Multivec](#multivec-require-higlass-server), and [BEDDE](#beddb-require-higlass-server).
@@ -107,9 +107,11 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper objName='BIGWIGData'/>
+<TableWrapper objName='BIGWIGData' />
 
+### BAM (No HiGlass Server)
 
+<TableWrapper objName='BAMData' includeDescription={true}/>
 
 ### Vector (Require HiGlass Server)
 

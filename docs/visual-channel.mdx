@@ -39,14 +39,14 @@ As the table shown below, different marks have different visual channels.
 
 | mark type               | supported visual channels                                                                                                     |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| [`point`](#point)       | [`x`](#x), [`y`](#y), [`row`](#row), [`size`](#size), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity) |
-| [`line`](#line)         | [`x`](#x), [`y`](#y), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                         |
-| [`rect`](#rect)         | [`x`](#x), [`xe`](#xe), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                |
-| [`bar`](#bar)           | [`x`](#x), [`y`](#y), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                  |
-| [`area`](#area)         | [`x`](#x), [`y`](#y), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                         |
-| [`link`](#link)         | [`x`](#x), [`xe`](#xe), [`x1`](#x1-y1-x1e-y1e), [`x1e`](#x1-y1-x1e-y1e), [`color`](#color), [`opacity`](#opacity)             |
-| [`triangle`](#triangle) | [`x`](#x), [`xe`](#xe), [`row`](#row), [`size`](#size), [`color`](#color), [`opacity`](#opacity)                              |
-| [`text`](#text)         | [`x`](#x), [`xe`](#xe), [`row`](#row), [`color`](#color), [`opacity`](#opacity)                                               |
+| [`point`](/docs/mark#point)       | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`size`](#size), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity) |
+| [`line`](/docs/mark#line)         | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                         |
+| [`rect`](/docs/mark#rect)         | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                |
+| [`bar`](/docs/mark#bar)           | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                  |
+| [`area`](/docs/mark#area)         | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                         |
+| [`link`](/docs/mark#link)         | [`x`](#x--xe), [`xe`](#x--xe), [`x1`](#x1-y1-x1e-y1e), [`x1e`](#x1-y1-x1e-y1e), [`color`](#color), [`opacity`](#opacity)             |
+| [`triangle`](/docs/mark#triangle) | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`size`](#size), [`color`](#color), [`opacity`](#opacity)                              |
+| [`text`](/docs/mark#text)         | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`color`](#color), [`opacity`](#opacity)                                               |
 
 A visual channel can be either assigned a constant value or bound with a data field. When a visual channel is bound with a data field, Gosling creates a mapping from the values of the data field (e.g., [gnes, gpos25, gpos50, ...]) to the values of the visual channel (e.g., position of a bar). We call the values of data field **domain** and the values of the visual channel **range**.
 
@@ -80,58 +80,37 @@ For example, the code below creates a mapping from the data `field` "Stain" to t
 }
 ```
 
-## x
-`x` specify a mark's position in the horizontal direction.
+## x & xe
+`x` specify a mark's position in the horizontal direction. 
+Following the common practice in genomic visluazation, Gosling uses `x` axis inclusively for genomic coordinates. 
 
-Apart from the properties shared by all channels, `x` channel have the following unique properties:
-
-| unique properties | type   | description                                                                                                        |
-| ----------------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
-| aggregate         | string | support `"max"`, `"min"`, `"count"`, `"mean"`, `"bin"`                                                             |
-| axis              | string | specify the axis position, support `"none"`, `"top"`, `"bottom"`, `"left"`, `"right"`                                        |
-| linkingId         | string | a unique linkingId is needed for [linking views](#linking-views) and [Brushing and Linking](#brushing-and-linking) |
+<TableWrapper objName="X" />
 
 
-## xe
 `xe` stands for the end of x axis. `xe` is usually used with `x` to specify the start position and the end position of a visual mark in the horizontal direction, respectively.
 
-Apart from the properties shared by all channels, `xe` channel have the following unique properties:
-
-| unique properties | type   | description                                                                 |
-| ----------------- | ------ | --------------------------------------------------------------------------- |
-| aggregate         | string | support `"max"`, `"min"`, `"count"`, `"mean"`, `"bin"`                      |
-| axis              | string | specify the axis position, support "none", "top", "bottom", "left", "right" |
-
-## y
+## y & ye
 `y` specify a mark's position in the vertical direction.
 
-Apart from the properties shared by all channels, `y` channel have the following unique properties:
+<TableWrapper objName="Y" />
 
-| unique properties | type             | description                                                                 |
-| ----------------- | ---------------- | --------------------------------------------------------------------------- |
-| axis              | string           | specify the axis position, support `"none"`, `"top"`, `"bottom"`, `"left"`, `"right"` |
-| baseline          | string \| number |                                                                             |
-
-## ye
 `ye` stands for the end of y axis. `ye` is usually used with `x` to specify the start position and the end position of a visual mark in the vertical direction, respectively.
 
 ## x1 x1e y1 y1e
-The four channels are used together only in `link` mark. In this case, `x` and `xe` are used with `x1` and `x1e` to specify a pair of genomic intervals that needs to be connected using band representations. Similarly, `y` and `ye` can be used with `y1` and `y1e` to show band connection along vertical axis.
+The four channels are used together only in `link` mark. 
+In this case, `x` and `xe` are used with `x1` and `x1e` to specify a pair of genomic intervals that needs to be connected using band representations. Similarly, `y` and `ye` can be used with `y1` and `y1e` to show band connection along vertical axis.
 
 <img src="/img/doc_images/x_x1_example.png" width="400" alt="x x1 example"/>  
-
 
 
 ## row
 
 Channel `row` is used with channel `y` to stratify a visualization with categorical values.
 
-Without specifying `row`:
-
+- Without specifying `row`:
 <img src="/img/doc_images/without_row.png" width="500" alt="without row example"/>  
 
-Line charts are stratified with sample names.
-
+- Line charts are stratified with sample names (`"row": {"field": "sample"}`).
 <img src="/img/doc_images/with_row.png" width="500" alt="with row example"/>  
 
 ```javascript
@@ -169,32 +148,36 @@ Line charts are stratified with sample names.
 }
 ```
 
+<TableWrapper objName="Row" />
+
 ## size
 Channel `size` indicates the size of the visual mark. It determines either the radius of a circle (`mark: point`), the vertical length of a triangle (`mark: triangleRight`, `mark: triangleLeft`, `mark: triangleBottom`), the vertical length of a rectangle (`mark: rect`), the thickness of a line (`mark: line`).
+
+<TableWrapper objName="Size" />
 
 ## text
 
 `text` channel is used only in `text` mark to specify what textual information to display.
 
+<TableWrapper objName="Text" />
+
 ## color
 Channel `color` specifies the filling color of the mark. Binding `color` with categorical values in `bar` and `area` marks stack marks that are positioned in the same genomic intervals to better show their cumulative values.
 
-Apart from the properties shared by all channels, the `color` channel have the following unique properties:
-
-| unique properties | type    | description                      |
-| ----------------- | ------- | -------------------------------- |
-| legend            | boolean | whether to show the color legend |
+<TableWrapper objName="Color" />
 
 ## stroke
 Channel `stroke` defines the outline color of the mark. Gosling supports `stroke` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
+<TableWrapper objName="Stroke" />
 
 ## strokeWidth
 Channel `strokeWidth` defines the outline thickness of the mark shape. Gosling supports `strokeWidth` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
+<TableWrapper objName="StrokeWidth" />
 
 ## opacity
 Channel `opacity` specifies the opacity of the mark shape.
 <!-- will it be better if we merge stroke, strokeWidth, background, opacity into a style option? -->
-
+<TableWrapper objName="Opacity" />
 
 
 ## style-related properties
