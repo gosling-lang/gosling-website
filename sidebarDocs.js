@@ -29,7 +29,7 @@ module.exports = {
     },
     {
       type: 'doc',
-      id: 'FQA',
+      id: 'FAQ',
     },
   ],
 };
