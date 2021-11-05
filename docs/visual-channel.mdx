@@ -6,7 +6,7 @@ import {TableWrapper} from './DocComponments/table'
 
 The visual appearance of a mark is controlled by a set of visual channels (e.g., size, position, and color). 
 One visual channel can be either:
-- bound with a data field (as shown in line 13-16) 
+- bound to a data field (as shown in line 13-16) 
 - assigned a constant value (as shown in line 23).
 
 ```javascript 
@@ -21,14 +21,14 @@ One visual channel can be either:
       // specify the mark type
       "mark": "line",
       
-      // visual channel x is bound with the data field "genomic"
+      // visual channel 'x' is bound to a genomic data field
       // highlight-start
       "x": {
         "field": "position",
         "type": "genomic"
       },
       // highlight-end
-      // visual channel y is bound with the data field "peak"
+      // visual channel 'y' is bound to a quantitative data field called "peak"
       "y": {
           "field": "peak", 
           "type": "quantitative"
@@ -44,8 +44,8 @@ One visual channel can be either:
 
 ## Encode a Visual Channel
 
-To bind a visual channel with a data field, Gosling creates a mapping from the values of the data field (e.g., [gnes, gpos25, gpos50, ...]) to the values of the visual channel (e.g., position of a bar). 
-We call the values of data field **domain** and the values of the visual channel **range**.
+To bind a visual channel to a data field, Gosling creates a mapping from the values of the data field (e.g., `[gnes, gpos25, gpos50, ...]`) to the values of the visual channel (e.g., the position of a bar). 
+We call the values of a data field **domain** and the values of a visual channel **range**.
 
 For example, the code below creates a mapping from the data `field` "Stain" to the color of the `rect` mark. 
 "gneg" will show as a white rect mark, "gpos100" will show as a black rect mark.
@@ -80,12 +80,12 @@ As the table shown below, different marks support different visual channels.
 ## Supported Visual Channels
 
 ### x & xe
-`x` specify a mark's position in the horizontal direction. 
+`x` specifies a mark's position in the horizontal direction. 
 Following the common practice in genomic visluazation, Gosling uses `x` axis inclusively for genomic coordinates. 
 
 <TableWrapper objName="X" />
 
-`xe` stands for the end of x axis. `xe` is usually used with `x` to specify the start position and the end position of a visual mark in the horizontal direction, respectively.
+`xe` stands for the end position of a visual mark along the x-axis. This is usually used together with `x` to specify the start and the end positions of a visual mark in the horizontal direction.
 
 ### y & ye
 `y` specify a mark's position in the vertical direction.
@@ -95,8 +95,8 @@ Following the common practice in genomic visluazation, Gosling uses `x` axis inc
 `ye` stands for the end of y axis. `ye` is usually used with `x` to specify the start position and the end position of a visual mark in the vertical direction, respectively.
 
 ### x1 x1e y1 y1e
-The four channels are used together only in `link` mark. 
-In this case, `x` and `xe` are used with `x1` and `x1e` to specify a pair of genomic intervals that needs to be connected using band representations. Similarly, `y` and `ye` can be used with `y1` and `y1e` to show band connection along vertical axis.
+The four channels are used together only with `betweenLink` and `withinLink` marks.
+In this case, `x` and `xe` are used with `x1` and `x1e` to specify a pair of genomic intervals that need to be connected using band representations. Similarly, `y` and `ye` can be used with `y1` and `y1e` to show band connection along the vertical axis.
 
 <img src="/img/doc_images/x_x1_example.png" width="400" alt="x x1 example"/>  
 
@@ -108,7 +108,7 @@ Channel `row` is used with channel `y` to stratify a visualization with categori
 - Without specifying `row`:
 <img src="/img/doc_images/without_row.png" width="500" alt="without row example"/>  
 
-- Line charts are stratified with sample names (`"row": {"field": "sample"}`).
+- Line charts are stratified with sample names (`"row": { "field": "sample", "type": "nominal" }`).
 <img src="/img/doc_images/with_row.png" width="500" alt="with row example"/>  
 
 ```javascript
@@ -160,7 +160,7 @@ Channel `size` indicates the size of the visual mark. It determines either the r
 <TableWrapper objName="Text" />
 
 ### color
-Channel `color` specifies the filling color of the specified mark. 
+The channel `color` specifies the foreground color of a mark.
 <!-- Binding `color` with categorical values in `bar` and `area` marks stack marks that are positioned in the same genomic intervals to better show their cumulative values. -->
 
 <TableWrapper objName="Color" />
@@ -174,7 +174,7 @@ Channel `strokeWidth` defines the outline thickness of the mark shape. Gosling s
 <TableWrapper objName="StrokeWidth" />
 
 ### opacity
-Channel `opacity` specifies the opacity of the specified mark.
+The `opacity` channel determines the transparency level of a mark. The opacity of the foreground color (i.e., `color`) and the outline color (i.e., `stroke`) will be affected by this channel.
 <!-- will it be better if we merge stroke, strokeWidth, background, opacity into a style option? -->
 <TableWrapper objName="Opacity" />
 

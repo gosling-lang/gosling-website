@@ -52,7 +52,7 @@ code, .prism-code {
   content: counter(line-number);
   margin-right: calc(var(--ifm-pre-padding) * 1.5);
   text-align: right;
-  min-width: 2.5rem;
+  min-width: 1.5rem;
   display: inline-block;
   opacity: .3;
   position: sticky;
