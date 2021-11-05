@@ -1,5 +1,5 @@
 ---
-title: JS API Functions
+title: JavaScript API Functions
 ---
 
 This is a full list of JavaScript API functions supported in Gosling.js. To find an actual usage with an working example, please visit [gosling-lang/gosling-react](https://github.com/gosling-lang/gosling-react).

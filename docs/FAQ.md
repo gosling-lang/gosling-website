@@ -1,5 +1,5 @@
 ---
-title: FQA
+title: Frequently Asked Questions
 ---
 
 A list of frequently asked questions about Gosling.js.

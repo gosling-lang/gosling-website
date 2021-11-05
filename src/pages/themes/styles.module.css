@@ -4,20 +4,18 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-
   
-  .sectionHeader {
-    text-align: center;
-    margin: 2rem;
-    padding: 2rem 0rem 0rem 0rem;
-    font-size: 2rem;
-    
-  }
+.sectionHeader {
+  text-align: center;
+  margin: 2rem;
+  padding: 2rem 0rem 0rem 0rem;
+  font-size: 2rem;
+}
   
-  .sectionHeader:not(:first-of-type){
-    border-top: 1px solid lightgray;
-  }
+.sectionHeader:not(:first-of-type){
+  border-top: 1px solid lightgray;
+}
 
-  .themeContainer {
-    padding-bottom: 2rem;
-  }
+.themeContainer {
+  padding-bottom: 2rem;
+}

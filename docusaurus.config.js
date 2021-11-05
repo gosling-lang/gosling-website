@@ -36,6 +36,7 @@ module.exports = {
     },
     navbar: {
       title: 'Gosling',
+      hideOnScroll: false,
       logo: {
         alt: 'Gosling Logo',
         src: 'img/gosling-dark.svg',
@@ -134,7 +135,7 @@ module.exports = {
     },
     metadatas: [
       {name: 'twitter:card', content: 'summary'},
-      {name: "twitter:title", content: "Gosling.js"},
+      {name: "twitter:title", content: "Gosling"},
       {name: 'twitter:description', content: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization'},
       {name: 'twitter:image', content: 'https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png'}
     ],
