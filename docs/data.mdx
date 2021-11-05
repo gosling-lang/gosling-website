@@ -2,7 +2,7 @@
 title: Data
 ---
 
-import GoslingSchema from '../assets/gosling.schema.json';
+import GoslingSchema from './gosling.schema.json';
 import {TableWrapper} from '@site/react-components/DocComponments/table'
 
 Users can specify the data of each visualization (i.e., `track`) through a `track.data` property.
@@ -49,7 +49,7 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 ```
 
-<TableWrapper objName='CSVData'/>
+<TableWrapper objName='CSVData' GoslingSchema={GoslingSchema} />
 
 
 ### JSON (No HiGlass Server)
@@ -88,7 +88,7 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper objName='JSONData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='JSONData'/>
 
 
 ### BigWig (No HiGlass Server)
@@ -107,11 +107,11 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper objName='BIGWIGData' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='BIGWIGData' />
 
 ### BAM (No HiGlass Server)
 
-<TableWrapper objName='BAMData' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='BAMData' includeDescription={true}/>
 
 ### Vector (Require HiGlass Server)
 
@@ -131,7 +131,7 @@ One-dimensional quantitative values along genomic position (e.g., bigwig) can be
 }
 ```
 
-<TableWrapper objName='VectorData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='VectorData'/>
 
 ### Multivec (Require HiGlass Server)
 
@@ -153,7 +153,7 @@ Two-dimensional quantitative values, one axis for genomic coordinate and the oth
 }
 ```
 
-<TableWrapper objName='MultivecData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='MultivecData'/>
 
  
 ### BEDDB (Require HiGlass Server)
@@ -184,7 +184,7 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
 }
 ```
 
-<TableWrapper objName='BEDDBData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='BEDDBData'/>
 
 
 
@@ -228,41 +228,41 @@ Users can apply three types of filters: `oneOf`, `inRange`, `include`.
 Each filter transform has the following properties:
 
 **Properties of One Of Filter**
-<TableWrapper objName='OneOfFilter' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='OneOfFilter' includeDescription={true}/>
 
 **Properties of In Range Filter**
-<TableWrapper objName='RangeFilter' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='RangeFilter' includeDescription={true}/>
 
 **Properties of Include Filter**
-<TableWrapper objName='IncludeFilter' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='IncludeFilter' includeDescription={true}/>
 
 ### Str Concat Transform
 
-<TableWrapper objName='StrConcatTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='StrConcatTransform' includeDescription={true}/>
 
 ### Str Replace Transform 
 
-<TableWrapper objName='StrReplaceTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='StrReplaceTransform' includeDescription={true}/>
 
 ### Log Transform
 
-<TableWrapper objName='LogTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='LogTransform' includeDescription={true}/>
 
 ### Displace Transform 
 
-<TableWrapper objName='DisplaceTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='DisplaceTransform' includeDescription={true}/>
 
 ### Exon Split Transform 
 
-<TableWrapper objName='ExonSplitTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='ExonSplitTransform' includeDescription={true}/>
 
 ### Coverage Transform
 
-<TableWrapper objName='CoverageTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='CoverageTransform' includeDescription={true}/>
 
 ### JSON Parse Transform
 
-<TableWrapper objName='JSONParseTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='JSONParseTransform' includeDescription={true}/>
 
 Apart from these data transforms, users can also aggregate data values (min, max, bin, mean, and count). [Read more about data aggregation](#x)
 
@@ -271,7 +271,7 @@ Apart from these data transforms, users can also aggregate data values (min, max
 
 ##### Type:Datum
 
-<TableWrapper objName='Datum' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='Datum' />
 
 ##### Type: BoundingBox
-<TableWrapper objName='DisplaceTransform-properties-boundingBox' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='DisplaceTransform-properties-boundingBox' />

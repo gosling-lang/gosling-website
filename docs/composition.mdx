@@ -3,6 +3,7 @@ title: Composition
 ---
 
 import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './gosling.schema.json'
 
 A **`track`** is a unit building block in Gosling which can be represented as a bar chart, a line chart, or an ideogram. For the concurrent analysis of multiple datasets, multiple tracks can be grouped into **`views`** and navigated synchronously. In other words, a view defines the genomic location for all the tracks it contains, and the tracks define the data to be visualized.
 
@@ -148,7 +149,7 @@ Gosling supports four types of arrangemet: `"parallel"`, `"serial"`, `"vertical"
 <img src="/img/doc_images/multi_views.png" alt="arrangement of multiple views" width="700"/> 
 
 **Below are the properties that are supported in a multi-view gosling visualization**
-<TableWrapper objName="MultipleViews" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="MultipleViews" />
 
 ## Inherit Property in Nested Structure 
 

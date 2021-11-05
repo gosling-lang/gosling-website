@@ -3,6 +3,7 @@ title: Semantic Zoom
 ---
 
 import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './gosling.schema.json'
 
 [:link: source code](https://github.com/gosling-lang/gosling.js/blob/43626eaf21417bf36128a405dceeaa6ee00d0851/src/core/gosling.schema.ts#L278)
 
@@ -74,8 +75,8 @@ the size of the specified target (`{"measure": "width"|"height"}`)
 or the zoom level of the specified target (`{"measure": "zoomLevel"}`).
 
 ### Control Visibility through Size
-<TableWrapper objName='SizeVisibilityCondition' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='SizeVisibilityCondition' />
 
 ### Control Visibility through Zoom Level
-<TableWrapper objName='ZoomLevelVisibilityCondition' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='ZoomLevelVisibilityCondition' />
 

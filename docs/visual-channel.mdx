@@ -3,6 +3,7 @@ title: Visual Channel
 ---
 
 import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './gosling.schema.json'
 
 The visual appearance of a mark is controlled by a set of visual channels (e.g., size, position, and color). 
 One visual channel can be either:
@@ -83,14 +84,14 @@ As the table shown below, different marks support different visual channels.
 `x` specify a mark's position in the horizontal direction. 
 Following the common practice in genomic visluazation, Gosling uses `x` axis inclusively for genomic coordinates. 
 
-<TableWrapper objName="X" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="X" />
 
 `xe` stands for the end of x axis. `xe` is usually used with `x` to specify the start position and the end position of a visual mark in the horizontal direction, respectively.
 
 ### y & ye
 `y` specify a mark's position in the vertical direction.
 
-<TableWrapper objName="Y" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Y" />
 
 `ye` stands for the end of y axis. `ye` is usually used with `x` to specify the start position and the end position of a visual mark in the vertical direction, respectively.
 
@@ -146,37 +147,37 @@ Channel `row` is used with channel `y` to stratify a visualization with categori
 }
 ```
 
-<TableWrapper objName="Row" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Row" />
 
 ### size
 Channel `size` indicates the size of the visual mark. It determines either the radius of a circle (`mark: point`), the vertical length of a triangle (`mark: triangleRight`, `mark: triangleLeft`, `mark: triangleBottom`), the vertical length of a rectangle (`mark: rect`), the thickness of a line (`mark: line`).
 
-<TableWrapper objName="Size" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Size" />
 
 ### text
 
 `text` channel is used only in `text` mark to specify what textual information to display.
 
-<TableWrapper objName="Text" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Text" />
 
 ### color
 Channel `color` specifies the filling color of the specified mark. 
 <!-- Binding `color` with categorical values in `bar` and `area` marks stack marks that are positioned in the same genomic intervals to better show their cumulative values. -->
 
-<TableWrapper objName="Color" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Color" />
 
 ### stroke
 Channel `stroke` defines the outline color of the specified mark. Gosling supports `stroke` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
-<TableWrapper objName="Stroke" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Stroke" />
 
 ### strokeWidth
 Channel `strokeWidth` defines the outline thickness of the mark shape. Gosling supports `strokeWidth` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
-<TableWrapper objName="StrokeWidth" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="StrokeWidth" />
 
 ### opacity
 Channel `opacity` specifies the opacity of the specified mark.
 <!-- will it be better if we merge stroke, strokeWidth, background, opacity into a style option? -->
-<TableWrapper objName="Opacity" />
+<TableWrapper GoslingSchema={GoslingSchema} objName="Opacity" />
 
 
 ## Style-related Properties
@@ -205,4 +206,4 @@ Channel `opacity` specifies the opacity of the specified mark.
 
 These properties specify the visual appearances of a track that are not bound with data fields.
 
-<TableWrapper objName="Style"/>
+<TableWrapper GoslingSchema={GoslingSchema} objName="Style"/>
