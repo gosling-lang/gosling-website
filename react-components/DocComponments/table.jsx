@@ -28,7 +28,6 @@ export const TableWrapper = (props) => {
  * @returns {React.Component} <div><table>...</table></div>
  */
 const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) => {
-  console.info(GoslingSchema)
 
   var objDef = GoslingSchema["definitions"]
   /**
@@ -61,7 +60,7 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
       const propertyInfo = objDef['properties'][key]
       const pConst = 'const' in propertyInfo ? propertyInfo['const'] : ''
 
-      let { pType, notes } = parsePType(propertyInfo, [], key)
+      let { pType, notes } = parsePType(propertyInfo, [], key, GoslingSchema)
 
       // write description
       // check whether the property is required
@@ -181,7 +180,7 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
     /** if the number of properties is less than 3 or if the property do not have a type name */
     if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length < 3 || propertyName == '')) {
       pType = 'object'
-      notes.push(`Each object follows the format \`${obj2str(propertyInfo)}\``)
+      notes.push(`Each object follows the format \`${obj2str(propertyInfo, GoslingSchema)}\``)
 
     }
     // type is {[key: string]: xxx}
@@ -223,10 +222,10 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
  * @param {object} defs 
  * @returns {string}
  */
-const obj2str = (defs) => {
+const obj2str = (defs, GoslingSchema) => {
   var objString = {}
   Object.keys(defs['properties']).forEach((k) =>
-    objString[k] = parsePType(defs['properties'][k], [], '')['pType']
+    objString[k] = parsePType(defs['properties'][k], [], '', GoslingSchema)['pType']
   )
   return JSON.stringify(objString)
 }
