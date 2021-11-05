@@ -42,3 +42,14 @@ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## Tagging a new version
+
+```
+yarn run tag_version x.x.x
+```
+
+This command will:
+- Copy the full docs/ folder contents into a new versioned_docs/version-<x.x.x>/ folder.
+- Create a versioned sidebars file based from your current sidebar configuration (if it exists) - saved as versioned_sidebars/version-<x.x.x>-sidebars.json.
+- Append the new version number to versions.json.
