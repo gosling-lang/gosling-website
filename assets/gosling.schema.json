@@ -306,21 +306,6 @@
         }
       ]
     },
-    "ChannelBind": {
-      "additionalProperties": false,
-      "properties": {
-        "aggregate": {
-          "$ref": "#/definitions/Aggregate"
-        },
-        "bind": {
-          "$ref": "#/definitions/ChannelType"
-        }
-      },
-      "required": [
-        "bind"
-      ],
-      "type": "object"
-    },
     "ChannelDeep": {
       "anyOf": [
         {
@@ -352,13 +337,11 @@
         }
       ]
     },
-    "ChannelType": {
-      "type": "string"
-    },
     "ChannelValue": {
       "additionalProperties": false,
       "properties": {
         "value": {
+          "description": "Assign a constant value for a visual channel.",
           "type": [
             "number",
             "string"
@@ -435,18 +418,23 @@
           ]
         },
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "legend": {
+          "description": "Whether to display legend",
           "type": "boolean"
         },
         "range": {
-          "$ref": "#/definitions/Range"
+          "$ref": "#/definitions/Range",
+          "description": "Ranges of visual channel values."
         },
         "type": {
+          "description": "Data type",
           "enum": [
             "quantitative",
             "nominal"
@@ -463,16 +451,20 @@
       "additionalProperties": false,
       "properties": {
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Ranges of visual channel values."
         },
         "type": {
           "const": "nominal",
+          "description": "Data type",
           "type": "string"
         }
       },
@@ -826,7 +818,8 @@
       "additionalProperties": false,
       "properties": {
         "chromosome": {
-          "$ref": "#/definitions/Chromosome"
+          "$ref": "#/definitions/Chromosome",
+          "description": "If specified, only showing a certain interval in a chromosome."
         },
         "interval": {
           "items": [
@@ -1102,291 +1095,6 @@
       ],
       "type": "object"
     },
-    "GlyphElement": {
-      "additionalProperties": false,
-      "properties": {
-        "background": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "color": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "description": {
-          "type": "string"
-        },
-        "mark": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/MarkType"
-            },
-            {
-              "$ref": "#/definitions/MarkBind"
-            }
-          ]
-        },
-        "opacity": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "row": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "select": {
-          "items": {
-            "additionalProperties": false,
-            "properties": {
-              "channel": {
-                "$ref": "#/definitions/ChannelType"
-              },
-              "oneOf": {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              }
-            },
-            "required": [
-              "channel",
-              "oneOf"
-            ],
-            "type": "object"
-          },
-          "type": "array"
-        },
-        "size": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "stroke": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "strokeWidth": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "style": {
-          "$ref": "#/definitions/MarkStyleInGlyph"
-        },
-        "text": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "w": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "x": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "x1": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "x1e": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "xe": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "y": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "y1": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "y1e": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        },
-        "ye": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ChannelBind"
-            },
-            {
-              "$ref": "#/definitions/ChannelValue"
-            },
-            {
-              "const": "none",
-              "type": "string"
-            }
-          ]
-        }
-      },
-      "required": [
-        "mark"
-      ],
-      "type": "object"
-    },
     "GoslingSpec": {
       "anyOf": [
         {
@@ -1587,123 +1295,6 @@
       "type": "string"
     },
     "Mark": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/MarkType"
-        },
-        {
-          "$ref": "#/definitions/MarkDeep"
-        }
-      ]
-    },
-    "MarkBind": {
-      "additionalProperties": false,
-      "properties": {
-        "bind": {
-          "type": "string"
-        },
-        "domain": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "range": {
-          "items": {
-            "$ref": "#/definitions/MarkType"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "bind",
-        "domain",
-        "range"
-      ],
-      "type": "object"
-    },
-    "MarkDeep": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/MarkGlyphPreset"
-        },
-        {
-          "$ref": "#/definitions/MarkGlyph"
-        }
-      ]
-    },
-    "MarkGlyph": {
-      "additionalProperties": false,
-      "properties": {
-        "elements": {
-          "items": {
-            "$ref": "#/definitions/GlyphElement"
-          },
-          "type": "array"
-        },
-        "name": {
-          "type": "string"
-        },
-        "referenceColumn": {
-          "type": "string"
-        },
-        "requiredChannels": {
-          "items": {
-            "$ref": "#/definitions/ChannelType"
-          },
-          "type": "array"
-        },
-        "type": {
-          "const": "compositeMark",
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "name",
-        "requiredChannels",
-        "elements"
-      ],
-      "type": "object"
-    },
-    "MarkGlyphPreset": {
-      "additionalProperties": false,
-      "properties": {
-        "server": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "server"
-      ],
-      "type": "object"
-    },
-    "MarkStyleInGlyph": {
-      "additionalProperties": false,
-      "properties": {
-        "background": {
-          "type": "string"
-        },
-        "dashed": {
-          "type": "string"
-        },
-        "dy": {
-          "type": "number"
-        },
-        "stroke": {
-          "type": "string"
-        },
-        "strokeWidth": {
-          "type": "number"
-        }
-      },
-      "type": "object"
-    },
-    "MarkType": {
       "enum": [
         "point",
         "line",
@@ -1935,15 +1526,19 @@
           ]
         },
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Ranges of visual channel values."
         },
         "type": {
+          "description": "Data type",
           "enum": [
             "quantitative",
             "nominal"
@@ -4434,25 +4029,32 @@
       "additionalProperties": false,
       "properties": {
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "grid": {
+          "description": "Whether to display grid.",
           "type": "boolean"
         },
         "legend": {
+          "description": "Whether to display legend",
           "type": "boolean"
         },
         "padding": {
+          "description": "Experimental: Used in `row` and `column` for vertical and horizontal padding.",
           "type": "number"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Ranges of visual channel values."
         },
         "type": {
           "const": "nominal",
+          "description": "Data type",
           "type": "string"
         }
       },
@@ -4799,18 +4401,23 @@
           ]
         },
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "legend": {
+          "description": "not supported",
           "type": "boolean"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Ranges of visual channel values."
         },
         "type": {
+          "description": "Data type",
           "enum": [
             "quantitative",
             "nominal"
@@ -5286,15 +4893,19 @@
           ]
         },
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "range": {
-          "$ref": "#/definitions/Range"
+          "$ref": "#/definitions/Range",
+          "description": "Ranges of visual channel values."
         },
         "type": {
+          "description": "Data type",
           "enum": [
             "quantitative",
             "nominal"
@@ -5317,15 +4928,19 @@
           ]
         },
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Value s of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Ranges of visual channel values."
         },
         "type": {
+          "description": "Data type",
           "enum": [
             "quantitative",
             "nominal"
@@ -5429,7 +5044,7 @@
           "type": "object"
         },
         "linkConnectionType": {
-          "description": "Specify the connetion type of `betweenLink` marks.\n\n__Default__: `\"corner\"`",
+          "description": "Specify the connetion type of `betweenLink` marks.\n\n__Default__: \"corner\"",
           "enum": [
             "straight",
             "curve",
@@ -5614,21 +5229,25 @@
       "additionalProperties": false,
       "properties": {
         "domain": {
+          "description": "Value s of the data",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "range": {
+          "description": "Ranges of visual channel values.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "type": {
+          "description": "Data type",
           "enum": [
             "quantitative",
             "nominal"
@@ -5747,31 +5366,40 @@
       "additionalProperties": false,
       "properties": {
         "aggregate": {
-          "$ref": "#/definitions/Aggregate"
+          "$ref": "#/definitions/Aggregate",
+          "description": "Specify how to aggregate data."
         },
         "axis": {
-          "$ref": "#/definitions/AxisPosition"
+          "$ref": "#/definitions/AxisPosition",
+          "description": "Specify where should the axis be put."
         },
         "domain": {
-          "$ref": "#/definitions/GenomicDomain"
+          "$ref": "#/definitions/GenomicDomain",
+          "description": "Values of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "grid": {
+          "description": "Whether to display grid.",
           "type": "boolean"
         },
         "legend": {
+          "description": "Whether to display legend",
           "type": "boolean"
         },
         "linkingId": {
+          "description": "Users need to assign a unique linkingId for [linking views](/docs/user-interaction#linking-views) and [Brushing and Linking](/docs/user-interaction#brushing-and-linking)",
           "type": "string"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Values of the visual channel."
         },
         "type": {
           "const": "genomic",
+          "description": "Specify the data type.",
           "type": "string"
         }
       },
@@ -5781,45 +5409,58 @@
       "additionalProperties": false,
       "properties": {
         "aggregate": {
-          "$ref": "#/definitions/Aggregate"
+          "$ref": "#/definitions/Aggregate",
+          "description": "Specify how to aggregate data."
         },
         "axis": {
-          "$ref": "#/definitions/AxisPosition"
+          "$ref": "#/definitions/AxisPosition",
+          "description": "Specify where should the axis be put."
         },
         "baseline": {
+          "description": "??",
           "type": [
             "string",
             "number"
           ]
         },
         "domain": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Values of the data"
         },
         "field": {
+          "description": "Name of the data field.",
           "type": "string"
         },
         "flip": {
+          "description": "experimental: Flip a track vertically or horizontally",
           "type": "boolean"
         },
         "grid": {
+          "description": "Whether to display grid.",
           "type": "boolean"
         },
         "legend": {
+          "description": "Whether to display legend",
           "type": "boolean"
         },
         "linkingId": {
+          "description": "Users need to assign a unique linkingId for [linking views](/docs/user-interaction#linking-views) and [Brushing and Linking](/docs/user-interaction#brushing-and-linking)",
           "type": "string"
         },
         "mirrored": {
+          "description": "??",
           "type": "boolean"
         },
         "padding": {
+          "description": "Experimental: Used in `row` and `column` for vertical and horizontal padding.",
           "type": "number"
         },
         "range": {
-          "$ref": "#/definitions/ValueExtent"
+          "$ref": "#/definitions/ValueExtent",
+          "description": "Values of the visual channel."
         },
         "type": {
+          "description": "Specify the data type.",
           "enum": [
             "quantitative",
             "nominal",
@@ -5828,6 +5469,7 @@
           "type": "string"
         },
         "zeroBaseline": {
+          "description": "deprecated: We could remove this and use the `baseline` option instead",
           "type": "boolean"
         }
       },
