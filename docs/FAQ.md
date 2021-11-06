@@ -35,7 +35,7 @@ For problems like this, please ensure that you have added the following style sh
   <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
 </head>
 ```
-Please refer to [Use Gosling.js in React App](http://gosling-lang.org/docs/#use-goslingjs-in-react-app) for more details.
+Please refer to [Use Gosling.js in React App](./#use-goslingjs-in-react-app) for more details.
 
 ## How to make Gosling visualizations responsive?
 
