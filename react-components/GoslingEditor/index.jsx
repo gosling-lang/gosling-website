@@ -1,2 +1,3 @@
 
-export * from '@site/react-components/GoslingEditor'
+export * from './GoslingEditor'
+export * from './SPECS'
