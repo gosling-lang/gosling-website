@@ -1,9 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import GoslingSchema from '../../assets/gosling.schema.json';
-import BrowserOnly from '@docusaurus/BrowserOnly';
-
-const dataList = GoslingSchema["definitions"]['DataDeep']['anyOf'].map(d => d["$ref"].replace('#/definitions/', ''))
 
 // decide whether a property should be ignored based on keywords in the property description
 const isIgnored = (descriptionInfo) => {
@@ -13,14 +10,7 @@ const isIgnored = (descriptionInfo) => {
 }
 
 export const TableWrapper = (props) => {
-  return <BrowserOnly
-    fallback={<div>The fallback content to display on prerendering</div>}>
-    {() => {
-      // to excluded from server side build
-
-      return <PropertyTable {...props} />
-    }}
-  </BrowserOnly>
+  return <PropertyTable {...props} />
 }
 
 
