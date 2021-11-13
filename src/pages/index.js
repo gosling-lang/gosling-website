@@ -6,6 +6,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
+import Head from '@docusaurus/Head';
+
 const features = [
   {
     title: 'Scalability',
@@ -61,6 +63,9 @@ export default function Home() {
     <Layout
       title="Home"
       description="Description will go into a meta tag in <head />">
+        <Head>
+        <script src="https://unpkg.com/gosling.js@0.0.9/dist/gosling.js"></script>
+      </Head>
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>

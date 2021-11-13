@@ -177,13 +177,13 @@ export const GoslingEditor = (props) => {
                             <div style={{ margin: '5px 10px' }}>
                                 <span><b>You can interact with the visualization through zoom and pan, or modify it by changing the code above</b></span>
                             </div>
-                            {/* <div style={{ margin: '0 60px' }}>
+                            <div style={{ margin: '0 60px' }}>
                                 <GoslingComponent
                                     spec={this.state.spec}
                                     padding={20}
                                     className='gosling-component'
                                 />
-                            </div> */}
+                            </div>
                         </div>
                     }
                 }
