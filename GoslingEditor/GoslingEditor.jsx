@@ -100,12 +100,12 @@ const configureEditor = (languages, uri, schema)=>{
 
 // editor used in the tutorial
 export const GoslingEditor = (props) => {
-    // return (
-        // <BrowserOnly
-        //     fallback={<div>The fallback content to display on prerendering</div>}>
+    return (
+        <BrowserOnly
+            fallback={<div>The fallback content to display on prerendering</div>}>
 
 
-        //     {() => {
+            {() => {
                 // to excluded from server side build
                 // find more at https://github.com/facebook/docusaurus/issues/2494
 
@@ -177,31 +177,30 @@ export const GoslingEditor = (props) => {
                             <div style={{ margin: '5px 10px' }}>
                                 <span><b>You can interact with the visualization through zoom and pan, or modify it by changing the code above</b></span>
                             </div>
-                            <div style={{ margin: '0 60px' }}>
+                            {/* <div style={{ margin: '0 60px' }}>
                                 <GoslingComponent
                                     spec={this.state.spec}
                                     padding={20}
-                                    compiled={(spec, vConf) => { /* Callback function when compiled */ }}
                                     className='gosling-component'
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     }
                 }
 
                 return <GoslingEditorPre {...props} />
-        //     }
-        //     }
-        // </BrowserOnly>
-    // );
+            }
+            }
+        </BrowserOnly>
+    );
 };
 
 
 // theme editor used in the themes page
 export const GoslingStyle = (props) => {
-    // return <BrowserOnly
-    //     fallback={<div>The fallback content to display on prerendering</div>}>
-    //     {() => {
+    return <BrowserOnly
+        fallback={<div>The fallback content to display on prerendering</div>}>
+        {() => {
             // to excluded from server side build
             const { GoslingComponent } = require("gosling.js");
             const MonacoEditor = require('react-monaco-editor').default;
@@ -258,6 +257,6 @@ export const GoslingStyle = (props) => {
                 }
             }
             return < GoslingStyleEditorPre {...props} />
-    //     }}
-    // </BrowserOnly>
+        }}
+    </BrowserOnly>
 }
