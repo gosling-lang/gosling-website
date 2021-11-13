@@ -2,9 +2,14 @@
 import React from 'react'
 
 import GoslingSchema from '../assets/gosling.schema.json';
+import GoslingThemeSchema from '../assets/theme.gosling.schema.json';
 import './editor.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-// 
+
+
+import { Themes } from 'gosling-theme';
+
+
 export const stripJsonComments = (data) => {
     let newData = data.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m); // remove comments if exist
     return JSON.parse(newData)
@@ -32,16 +37,78 @@ export const BrowserGosling = (props) => {
     </BrowserOnly>
 }
 
+const updateTheme = (isDarkTheme, editor) => {
+    editor.defineTheme(
+        'gosling',
+        isDarkTheme
+            ? {
+                base: 'vs-dark',
+                inherit: true,
+                rules: [
+                    { token: 'string.key.json', foreground: '#eeeeee', fontStyle: 'bold' }, // all keys
+                    { token: 'string.value.json', foreground: '#8BE9FD', fontStyle: 'bold' }, // all values
+                    { token: 'number', foreground: '#FF79C6', fontStyle: 'bold' },
+                    { token: 'keyword.json', foreground: '#FF79C6', fontStyle: 'bold' } // true and false
+                ],
+                colors: {
+                    // ...
+                }
+            }
+            : {
+                base: 'vs', // vs, vs-dark, or hc-black
+                inherit: true,
+                // Complete rules: https://github.com/microsoft/vscode/blob/93028e44ea7752bd53e2471051acbe6362e157e9/src/vs/editor/standalone/common/themes.ts#L13
+                rules: [
+                    { token: 'string.key.json', foreground: '#222222' }, // all keys
+                    { token: 'string.value.json', foreground: '#035CC5' }, // all values
+                    { token: 'number', foreground: '#E32A4F' },
+                    { token: 'keyword.json', foreground: '#E32A4F' } // true and false
+                ],
+                colors: {
+                    // ...
+                }
+            }
+    );
+}
+
+const configureEditor = (languages, uri, schema)=>{
+    languages.json.jsonDefaults.setDiagnosticsOptions({
+        allowComments: true,
+        enableSchemaRequest: true,
+        validate: true,
+        schemas: [
+            {
+                uri,
+                fileMatch: ['*'],
+                schema,
+            }
+        ]
+    });
+    languages.json.jsonDefaults.setModeConfiguration({
+        diagnostics: true,
+        documentFormattingEdits: false,
+        documentRangeFormattingEdits: false,
+        documentSymbols: true,
+        completionItems: true,
+        hovers: true,
+        tokens: true,
+        colors: true,
+        foldingRanges: true,
+        selectionRanges: false
+    });
+}
+
 // editor used in the tutorial
 export const GoslingEditor = (props) => {
-    return (
-        <BrowserOnly
-            fallback={<div>The fallback content to display on prerendering</div>}>
+    // return (
+        // <BrowserOnly
+        //     fallback={<div>The fallback content to display on prerendering</div>}>
 
 
-            {() => {
+        //     {() => {
                 // to excluded from server side build
                 // find more at https://github.com/facebook/docusaurus/issues/2494
+
                 const { validateGoslingSpec, GoslingComponent } = require("gosling.js");
                 const { debounce } = require('lodash')
                 const MonacoEditor = require('react-monaco-editor').default;
@@ -60,66 +127,10 @@ export const GoslingEditor = (props) => {
                         this.reset = this.reset.bind(this)
                         this.WAIT = 500
                     }
-                    updateTheme() {
-                        const { isDarkTheme } = this.state
-                        editor.defineTheme(
-                            'gosling',
-                            isDarkTheme
-                                ? {
-                                    base: 'vs-dark',
-                                    inherit: true,
-                                    rules: [
-                                        { token: 'string.key.json', foreground: '#eeeeee', fontStyle: 'bold' }, // all keys
-                                        { token: 'string.value.json', foreground: '#8BE9FD', fontStyle: 'bold' }, // all values
-                                        { token: 'number', foreground: '#FF79C6', fontStyle: 'bold' },
-                                        { token: 'keyword.json', foreground: '#FF79C6', fontStyle: 'bold' } // true and false
-                                    ],
-                                    colors: {
-                                        // ...
-                                    }
-                                }
-                                : {
-                                    base: 'vs', // vs, vs-dark, or hc-black
-                                    inherit: true,
-                                    // Complete rules: https://github.com/microsoft/vscode/blob/93028e44ea7752bd53e2471051acbe6362e157e9/src/vs/editor/standalone/common/themes.ts#L13
-                                    rules: [
-                                        { token: 'string.key.json', foreground: '#222222' }, // all keys
-                                        { token: 'string.value.json', foreground: '#035CC5' }, // all values
-                                        { token: 'number', foreground: '#E32A4F' },
-                                        { token: 'keyword.json', foreground: '#E32A4F' } // true and false
-                                    ],
-                                    colors: {
-                                        // ...
-                                    }
-                                }
-                        );
-                    }
                     editorWillMount() {
-                        this.updateTheme();
-                        languages.json.jsonDefaults.setDiagnosticsOptions({
-                            allowComments: true,
-                            enableSchemaRequest: true,
-                            validate: true,
-                            schemas: [
-                                {
-                                    uri: 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.schema.json',
-                                    fileMatch: ['*'],
-                                    schema: GoslingSchema
-                                }
-                            ]
-                        });
-                        languages.json.jsonDefaults.setModeConfiguration({
-                            diagnostics: true,
-                            documentFormattingEdits: false,
-                            documentRangeFormattingEdits: false,
-                            documentSymbols: true,
-                            completionItems: true,
-                            hovers: true,
-                            tokens: true,
-                            colors: true,
-                            foldingRanges: true,
-                            selectionRanges: false
-                        });
+                        updateTheme(this.state.isDarkTheme, editor);
+                        const uri = 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.schema.json'
+                        configureEditor(languages, uri, GoslingSchema)
                     }
                     onChange(code, _) {
                         try {
@@ -148,7 +159,7 @@ export const GoslingEditor = (props) => {
                     }
                     render() {
                         const { log } = this.state
-                        return <div className='gosling-container'>
+                        return <div className='gosling-container' id="goslingEditor">
                             <div className='codeContainer' style={{ position: "relative", width: "100%" }}>
                                 <MonacoEditor
                                     height={500}
@@ -174,28 +185,27 @@ export const GoslingEditor = (props) => {
                                     className='gosling-component'
                                 />
                             </div>
-                            {/* </div> */}
                         </div>
                     }
                 }
 
                 return <GoslingEditorPre {...props} />
-            }
-            }
-        </BrowserOnly>
-    );
+        //     }
+        //     }
+        // </BrowserOnly>
+    // );
 };
 
 
 // theme editor used in the themes page
 export const GoslingStyle = (props) => {
-    return <BrowserOnly
-        fallback={<div>The fallback content to display on prerendering</div>}>
-        {() => {
+    // return <BrowserOnly
+    //     fallback={<div>The fallback content to display on prerendering</div>}>
+    //     {() => {
             // to excluded from server side build
             const { GoslingComponent } = require("gosling.js");
-            const { Themes } = require('gosling-theme');
             const MonacoEditor = require('react-monaco-editor').default;
+            const { editor, languages } = require('monaco-editor/esm/vs/editor/editor.api');
             const { debounce } = require('lodash')
 
             class GoslingStyleEditorPre extends React.Component {
@@ -219,8 +229,13 @@ export const GoslingStyle = (props) => {
                 reset() {
                     this.setState({ themeString: JSON.stringify(Themes[this.props.theme], null, 4) })
                 }
+                editorWillMount() {
+                    updateTheme(false, editor);
+                    const uri = 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.theme.json'
+                    configureEditor(languages, uri, GoslingThemeSchema)
+                }
                 render() {
-                    return <div className='row'>
+                    return <div className='row' id="goslingThemeEditor">
                         <div className="col col--12">
                             <GoslingComponent spec={stripJsonComments(props.spec)} padding={20} theme={stripJsonComments(this.state.themeString)} />
                         </div>
@@ -232,7 +247,7 @@ export const GoslingStyle = (props) => {
                                 value={this.state.themeString}
                                 onChange={debounce(this.onChange, this.WAIT)}
                                 theme="gosling"
-                                // editorWillMount={this.editorWillMount.bind(this)}
+                                editorWillMount={this.editorWillMount.bind(this)}
                                 options={{ minimap: { enabled: false }, wordWrap: 'on', scrollBeyondLastLine: false }}
                             />
 
@@ -243,6 +258,6 @@ export const GoslingStyle = (props) => {
                 }
             }
             return < GoslingStyleEditorPre {...props} />
-        }}
-    </BrowserOnly>
+    //     }}
+    // </BrowserOnly>
 }
