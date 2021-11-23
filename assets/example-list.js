@@ -5,37 +5,37 @@ module.exports = {
       {
         title: "Bar Chart",
         imageUrl: "/img/doc_images/bar_example.png",
-        url: "https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3acca936d08e676c9a274de73d094492",
+        url: "https://gosling-lang.github.io/gosling.js/?example=doc_bar",
         description: ""
       },
       {
         title: "Line Chart",
         imageUrl: "/img/doc_images/line_example.png",
-        url: "https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/12e9bc738ed19d325a900ff50d1f85dc",
+        url: "https://gosling-lang.github.io/gosling.js/?example=doc_line",
         description: ""
       },
       {
         title: "Point Plot",
         imageUrl: "/img/doc_images/point_example.png",
-        url: "https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/e7ed2a61336b0ecc40211c8c3004388a",
+        url: "https://gosling-lang.github.io/gosling.js/?example=doc_point",
         description: ""
       },
       {
         title: "Ideograms",
         imageUrl: "/img/doc_images/rect_example.png",
-        url: "https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/a5399812193a29fe7c85c519869a42ca",
+        url: "https://gosling-lang.github.io/gosling.js/?example=doc_rect",
         description: ""
       },
       {
         title: "Area Chart",
         imageUrl: "/img/doc_images/area_example.png",
-        url: "https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/213dcc25c61427bef243baefd8c36801",
+        url: "https://gosling-lang.github.io/gosling.js/?example=doc_area",
         description: ""
       },
       {
         title: "Text Marks",
         imageUrl: "/img/doc_images/text_example.png",
-        url: "https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3a3c7fce17876e6ef879d1aa499a4664",
+        url: "https://gosling-lang.github.io/gosling.js/?example=doc_text",
         description: ""
       }
     ]
