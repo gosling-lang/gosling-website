@@ -33,7 +33,7 @@ Users can set the `static` property of all tracks at the root level or specify i
 
 When views/tracks are linked, the zooming and panning performed in one view/track will be automatically applied to the linked views/tracks. 
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/362d370f31379a6d9f367d1c33adfc31>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_linking_tracks>)
 
 Views and tracks can be linked through an user-assigned id.
 This id is assigned to a `track` through the `x.linkingId` property, and assigned to a `view` through the `linkingId` property.
@@ -97,7 +97,7 @@ This id is assigned to a `track` through the `x.linkingId` property, and assigne
 ## Brushing and Linking
 Users can use **brushing** to select a subset of the data items using a rectangle. Users can modify the left and right edge of the rectangle to modify the selection. The selected data items can be linked to data items in another track.
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/5f48d40b8f2335abe40c289ae85cb4ae>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_brush>)
 
 ```javascript
 {

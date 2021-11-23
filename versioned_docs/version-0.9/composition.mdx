@@ -108,8 +108,8 @@ Multiple `tracks` can compose one single `view`, which has the following propert
 | spacing      | number  | specify the space between tracks in pixels (if `layout` is `linear`) or in percentage ranging from `0` to `100` (if `layout` is `circular`)                     |
 | static       | boolean | whether to disable [Zooming and Panning](./user-interaction#zooming-and-panning), __default__: false. |
 | assembly     | string  | currently support "hg38", "hg19", "hg18", "hg17", "hg16", "mm10", "mm9"                                                                                         |
-| linkingId    | string  | specify an ID for [linking multiple views](./user-interaction#linking-views)                |
-| centerRadius | number  | specify the proportion of the radius of the center white space. A number between [0,1], __default__: 0.3                                                             |
+| linkingId    | string  | specify an ID for [linking multiple views](./user-interaction#linking-views)                 |
+| centerRadius | number  | specify the proportion of the radius of the center white space. A number between [0,1], __default:__ 0.3                                                             |
 | width        | number  | required when setting `alignment: overlay`                                                                                                                      |
 | height       | number  | required when setting `alignment: overlay`                                                                                                                      |
 
@@ -204,6 +204,6 @@ Use the nested structure if you want to use overlaid tracks inside stacked track
 
 Try examples in the online editor:
 
-[Line chart (line + point)](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/dd5bd5aa70f2eb68f92f42788f046188>)
+[Line chart (line + point)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_line_point>)
 
-[Ideogram (text + rect + triangle)](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/90cc96ca5f199c78d8985e4c162c6788>)
+[Ideogram (text + rect + triangle)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_rect_text>)

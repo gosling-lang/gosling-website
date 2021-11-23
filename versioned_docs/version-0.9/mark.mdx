@@ -33,9 +33,9 @@ Gosling supports the following primitive `mark` types: [Point](#point), [Line](#
 
 The mark `point` represents one data point using a circular shape. Visual channels of the circle, such as radius, color, and vertical/horizontal position, are used to represent values of the data point. Popular charts such as scatter plots and bubble charts use `point` mark.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/e7ed2a61336b0ecc40211c8c3004388a"><img src="/img/doc_images/point_example.png" width="800" alt="point_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_point"><img src="/img/doc_images/point_example.png" width="800" alt="point_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/e7ed2a61336b0ecc40211c8c3004388a>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_point>)
 
 ```javascript
 // an example of point marks
@@ -66,9 +66,9 @@ The mark `point` represents one data point using a circular shape. Visual channe
 
 The mark `line` represents a set of data points using a line that connects these points.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/12e9bc738ed19d325a900ff50d1f85dc"><img src="/img/doc_images/line_example.png" width="800" alt="line_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_line"><img src="/img/doc_images/line_example.png" width="800" alt="line_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/12e9bc738ed19d325a900ff50d1f85dc>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_line>)
 
 ```javascript
 // an example of using line marks
@@ -99,9 +99,9 @@ The mark `line` represents a set of data points using a line that connects these
 
 The mark `area` represents a set of data points as an area shape. The upper edge of the area shape is a line that connects all the points and the bottom edge is the x axis.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/213dcc25c61427bef243baefd8c36801"><img src="/img/doc_images/area_example.png" width="800" alt="area_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_area"><img src="/img/doc_images/area_example.png" width="800" alt="area_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/213dcc25c61427bef243baefd8c36801>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_area>)
 
 ```javascript
 // an example of area marks
@@ -134,9 +134,9 @@ The mark `area` represents a set of data points as an area shape. The upper edge
 
 The `bar` mark is designed for drawing bar charts. Each bar shows the value of one data point through its height.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3acca936d08e676c9a274de73d094492"><img src="/img/doc_images/bar_example.png" width="800" alt="bar_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_bar"><img src="/img/doc_images/bar_example.png" width="800" alt="bar_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3acca936d08e676c9a274de73d094492>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_bar>)
 
 ```javascript
 // an example of area marks
@@ -169,9 +169,9 @@ The `bar` mark is designed for drawing bar charts. Each bar shows the value of o
 
 The `rect` mark is designed for representing genomic intervals using rectangular shapes. Left and right edge of the rectangle indicate the start and end genomic positions, respectively.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/a5399812193a29fe7c85c519869a42ca"><img src="/img/doc_images/rect_example.png" width="800" alt="rect_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_rect"><img src="/img/doc_images/rect_example.png" width="800" alt="rect_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/a5399812193a29fe7c85c519869a42ca>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_rect>)
 
 ```javascript
 // an example of rect marks
@@ -208,14 +208,20 @@ The `rect` mark is designed for representing genomic intervals using rectangular
 
 ```
 
+The `rect` mark can also be used for the matrix visualization of genomic interaction data.
+
+<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3080e214ec542db3a108fc2890431c4b"><img src="/img/doc_images/rect_matrix_example.png" width="600" alt="rect_matrix_example"/>  </a>
+
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3080e214ec542db3a108fc2890431c4b>)
+
 ## Text
 [:link: source code](https://github.com/gosling-lang/gosling.js/blob/master/src/core/mark/text.ts)
 
 The `text` mark is designed to display textual labels. For example, gene names and nucleobases can be displayed with `text` marks.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3a3c7fce17876e6ef879d1aa499a4664"><img src="/img/doc_images/text_example.png" width="800" alt="text_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_text"><img src="/img/doc_images/text_example.png" width="800" alt="text_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/3a3c7fce17876e6ef879d1aa499a4664>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_text>)
 
 ```javascript
 {
@@ -250,9 +256,9 @@ The `text` mark is designed to display textual labels. For example, gene names a
 The **link** mark is designed to show connections between chromosomes.
 Gosling supports both `"withinLink"`, links within one track,  and `"betweenLink"`, links between different tracks.
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/6f96c2418016d963f3eb071adba31c56"><img src="/img/doc_images/link_example.png" width="800" alt="link_example"/>  </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_link"><img src="/img/doc_images/link_example.png" width="800" alt="link_example"/>  </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/6f96c2418016d963f3eb071adba31c56>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_link>)
 
 
 ```javascript
@@ -295,9 +301,9 @@ Gosling supports both `"withinLink"`, links within one track,  and `"betweenLink
 [:link: source code](https://github.com/gosling-lang/gosling.js/blob/master/src/core/mark/triangle.ts)  
 
 
-<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/f59b1cdd38f2abe3b67c5ca1c0a300a7"><img src="/img/doc_images/triangle.png" width="700" alt="triangle"/> </a>
+<a href="https://gosling-lang.github.io/gosling.js/?example=doc_triangle"><img src="/img/doc_images/triangle.png" width="700" alt="triangle"/> </a>
 
-[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/f59b1cdd38f2abe3b67c5ca1c0a300a7>)
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_triangle>)
 
 Gosling supports three types of triangle marks: `triangleLeft`, `triangleRight`, `triangleBottom`
 
