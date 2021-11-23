@@ -5,8 +5,8 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
-import { GoslingStyle } from '../../../GoslingEditor';
-import * as SPECs from '../../../GoslingEditor/SPECS.js';
+import { GoslingStyle } from '@site/react-components/GoslingEditor';
+import * as SPECs from '@site/react-components/GoslingEditor/SPECS.js';
 
 
 export default function Themes() {

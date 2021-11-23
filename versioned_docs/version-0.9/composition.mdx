@@ -106,10 +106,10 @@ Multiple `tracks` can compose one single `view`, which has the following propert
 | layout       | string  | specify the layout type of all tracks, either "linear" or "circular"   |
 | alignment    | string  | specify how to align tracks, either "stack" or "overlay". default="stack"|
 | spacing      | number  | specify the space between tracks in pixels (if `layout` is `linear`) or in percentage ranging from `0` to `100` (if `layout` is `circular`)                     |
-| static       | boolean | whether to disable [Zooming and Panning](./user-interaction#zooming-and-panning), __default__=false. |
+| static       | boolean | whether to disable [Zooming and Panning](./user-interaction#zooming-and-panning), __default__: false. |
 | assembly     | string  | currently support "hg38", "hg19", "hg18", "hg17", "hg16", "mm10", "mm9"                                                                                         |
 | linkingId    | string  | specify an ID for [linking multiple views](./user-interaction#linking-views)                 |
-| centerRadius | number  | specify the proportion of the radius of the center white space. A number between [0,1], default=0.3                                                             |
+| centerRadius | number  | specify the proportion of the radius of the center white space. A number between [0,1], __default:__ 0.3                                                             |
 | width        | number  | required when setting `alignment: overlay`                                                                                                                      |
 | height       | number  | required when setting `alignment: overlay`                                                                                                                      |
 
@@ -207,3 +207,8 @@ Try examples in the online editor:
 [Line chart (line + point)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_line_point>)
 
 [Ideogram (text + rect + triangle)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_rect_text>)
+
+#### Types
+
+##### Type:STYLE 
+This object contains a list of style-related properties, as described in [here](./visual-channel#style-related-properties)

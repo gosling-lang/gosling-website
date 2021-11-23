@@ -1,5 +1,5 @@
 
-const SPEC1 = `{
+export const SPEC1 = `{
   "tracks": [{
     //*** specify the size of the visualization
     "width": 700,
@@ -35,7 +35,7 @@ const SPEC1 = `{
   }]
 }`
 
-const SPEC_TRANSFORM_DATA = `{
+export const SPEC_TRANSFORM_DATA = `{
   "tracks": [{
     "width": 700,
     "height": 70,
@@ -68,7 +68,7 @@ const SPEC_TRANSFORM_DATA = `{
   }]
 }`
 
-const SPEC_OVERLAP = `{
+export const SPEC_OVERLAP = `{
   "tracks": [{
     "width": 700,
     "height": 70,
@@ -136,7 +136,7 @@ const SPEC_OVERLAP = `{
   }]
 }`
 
-const SPEC_ZOOM = `{
+export const SPEC_ZOOM = `{
   "tracks": [
     {
       "width": 700,
@@ -221,7 +221,7 @@ const SPEC_ZOOM = `{
 }`
 
 
-const SPEC_LINK = `{
+export const SPEC_LINK = `{
   "spacing": 5,  // add space between tracks
   "tracks": [
     //******  add an area chart as a new track
@@ -328,7 +328,7 @@ const SPEC_LINK = `{
   ]
 }`
 
-const SPEC_CIRCULAR = `{
+export const SPEC_CIRCULAR = `{
   //*** you only need to add two lines to change the layout
   "layout": "circular", // specify the circular layout
   "centerRadius": 0.6, // set radius of the center white space
@@ -436,7 +436,7 @@ const SPEC_CIRCULAR = `{
   ]
 }`
 
-const SPEC_DETAIL = `{
+export const SPEC_DETAIL = `{
   "layout": "linear",
   "tracks": [{
     "row": { "field": "sample", "type": "nominal" },
@@ -462,7 +462,7 @@ const SPEC_DETAIL = `{
   }]
 }`
 
-const SPEC_MULTI_VIEW = `{
+export const SPEC_MULTI_VIEW = `{
   "arrangement": "vertical",
   "views": [
   //*** the circular overview
@@ -651,7 +651,7 @@ const SPEC_MULTI_VIEW = `{
     }
   ]
 }`
-const MAIN_SPEC = `{
+export const MAIN_SPEC = `{
   "title": "Gosling Theme",
   "subtitle": "Using the gosling themes, you can easily apply styling to gosling visualizations",
   "arrangement": "vertical",
@@ -956,4 +956,3 @@ const MAIN_SPEC = `{
     }
   ]
 }`
-export { MAIN_SPEC,SPEC1, SPEC_TRANSFORM_DATA, SPEC_OVERLAP, SPEC_ZOOM, SPEC_LINK, SPEC_CIRCULAR, SPEC_DETAIL, SPEC_MULTI_VIEW }

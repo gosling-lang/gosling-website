@@ -1,8 +1,8 @@
 
 import React from 'react'
 
-import GoslingSchema from '../assets/gosling.schema.json';
-import GoslingThemeSchema from '../assets/theme.gosling.schema.json';
+import GoslingSchema from '@site/assets/gosling.schema.json';
+import GoslingThemeSchema from '@site/assets/theme.gosling.schema.json';
 import './editor.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
