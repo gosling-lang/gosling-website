@@ -6,6 +6,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
 const features = [
   {
     title: 'Scalability',
@@ -53,6 +55,13 @@ function Feature({imageUrl, title, description}) {
     </div>
   );
 }
+
+const dummyGosling = <BrowserOnly>
+{()=>{
+  const { GoslingComponent } = require("gosling.js");
+  return <div className='dummyGosling'><GoslingComponent /></div>
+}}
+</BrowserOnly>
 
 export default function Home() {
   const context = useDocusaurusContext();
@@ -106,6 +115,7 @@ export default function Home() {
           </section>
         )}
       </main>
+      {dummyGosling}
     </Layout>
   );
 }

@@ -3,7 +3,7 @@ title: Getting Started
 slug: /
 ---
 We currently support the following ways of using Gosling.
-- [Create Your Visualization on Online Editor](#create-your-visualization-in-gosling-online-editor)
+- [Create Your Visualization in Gosling Online Editor](#create-your-visualization-in-gosling-online-editor)
 - [Load a Gosling Spec From Your Github Gist](#load-a-gosling-spec-from-your-github-gist)
 - [Embed Gosling Component in a HTML File](#embed-gosling-component-in-a-html-file)
 - [Use Gosling.js in React App](#use-goslingjs-in-react-app)
@@ -17,7 +17,8 @@ You can visit [Online Editor](https://gosling.js.org) to visualize your data dir
 1. You can additionally specify a readme.md file to describe your spec.
 1. Also be sure to give your gist a fabulous title. It'll be shown in the gosling editor.
 You can then open your visualization at <a>http://<editor_url>/?gist=<github_username>/<gist_id></a>. 
-For example, https://gosling.js.org/?gist=flekschas/e6e388332814886d4d714efd0e88093b
+<!-- For example, https://gosling.js.org/?gist=flekschas/e6e388332814886d4d714efd0e88093b -->
+For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379ae6a7c7b7b3
 
 ## Embed Gosling Component in a HTML File
 ```html

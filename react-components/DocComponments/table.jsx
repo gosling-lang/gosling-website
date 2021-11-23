@@ -1,10 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import BrowserOnly from '@docusaurus/BrowserOnly';
 
-/**
- * decide whether a property should be ignored based on keywords in the property description
- */
+// decide whether a property should be ignored based on keywords in the property description
 const isIgnored = (descriptionInfo) => {
   const keywords = ['deprecated', 'experimental', 'not supported', 'internal', 'to do']
   return keywords.some(keyword => descriptionInfo.toLowerCase().includes(keyword))
@@ -12,14 +9,7 @@ const isIgnored = (descriptionInfo) => {
 }
 
 export const TableWrapper = (props) => {
-  return <BrowserOnly
-    fallback={<div>The fallback content to display on prerendering</div>}>
-    {() => {
-      // to excluded from server side build
-
-      return <PropertyTable {...props} />
-    }}
-  </BrowserOnly>
+  return <PropertyTable {...props} />
 }
 
 /**
