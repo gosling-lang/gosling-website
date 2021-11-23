@@ -24,39 +24,47 @@ For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379a
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="lightgray" />
-        <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
-    </head>
 
-    <body>
-        <div id="root"/>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/pixi.js@5/dist/pixi.js"></script>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/gosling.js@0.0.26/dist/gosling.js"></script>
-    </body>
-    <script>
-      gosling.embed(
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="lightgray" />
+    <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
+</head>
+
+<body>
+    <div id="root" />
+    <script crossorigin type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin type="text/javascript"
+        src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin type="text/javascript" src="https://unpkg.com/pixi.js@5/dist/pixi.js"></script>
+    <script crossorigin type="text/javascript" src="https://unpkg.com/gosling.js@0.9.8/dist/gosling.js"></script>
+</body>
+<script>
+    gosling.embed(
         document.getElementById('root'),
         {
-          "tracks": [
-            {
-              "data": {
-                "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
-                "type": "multivec",
-                "row": "sample",
-                "column": "position",
-                "value": "peak",
-                "categories": ["sample 1", "sample 2", "sample 3", "sample 4"]
-              }
-            }
-          ]
+            "tracks": [
+                {
+                    "data": {
+                        "url": "https://server.gosling-lang.org/api/v1/tileset_info/?d=cistrome-multivec",
+                        "type": "multivec",
+                        "row": "sample",
+                        "column": "position",
+                        "value": "peak",
+                        "categories": ["sample 1", "sample 2", "sample 3", "sample 4"]
+                    },
+                    "mark": "bar",
+                    "x": { "field": "position", "type": "genomic", "axis": "top" },
+                    "y": { "field": "peak", "type": "quantitative" },
+                    "row": { "field": "sample", "type": "nominal" },
+                    "color": { "field": "sample", "type": "nominal", "legend": true }
+                }
+            ]
         }
-      );
-    </script>
+    );
+</script>
+
 </html>
 ```
 
