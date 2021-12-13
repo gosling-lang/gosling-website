@@ -34,6 +34,14 @@ module.exports = {
         },
       }
     },
+    algolia: {
+      appId: 'BH4D9OD16A',
+      // Public API key: it is safe to commit it
+      apiKey: '2433596549fc3097cdfb5d71b22811ab',
+      indexName: 'gosling-lang',
+      // useful for versioned docs
+      // contextualSearch: true,
+    },
     navbar: {
       title: 'Gosling',
       hideOnScroll: false,
