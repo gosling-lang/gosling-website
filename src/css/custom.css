@@ -182,6 +182,7 @@ html[data-theme='light'] .DocSearch {
   --docsearch-footer-shadow: none;
   --docsearch-key-shadow: none;
   --docsearch-key-gradient: none;
+  --docsearch-logo-color: lightgray;
 }
 
 
@@ -208,4 +209,12 @@ html[data-theme='dark'] .DocSearch {
   --docsearch-footer-shadow: none;
   --docsearch-key-shadow: none;
   --docsearch-key-gradient: none;
+  --docsearch-logo-color: lightgray;
+}
+
+/* key in doc search */
+.DocSearch-Commands-Key, .DocSearch-Button-Key  {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
 }
