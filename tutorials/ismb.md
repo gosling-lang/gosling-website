@@ -1,15 +1,15 @@
 ---
 title: Building Interactive Visualizations of Genomics Data with Gosling 
 ---
-## Tutorial at the 30th International Conference on Intelligent Systems for Molecular Biology (ISMB)
+<img src="https://www.iscb.org/images/stories/ismb2022/banner.ISMB2022.png" width="80%" />
 
-## Abstract
+## :pushpin: Abstract
 Most existing genomic visualization tools are tailored toward specific use cases, lacking the generalizability for reuse and expressivity to build interactive visualizations that scale to the diverse data types and analysis tasks in genomics. The **Gosling visualization grammar for genome-mapped data** (http://gosling-lang.org, https://pubmed.ncbi.nlm.nih.gov/34596551) defines primitives that specify how genomics datasets can be transformed and mapped to visual properties, providing building-blocks to compose unique scalable and interactive genomics data visualizations on the web. 
 The **Gos Python library** (https://gosling-lang.github.io/gos/) is designed to enable computational biologists to quickly author Gosling-based visualizations with their own data. 
 
 **In our tutorial, we introduce core concepts of genomic data visualizations and illustrate how they can be applied through hands-on training with Gos in Jupyter Notebooks.**
 
-## Tutorial Info
+## :card_index_dividers: Tutorial Info
 The tutorial will be held at the ISMB 2022 conference, July 10-14, 2022. Details will be announced in Spring 2022.
 ** The tutorial slides and materials for hands-on exercises (e.g., code implementation, datasets) will be posted on this website **.
 
@@ -21,7 +21,7 @@ especially those interested in creating flexible, scalable, and interactive visu
 A basic understanding of genomics data and practical knowledge of Python programming. Some prior experience with technologies like JSON and JavaScript is helpful for the “Applications” session but not required.
 
 
-## Schedule
+## :calendar: Schedule
 
 ### Introduction (40mins)
 - Goal: Understand how Gosling and Gos fit into the computational biology data visualization tool kit.
@@ -77,7 +77,7 @@ A basic understanding of genomics data and practical knowledge of Python program
 
 
 
-## Presenters
+## :speech_balloon: Presenters
 The presenters are the inventors of the Gosling grammar and developers of the Gos library.
 
 - Sehi L’Yi, PhD,
@@ -90,6 +90,6 @@ The presenters are the inventors of the Gosling grammar and developers of the Go
     Associate Professor, Harvard Medical School
 
 
-## Helpful Links
-- [Start & Follow us on Github :link:](https://github.com/gosling-lang)
-- [Read our Gosling Paper :link:](https://osf.io/6evmb/)
+## :link: Helpful Links
+- [Start & Follow us on Github ](https://github.com/gosling-lang)
+- [Read our Gosling Paper ](https://osf.io/6evmb/)
