@@ -14,7 +14,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and 
+        Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and
         by using the rendering and data access capabilities of our <a href="http://higlass.io/">HiGlass</a> genomics visualization framework.
       </>
     ),
@@ -24,7 +24,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data, 
+        Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data,
         which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727">our taxonomy</a> of (epi)genomics data visualizations.
       </>
     ),
@@ -34,14 +34,14 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Gosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking. 
+        Gosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking.
         This enables flexible visualizations that cover a wide range of visual analysis scenarios, like overview + detail views with brushes or comparative views.
       </>
     ),
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
@@ -57,15 +57,15 @@ function Feature({imageUrl, title, description}) {
 }
 
 const dummyGosling = <BrowserOnly>
-{()=>{
-  const { GoslingComponent } = require("gosling.js");
-  return <div className='dummyGosling'><GoslingComponent /></div>
-}}
+  {() => {
+    const { GoslingComponent } = require("gosling.js");
+    return <div className='dummyGosling'><GoslingComponent /></div>
+  }}
 </BrowserOnly>
 
 export default function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
     <Layout
       title="Home"
@@ -74,33 +74,37 @@ export default function Home() {
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted
-              )}
-              to={useBaseUrl('docs/')}>
-              <b>Gosling.js:</b> JavaScript library for Gosling
-            </Link>
-          </div>
-          <div className={styles.buttons}>
-          <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted
-              )}
-              to={'https://gosling-lang.github.io/gos/'}>
-              <b>Gos:</b> Python package for Gosling
-            </Link>
+
+
+          <div className='row'>
+            <div className={clsx(styles.buttons, 'col col--4 col--offset-2')}>
+              <Link
+                className={clsx(
+                  'button button--outline button--secondary button--lg',
+                  styles.getStarted
+                )}
+                to={useBaseUrl('docs/')}>
+                <b>Gosling.js:</b> JavaScript library for Gosling
+              </Link>
+            </div>
+            <div className={clsx(styles.buttons, 'col col--4')}>
+              <Link
+                className={clsx(
+                  'button button--outline button--secondary button--lg',
+                  styles.getStarted
+                )}
+                to={'https://gosling-lang.github.io/gos/'}>
+                <b>Gos:</b> Python package for Gosling
+              </Link>
+            </div>
           </div>
         </div>
       </header>
       <main className={styles.main}>
         <section className={styles.galleryImage}>
           <img className={styles.galleryImage}
-            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png" 
-            alt='gosling_gallery' 
+            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
+            alt='gosling_gallery'
           />
         </section>
         {features && features.length > 0 && (
