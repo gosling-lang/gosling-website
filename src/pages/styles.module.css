@@ -76,3 +76,15 @@
     max-width: 100%;
   }
 }
+
+.floatingNews {
+  
+  background-color: var(--ifm-navbar-background-color);
+  box-shadow: var(--ifm-navbar-shadow);
+  text-align: left;
+  width: 100%;
+  height: 200px;
+  /* border: 1px solid gray; */
+  padding: 5px;
+  overflow-y: scroll;
+}

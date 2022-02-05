@@ -2,7 +2,7 @@ module.exports = {
   tutorials: [
     {
       type: 'doc',
-      label: '🎉 ISMB 2022 tutorial',
+      label: '🎉 ISMB 2022 Tutorial',
       id: "ismb"
     },
     {

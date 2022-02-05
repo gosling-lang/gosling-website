@@ -63,6 +63,19 @@ const dummyGosling = <BrowserOnly>
   }}
 </BrowserOnly>
 
+
+const floatingWindow = <div className={styles.floatingNews}>
+  <h3 style={{ textAlign: 'center' }}>News</h3>
+  <ul>
+    <li>
+      Our tutorial on Gosling has been accepted for ISMB 2022 🎉
+    </li>
+    <li>
+      Gosling won the Best Abstract Award on BioVIS ISMB 2021 🏆
+    </li>
+  </ul>
+</div>
+
 export default function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
@@ -71,33 +84,39 @@ export default function Home() {
       title="Home"
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
+        <div className="row">
+          <div className='col col--8 col--offset-2'>
 
-          <h1 className="hero__title"> <img src={siteConfig.customFields.logo} className={styles.title_logo} /> {siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
+            <h1 className="hero__title"> <img src={siteConfig.customFields.logo} className={styles.title_logo} /> {siteConfig.title}</h1>
+            <p className="hero__subtitle">{siteConfig.tagline}</p>
 
 
-          <div className='row'>
-            <div className={clsx(styles.buttons, 'col col--4 col--offset-2')}>
-              <Link
-                className={clsx(
-                  'button button--outline button--secondary button--lg',
-                  styles.getStarted
-                )}
-                to={useBaseUrl('docs/')}>
-                <b>Gosling.js:</b> JavaScript library for Gosling
-              </Link>
+            <div className='row'>
+              <div className={clsx(styles.buttons, 'col col--6')}>
+                <Link
+                  className={clsx(
+                    'button button--outline button--secondary button--lg',
+                    styles.getStarted
+                  )}
+                  to={useBaseUrl('docs/')}>
+                  <b>Gosling.js:</b> JavaScript library for Gosling
+                </Link>
+              </div>
+              <div className={clsx(styles.buttons, 'col col--6')}>
+                <Link
+                  className={clsx(
+                    'button button--outline button--secondary button--lg',
+                    styles.getStarted
+                  )}
+                  to={'https://gosling-lang.github.io/gos/'}>
+                  <b>Gos:</b> Python package for Gosling
+                </Link>
+              </div>
             </div>
-            <div className={clsx(styles.buttons, 'col col--4')}>
-              <Link
-                className={clsx(
-                  'button button--outline button--secondary button--lg',
-                  styles.getStarted
-                )}
-                to={'https://gosling-lang.github.io/gos/'}>
-                <b>Gos:</b> Python package for Gosling
-              </Link>
-            </div>
+          </div>
+
+          <div className='col col--2 '>
+            {floatingWindow}
           </div>
         </div>
       </header>
@@ -121,6 +140,7 @@ export default function Home() {
         )}
       </main>
       {dummyGosling}
+      {floatingWindow}
     </Layout>
   );
 }
