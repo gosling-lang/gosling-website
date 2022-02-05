@@ -143,7 +143,6 @@ a {
   color: var(--ifm-navbar-link-hover-color);
 }
 
-
 /* propertyTable */
 .propertyTable {
   display: table;
@@ -160,6 +159,10 @@ a {
 
 a.imageBlock span.caption {
   color: black;
+}
+
+.row {
+  width: 100%;
 }
 
 /* doc search style */
@@ -184,6 +187,7 @@ html[data-theme='light'] .DocSearch {
   --docsearch-key-gradient: none;
   --docsearch-logo-color: lightgray;
 }
+
 
 
 html[data-theme='dark'] .DocSearch {

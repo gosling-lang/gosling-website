@@ -6,7 +6,7 @@
  */
 
 .heroBanner {
-  padding: 2rem 0;
+  padding: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -14,9 +14,16 @@
   color: black;
 }
 
+.halfHeader {
+  padding-top: 2em !important;
+  padding-bottom: 2em !important;
+}
+
+
 @media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 1rem;
+  .halfHeader {
+    padding-top: 1em !important;
+  padding-bottom: 1em !important;
   }
 }
 
@@ -78,13 +85,12 @@
 }
 
 .floatingNews {
-  
   background-color: var(--ifm-navbar-background-color);
   box-shadow: var(--ifm-navbar-shadow);
   text-align: left;
-  width: 100%;
-  height: 200px;
-  /* border: 1px solid gray; */
-  padding: 5px;
+  height: 100%;
+  max-height: 280px;
+  padding: 2em;
   overflow-y: scroll;
+  border-bottom: 1px solid #ddd;
 }

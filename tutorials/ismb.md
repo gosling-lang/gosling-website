@@ -18,7 +18,8 @@ The content and exercise in this tutorial are designed to be engaging and access
 This tutorial will be most beneficial for biologists working on genomics-related topics and software developers in bioinformatics, 
 especially those interested in creating flexible, scalable, and interactive visualizations.
 
-A basic understanding of genomics data and practical knowledge of Python programming. Some prior experience with technologies like JSON and JavaScript is helpful for the “Applications” session but not required.
+The audience is expected to have a basic understanding about genomics data and practical knowledge of Python programming. 
+Some prior experience with technologies like JSON and JavaScript is helpful for the “Applications” session but not required.
 
 
 ## :calendar: Schedule
@@ -78,7 +79,7 @@ A basic understanding of genomics data and practical knowledge of Python program
 
 
 ## :speech_balloon: Presenters
-The presenters are the inventors of the Gosling grammar and developers of the Gos library.
+The presenters are the inventors of the Gosling grammar and developers of the Gos library from (Gehlenborg Lab)[http://gehlenborglab.org/].
 
 - Sehi L’Yi, PhD,
     Postdoctoral Research Fellow, Harvard Medical School
