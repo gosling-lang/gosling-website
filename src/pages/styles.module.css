@@ -35,7 +35,7 @@
   background-color: white;
   color: black !important;
   font-weight: 400;
-  margin: 0px 5px;
+  margin: 5px;
 }
 
 .features {
@@ -55,6 +55,10 @@
   max-width: var(--ifm-container-width);
   display: flex;
   align-items: center;
+}
+
+.title_logo {
+  height: 1em;
 }
 
 .main {
