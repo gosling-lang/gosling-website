@@ -10,5 +10,10 @@ module.exports = {
         'create-multi-view-visualization',
       ],
     },
+    {
+      type: 'doc',
+      label: 'ISMB 2022 tutorial',
+      id: "ismb"
+    }
   ],
 };
