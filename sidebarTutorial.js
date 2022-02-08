@@ -1,11 +1,6 @@
 module.exports = {
   tutorials: [
     {
-      type: 'doc',
-      label: '🎉 ISMB 2022 Tutorial',
-      id: "ismb"
-    },
-    {
       type: 'category',
       label: 'Interactive Tutorials',
       collapsed: false,
@@ -15,6 +10,10 @@ module.exports = {
         'create-multi-view-visualization',
       ],
     },
-
+    {
+      type: 'doc',
+      label: 'ISMB 2022 Tutorial 🎉',
+      id: "ismb"
+    }
   ],
 };

@@ -70,9 +70,12 @@ const floatingWindow = <div className={styles.floatingNews}>
     <li>
       Our <a href='http://localhost:3000/tutorials/ismb'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
     </li>
-    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16'>v09.16</a> of Gosling</li>
+    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16'>v0.9.16</a> of Gosling</li>
     <li>
-      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster">Best Abstract Award on BioVIS ISMB 2021</a> 🏆
+      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster">Best Abstract Award at BioVis ISMB 2021</a> 🏆
+    </li>
+    <li>
+      Our first paper about <a hre="http://localhost:3000/docs/">Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions">VIS 2021</a> and will be published to IEEE TVCG.
     </li>
   </ul>
 </div>

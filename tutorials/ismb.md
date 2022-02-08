@@ -1,17 +1,17 @@
 ---
 title: Building Interactive Visualizations of Genomics Data with Gosling 
 ---
-<img src="https://www.iscb.org/images/stories/ismb2022/banner.ISMB2022.png" width="80%" />
+<img src="https://www.iscb.org/images/stories/ismb2022/banner.ISMB2022.png" width="100%" />
 
-## :pushpin: Abstract
+## Abstract :pushpin:
 Most existing genomic visualization tools are tailored toward specific use cases, lacking the generalizability for reuse and expressivity to build interactive visualizations that scale to the diverse data types and analysis tasks in genomics. The **Gosling visualization grammar for genome-mapped data** (http://gosling-lang.org, https://pubmed.ncbi.nlm.nih.gov/34596551) defines primitives that specify how genomics datasets can be transformed and mapped to visual properties, providing building-blocks to compose unique scalable and interactive genomics data visualizations on the web. 
 The **Gos Python library** (https://gosling-lang.github.io/gos/) is designed to enable computational biologists to quickly author Gosling-based visualizations with their own data. 
 
 **In our tutorial, we introduce core concepts of genomic data visualizations and illustrate how they can be applied through hands-on training with Gos in Jupyter Notebooks.**
 
-## :card_index_dividers: Tutorial Info
-The tutorial will be held at the ISMB 2022 conference, July 10-14, 2022. Details will be announced in Spring 2022.
-** The tutorial slides and materials for hands-on exercises (e.g., code implementation, datasets) will be posted on this website **.
+## Tutorial Info :card_index_dividers:
+The tutorial will be held at the ISMB 2022 conference, July 10-14, 2022. Details will be announced in spring 2022.
+** The tutorial slides and materials for hands-on exercises (e.g., code implementation, datasets) will be posted on this website**.
 
 
 The content and exercise in this tutorial are designed to be engaging and accessible to a broad audience ranging from visualization beginners to experts. 
@@ -22,7 +22,7 @@ The audience is expected to have a basic understanding about genomics data and p
 Some prior experience with technologies like JSON and JavaScript is helpful for the “Applications” session but not required.
 
 
-## :calendar: Schedule
+## Schedule :calendar:
 
 ### Introduction (40mins)
 - Goal: Understand how Gosling and Gos fit into the computational biology data visualization tool kit.
@@ -37,7 +37,7 @@ Some prior experience with technologies like JSON and JavaScript is helpful for 
 - Goal: Understand expressive encoding in Gosling
 - Time: 14:40 - 15:15
 - Examples: 
-    -BigWig tracks
+    - BigWig tracks
     - Multivec tracks
     - Genome interaction matrix
 
@@ -78,19 +78,19 @@ Some prior experience with technologies like JSON and JavaScript is helpful for 
 
 
 
-## :speech_balloon: Presenters
-The presenters are the inventors of the Gosling grammar and developers of the Gos library from (Gehlenborg Lab)[http://gehlenborglab.org/].
+## Presenters :speech_balloon:
+The presenters are the inventors of the Gosling grammar and developers of the Gos library from [Gehlenborg Lab](http://gehlenborglab.org/).
 
-- Sehi L’Yi, PhD,
+- [Sehi L’Yi](https://twitter.com/sehi_lyi),
     Postdoctoral Research Fellow, Harvard Medical School
-- Trevor Manz,
+- [Trevor Manz](https://twitter.com/trevmanz),
     PhD Student, Harvard Medical School
-- Qianwen Wang, PhD,
+- [Qianwen Wang](https://twitter.com/WangQianwenToo)
     Postdoctoral Research Fellow, Harvard Medical School
-- Nils Gehlenborg, PhD,
+- [Nils Gehlenborg](https://twitter.com/ngehlenborg)
     Associate Professor, Harvard Medical School
 
 
-## :link: Helpful Links
+## Helpful Links :link:
 - [Start & Follow us on Github ](https://github.com/gosling-lang)
 - [Read our Gosling Paper ](https://osf.io/6evmb/)
