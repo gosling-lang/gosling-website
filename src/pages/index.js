@@ -14,7 +14,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and 
+        Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and
         by using the rendering and data access capabilities of our <a href="http://higlass.io/">HiGlass</a> genomics visualization framework.
       </>
     ),
@@ -24,7 +24,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data, 
+        Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data,
         which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727">our taxonomy</a> of (epi)genomics data visualizations.
       </>
     ),
@@ -34,14 +34,14 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Gosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking. 
+        Gosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking.
         This enables flexible visualizations that cover a wide range of visual analysis scenarios, like overview + detail views with brushes or comparative views.
       </>
     ),
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
@@ -57,24 +57,42 @@ function Feature({imageUrl, title, description}) {
 }
 
 const dummyGosling = <BrowserOnly>
-{()=>{
-  const { GoslingComponent } = require("gosling.js");
-  return <div className='dummyGosling'><GoslingComponent /></div>
-}}
+  {() => {
+    const { GoslingComponent } = require("gosling.js");
+    return <div className='dummyGosling'><GoslingComponent /></div>
+  }}
 </BrowserOnly>
+
+
+const floatingWindow = <div className={styles.floatingNews}>
+  <h3 style={{ textAlign: 'center' }}>News</h3>
+  <ul>
+    <li>
+      Our <a href='http://localhost:3000/tutorials/ismb'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
+    </li>
+    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16'>v0.9.16</a> of Gosling</li>
+    <li>
+      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster">Best Abstract Award at BioVis ISMB 2021</a> 🏆
+    </li>
+    <li>
+      Our first paper about <a hre="http://localhost:3000/docs/">Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions">VIS 2021</a> and will be published to IEEE TVCG.
+    </li>
+  </ul>
+</div>
 
 export default function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
     <Layout
       title="Home"
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
+        <div className="row row--no-gutters">
+          <div className={clsx('col col--8 col--offset-2', styles.halfHeader)}>
+            <h1 className="hero__title"> <img src={siteConfig.customFields.logo} className={styles.title_logo} /> {siteConfig.title}</h1>
+            <p className="hero__subtitle">{siteConfig.tagline}</p>
+
             <Link
               className={clsx(
                 'button button--outline button--secondary button--lg',
@@ -83,9 +101,8 @@ export default function Home() {
               to={useBaseUrl('docs/')}>
               <b>Gosling.js:</b> JavaScript library for Gosling
             </Link>
-          </div>
-          <div className={styles.buttons}>
-          <Link
+
+            <Link
               className={clsx(
                 'button button--outline button--secondary button--lg',
                 styles.getStarted
@@ -94,13 +111,17 @@ export default function Home() {
               <b>Gos:</b> Python package for Gosling
             </Link>
           </div>
+
+          <div className='col col--2 padding--none'>
+            {floatingWindow}
+          </div>
         </div>
       </header>
       <main className={styles.main}>
         <section className={styles.galleryImage}>
           <img className={styles.galleryImage}
-            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png" 
-            alt='gosling_gallery' 
+            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
+            alt='gosling_gallery'
           />
         </section>
         {features && features.length > 0 && (
@@ -115,7 +136,7 @@ export default function Home() {
           </section>
         )}
       </main>
-      {dummyGosling}
-    </Layout>
+      { }
+    </Layout >
   );
 }

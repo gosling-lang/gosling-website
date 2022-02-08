@@ -56,10 +56,10 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'tutorials/', label: 'Tutorials', position: 'left'},
-        {to: 'examples/', label: 'Examples', position: 'left'},
-        {to: 'themes/', label: 'Themes', position: 'left'},
-        {to: 'about/', label: 'About', position: 'left'},
+        { to: 'tutorials/', label: 'Tutorials', position: 'left' },
+        { to: 'examples/', label: 'Examples', position: 'left' },
+        { to: 'themes/', label: 'Themes', position: 'left' },
+        { to: 'about/', label: 'About', position: 'left' },
         {
           href: 'https://github.com/gosling-lang/gosling.js/issues/new/choose',
           label: 'Questions & Suggestions',
@@ -142,10 +142,10 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Harvard. Built with Docusaurus.`,
     },
     metadatas: [
-      {name: 'twitter:card', content: 'summary'},
-      {name: "twitter:title", content: "Gosling"},
-      {name: 'twitter:description', content: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization'},
-      {name: 'twitter:image', content: 'https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png'}
+      { name: 'twitter:card', content: 'summary' },
+      { name: "twitter:title", content: "Gosling" },
+      { name: 'twitter:description', content: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization' },
+      { name: 'twitter:image', content: 'https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png' }
     ],
     gtag: {
       trackingID: 'UA-96954979-4',
@@ -184,7 +184,7 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id:'tutorials',
+        id: 'tutorials',
         path: 'tutorials/',
         sidebarPath: require.resolve('./sidebarTutorial.js'),
         routeBasePath: 'tutorials',
@@ -193,6 +193,7 @@ module.exports = {
     ],
   ],
   customFields: {
+    logo: 'img/gosling-dark.png',
     examples: require('./assets/example-list'),
     themes: require('./assets/theme-list'),
   }

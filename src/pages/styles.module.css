@@ -6,7 +6,7 @@
  */
 
 .heroBanner {
-  padding: 2rem 0;
+  padding: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -14,9 +14,16 @@
   color: black;
 }
 
+.halfHeader {
+  padding-top: 2em !important;
+  padding-bottom: 2em !important;
+}
+
+
 @media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 1rem;
+  .halfHeader {
+    padding-top: 1em !important;
+  padding-bottom: 1em !important;
   }
 }
 
@@ -35,6 +42,7 @@
   background-color: white;
   color: black !important;
   font-weight: 400;
+  margin: 5px;
 }
 
 .features {
@@ -56,6 +64,10 @@
   align-items: center;
 }
 
+.title_logo {
+  height: 1em;
+}
+
 .main {
   margin-top: 24px;
 }
@@ -70,4 +82,28 @@
   .galleryImage{
     max-width: 100%;
   }
+}
+
+.floatingNews {
+  background-color: var(--ifm-navbar-background-color);
+  /* box-shadow: var(--ifm-navbar-shadow); */
+  color: #404040;
+  font-size: small;
+  text-align: left;
+  height: 100%;
+  /* max-height: 280px; */
+  padding: 2em 1em;
+  overflow-y: scroll;
+  border-bottom: 1px solid #ddd;
+  /* border-left: 1px solid white; */
+}
+
+.floatingNews ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.floatingNews li {
+  margin-top: 10px;
 }
