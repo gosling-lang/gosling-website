@@ -85,7 +85,7 @@
 }
 
 .floatingNews {
-  /* background-color: var(--ifm-navbar-background-color); */
+  background-color: var(--ifm-navbar-background-color);
   /* box-shadow: var(--ifm-navbar-shadow); */
   color: #404040;
   font-size: small;
@@ -94,7 +94,7 @@
   /* max-height: 280px; */
   padding: 2em 1em;
   overflow-y: scroll;
-  /* border-bottom: 1px solid #ddd; */
+  border-bottom: 1px solid #ddd;
   /* border-left: 1px solid white; */
 }
 
