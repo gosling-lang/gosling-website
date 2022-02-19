@@ -68,7 +68,7 @@ const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
     <li>
-      Our <a href='http://localhost:3000/tutorials/ismb'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
+      Our <a href='http://gosling-lang.org/tutorials/ismb'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
     </li>
     <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16'>v0.9.16</a> of Gosling</li>
     <li>
