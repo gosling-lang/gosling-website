@@ -20,6 +20,7 @@
     "@docusaurus/plugin-google-gtag": "^2.0.0-beta.3",
     "@docusaurus/preset-classic": "^2.0.0-beta.3",
     "@mdx-js/react": "^1.6.21",
+    "antd": "^4.19.5",
     "clsx": "^1.1.1",
     "gosling-theme": "^0.0.10",
     "gosling.js": "0.8.7",

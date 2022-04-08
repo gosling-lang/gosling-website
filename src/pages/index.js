@@ -8,6 +8,12 @@ import styles from './styles.module.css';
 
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
+import { Carousel } from 'antd';
+import 'antd/dist/antd.css';
+
+
+
+
 const features = [
   {
     title: 'Scalability',
@@ -118,12 +124,26 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        <section className={styles.galleryImage}>
+        {/* <section className={styles.galleryImage}>
           <img className={styles.galleryImage}
             src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
             alt='gosling_gallery'
           />
-        </section>
+        </section> */}
+        <Carousel autoplay>
+          <div>
+            <h3 className={styles.carouselContent}>1</h3>
+          </div>
+          <div>
+            <h3 className={styles.carouselContent}>2</h3>
+          </div>
+          <div>
+            <h3 className={styles.carouselContent}>3</h3>
+          </div>
+          <div>
+            <h3 className={styles.carouselContent}>4</h3>
+          </div>
+        </Carousel>,
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="container">
