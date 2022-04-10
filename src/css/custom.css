@@ -222,3 +222,15 @@ html[data-theme='dark'] .DocSearch {
   padding: 0 !important;
   top: 0 !important;
 }
+
+
+/* carousel */
+
+.ant-carousel .slick-dots-bottom {
+  bottom: -20px !important;
+}
+
+.ant-carousel .slick-dots li button{
+  /* background-color: var(--ifm-color-primary) !important; */
+  background-color: #ccc !important;
+}

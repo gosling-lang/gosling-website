@@ -87,6 +87,50 @@ const floatingWindow = <div className={styles.floatingNews}>
   </ul>
 </div>
 
+
+const carousel = <Carousel autoplay autoplaySpeed={7000}>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='/examples' target='_blank'>
+      <img className={styles.galleryImage}
+        src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
+        alt='gosling_gallery'
+      />
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='/examples' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/multi_views.gif"
+        alt='gosling_overview'
+      />
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='/examples' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/circos-layout.gif"
+        alt='gosling_layout'
+      />
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='/examples' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/lollipop.gif"
+        alt='gosling_lollipop'
+      />
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='/examples' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/matrix.gif"
+        alt='gosling_matrix'
+      />
+    </a>
+  </div>
+</Carousel>
+
 export default function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
@@ -125,26 +169,8 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        {/* <section className={styles.galleryImage}>
-         
-        </section> */}
-        <Carousel >
-          <div className={styles.carouselContent}>
-            <img className={styles.galleryImage}
-              src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
-              alt='gosling_gallery'
-            />
-          </div>
-          <div className={styles.carouselContent}>
-            <h3 className={styles.carouselContent}>2</h3>
-          </div>
-          <div className={styles.carouselContent}>
-            <h3 className={styles.carouselContent}>3</h3>
-          </div>
-          <div className={styles.carouselContent}>
-            <h3 className={styles.carouselContent}>4</h3>
-          </div>
-        </Carousel>,
+        {carousel}
+
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="container">
