@@ -9,6 +9,7 @@ import styles from './styles.module.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import { Carousel } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
 
@@ -94,7 +95,7 @@ export default function Home() {
       title="Home"
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="row row--no-gutters">
+        <div className={clsx("row row--no-gutters", styles.header)}>
           <div className={clsx('col col--8 col--offset-2', styles.halfHeader)}>
             <h1 className="hero__title"> <img src={siteConfig.customFields.logo} className={styles.title_logo} /> {siteConfig.title}</h1>
             <p className="hero__subtitle">{siteConfig.tagline}</p>
@@ -125,22 +126,22 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         {/* <section className={styles.galleryImage}>
-          <img className={styles.galleryImage}
-            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
-            alt='gosling_gallery'
-          />
+         
         </section> */}
-        <Carousel autoplay>
-          <div>
-            <h3 className={styles.carouselContent}>1</h3>
+        <Carousel >
+          <div className={styles.carouselContent}>
+            <img className={styles.galleryImage}
+              src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
+              alt='gosling_gallery'
+            />
           </div>
-          <div>
+          <div className={styles.carouselContent}>
             <h3 className={styles.carouselContent}>2</h3>
           </div>
-          <div>
+          <div className={styles.carouselContent}>
             <h3 className={styles.carouselContent}>3</h3>
           </div>
-          <div>
+          <div className={styles.carouselContent}>
             <h3 className={styles.carouselContent}>4</h3>
           </div>
         </Carousel>,
