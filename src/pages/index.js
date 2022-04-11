@@ -9,7 +9,6 @@ import styles from './styles.module.css';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import { Carousel } from 'antd';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
 
@@ -52,11 +51,6 @@ function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
-      {/* {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
-        </div>
-      )} */}
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
