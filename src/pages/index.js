@@ -76,7 +76,7 @@ const floatingWindow = <div className={styles.floatingNews}>
       Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster" class='primary-color'>Best Abstract Award at BioVis ISMB 2021</a> 🏆
     </li>
     <li>
-      Our first paper about <a hre="http://localhost:3000/docs/" class='primary-color'>Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions" class='primary-color'>VIS 2021</a> and will be published to IEEE TVCG.
+      Our first paper about <a hre="https://osf.io/6evmb/" class='primary-color'>Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions" class='primary-color'>VIS 2021</a> and will be published to IEEE TVCG.
     </li>
   </ul>
 </div>
