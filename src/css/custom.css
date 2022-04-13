@@ -123,7 +123,11 @@ a {
   font-weight: 600;
 }
 
-a.primary-color {
+a.primary-color, a.pagination-nav__link {
+  color: var(--ifm-color-primary);
+}
+
+div.markdown a {
   color: var(--ifm-color-primary);
 }
 
