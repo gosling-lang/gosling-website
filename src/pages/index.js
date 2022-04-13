@@ -92,7 +92,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
     </a>
   </div>
   <div className={styles.carouselContent}>
-    <a className={styles.carouselContent} href='/examples' target='_blank'>
+    <a className={styles.carouselContent} href='https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL' target='_blank'>
       <img className={styles.galleryImage}
         src="/img/example/multi_views.gif"
         alt='gosling_overview'
@@ -100,7 +100,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
     </a>
   </div>
   <div className={styles.carouselContent}>
-    <a className={styles.carouselContent} href='/examples' target='_blank'>
+    <a className={styles.carouselContent} href='https://gosling.js.org/?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL' target='_blank'>
       <img className={styles.galleryImage}
         src="/img/example/circos-layout.gif"
         alt='gosling_layout'
@@ -108,7 +108,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
     </a>
   </div>
   <div className={styles.carouselContent}>
-    <a className={styles.carouselContent} href='/examples' target='_blank'>
+    <a className={styles.carouselContent} href='https://gosling.js.org/?example=SEMANTIC_ZOOM' target='_blank'>
       <img className={styles.galleryImage}
         src="/img/example/lollipop.gif"
         alt='gosling_lollipop'
@@ -116,7 +116,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
     </a>
   </div>
   <div className={styles.carouselContent}>
-    <a className={styles.carouselContent} href='/examples' target='_blank'>
+    <a className={styles.carouselContent} href='https://gosling.js.org/?example=MATRIX_HFFC6' target='_blank'>
       <img className={styles.galleryImage}
         src="/img/example/matrix.gif"
         alt='gosling_matrix'
