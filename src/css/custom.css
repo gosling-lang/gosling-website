@@ -239,6 +239,8 @@ html[data-theme='dark'] .DocSearch {
 }
 
 .ant-carousel .slick-dots li button{
-  /* background-color: var(--ifm-color-primary) !important; */
-  background-color: #ccc !important;
+  background-color: var(--ifm-color-primary) !important;
+  /* background-color: #ccc !important; */
+  height: 10px !important;
+  border-radius: 10px !important;
 }
