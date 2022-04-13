@@ -22,7 +22,7 @@ const features = [
     description: (
       <>
         Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and
-        by using the rendering and data access capabilities of our <a href="http://higlass.io/">HiGlass</a> genomics visualization framework.
+        by using the rendering and data access capabilities of our <a href="http://higlass.io/" class='primary-color'>HiGlass</a> genomics visualization framework.
       </>
     ),
   },
@@ -32,7 +32,7 @@ const features = [
     description: (
       <>
         Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data,
-        which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727">our taxonomy</a> of (epi)genomics data visualizations.
+        which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727" class='primary-color'>our taxonomy</a> of (epi)genomics data visualizations.
       </>
     ),
   },
@@ -75,14 +75,14 @@ const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
     <li>
-      Our <a href='http://gosling-lang.org/tutorials/ismb'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
+      Our <a href='http://gosling-lang.org/tutorials/ismb' class='primary-color'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
     </li>
-    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16'>v0.9.16</a> of Gosling</li>
+    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16' class='primary-color'>v0.9.16</a> of Gosling</li>
     <li>
-      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster">Best Abstract Award at BioVis ISMB 2021</a> 🏆
+      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster" class='primary-color'>Best Abstract Award at BioVis ISMB 2021</a> 🏆
     </li>
     <li>
-      Our first paper about <a hre="http://localhost:3000/docs/">Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions">VIS 2021</a> and will be published to IEEE TVCG.
+      Our first paper about <a hre="http://localhost:3000/docs/" class='primary-color'>Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions" class='primary-color'>VIS 2021</a> and will be published to IEEE TVCG.
     </li>
   </ul>
 </div>
