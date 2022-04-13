@@ -89,6 +89,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
         src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
         alt='gosling_gallery'
       />
+      <span className={styles.carouselTitle}>Example Gallery</span>
     </a>
   </div>
   <div className={styles.carouselContent}>
@@ -97,6 +98,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
         src="/img/example/multi_views.gif"
         alt='gosling_overview'
       />
+      <span className={styles.carouselTitle}>Link and Brush</span>
     </a>
   </div>
   <div className={styles.carouselContent}>
@@ -105,14 +107,16 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
         src="/img/example/circos-layout.gif"
         alt='gosling_layout'
       />
+      <span className={styles.carouselTitle}>Easy Layout</span>
     </a>
   </div>
   <div className={styles.carouselContent}>
     <a className={styles.carouselContent} href='https://gosling.js.org/?example=SEMANTIC_ZOOM' target='_blank'>
       <img className={styles.galleryImage}
-        src="/img/example/lollipop.gif"
+        src="/img/example/semantic_zoom_lollipop.gif"
         alt='gosling_lollipop'
       />
+      <span className={styles.carouselTitle}>Semantic Zoom</span>
     </a>
   </div>
   <div className={styles.carouselContent}>
@@ -121,6 +125,7 @@ const carousel = <Carousel autoplay autoplaySpeed={7000}>
         src="/img/example/matrix.gif"
         alt='gosling_matrix'
       />
+      <span className={styles.carouselTitle}>Comparative Matrices</span>
     </a>
   </div>
 </Carousel>
