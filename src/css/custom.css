@@ -123,6 +123,14 @@ a {
   font-weight: 600;
 }
 
+a.primary-color, a.pagination-nav__link {
+  color: var(--ifm-color-primary);
+}
+
+div.markdown a {
+  color: var(--ifm-color-primary);
+}
+
 .gosling-container {
   width:100%;
   border: solid 1px lightgray; 
@@ -221,4 +229,18 @@ html[data-theme='dark'] .DocSearch {
   margin: 0 !important;
   padding: 0 !important;
   top: 0 !important;
+}
+
+
+/* carousel */
+
+.ant-carousel .slick-dots-bottom {
+  bottom: -20px !important;
+}
+
+.ant-carousel .slick-dots li button{
+  background-color: var(--ifm-color-primary) !important;
+  /* background-color: #ccc !important; */
+  height: 10px !important;
+  border-radius: 10px !important;
 }

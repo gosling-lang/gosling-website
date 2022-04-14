@@ -8,6 +8,12 @@ import styles from './styles.module.css';
 
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
+import { Carousel } from 'antd';
+import 'antd/dist/antd.css';
+
+
+
+
 const features = [
   {
     title: 'Scalability',
@@ -15,7 +21,7 @@ const features = [
     description: (
       <>
         Gosling scales from whole genomes to single nucleotides via semantic zooming that updates visual encodings dynamically and
-        by using the rendering and data access capabilities of our <a href="http://higlass.io/">HiGlass</a> genomics visualization framework.
+        by using the rendering and data access capabilities of our <a href="http://higlass.io/" class='primary-color'>HiGlass</a> genomics visualization framework.
       </>
     ),
   },
@@ -25,7 +31,7 @@ const features = [
     description: (
       <>
         Gosling is designed to be expressive enough to generate pretty much any visualization of genome-mapped data,
-        which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727">our taxonomy</a> of (epi)genomics data visualizations.
+        which we accomplished by basing the grammar on <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.13727" class='primary-color'>our taxonomy</a> of (epi)genomics data visualizations.
       </>
     ),
   },
@@ -45,11 +51,6 @@ function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
-      {/* {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
-        </div>
-      )} */}
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
@@ -68,17 +69,66 @@ const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
     <li>
-      Our <a href='http://gosling-lang.org/tutorials/ismb'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
+      Our <a href='http://gosling-lang.org/tutorials/ismb' class='primary-color'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
     </li>
-    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16'>v0.9.16</a> of Gosling</li>
+    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16' class='primary-color'>v0.9.16</a> of Gosling</li>
     <li>
-      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster">Best Abstract Award at BioVis ISMB 2021</a> 🏆
+      Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster" class='primary-color'>Best Abstract Award at BioVis ISMB 2021</a> 🏆
     </li>
     <li>
-      Our first paper about <a hre="http://localhost:3000/docs/">Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions">VIS 2021</a> and will be published to IEEE TVCG.
+      Our first paper about <a hre="https://osf.io/6evmb/" class='primary-color'>Gosling.js</a> has been presented at <a href="http://ieeevis.org/year/2021/info/papers-sessions" class='primary-color'>VIS 2021</a> and will be published to IEEE TVCG.
     </li>
   </ul>
 </div>
+
+
+const carousel = <Carousel autoplay autoplaySpeed={7000}>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='/examples' target='_blank'>
+      <img className={styles.galleryImage}
+        src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
+        alt='gosling_gallery'
+      />
+      <span className={styles.carouselTitle}>Example Gallery</span>
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/multi_views.gif"
+        alt='gosling_overview'
+      />
+      <span className={styles.carouselTitle}>Link and Brush</span>
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='https://gosling.js.org/?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/circos-layout.gif"
+        alt='gosling_layout'
+      />
+      <span className={styles.carouselTitle}>Easy Layout</span>
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='https://gosling.js.org/?example=SEMANTIC_ZOOM' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/semantic_zoom_lollipop.gif"
+        alt='gosling_lollipop'
+      />
+      <span className={styles.carouselTitle}>Semantic Zoom</span>
+    </a>
+  </div>
+  <div className={styles.carouselContent}>
+    <a className={styles.carouselContent} href='https://gosling.js.org/?example=MATRIX_HFFC6' target='_blank'>
+      <img className={styles.galleryImage}
+        src="/img/example/matrix.gif"
+        alt='gosling_matrix'
+      />
+      <span className={styles.carouselTitle}>Comparative Matrices</span>
+    </a>
+  </div>
+</Carousel>
 
 export default function Home() {
   const context = useDocusaurusContext();
@@ -88,7 +138,7 @@ export default function Home() {
       title="Home"
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="row row--no-gutters">
+        <div className={clsx("row row--no-gutters", styles.header)}>
           <div className={clsx('col col--8 col--offset-2', styles.halfHeader)}>
             <h1 className="hero__title"> <img src={siteConfig.customFields.logo} className={styles.title_logo} /> {siteConfig.title}</h1>
             <p className="hero__subtitle">{siteConfig.tagline}</p>
@@ -118,12 +168,8 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        <section className={styles.galleryImage}>
-          <img className={styles.galleryImage}
-            src="https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png"
-            alt='gosling_gallery'
-          />
-        </section>
+        {carousel}
+
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="container">
