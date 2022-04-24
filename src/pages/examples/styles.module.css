@@ -54,7 +54,8 @@
 }
 
 .galleryExample{
-  height: 400px;
+  height: 15vw;
+  padding: 10px 8px;
 }
 
 .featureImage:hover {
@@ -63,4 +64,23 @@
 
 h3 {
   margin: 0px;
+}
+
+.floatingSiderbar{
+  position: fixed;
+  overflow-y: auto;
+  height: 100vh;
+  background-color: white;
+}
+
+.subgroupli {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.invisibleAnchor{
+  display: block;
+  position: relative;
+  top: -10vh;
+  visibility: hidden;
 }

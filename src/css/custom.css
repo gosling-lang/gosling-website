@@ -171,6 +171,7 @@ a.imageBlock span.caption {
 
 .row {
   width: 100%;
+  margin: 0px;
 }
 
 /* doc search style */
