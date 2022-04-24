@@ -1,3 +1,5 @@
+const thumbnailURL = "https://raw.githubusercontent.com/gosling-lang/gosling.js/da5a0c65b384f7ad13f149e386a4238711517162/editor/example/thumbnails/"
+
 module.exports = {
   basicExamples: {
     name: "Basic Marks",
@@ -37,6 +39,18 @@ module.exports = {
         imageUrl: "/img/doc_images/text_example.png",
         url: "https://gosling-lang.github.io/gosling.js/?example=doc_text",
         description: ""
+      },
+      {
+        title: "Rule Marks",
+        imageUrl: `${thumbnailURL}RULE.png`,
+        url: "https://gosling-lang.github.io/gosling.js/?example=RULE",
+        description: ""
+      },
+      {
+        title: "Band Connections",
+        imageUrl: `${thumbnailURL}BAND.png`,
+        url: "https://gosling-lang.github.io/gosling.js/?example=BAND",
+        description: ""
       }
     ]
   },
@@ -44,19 +58,19 @@ module.exports = {
     name: "Interactive Visualizations",
     list: [
       {
-        title: "Overview + Details",
+        title: "Brushing + Linking",
         imageUrl: "/img/example/multi_views.gif",
         url: "https://gosling.js.org?example=CIRCULAR_OVERVIEW_LINEAR_DETAIL",
         description: ""
       },
       {
-        title: "Multi-Scale Sequence Plot",
-        imageUrl: "./img/example/semantic-zoom-sequence.png",
-        url: "https://gosling.js.org?example=SEMANTIC_ZOOM",
+        title: "Semantic Zoom in Sequence Plot",
+        imageUrl: `${thumbnailURL}SEQUENCE.gif`,
+        url: "https://gosling.js.org?example=SEQUENCE",
         description: ""
       },
       {
-        title: "Multi-Scale Lollipop Plot",
+        title: "Semantic Zoom in Lollipop Plot",
         imageUrl: "./img/example/semantic-zoom-lollipop.png",
         url: "https://gosling.js.org?example=SEMANTIC_ZOOM",
         description: ""
@@ -66,12 +80,6 @@ module.exports = {
   advancedExamples: {
     name: "Compositive Visualizations",
     list: [
-      {
-        title: "Comparative Matrices",
-        imageUrl: "./img/example/matrix.png",
-        url: "https://gosling.js.org?example=MATRIX_HFFC6",
-        description: ""
-      },
       {
         title: "Gene Annotations",
         imageUrl: "./img/example/glyph.png",
@@ -95,17 +103,46 @@ module.exports = {
         imageUrl: "./img/example/Ideograms.png",
         url: "https://gosling.js.org?example=CYTOBANDS",
         description: ""
+      },
+    ]
+  },
+  multiViewExamples: {
+    name: 'Multi-view Visualizations',
+    list: [
+      {
+        title: "Comparative Matrices",
+        imageUrl: `${thumbnailURL}MATRIX_HFFC6.gif`,
+        url: "https://gosling.js.org?example=MATRIX_HFFC6",
+        description: ""
+      },
+      {
+        title: "Linked Views",
+        imageUrl: `${thumbnailURL}LINKING.gif`,
+        url: "https://gosling.js.org?example=LINKING",
+        description: ''
+      },
+      {
+        title: "Matrix with Annotations",
+        imageUrl: `${thumbnailURL}MATRIX.png`,
+        url: "https://gosling.js.org?example=MATRIX",
+        description: ''
       }
     ]
   },
   gallery: {
-    name: "Gallery",
+    name: "Application Gallery",
     list: [
       {
         title: "Circos",
         imageUrl: "./img/example/Circos.png",
         url: "https://gosling.js.org?example=CIRCOS",
         description: "Circos-like Visualization"
+      },
+      {
+        title: "Sashimi Plot",
+        imageUrl: `${thumbnailURL}SASHIMI_PLOT.png`,
+        url: "https://gosling.js.org?example=SASHIMI_PLOT",
+        description: 'Reproduce the <a href="https://software.broadinstitute.org/software/igv/Sashimi">Sashimi Plot in IGV</a>'
       },
       {
         title: "Breast Cancer Variant",
@@ -122,7 +159,7 @@ module.exports = {
       {
         title: "SARS-CoV-2",
         imageUrl: "./img/example/SARS-CoV-2.png",
-        url: "https://gosling.js.org?example=SARS_CoV_2",
+        url: "https://gosling.js.org?example=SARS_COV_2",
         description: "WashU Virus Genome Browser, NCBI, GISAID"
       },
       {
@@ -130,6 +167,18 @@ module.exports = {
         imageUrl: "./img/example/GREMLIN.png",
         url: "https://gosling.js.org?example=GREMLIN",
         description: "O'Brien et al. 2010"
+      },
+      {
+        title: "Alignment Chart",
+        imageUrl: `${thumbnailURL}ALIGNMENT.png`,
+        url: "https://gosling.js.org?example=ALIGNMENT",
+        description: "Reproduce the <a href='https://dash.plotly.com/dash-bio/alignmentchart'>alignment chart in ploty</a>"
+      },
+      {
+        title: "BAM file pileup tracks",
+        imageUrl: `${thumbnailURL}BAM_PILEUP.png`,
+        url: "https://gosling.js.org?example=BAM_PILEUP",
+        description: "Pileup Track Using BAM Data"
       }
     ]
   }
