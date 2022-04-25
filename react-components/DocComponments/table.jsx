@@ -73,7 +73,7 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
         }
       }
 
-      
+
 
 
       return <tr key={key}>
@@ -170,7 +170,8 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
     /** if the number of properties is less than 3 or if the property do not have a type name */
     if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length < 3 || propertyName == '')) {
       pType = 'object'
-      notes.push(`Each object follows the format \`${obj2str(propertyInfo, GoslingSchema)}\``)
+      const { objNotes, otherNotes } = obj2str(propertyInfo, GoslingSchema)
+      notes.push(`Each object follows the format \`${objNotes}\` (${otherNotes})`)
 
     }
     // type is {[key: string]: xxx}
@@ -214,8 +215,11 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
  */
 const obj2str = (defs, GoslingSchema) => {
   var objString = {}
-  Object.keys(defs['properties']).forEach((k) =>
-    objString[k] = parsePType(defs['properties'][k], [], '', GoslingSchema)['pType']
-  )
-  return JSON.stringify(objString)
+  var all_notes = []
+  Object.keys(defs['properties']).forEach((k) => {
+    const { pType, notes } = parsePType(defs['properties'][k], [], '', GoslingSchema)
+    objString[k] = pType
+    all_notes.push(notes)
+  })
+  return { objNotes: `${JSON.stringify(objString)}`, otherNotes: `${all_notes.join(' ')}` }
 }

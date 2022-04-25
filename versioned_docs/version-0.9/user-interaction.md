@@ -48,7 +48,9 @@ This id is assigned to a `track` through the `x.linkingId` property, and assigne
       "mark": "rect",
       "x": {
         ..., // other properties of x channel
+        // highlight-start
         "linkingId": "a unique string" // assign a linking id for the track A
+        // highlight-end
       }
     },
     // track B
@@ -57,7 +59,9 @@ This id is assigned to a `track` through the `x.linkingId` property, and assigne
       "mark": "point",
       "x": {
         ..., // other properties of x channel
-        "linkingId": "a unique string" // the same linking id links track A and track B
+        // highlight-start
+        "linkingId": "a unique string" // links track A and track B
+        // highlight-end
       }
     },
     ... // other tracks
@@ -71,20 +75,26 @@ This id is assigned to a `track` through the `x.linkingId` property, and assigne
   "views": [
     {
       // view A
+      // highlight-start
       "linkingId": "detail",
+      // highlight-end
       ....
     },
     {
       // view B
+      // highlight-start
       "linkingId": "detail",
+      // highlight-end
       ....
     },
     {
       // view C
       "tracks":[
         {
+          // highlight-start
           // this track wil be linked to view A and view B
           "x": {"linkingId": "detail", ...}, 
+          // highlight-end
           ...
         },
         {...} // without the linkingId, this track will not be linked
@@ -113,8 +123,11 @@ Users can use **brushing** to select a subset of the data items using a rectangl
       "tracks": [
         {}, // this dummy object cannot be removed
         {
-          "mark": "rect-brush", 
-          "x": {"linkingId": "linking-with-brush"}, // assign a unique id to the brush
+          // highlight-start
+          "mark": "brush", 
+          // assign a unique id to the brush
+          "x": {"linkingId": "linking-with-brush"}, 
+          // highlight-end
           "color": {"value":"steelBlue"}
         }
       ]
@@ -125,7 +138,10 @@ Users can use **brushing** to select a subset of the data items using a rectangl
       "mark": "point",
       "x": {
         ..., // other properties of x channel
-        "linkingId": "a unique string" // the same linking id links track B and the brush in track A
+        // highlight-start
+        // links track B and the brush in track A
+        "linkingId": "a unique string" 
+        // highlight-end
       }
     },
     ... // other tracks

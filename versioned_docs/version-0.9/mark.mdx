@@ -1,7 +1,8 @@
 ---
 title: Mark
 ---
-
+import GoslingSchema from './assets/gosling.schema.json';
+import {TableWrapper} from '@site/react-components/DocComponments/table'
 
 Visual marks (e.g., points, lines, and bars) are the basic graphical elements of a visualization. Note here that we call one visualization a `track` in Gosling.
 The core of constructing a visualization is to bind selected **data fields** to the **visual channels** (e.g., size, color, and position) of a chosen **mark type**.
@@ -25,8 +26,10 @@ The `mark` property of a track is defined by a string that describes the mark ty
     ... // other visualization properties
 }
 ```
-Gosling supports the following primitive `mark` types: [Point](#point), [Line](#line), 
-[Area](#area), [Bar](#bar), [Rect](#rect), [Text](#text), [Link](#link), [Triangle](#triangle).
+<!-- Gosling supports the following primitive `mark` types: [Point](#point), [Line](#line), 
+[Area](#area), [Bar](#bar), [Rect](#rect), [Text](#text), [Link](#link), [Triangle](#triangle). -->
+
+<span> Gosling supports the following strings as <code>mark</code> type: {GoslingSchema['definitions']['Mark']['enum'].map((d, i)=><span><code>"{d}"</code>{i==GoslingSchema['definitions']['Mark']['enum'].length-1?'.': ', '}</span>)}</span>
 
 ## Point
 [:link: source code](https://github.com/gosling-lang/gosling.js/blob/master/src/core/mark/point.ts)
@@ -331,6 +334,75 @@ Gosling supports three types of triangle marks: `triangleLeft`, `triangleRight`,
           /** another track */
       },
       ...
+    ]
+}
+```
+
+## Rule 
+The `Rule` mark can be used to either create [Gene Annotations](https://gosling.js.org?example=GENE_ANNOTATION) or [Reference lines](https://gosling.js.org/?example=RULE)
+
+<a href="https://gosling-lang.github.io/gosling.js/?example=RULE">
+    <img src="https://raw.githubusercontent.com/gosling-lang/gosling.js/da5a0c65b384f7ad13f149e386a4238711517162/editor/example/thumbnails/RULE.png"
+    width="400" alt="rule_example"/>  
+</a>
+
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?example=RULE>)
+
+```javascript
+{
+  "tracks": [
+    /********************
+    * a rule track that draws three vertical reference lines
+    ********************/
+    {
+        "mark": "rule",
+        "x": {"field": "p", "type": "genomic"}, 
+        // define the position of the three reference lines
+        "data": {
+            "type": "json",
+            "values": [
+                {"c": "chr2", "p": 100000},
+                {"c": "chr5", "p": 100000},
+                {"c": "chr10", "p": 100000}
+            ],
+            "chromosomeField": "c",
+            "genomicFields": ["p"]
+        },
+            // define the styles of the reference lines
+            "strokeWidth": {"value": 2},
+            "color": {"value": "blue"}
+    },
+    { /** another track */ },
+    ...
+    ]
+}
+```
+
+<a href="https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/b061daf712940f5827f0c1e9c95d368b">
+    <img src="/img/doc_images/rule_anno_example.png"
+    width="600" alt="rule_example"/>  
+</a>
+
+[Try it in the online editor](<https://gosling-lang.github.io/gosling.js/?gist=wangqianwen0418/b061daf712940f5827f0c1e9c95d368b>)
+
+```javascript
+{
+  "tracks": [
+    /********************
+     ** a gene annotation 
+    *********************/
+    {
+        "data": {...},
+        "mark": "rule",
+        // one rule mark encodes the start and end postion of a gene
+        "xe": {"field": "end", "type": "genomic"},
+        "x": {"field": "start", "type": "genomic"},
+        // style of the rule mark
+        "strokeWidth": {"value": 3},
+        "style": {"linePattern": {"type": "triangleRight", "size": 5}}
+    },
+    { /** another track */ },
+    ...
     ]
 }
 ```
