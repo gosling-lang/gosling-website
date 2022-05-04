@@ -23,40 +23,40 @@ For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379a
 ## Embed Gosling Component in a HTML File
 ```html
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="lightgray" />
-        <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
-    </head>
-
-    <body>
-        <div id="root"/>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/pixi.js@5/dist/pixi.js"></script>
-        <script crossorigin type="text/javascript" src="https://unpkg.com/gosling.js@0.0.26/dist/gosling.js"></script>
-    </body>
-    <script>
-      gosling.embed(
-        document.getElementById('root'),
-        {
-          "tracks": [
-            {
-              "data": {
-                "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
-                "type": "multivec",
-                "row": "sample",
-                "column": "position",
-                "value": "peak",
-                "categories": ["sample 1", "sample 2", "sample 3", "sample 4"]
-              }
-            }
-          ]
-        }
-      );
-    </script>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/higlass@1.11/dist/hglib.css">
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/pixi.js@6/dist/browser/pixi.min.js"></script>
+  <script src="https://unpkg.com/higlass@1.11/dist/hglib.js"></script>
+  <script src="https://unpkg.com/gosling.js@0.9.17/dist/gosling.js"></script>
+</head>
+<body>
+  <div id="gosling-container"/>
+  <script>
+    gosling.embed(
+      document.getElementById('gosling-container'),
+      {
+        "tracks": [{
+          "data": {
+            "url": "https://server.gosling-lang.org/api/v1/tileset_info/?d=cistrome-multivec",
+            "type": "multivec",
+            "row": "sample",
+            "column": "position",
+            "value": "peak",
+            "categories": ["sample 1"]
+          },
+          "mark": "rect",
+          "x": { "field": "position", "type": "genomic" },
+          "color": { "field": "peak", "type": "quantitative", "legend": true },
+          "width": 600,
+          "height": 130
+        }]
+      }
+    );
+  </script>
+</body>
 </html>
 ```
 
