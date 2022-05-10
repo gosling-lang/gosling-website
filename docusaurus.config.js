@@ -97,11 +97,11 @@ module.exports = {
           items: [
             {
               label: 'Github',
-              href: 'https://github.com/gosling-lang/gosling.js',
+              href: 'https://github.com/gosling-lang',
             },
             {
               label: 'Paper',
-              href: 'https://osf.io/6evmb/',
+              href: 'https://doi.org/10.1109/TVCG.2021.3114876',
             },
             {
               label: 'Online Editor',
