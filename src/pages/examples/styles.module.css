@@ -69,7 +69,6 @@ h3 {
 .floatingSiderbar{
   position: fixed;
   overflow-y: auto;
-  height: 100vh;
   background-color: white;
 }
 
