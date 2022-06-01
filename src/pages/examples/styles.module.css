@@ -67,9 +67,11 @@ h3 {
 }
 
 .floatingSiderbar{
-  position: fixed;
+  position: sticky;
   overflow-y: auto;
   background-color: white;
+  height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  top: calc(var(--ifm-navbar-height) + 1rem)
 }
 
 .subgroupli {
