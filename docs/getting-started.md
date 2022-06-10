@@ -60,19 +60,19 @@ For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379a
 </html>
 ```
 
-## Use Gosling.js in React App
+## Use Gosling.js with React
 
+Please visit [gosling-react](https://github.com/gosling-lang/gosling-react) to find detailed instruction on using React.
+  
 Install `gosling.js` and its dependent libraries:
 
 ```sh
-yarn add gosling.js pixi.js react@16.13.1 react-dom@16.13.1
+yarn add gosling.js higlass pixi.js react@16.13.1 react-dom@16.13.1
 ```
 
-Add the following style sheets to your base `html` file:
+Add the following stylesheet to your base `html` file:
 ```html
 <head>
-  ...
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
 </head>
 ```
@@ -80,34 +80,13 @@ Add the following style sheets to your base `html` file:
 Use the Gosling.js' react component to visualize your data:
 
 ```js
-import { validateGoslingSpec, GoslingComponent } from "gosling.js";
-
-...
-
-// validate the spec
-const validity = validateGoslingSpec(EXMAPLE_GOSLING_SPEC);
-
-if(validity.state === 'error') {
-    console.warn('Gosling spec is invalid!', validity.message);
-    return;
-}
-
-...
-
+import { GoslingComponent } from "gosling.js";
 function App() {
-  
-  ...
-
   return (
-    <GoslingComponent
-      spec={EXAMPLE_GOSLING_SPEC}
-      compiled={(spec, vConf) => { /* Callback function when compiled */ }}
-    />
+    <GoslingComponent spec={yourSpec}/>
   );
 }
 ```
-
-Please visit [gosling-react](https://github.com/gosling-lang/gosling-react) for more detailed instruction. Also, visit [gosling-api-example](https://github.com/gosling-lang/gosling-api-example) to learn more about Gosling.js APIs, such as quick navigation to particular genes with animated transition.
 
 ## Resources
 - How to set up your own HiGlass server for private data exploration?
