@@ -40,7 +40,7 @@ Some prior experience with technologies like JSON and JavaScript is helpful for 
 - Time: 9:40 - 10:15
   
 
-[10:15 - 10:30] :coffee: Coffee Break (15 min)
+**[10:15 - 10:30] :coffee: Coffee Break (15 min)**
 
 ### Hands-on Session 2: Track Alignment (30 mins)
 - Goal: Understand creation of glyph-based visualizations by overlaying
@@ -55,7 +55,7 @@ Some prior experience with technologies like JSON and JavaScript is helpful for 
 - Examples:
     - Clinvar lollipop plot
 
-[11:45 - 12:00] :coffee: Coffee Break (15 min)
+**[11:45 - 12:00] :coffee: Coffee Break (15 min)**
 
 ### Hands-on Session 4: Multiple Coordinated View (30 mins)
 - Goal: Understand construction of coordinated multiple views
