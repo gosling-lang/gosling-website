@@ -27,6 +27,9 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
    * =>  objDef = goslingSchema['definitions']['DisplaceTransform']['properties']['boundingBox]
    */
   objName.split('-').forEach(k => {
+    if(parseInt(k)){
+      k = parseInt(k)
+    }
     objDef = objDef[k]
   })
 

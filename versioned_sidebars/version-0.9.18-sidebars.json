@@ -36,6 +36,10 @@
         {
           "type": "doc",
           "id": "version-0.9.18/semantic-zoom"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.18/responsive"
         }
       ],
       "collapsible": true
