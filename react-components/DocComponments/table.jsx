@@ -163,7 +163,7 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
     /** if an array of type reference */
     else if (propertyInfo?.items?.$ref != undefined) {
       const typename = propertyInfo['items']['$ref'].replace('#/definitions/', '')
-      pType = `[${typename.toUpperCase()}](#type${typename.toLowerCase()})`
+      pType = `[${typename.toUpperCase()}](#type-${typename.toLowerCase()})`
     }
   }
   /**
@@ -181,7 +181,7 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
     else if (propertyInfo['additionalProperties']) {
       pType = `{[k: string]: ${parsePType(propertyInfo['additionalProperties'], [], '', GoslingSchema)['pType']}}`
     } else {
-      pType = `[${propertyName.toUpperCase()}](#type${propertyName.toLowerCase()})`
+      pType = `[${propertyName.toUpperCase()}](#type-${propertyName.toLowerCase()})`
     }
   }
   else if (pType === 'string') {

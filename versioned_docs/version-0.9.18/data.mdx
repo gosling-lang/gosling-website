@@ -260,6 +260,14 @@ Each filter transform has the following properties:
 
 <TableWrapper GoslingSchema={GoslingSchema} objName='CoverageTransform' includeDescription={true}/>
 
+### Genomic Length Transform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName='GenomicLengthTransform' includeDescription={true}/>
+
+### SV Type Transform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName='SvTypeTransform' includeDescription={true}/>
+
 ### JSON Parse Transform
 
 <TableWrapper GoslingSchema={GoslingSchema} objName='JSONParseTransform' includeDescription={true}/>
@@ -267,11 +275,17 @@ Each filter transform has the following properties:
 Apart from these data transforms, users can also aggregate data values (min, max, bin, mean, and count). [Read more about data aggregation](#x)
 
 
-#### Types
+### Types
 
-##### Type:Datum
+#### Type:DATUM
 
 <TableWrapper GoslingSchema={GoslingSchema} objName='Datum' />
 
-##### Type: BoundingBox
+#### Type: BOUNDINGBOX
 <TableWrapper GoslingSchema={GoslingSchema} objName='DisplaceTransform-properties-boundingBox' />
+
+#### Type: FIRSTBP
+<TableWrapper GoslingSchema={GoslingSchema} objName='SvTypeTransform-properties-firstBp' />
+
+#### Type: SECONDBP
+<TableWrapper GoslingSchema={GoslingSchema} objName='SvTypeTransform-properties-firstBp' />
