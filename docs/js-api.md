@@ -3,7 +3,7 @@ title: JavaScript API Functions
 ---
 
 This is a full list of JavaScript API functions supported in Gosling.js. 
-You will need create a reference of the GoslingComponent to call these APIs.
+you need to create a [Ref](https://reactjs.org/docs/refs-and-the-dom.html) to use API functions.
 ```javascript
 import React, { useRef, useEffect } from "react";
 import { GoslingComponent} from 'gosling.js';
