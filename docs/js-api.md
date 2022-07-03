@@ -25,7 +25,7 @@ To find an working example, please visit [gosling-lang/gosling-react](https://gi
 
 ### zoomTo
 
-This function makes a view navigate to a certain position with animated transition.
+This function makes a view navigate to a specific genomic position with the animated transition.
 
 ```javascript
 api.zoomTo(viewId: string, position: string, padding?: number, duration?: number)
@@ -153,7 +153,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
 
 - **callback**: `(msg:string, eventData)=>void`
   A function that is subscribed to the specified event.
-  - for `"rawData"`, the `eventData` is:
+  - For `"rawData"`, the `eventData` stores columnar data that has been used internally in Gosling to display the view:
   ```javascript
   { 
       id: string,
@@ -161,7 +161,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
   }
   ```
 
-  - for `"mouseOver"` or `"Click"`, the `eventData` is;
+  - For `"mouseOver"` or `"Click"`, the `eventData` stores the genomic position of the event and the columnar data corresponding to the visual mark that is either clicked or mouse overed.
    ```javascript
     { 
         id: string,
@@ -170,7 +170,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
     }
     ```
 
-  - for `"rangeSelect"`, the `eventData` is:
+  - For `"rangeSelect"`, the `eventData` stores the genomic range of the range select event and the columnar data corresponding to all selected visual marks that are within a range brush.
   ```javascript
   { 
       id: string,

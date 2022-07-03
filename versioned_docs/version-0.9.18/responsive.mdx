@@ -11,12 +11,13 @@ A responsive design is a web design that will automatically adjust for different
 
 <img src="/img/doc_images/responsive_example.png" width='600'/>  
 
-For example, when the screen height is small, a responsive bar chart will change from circular layout (a) to linear layout (b) to improve space efficiency.
+For example, when the screen height is small, a responsive bar chart will change from a circular layout to a linear layout to improve space efficiency.
 
 ## How to Implement Responsive Design In Gosling
 
 ```javascript
 {
+    // only the height of the entire Gosling visualization is bound its container
     "responsiveSize": {"width": false, "height": true},
     "views": [
     {
@@ -42,11 +43,11 @@ Try it in the online editor
 
 **Three propoeries are commonly used to create responsive design in Gosling**:
 - `responsiveSize`: 
-    Whether the width and the height of the visualization will change with the screen size.
+    Whether the width and the height of the visualization will change with the container size.
     ```boolean | {width: boolean, height: boolean}```
     
 - `responsiveSpec`:
-    An array that defines how certain Gosling spec will change with the screen size.
+    An array that defines how certain Gosling spec will change for given conditions defined by the `selectivity` property.
     ```javascript
     Array<{
         spec: SPEC,
@@ -62,6 +63,6 @@ Try it in the online editor
     <TableWrapper GoslingSchema={GoslingSchema} objName='GoslingSpec-anyOf-0-properties-responsiveSpec-items-properties-spec' includeDescription/>
 
 - `visibility`:  
-    Sometimes, `visibility` is also used to define the visibility of certain views based on the screen size. 
+    For making individual tracks responsive, you can use `visibility` which is commonly also used for [semantic zooming](http://gosling-lang.org/docs/semantic-zoom) in Gosling.
     <TableWrapper GoslingSchema={GoslingSchema} objName='SizeVisibilityCondition' />
 
