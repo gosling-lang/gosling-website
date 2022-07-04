@@ -3,7 +3,7 @@ title: JavaScript API Functions
 ---
 
 This is a full list of JavaScript API functions supported in Gosling.js. 
-you need to create a [Ref](https://reactjs.org/docs/refs-and-the-dom.html) to use API functions.
+You will need create a reference of the GoslingComponent to call these APIs.
 ```javascript
 import React, { useRef, useEffect } from "react";
 import { GoslingComponent} from 'gosling.js';
@@ -25,7 +25,7 @@ To find an working example, please visit [gosling-lang/gosling-react](https://gi
 
 ### zoomTo
 
-This function makes a view navigate to a specific genomic position with the animated transition.
+This function makes a view navigate to a certain position with animated transition.
 
 ```javascript
 api.zoomTo(viewId: string, position: string, padding?: number, duration?: number)
@@ -143,7 +143,18 @@ Returns a canvas that renders Gosling.js visualization:
 ```javascript
 api.subscribe(eventName:string, callback: (msg:string, eventData)=>void)
 ```
-Subscribe the callback function to the specified event.
+Subscribe the callback function to the specified event.  
+To use these event APIs, you need to enable mouseEvents through `experimental: { mouseEvents: **** }` in your Gosling spec.  
+`mouseEvents` can ba a `boolean` variable that enables/disables all mouse events or an object that specifies different mouse events:
+```javascript
+mouseEvents: {
+  click: boolean,
+  enableMouseOverOnMultipleMarks: boolean,
+  groupMarksByField: string,
+  mouseOver: boolean,
+  rangeSelect: boolean
+}
+```
 
 **Parameters**
 
@@ -153,7 +164,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
 
 - **callback**: `(msg:string, eventData)=>void`
   A function that is subscribed to the specified event.
-  - For `"rawData"`, the `eventData` stores columnar data that has been used internally in Gosling to display the view:
+  - for `"rawData"`, the `eventData` is:
   ```javascript
   { 
       id: string,
@@ -161,7 +172,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
   }
   ```
 
-  - For `"mouseOver"` or `"Click"`, the `eventData` stores the genomic position of the event and the columnar data corresponding to the visual mark that is either clicked or mouse overed.
+  - for `"mouseOver"` or `"Click"`, the `eventData` is;
    ```javascript
     { 
         id: string,
@@ -170,7 +181,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
     }
     ```
 
-  - For `"rangeSelect"`, the `eventData` stores the genomic range of the range select event and the columnar data corresponding to all selected visual marks that are within a range brush.
+  - for `"rangeSelect"`, the `eventData` is:
   ```javascript
   { 
       id: string,

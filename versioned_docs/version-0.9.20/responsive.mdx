@@ -1,0 +1,68 @@
+---
+title: Responsive Design
+---
+import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './assets/gosling.schema.json'
+
+## What is Responsive Design
+
+A responsive design is a web design that will automatically adjust for different screen sizes and viewports.
+
+
+<img src="/img/doc_images/responsive_example.png" width='600'/>  
+
+For example, when the screen height is small, a responsive bar chart will change from a circular layout to a linear layout to improve space efficiency.
+
+## How to Implement Responsive Design In Gosling
+
+```javascript
+{
+    // only the height of the entire Gosling visualization is bound its container
+    "responsiveSize": {"width": false, "height": true},
+    "views": [
+    {
+      "layout": "circular", // by default, we use a circular layout
+      "responsiveSpec": [
+        { 
+         // the layout will change to linear 
+         // when the "aspectRatio" is larger than 1.5 (i.e., a wider screen)
+          "spec": {"layout": "linear"}, 
+          "selectivity": [
+            {"measure": "aspectRatio", "operation": "GT", "threshold": 1.5}
+          ]
+        }
+        "tracks": [
+            /** define your tracks here **/
+        ]
+}
+```
+<a href="https://gosling.js.org/?full=false&spec=(B'descripZEReference%3A%20Javed%20et%20al.%20Graphical%20PrcepZ%20of%20MulNplXTimXSeries.%20TVCG%202010.'jOize8('width8falseAhe~8true)j'xDomaY8('chromosomeE12'AYtervalIW%2C%201W%5D)j'viewsIB*(7Qcircular'%2C7OPcI7*(K'sPc8(QlYear')9'selecNvityIK*('measureEasPctRaNo'AoPraZEGT'Athreshold81.5)K%5D7*)7%5D%2C7'spacYg81%2C7'tracksI7*(K'data8(K*'urlEhttps%3A%2F%2Fserver.goslYg-lang.org%2Fapi%2Fv1%2FNleset_Yfo%2F%3Fd%3Dcistrome-UtyPEUrowEsampleLcolumnEposiZLvalueEPakLcategoriesI'samplX10'%5D9*'bYSize84K)9'markEbar'9'xHstartFxeHendFyHPak'AtyPEquanNtaNve'AaxisEr~')9'width86009'he~81307*)7%5DB*)B%5D%0A)*%20%207B**8!%209%2CKA%2C%20'B%0A*E8'F'AtyPEgenomic')9'H8('fieldEI8%5BK7**L'9*'NtiO'responsiveSPpeQ'layoutEUmulNvecLW5000000Xe%20YinZNonj%2CB~ight%01~jZYXWUQPONLKIHFEBA987*_" >
+Try it in the online editor
+</a>
+<br/>
+
+**Three propoeries are commonly used to create responsive design in Gosling**:
+- `responsiveSize`: 
+    Whether the width and the height of the visualization will change with the container size.
+    ```boolean | {width: boolean, height: boolean}```
+    
+- `responsiveSpec`:
+    An array that defines how certain Gosling spec will change for given conditions defined by the `selectivity` property.
+    ```javascript
+    Array<{
+        spec: SPEC,
+        selectivity: SELECTIVITY
+    }>
+    ```
+
+    Properties of `SELECTIVITY`
+    <TableWrapper GoslingSchema={GoslingSchema} objName='SelectivityCondition' includeDescription/>
+
+    Properties of  `SPEC`
+
+    <TableWrapper GoslingSchema={GoslingSchema} objName='GoslingSpec-anyOf-0-properties-responsiveSpec-items-properties-spec' includeDescription/>
+
+- `visibility`:  
+    For making individual tracks responsive, you can use `visibility` which is also used for [semantic zooming](http://gosling-lang.org/docs/semantic-zoom) in Gosling.
+    <TableWrapper GoslingSchema={GoslingSchema} objName='SizeVisibilityCondition' />
+

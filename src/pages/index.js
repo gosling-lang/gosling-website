@@ -68,6 +68,12 @@ const dummyGosling = <BrowserOnly>
 const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
+   <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.20' class='primary-color'>v0.9.20</a>, 
+    which supports <a href='docs/js-api#subscribe' class='primary-color'>mouse event APIs</a>, 
+    <a href='/docs/responsive' class='primary-color'>responsive design</a>, 
+    and more <a href='/docs/visual-channel#style-related-properties' class='primary-color'> expressive styles!</a>
+   </li>
+
     <li>
       Our <a href='http://gosling-lang.org/tutorials/ismb' class='primary-color'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
     </li>
