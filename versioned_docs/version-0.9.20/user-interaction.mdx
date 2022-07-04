@@ -2,6 +2,9 @@
 title: User Interaction
 ---
 
+import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './assets/gosling.schema.json'
+
 ## Zooming and Panning
 <!-- [:link: source code](https://github.com/gosling-lang/gosling.js/blob/43626eaf21417bf36128a405dceeaa6ee00d0851/src/core/gosling.schema.ts#L7) -->
 
@@ -27,6 +30,42 @@ Users can set the `static` property of all tracks at the root level or specify i
   ]
 }
 ```
+
+## Tooltip
+
+The `tooltip` propoerty is an array that specifies the data fields for showing in the tooltip.
+
+```javascript
+{
+  "tracks": [
+    {
+      "mark": "rect",
+      "x": {"field": "start", "type": "genomic", "axis": "top"},
+      "xe": {"field": "end", "type": "genomic"},
+      "color": {"field": "sample", "type": "nominal"},
+      "tooltip": [
+        // when hovering on a mark,
+        // the value of the start, end, and peak fields will show in the tooltip.
+            {"field": "start", "type": "genomic", "alt": "Start Position"},
+            {"field": "end", "type": "genomic", "alt": "End Position"},
+            {
+              "field": "peak",
+              "type": "quantitative",
+              "alt": "Value",
+              "format": ".2"
+            },
+      ]
+      ...
+    },
+    ...
+  ]
+}
+```
+
+
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Tooltip" includeDescription/>
+
 
 ## Linking Views
 <!-- [:link: source code](https://github.com/gosling-lang/gosling.js/blob/43626eaf21417bf36128a405dceeaa6ee00d0851/src/core/Gosling.schema.ts#L328) -->

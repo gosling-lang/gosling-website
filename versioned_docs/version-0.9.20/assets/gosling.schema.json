@@ -8708,13 +8708,15 @@
       "additionalProperties": false,
       "properties": {
         "alt": {
-          "type": "string"
+          "type": "string",
+          "description": "Label of the value showning in the tooltip. Will use the `field` name is not specified."
         },
         "field": {
           "type": "string"
         },
         "format": {
-          "type": "string"
+          "type": "string",
+          "description": "Format of the data value."
         },
         "type": {
           "$ref": "#/definitions/FieldType"

@@ -143,7 +143,18 @@ Returns a canvas that renders Gosling.js visualization:
 ```javascript
 api.subscribe(eventName:string, callback: (msg:string, eventData)=>void)
 ```
-Subscribe the callback function to the specified event.
+Subscribe the callback function to the specified event.  
+To use these event APIs, you need to enable mouseEvents through `experimental: { mouseEvents: **** }` in your Gosling spec.  
+`mouseEvents` can ba a `boolean` variable that enables/disables all mouse events or an object that specifies different mouse events:
+```javascript
+mouseEvents: {
+  click: boolean,
+  enableMouseOverOnMultipleMarks: boolean,
+  groupMarksByField: string,
+  mouseOver: boolean,
+  rangeSelect: boolean
+}
+```
 
 **Parameters**
 
