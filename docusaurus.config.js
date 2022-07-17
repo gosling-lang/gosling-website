@@ -164,7 +164,11 @@ module.exports = {
       {
         docs: {
           path: 'docs',
+          editUrl: ({versionDocsDirPath, docPath}) =>
+          `https://github.com/gosling-lang/gosling-website/edit/main/${versionDocsDirPath}/${docPath}`,
+          include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebarDocs.js'),
+         
         },
         blog: {
           showReadingTime: true,
