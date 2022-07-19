@@ -11,11 +11,11 @@ The [**Gos Python library**](https://gosling-lang.github.io/gos/) is designed to
 **In our tutorial, we introduce core concepts of genomic data visualizations and illustrate how they can be applied through hands-on training with Gos in Jupyter Notebooks.**
 
 ## Tutorial Info :card_index_dividers:
-This webpage is for [our tutorial](https://www.iscb.org/ismb2022-program/tutorials#vt2) held at the ISMB 2022 conference, July 6, 9:00 - 13:00 CDT, 2022. 
 
-** The tutorial slides and materials for hands-on exercises (e.g., code implementation, datasets) will be posted on this website**.
+> ### ** The tutorial slides and colab links for hands-on exercises are available [HERE :link:](https://docs.google.com/presentation/d/12LQTyGudGVh6rdOQ2IYHeFuQnhw9toUeKOu84O2QT6s/edit?usp=sharing)**.
+> You can also find the source code of the hands-on sessions at our [gosling-tutorial github repo](https://github.com/gosling-lang/gosling-tutorial).
 
-
+This webpage is for our tutorial (https://www.iscb.org/ismb2022-program/tutorials#vt2) held at the ISMB 2022 conference, July 6, 9:00 - 13:00 CDT, 2022. 
 The content and exercise in this tutorial are designed to be engaging and accessible to a broad audience ranging from visualization beginners to experts. 
 This tutorial will be most beneficial for biologists working on genomics-related topics and software developers in bioinformatics, 
 especially those interested in creating flexible, scalable, and interactive visualizations.
