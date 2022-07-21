@@ -77,7 +77,7 @@ const floatingWindow = <div className={styles.floatingNews}>
     <li>
       Our <a href='http://gosling-lang.org/tutorials/ismb' class='primary-color'>tutorial on Gosling</a> has been accepted for ISMB 2022 🎉
     </li>
-    <li>We release <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.16' class='primary-color'>v0.9.16</a> of Gosling</li>
+    
     <li>
       Gosling won the <a href="https://www.iscb.org/ismbeccb2021-general/awardwinners#biovis-poster" class='primary-color'>Best Abstract Award at BioVis ISMB 2021</a> 🏆
     </li>
@@ -165,6 +165,25 @@ export default function Home() {
               )}
               to={'https://gosling-lang.github.io/gos/'}>
               <b>Gos:</b> Python package for Gosling
+            </Link>
+
+            <br/>
+            <Link
+              className={clsx(
+                'button button--outline button--secondary button--lg',
+                styles.getStarted
+              )}
+              to={'https://github.com/gosling-lang/gosling-react'}>
+              Using Gosling in your <b>React</b> App
+            </Link>
+
+            <Link
+              className={clsx(
+                'button button--outline button--secondary button--lg',
+                styles.getStarted
+              )}
+              to={'https://github.com/gosling-lang/streamlit-gosling'}>
+              Using Gosling in your <b>Streamlit</b> App
             </Link>
           </div>
 
