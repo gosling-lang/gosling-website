@@ -192,6 +192,8 @@ module.exports = {
         path: 'tutorials/',
         sidebarPath: require.resolve('./sidebarTutorial.js'),
         routeBasePath: 'tutorials',
+        editUrl: ({versionDocsDirPath, docPath}) =>
+          `https://github.com/gosling-lang/gosling-website/edit/main/${versionDocsDirPath}/${docPath}`,
         include: ['*.md', '*.mdx']
       },
     ],
