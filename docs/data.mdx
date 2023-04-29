@@ -22,7 +22,8 @@ Users can specify the data of each visualization (i.e., `track`) through a `trac
 For the flexible data exploration, Gosling supports two different kinds of datasets:
 
 1. **Plain Datasets** (No HiGlass Server): These datasets can be directly used in Gosling without requiring any data preprocessing, 
-including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), [BigWig](#bigwig-no-higlass-server), [BAM](#bam-no-higlass-server). 
+including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), [BigWig](#bigwig-no-higlass-server), [BAM](#bam-no-higlass-server),
+[BED](#bed-no-higlass-server). 
 
 2. **Pre-aggregated Datasets** (HiGlass Server): These datasets are preprocessed for the scalable data exploration and require a HiGlass server to access them in Gosling,
 including [Vector](#vector-require-higlass-server), [Multivec](#multivec-require-higlass-server), and [BEDDB](#beddb-require-higlass-server).
@@ -112,6 +113,28 @@ This format allows users to include data directly in the Gosling's JSON specific
 ### BAM (No HiGlass Server)
 
 <TableWrapper GoslingSchema={GoslingSchema} objName='BAMData' includeDescription={true}/>
+
+### BED (No HiGlass Server)
+This format allows for BED files that follow the [BED specification](https://raw.githubusercontent.com/samtools/hts-specs/master/BEDv1.pdf) to be used. 
+There are 12 standard fields, but custom fields can be defined. 
+
+```javascript
+{
+  "tracks":[{
+    "data": {
+      "url": "https://s3.amazonaws.com/gosling-lang.org/data/bed/chr1_CDS_BED12.bed.gz",
+      "indexUrl": "https://s3.amazonaws.com/gosling-lang.org/data/bed/chr1_CDS_BED12.bed.gz.tbi"
+      "type": "bed",
+    },
+    "mark": "rect", 
+      "x": {"field": "chromStart", "type": "genomic"}, // example using one of the standard fields
+      "xe": {"field": "chromEnd", "type": "genomic"},
+    ... // other configurations of this track
+  }]
+}
+```
+
+<TableWrapper GoslingSchema={GoslingSchema} objName='BedData' includeDescription={true}/>
 
 ### Vector (Require HiGlass Server)
 
