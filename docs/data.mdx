@@ -50,7 +50,7 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 ```
 
-<TableWrapper objName='CSVData' GoslingSchema={GoslingSchema} />
+<TableWrapper objName='CsvData' GoslingSchema={GoslingSchema} />
 
 
 ### JSON (No HiGlass Server)
@@ -89,7 +89,7 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='JSONData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='JsonData'/>
 
 
 ### BigWig (No HiGlass Server)
@@ -108,11 +108,11 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='BIGWIGData' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='BigWigData' />
 
 ### BAM (No HiGlass Server)
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='BAMData' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='BamData' includeDescription={true}/>
 
 ### BED (No HiGlass Server)
 This format allows for BED files that follow the [BED specification](https://raw.githubusercontent.com/samtools/hts-specs/master/BEDv1.pdf) to be used. 
@@ -207,7 +207,7 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
 }
 ```
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='BEDDBData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='BeddbData'/>
 
 
 
@@ -285,7 +285,7 @@ Each filter transform has the following properties:
 
 ### JSON Parse Transform
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='JSONParseTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='JsonParseTransform' includeDescription={true}/>
 
 Apart from these data transforms, users can also aggregate data values (min, max, bin, mean, and count). [Read more about data aggregation](#x)
 
