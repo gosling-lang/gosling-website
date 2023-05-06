@@ -116,7 +116,9 @@ This format allows users to include data directly in the Gosling's JSON specific
 
 ### BED (No HiGlass Server)
 This format allows for BED files that follow the [BED specification](https://raw.githubusercontent.com/samtools/hts-specs/master/BEDv1.pdf) to be used. 
-There are 12 standard fields (`chrom`, `chromStart`, `chromEnd`, `name`, `score`, `strand`, `thickStart`, `thickEnd`, `itemRgb`, `blockCount`, `blockSizes`, and `blockStarts`). The first three fields (`chrom`, `chromStart`, `chromEnd`) are required (they cannot be overridden by custom fields).
+There are 12 standard fields (`chrom`, `chromStart`, `chromEnd`, `name`, `score`, `strand`, `thickStart`, `thickEnd`, `itemRgb`, `blockCount`, `blockSizes`, and `blockStarts`). 
+The first three fields (`chrom`, `chromStart`, `chromEnd`) are required. If custom fields are specified, they 
+will not be able to rename the first three fields.
 
 [BED file demo](https://gosling-lang.github.io/gosling.js/?example=doc_bed)
 ```javascript
