@@ -120,6 +120,10 @@ There are 12 standard fields (`chrom`, `chromStart`, `chromEnd`, `name`, `score`
 The first three fields (`chrom`, `chromStart`, `chromEnd`) are required. If custom fields are specified, they 
 will not be able to rename the first three fields.
 
+Currently, the BED file must have an accompanying index file. If you do not have an index file for your BED file, you 
+can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat BED file as if it were a 
+CSV file and use the CSV data specification.
+
 [BED file demo](https://gosling-lang.github.io/gosling.js/?example=doc_bed)
 ```javascript
 {
