@@ -52,6 +52,37 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 <TableWrapper objName='CsvData' GoslingSchema={GoslingSchema} />
 
+### GFF3 (No HiGlass Server)
+
+This format allows for files that follow the [GFF3 specification](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md). 
+
+Currently, the GFF3 file must have an accompanying index file. If you do not have an index file for your GFF3 file, you 
+can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the GFF3 file as if it were a 
+CSV file and use the CSV data specification, but this will not be as performant for large files. 
+
+The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column,
+is called "start". 
+
+[GFF file demo](https://gosling-lang.github.io/gosling.js/?example=doc_gff)
+
+```javascript
+{
+  "tracks":[{
+    "data": {
+      "url": "https://s3.amazonaws.com/gosling-lang.org/data/gff/Homo_sapiens.GRCh38.94.chr.gff3.gz",
+      "indexUrl": "https://s3.amazonaws.com/gosling-lang.org/data/gff/Homo_sapiens.GRCh38.94.chr.gff3.gz.tbi",
+      "type": "gff",
+      "extractAttributes": true
+    },
+    "mark": "rect", 
+      "x": {"field": "start"}, // example using one of the standard fields
+      "xe": {"field": "end"},
+    ... // other configurations of this track
+  }]
+}
+```
+
+<TableWrapper GoslingSchema={GoslingSchema} objName='GffData' includeDescription={true}/>
 
 ### JSON (No HiGlass Server)
 
@@ -121,8 +152,8 @@ The first three fields (`chrom`, `chromStart`, `chromEnd`) are required. If cust
 will not be able to rename the first three fields.
 
 Currently, the BED file must have an accompanying index file. If you do not have an index file for your BED file, you 
-can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat BED file as if it were a 
-CSV file and use the CSV data specification.
+can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the BED file as if it were a 
+CSV file and use the CSV data specification, but this will not be as performant for large files. 
 
 [BED file demo](https://gosling-lang.github.io/gosling.js/?example=doc_bed)
 ```javascript
