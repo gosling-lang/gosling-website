@@ -22,7 +22,8 @@ Users can specify the data of each visualization (i.e., `track`) through a `trac
 For the flexible data exploration, Gosling supports two different kinds of datasets:
 
 1. **Plain Datasets** (No HiGlass Server): These datasets can be directly used in Gosling without requiring any data preprocessing, 
-including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), [BigWig](#bigwig-no-higlass-server), [BAM](#bam-no-higlass-server). 
+including [CSV](#csv-no-higlass-server), [JSON](#json-no-higlass-server), [BigWig](#bigwig-no-higlass-server), [BAM](#bam-no-higlass-server),
+[BED](#bed-no-higlass-server). 
 
 2. **Pre-aggregated Datasets** (HiGlass Server): These datasets are preprocessed for the scalable data exploration and require a HiGlass server to access them in Gosling,
 including [Vector](#vector-require-higlass-server), [Multivec](#multivec-require-higlass-server), and [BEDDB](#beddb-require-higlass-server).
@@ -49,7 +50,7 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 ```
 
-<TableWrapper objName='CSVData' GoslingSchema={GoslingSchema} />
+<TableWrapper objName='CsvData' GoslingSchema={GoslingSchema} />
 
 
 ### JSON (No HiGlass Server)
@@ -88,7 +89,7 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='JSONData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='JsonData'/>
 
 
 ### BigWig (No HiGlass Server)
@@ -107,11 +108,36 @@ This format allows users to include data directly in the Gosling's JSON specific
 }
 ```
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='BIGWIGData' />
+<TableWrapper GoslingSchema={GoslingSchema} objName='BigWigData' />
 
 ### BAM (No HiGlass Server)
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='BAMData' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='BamData' includeDescription={true}/>
+
+### BED (No HiGlass Server)
+This format allows for BED files that follow the [BED specification](https://raw.githubusercontent.com/samtools/hts-specs/master/BEDv1.pdf) to be used. 
+There are 12 standard fields (`chrom`, `chromStart`, `chromEnd`, `name`, `score`, `strand`, `thickStart`, `thickEnd`, `itemRgb`, `blockCount`, `blockSizes`, and `blockStarts`). 
+The first three fields (`chrom`, `chromStart`, `chromEnd`) are required. If custom fields are specified, they 
+will not be able to rename the first three fields.
+
+[BED file demo](https://gosling-lang.github.io/gosling.js/?example=doc_bed)
+```javascript
+{
+  "tracks":[{
+    "data": {
+      "url": "https://s3.amazonaws.com/gosling-lang.org/data/bed/chr1_CDS_BED12.bed.gz",
+      "indexUrl": "https://s3.amazonaws.com/gosling-lang.org/data/bed/chr1_CDS_BED12.bed.gz.tbi"
+      "type": "bed",
+    },
+    "mark": "rect", 
+      "x": {"field": "chromStart", "type": "genomic"}, // example using one of the standard fields
+      "xe": {"field": "chromEnd", "type": "genomic"},
+    ... // other configurations of this track
+  }]
+}
+```
+
+<TableWrapper GoslingSchema={GoslingSchema} objName='BedData' includeDescription={true}/>
 
 ### Vector (Require HiGlass Server)
 
@@ -184,7 +210,7 @@ Regular BED, or similar, files can be pre-aggregated for the scalable data explo
 }
 ```
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='BEDDBData'/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='BeddbData'/>
 
 
 
@@ -262,7 +288,7 @@ Each filter transform has the following properties:
 
 ### JSON Parse Transform
 
-<TableWrapper GoslingSchema={GoslingSchema} objName='JSONParseTransform' includeDescription={true}/>
+<TableWrapper GoslingSchema={GoslingSchema} objName='JsonParseTransform' includeDescription={true}/>
 
 Apart from these data transforms, users can also aggregate data values (min, max, bin, mean, and count). [Read more about data aggregation](#x)
 
