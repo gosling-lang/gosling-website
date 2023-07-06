@@ -3,9 +3,14 @@ import ReactMarkdown from 'react-markdown'
 
 // decide whether a property should be ignored based on keywords in the property description
 const isIgnored = (descriptionInfo) => {
-  const keywords = ['deprecated', 'experimental', 'not supported', 'internal', 'to do']
+  // const keywords = ['deprecated', 'experimental', 'not supported', 'internal', 'to do']
+  const keywords = ['deprecated', 'not supported', 'internal', 'to do']
   return keywords.some(keyword => descriptionInfo.toLowerCase().includes(keyword))
 
+}
+
+const isExperimental = (descriptionInfo) => {
+  return descriptionInfo.toLowerCase().includes('experimental')
 }
 
 export const TableWrapper = (props) => {
@@ -70,6 +75,9 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
         if (isIgnored(description)) {
           // ignore properties that are deprecated or experimental
           return null
+        } else if (isExperimental(description)) {
+          notes.unshift(`**_Experimental Proerty_.**`)
+          notes.push(description.replace('experimental', ''))
         } else {
           notes.push(description.replace(/\n\n/g, '\n'))
           // notes.push(<ReactMarkdown key='desription' children={description.replace(/\n\n/g, '\n')} />)
