@@ -65,7 +65,7 @@ For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379a
 Please visit [gosling-react](https://github.com/gosling-lang/gosling-react) to find detailed instruction on using React.
 
 
-Beginning with version 0.9.30, Gosling now supports React v18. 
+Beginning with version 0.9.30, Gosling now supports React v18 (You can still use React v16 or v17).
 If you are using a Gosling version prior to 0.9.30, please continue to use React v16.
   
 Install `gosling.js` and its dependent libraries:

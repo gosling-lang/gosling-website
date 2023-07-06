@@ -25,12 +25,12 @@ For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379a
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/higlass@1.11/dist/hglib.css">
+  <link rel="stylesheet" href="https://unpkg.com/higlass@1.12.4/dist/hglib.css">
   <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/pixi.js@6/dist/browser/pixi.min.js"></script>
-  <script src="https://unpkg.com/higlass@1.11/dist/hglib.js"></script>
-  <script src="https://unpkg.com/gosling.js@0.9.17/dist/gosling.js"></script>
+  <script src="https://unpkg.com/higlass@1.12.4/dist/hglib.js"></script>
+  <script src="https://unpkg.com/gosling.js@0.9.32/dist/gosling.js"></script>
 </head>
 <body>
   <div id="gosling-container"/>
@@ -76,7 +76,7 @@ yarn add gosling.js higlass pixi.js react@16.13.1 react-dom@16.13.1
 Add the following stylesheet to your base `html` file:
 ```html
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
+  <link rel="stylesheet" href="https://unpkg.com/higlass@1.12.4/dist/hglib.css">
 </head>
 ```
 
