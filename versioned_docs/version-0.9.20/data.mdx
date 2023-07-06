@@ -294,3 +294,25 @@ Apart from these data transforms, users can also aggregate data values (min, max
 
 #### Type: SECONDBP
 <TableWrapper GoslingSchema={GoslingSchema} objName='SvTypeTransform-properties-firstBp' />
+
+## Field convert
+
+### genomicFieldsToConvert
+
+To connect two points on different chromosomes when using the `link` *Mark*, the `genomicFieldsToConvert` of *Data* should be used:
+
+```javascript
+data: {
+    ...,
+    "genomicFieldsToConvert": [
+                  {
+                    "chromosomeField": "chr1",
+                    "genomicFields": ["start1", "end1"]
+                  },
+                  {
+                    "chromosomeField": "chr2",
+                    "genomicFields": ["start2", "end2"]
+                  }
+    ]
+}
+```
