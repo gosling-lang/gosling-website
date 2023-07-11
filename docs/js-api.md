@@ -149,7 +149,7 @@ Subscribe the callback function to the specified event.
 
 - **eventName**: string
 Specify the event using its name.
-One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
+One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"location"`. 
 
 - **callback**: `(msg:string, eventData)=>void`
   A function that is subscribed to the specified event.
@@ -181,7 +181,17 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
       ]
   }
   ```
-
+  - For `"location"`, the `eventData` contains the genomic range of a track. Every time a track axis range changes, this 
+  API gets updated. For example, if a user zooms in to a track, the axis range changes, and the location API gets updated. 
+  ```javascript
+  { 
+      id: string, 
+      genomicRange: [
+        {chromosome: string, position: number}, 
+        {chromosome: string, position: number}
+      ]
+  }
+  ```
 
 ## unsubscribe
 ```javascript
@@ -193,4 +203,4 @@ Unsubscribe the callback function from the specified event.
 
 - **eventName**: string
 Name of the event.
-One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`.
+One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"location"`. 
