@@ -183,6 +183,8 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"location"`.
   ```
   - For `"location"`, the `eventData` contains the genomic range of a track. Every time a track axis range changes, this 
   API gets updated. For example, if a user zooms in to a track, the axis range changes, and the location API gets updated. 
+  If the axis starts before the first chromosome, the start of the genomic range will return the beginning of the first chromosome. 
+  If the axis ends after the last chromosome, the end of the genomic range will be the last position in the last chromosome. 
   ```javascript
   { 
       id: string, 
