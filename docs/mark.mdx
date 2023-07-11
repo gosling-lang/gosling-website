@@ -297,9 +297,12 @@ Gosling supports both `"withinLink"`, links within one track,  and `"betweenLink
 }
 ```
 
-When connections between points on **different chromosomes** need to be created, the *genomicFieldsToConvert* property should be used at the time of loading data. 
+When connections between points on **different chromosomes** need to be created, the `genomicFieldsToConvert` property should be used at the time of loading data. 
 
-**NB: Currently this property is experimental and only supported in CSV and JSON data; use it with caution.**
+:::caution
+ Currently `genomicFieldsToConvert` is experimental and only supported in CSV and JSON data.
+:::caution
+
 
 
 ```javascript
