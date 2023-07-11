@@ -297,6 +297,65 @@ Gosling supports both `"withinLink"`, links within one track,  and `"betweenLink
 }
 ```
 
+When connections between points on **different chromosomes** need to be created, the *genomicFieldsToConvert* property should be used at the time of loading data. 
+
+**NB: Currently this property is experimental and only supported in CSV and JSON data; use it with caution.**
+
+
+```javascript
+    {
+        "tracks": [{
+            "title": "Visualization with data loaded via JSON object",
+            "data": {
+                "type": "json",
+                // convert chromosome fields into genomic fields
+                // highlight-start
+                "genomicFieldsToConvert": [
+                  {
+                    "chromosomeField": "chrStart",
+                    "genomicFields": ["start1", "end1"]
+                  },
+                  {
+                    "chromosomeField": "chrEnd",
+                    "genomicFields": ["start2", "end2"]
+                  }
+                ],
+                // highlight-end
+              "values": [
+                {
+                  "chrStart": "chr1",
+                  "start1": 1221574,
+                  "end1": 1221575,
+                  "chrEnd": "chr13",
+                  "start2": 36001515,
+                  "end2": 36001516
+                },
+                {
+                  "chrStart": "chr10",
+                  "start1": 9257519,
+                  "end1": 9257520,
+                  "chrEnd": "chr18",
+                  "start2": 82441834,
+                  "end2": 82441835
+                }
+                ]
+            },
+          "style": {"linkStyle": "elliptical"},
+          "mark": "withinLink",
+          // connect chrStart (chr1, chr10) to chrEnd (chr13, chr18)
+          // highlight-start
+          "x": {"field": "start1", "type": "genomic"},
+          "xe": {"field": "end2", "type": "genomic"},
+          // highlight-end
+          "stroke": {"value": "magenta"},
+          "width": 500,
+          "height": 180
+        }]
+    }
+```
+
+[Try it in the online editor](<https://gosling.js.org/?gist=solo7773/82a8a75855d1d3b773acbf7d66468d06>)
+
 ## Triangle
 [:link: source code](https://github.com/gosling-lang/gosling.js/blob/master/src/core/mark/triangle.ts)  
 
