@@ -52,24 +52,7 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 <TableWrapper objName='CsvData' GoslingSchema={GoslingSchema} />
 
-When multiple genomic loci should be loaded (eg. draw links between points on different chromosomes), the *genomicFieldsToConvert* can be used.
-
-```javascript
-{"data": {
-    "url": "https://solo7773.github.io/rearrangement.test.txt",
-    "type": "csv",
-    "genomicFieldsToConvert": [
-      {
-        "chromosomeField": "chr1",
-        "genomicFields": ["start1", "end1"]
-      },
-      {
-        "chromosomeField": "chr2",
-        "genomicFields": ["start2", "end2"]
-      }
-    ]
-}}
-```
+The property `"genomicFieldsToConvert"` enables users to convert chromosome fields into genomic fields, which facilitates the creation of [links between various chromosomes](/docs/mark#link).
 
 ### JSON (No HiGlass Server)
 
@@ -109,41 +92,7 @@ This format allows users to include data directly in the Gosling's JSON specific
 
 <TableWrapper GoslingSchema={GoslingSchema} objName='JsonData'/>
 
-When multiple genomic loci should be loaded (eg. draw links between points on different chromosomes), the *genomicFieldsToConvert* can be used.
-
-```javascript
-{"data": {
-    "type": "json",
-    "genomicFieldsToConvert": [
-    {
-        "chromosomeField": "chr1",
-        "genomicFields": ["start1", "end1"]
-      },
-     {
-        "chromosomeField": "chr2",
-        "genomicFields": ["start2", "end2"]
-      }
-    ],
-  "values": [
-    {
-      "chr1": "chr1",
-      "start1": 1221574,
-      "end1": 1221575,
-      "chr2": "chr13",
-      "start2": 36001515,
-      "end2": 36001516
-    },
-    {
-      "chr1": "chr10",
-      "start1": 9257519,
-      "end1": 9257520,
-      "chr2": "chr18",
-      "start2": 82441834,
-      "end2": 82441835
-    }
-    ]
-}}
-```
+The property `"genomicFieldsToConvert"` enables users to convert chromosome fields into genomic fields, which facilitates the creation of [links between various chromosomes](/docs/mark#link).
 
 ### BigWig (No HiGlass Server)
 
