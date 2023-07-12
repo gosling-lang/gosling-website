@@ -61,7 +61,7 @@ can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, y
 CSV file and use the CSV data specification, but this will not be as performant for large files. 
 
 The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column,
-is called "start". If you want to access values from tags in the attributes column, use the `extractAttributes` option. 
+is called "start". The standard GFF fields are as follows: `seq_id`, `source`, `type`, `start`, `end`, `score`, `strand`, `phase`, and `attributes`.
 
 [GFF file demo](https://gosling-lang.github.io/gosling.js/?example=doc_gff)
 
