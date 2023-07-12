@@ -63,6 +63,48 @@ CSV file and use the CSV data specification, but this will not be as performant 
 The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column,
 is called "start". The standard GFF fields are as follows: `seq_id`, `source`, `type`, `start`, `end`, `score`, `strand`, `phase`, and `attributes`.
 
+Here is an example GFF3 file line:
+
+```
+U00096.3	Genbank	gene	352706	354592	.	+	.	Name=prpE;gbkey=Gene;gene=prpE;gene_biotype=protein_coding;gene_synonym=ECK0332,yahU;locus_tag=b0335
+```
+
+This will be parsed as the following: 
+```
+{
+  ​seq_id: "U00096.3"​​
+  ​source: "Genbank"
+  ​type: "gene"
+  ​start: 352706
+  ​end: 354592
+  ​phase: null
+  ​strand: "+"
+  ​​​score: null
+  ​attributes: Object { Name: (1) […], gbkey: (1) […], Name: (1) […], … }
+  ​​​child_features: Array []
+  ​​​derived_features: Array []  ​​
+}
+```
+If we include the option `attributesToFields: [{attribute: "Name", defaultValue: "unknown"}]`, then the `Name` attribute
+will included as a field:
+```
+{
+  Name: "prpE"
+  ​seq_id: "U00096.3"​​
+  ​source: "Genbank"
+  ​type: "gene"
+  ​start: 352706
+  ​end: 354592
+  ​phase: null
+  ​strand: "+"
+  ​​​score: null
+  ​attributes: Object { ID: (1) […], Dbxref: (2) […], Name: (1) […], … }
+  ​​​child_features: Array []
+  ​​​derived_features: Array []  ​​
+}
+```
+This allows `Name` to be used as a field in Gosling to label features. 
+
 [GFF file demo](https://gosling-lang.github.io/gosling.js/?example=doc_gff)
 
 ```javascript
