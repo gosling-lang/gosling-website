@@ -52,78 +52,7 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 <TableWrapper objName='CsvData' GoslingSchema={GoslingSchema} />
 
-### GFF3 (No HiGlass Server)
-
-This format allows for files that follow the [GFF3 specification](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md). 
-
-Currently, the GFF3 file must have an accompanying index file. If you do not have an index file for your GFF3 file, you 
-can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the GFF3 file as if it were a 
-CSV file and use the CSV data specification, but this will not be as performant for large files. 
-
-The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column,
-is called "start". The standard GFF fields are as follows: `seq_id`, `source`, `type`, `start`, `end`, `score`, `strand`, `phase`, and `attributes`.
-
-Here is an example GFF3 file line:
-
-```
-U00096.3	Genbank	gene	352706	354592	.	+	.	Name=prpE;gbkey=Gene;gene=prpE;gene_biotype=protein_coding;gene_synonym=ECK0332,yahU;locus_tag=b0335
-```
-
-This will be parsed as the following: 
-```
-{
-  ​seq_id: "U00096.3"​​
-  ​source: "Genbank"
-  ​type: "gene"
-  ​start: 352706
-  ​end: 354592
-  ​phase: null
-  ​strand: "+"
-  ​score: null
-  ​attributes: Object { Name: (1) […], gbkey: (1) […], Name: (1) […], … }
-  ​child_features: Array []
-  ​derived_features: Array []  ​​
-}
-```
-If we include the option `attributesToFields: [{attribute: "Name", defaultValue: "unknown"}]`, then the `Name` attribute
-will included as a field:
-```
-{
-  Name: "prpE"
-  ​seq_id: "U00096.3"​​
-  ​source: "Genbank"
-  ​type: "gene"
-  ​start: 352706
-  ​end: 354592
-  ​phase: null
-  ​strand: "+"
-  ​score: null
-  ​attributes: Object { ID: (1) […], Dbxref: (2) […], Name: (1) […], … }
-  ​child_features: Array []
-  ​derived_features: Array []  ​​
-}
-```
-This allows `Name` to be used as a field in Gosling to label features. 
-
-[GFF file demo](https://gosling-lang.github.io/gosling.js/?example=doc_gff)
-
-```javascript
-{
-  "tracks":[{
-    "data": {
-      "url": "https://s3.amazonaws.com/gosling-lang.org/data/gff/E_coli_MG1655.gff3.gz",
-      "indexUrl": "https://s3.amazonaws.com/gosling-lang.org/data/gff/E_coli_MG1655.gff3.gz.tbi",
-      "type": "gff"
-    },
-    "mark": "rect", 
-      "x": {"field": "start"}, // example using one of the standard fields
-      "xe": {"field": "end"},
-    ... // other configurations of this track
-  }]
-}
-```
-
-<TableWrapper GoslingSchema={GoslingSchema} objName='GffData' includeDescription={true}/>
+The property `"genomicFieldsToConvert"` enables users to convert chromosome fields into genomic fields, which facilitates the creation of [links between various chromosomes](/docs/mark#link).
 
 
 ### JSON (No HiGlass Server)
@@ -166,6 +95,7 @@ This format allows users to include data directly in the Gosling's JSON specific
 
 The property `"genomicFieldsToConvert"` enables users to convert chromosome fields into genomic fields, which facilitates the creation of [links between various chromosomes](/docs/mark#link).
 
+
 ### BigWig (No HiGlass Server)
 
 ```javascript
@@ -193,10 +123,6 @@ This format allows for BED files that follow the [BED specification](https://raw
 There are 12 standard fields (`chrom`, `chromStart`, `chromEnd`, `name`, `score`, `strand`, `thickStart`, `thickEnd`, `itemRgb`, `blockCount`, `blockSizes`, and `blockStarts`). 
 The first three fields (`chrom`, `chromStart`, `chromEnd`) are required. If custom fields are specified, they 
 will not be able to rename the first three fields.
-
-Currently, the BED file must have an accompanying index file. If you do not have an index file for your BED file, you 
-can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the BED file as if it were a 
-CSV file and use the CSV data specification, but this will not be as performant for large files. 
 
 [BED file demo](https://gosling-lang.github.io/gosling.js/?example=doc_bed)
 ```javascript

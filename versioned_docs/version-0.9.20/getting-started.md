@@ -6,7 +6,7 @@ We currently support the following ways of using Gosling.
 - [Create Your Visualization in Gosling Online Editor](#create-your-visualization-in-gosling-online-editor)
 - [Load a Gosling Spec From Your Github Gist](#load-a-gosling-spec-from-your-github-gist)
 - [Embed Gosling Component in a HTML File](#embed-gosling-component-in-a-html-file)
-- [Use Gosling.js in React App](#use-goslingjs-in-react-app)
+- [Use Gosling.js with React](#use-goslingjs-with-react)
 - [Resources](#resources)
 
 ## Create Your Visualization in Gosling Online Editor
@@ -63,6 +63,10 @@ For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379a
 ## Use Gosling.js with React
 
 Please visit [gosling-react](https://github.com/gosling-lang/gosling-react) to find detailed instruction on using React.
+
+
+Beginning with version 0.9.30, Gosling now supports React v18. 
+If you are using a Gosling version prior to 0.9.30, please continue to use React v16.
   
 Install `gosling.js` and its dependent libraries:
 

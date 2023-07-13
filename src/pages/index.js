@@ -68,6 +68,11 @@ const dummyGosling = <BrowserOnly>
 const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
+  <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.30' class='primary-color'>v0.9.30</a>, 
+    which supports <a href='/docs/#use-goslingjs-with-react' class='primary-color'>React v18</a> and
+    <a href='/docs/data#beddb-require-higlass-server' class='primary-color'>BED file datafetcher</a>!
+   </li>
+
    <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.20' class='primary-color'>v0.9.20</a>, 
     which supports <a href='docs/js-api#subscribe' class='primary-color'>mouse event APIs</a>, 
     <a href='/docs/responsive' class='primary-color'>responsive design</a>, 
