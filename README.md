@@ -68,7 +68,8 @@ website
 
 ```
 
-When you are sure that the current docs (`/docs`) is ready to be frozen, run the script below
+We will edit the ./docs whenever we make changes to gosling.js.
+When we are sure that the current docs (`/docs`) is ready to be frozen (typically when we bump a major gosling.js version), run the script below
 ```
 yarn run tag_version x.x.x
 ```
