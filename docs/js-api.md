@@ -153,7 +153,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"onNewTrack"`, `
 
 - **callback**: `(msg:string, eventData)=>void`
   A function that is subscribed to the specified event.
-  - For `"onNewTrack"` and `"onNewView"`, the `eventData` contains just the `id` of the new track or view that has been added. 
+  - For `"onNewTrack"` and `"onNewView"`, the `eventData` contains just the `id` of a track or view that has been added. These API functions can be useful if you want to know when certain tracks and views have been added.
   ```javascript
   { 
       id: string
