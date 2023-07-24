@@ -149,10 +149,16 @@ Subscribe the callback function to the specified event.
 
 - **eventName**: string
 Specify the event using its name.
-One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"location"`. 
+One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"onNewTrack"`, `"onNewView"`, `"location"`. 
 
 - **callback**: `(msg:string, eventData)=>void`
   A function that is subscribed to the specified event.
+  - For `"onNewTrack"` and `"onNewView"`, the `eventData` contains just the `id` of a track or view that has been added. These API functions can be useful if you want to know when certain tracks and views have been added.
+  ```javascript
+  { 
+      id: string
+  }
+  ```
   - For `"rawData"`, the `eventData` stores columnar data that has been used internally in Gosling to display the view:
   ```javascript
   { 
