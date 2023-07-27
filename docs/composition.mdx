@@ -207,3 +207,33 @@ Try examples in the online editor:
 [Line chart (line + point)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_line_point>)
 
 [Ideogram (text + rect + triangle)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_rect_text>)
+
+## Placeholder track to show non-Gosling visualizations
+
+If you want to show non-Gosling visualizations within a Gosling visualization, you can use `DummyTrack` as a 
+placeholder to create space for your visualization. Your custom visualization can then be overlaid on top of 
+the `DummyTrack`. Currently, `DummyTrack` can only be used with a linear `layout`.
+
+[DummyTrack demo in the Editor](https://gosling-lang.github.io/gosling.js/?example=doc_dummy_track)
+
+Here's a `DummyTrack` specification example
+```javascript
+"tracks": [
+    {
+      "type": "dummy-track",
+      "title": "Placeholder",
+      "id": "my_track",
+      "height": 200,
+      "width": 300,
+      "style": {"background": "#e6e6e6", "textFontSize": 8, "textFontWeight": "normal}
+    }
+],
+
+```
+
+`DummyTrack` properties: 
+<TableWrapper objName='DummyTrack' GoslingSchema={GoslingSchema} />
+
+`DummyTrack` can be styled in the following way: 
+
+<TableWrapper objName='DummyTrackStyle' GoslingSchema={GoslingSchema} />
