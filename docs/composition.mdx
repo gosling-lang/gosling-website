@@ -207,37 +207,3 @@ Try examples in the online editor:
 [Line chart (line + point)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_line_point>)
 
 [Ideogram (text + rect + triangle)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_rect_text>)
-
-## Integrating non-Gosling visualizations
-
-You may want to visualize a non-Gosling visualization within a Gosling visualization, such as showing a lineage tree along with multiple sequences.
-
-In Gosling, you can do this by using `DummyTrack` as a placeholder to create space for your non-Gosling visualization. Your non-Gosling visualization can then be overlaid on top of the `DummyTrack` using [JS API functions](./js-api) to get the position of the placeholder.
-
-:::caution
-`DummyTrack` can only be used with a linear `layout` at the moment.
-:::
-
-[DummyTrack demo in the Editor](https://gosling-lang.github.io/gosling.js/?example=doc_dummy_track)
-
-Here's a `DummyTrack` specification example
-```javascript
-"tracks": [
-    {
-      "type": "dummy-track",
-      "title": "Placeholder",
-      "id": "my_track",
-      "height": 200,
-      "width": 300,
-      "style": {"background": "#e6e6e6", "textFontSize": 8, "textFontWeight": "normal"}
-    }
-],
-
-```
-
-`DummyTrack` properties: 
-<TableWrapper objName='DummyTrack' GoslingSchema={GoslingSchema} />
-
-`DummyTrack` can be styled in the following way: 
-
-<TableWrapper objName='DummyTrackStyle' GoslingSchema={GoslingSchema} />

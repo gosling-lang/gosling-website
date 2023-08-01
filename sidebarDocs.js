@@ -25,6 +25,11 @@ module.exports = {
     },
     {
       type: 'doc',
+      label: 'Integrating non-Gosling visualizations',
+      id: 'non-gos-vis',
+    },
+    {
+      type: 'doc',
       id: 'public-datasets',
     },
     {
