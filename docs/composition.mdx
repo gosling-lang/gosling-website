@@ -208,11 +208,15 @@ Try examples in the online editor:
 
 [Ideogram (text + rect + triangle)](<https://gosling-lang.github.io/gosling.js/?example=doc_overlay_rect_text>)
 
-## Placeholder track to show non-Gosling visualizations
+## Integrating non-Gosling visualizations
 
-If you want to show non-Gosling visualizations within a Gosling visualization, you can use `DummyTrack` as a 
-placeholder to create space for your visualization. Your custom visualization can then be overlaid on top of 
-the `DummyTrack`. Currently, `DummyTrack` can only be used with a linear `layout`.
+You may want to visualize a non-Gosling visualization within a Gosling visualization, such as showing a lineage tree along with multiple sequences.
+
+In Gosling, you can do this by using `DummyTrack` as a placeholder to create space for your non-Gosling visualization. Your non-Gosling visualization can then be overlaid on top of the `DummyTrack` using [JS API functions](./js-api) to get the position of the placeholder.
+
+:::caution
+`DummyTrack` can only be used with a linear `layout` at the moment.
+:::
 
 [DummyTrack demo in the Editor](https://gosling-lang.github.io/gosling.js/?example=doc_dummy_track)
 
