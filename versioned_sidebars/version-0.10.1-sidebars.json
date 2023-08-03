@@ -1,0 +1,60 @@
+{
+  "version-0.10.1/docs": [
+    {
+      "type": "doc",
+      "id": "version-0.10.1/getting-started"
+    },
+    {
+      "type": "category",
+      "label": "Grammar",
+      "collapsed": false,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.10.1/data"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.10.1/genome-builds"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.10.1/mark"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.10.1/visual-channel"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.10.1/composition"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.10.1/user-interaction"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.10.1/semantic-zoom"
+        }
+      ],
+      "collapsible": true
+    },
+    {
+      "type": "doc",
+      "id": "version-0.10.1/js-api"
+    },
+    {
+      "type": "doc",
+      "id": "version-0.10.1/non-gos-vis"
+    },
+    {
+      "type": "doc",
+      "id": "version-0.10.1/public-datasets"
+    },
+    {
+      "type": "doc",
+      "id": "version-0.10.1/FAQ"
+    }
+  ]
+}
