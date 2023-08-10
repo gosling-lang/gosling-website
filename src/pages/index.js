@@ -68,9 +68,12 @@ const dummyGosling = <BrowserOnly>
 const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
+  <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.10.0' class='primary-color'>v0.10.0</a>, 
+    which adds support for <a href='/docs/data#gff3-no-higlass-server' class='primary-color'>GFF files</a>, a <a href='docs/js-api#getviewids' class='primary-color'>Javscript API to get the ID of views</a>, and a <a href='/docs/non-gos-vis' class='primary-color'> placeholder track</a> for non-Gosling visualizations.
+   </li>
   <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.30' class='primary-color'>v0.9.30</a>, 
     which supports <a href='/docs/#use-goslingjs-with-react' class='primary-color'>React v18</a> and
-    <a href='/docs/data#beddb-require-higlass-server' class='primary-color'>BED file datafetcher</a>!
+    <a href='/docs/data#beddb-require-higlass-server' class='primary-color'> BED file datafetcher</a>!
    </li>
 
    <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.20' class='primary-color'>v0.9.20</a>, 
