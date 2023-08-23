@@ -56,9 +56,10 @@ Any small enough tabular data files, such as tsv, csv, BED, BEDPE, and GFF, can 
 
 This format allows for files that follow the [GFF3 specification](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md). 
 
+[GFF file demo](https://gosling-lang.github.io/gosling.js/?example=doc_gff)
+
 Currently, the GFF3 file must have an accompanying index file. If you do not have an index file for your GFF3 file, you 
-can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the GFF3 file as if it were a 
-CSV file and use the CSV data specification, but this will not be as performant for large files. 
+can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the GFF3 file as if it were a CSV file and use the CSV data specification, but this will not be as performant for large files. 
 
 The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column,
 is called "start". The standard GFF fields are as follows: `seq_id`, `source`, `type`, `start`, `end`, `score`, `strand`, `phase`, and `attributes`.
@@ -105,8 +106,6 @@ will included as a field:
 ```
 This allows `Name` to be used as a field in Gosling to label features. 
 
-[GFF file demo](https://gosling-lang.github.io/gosling.js/?example=doc_gff)
-
 ```javascript
 {
   "tracks":[{
@@ -124,6 +123,32 @@ This allows `Name` to be used as a field in Gosling to label features.
 ```
 
 <TableWrapper GoslingSchema={GoslingSchema} objName='GffData' includeDescription={true}/>
+
+### VCF (No HiGlass Server)
+
+This format allow files that follow the [VCF specification](https://samtools.github.io/hts-specs/VCFv4.2.pdf). Currently, we only support the usage of VCF files that have a corresponding index file.
+
+[VCF file demo showing indels](https://gosling-lang.github.io/gosling.js/?example=doc_vcf_indels) 
+
+[VCF file demo showing point mutations](https://gosling-lang.github.io/gosling.js/?example=doc_vcf_point_mutations) 
+
+
+
+```javascript
+{
+  "tracks":[{
+    "data": {
+      "url": "https://somatic-browser-test.s3.amazonaws.com/browserExamples/7a921087-8e62-4a93-a757-fd8cdbe1eb8f.consensus.20161006.somatic.indel.sorted.vcf.gz",
+      "indexUrl": "https://somatic-browser-test.s3.amazonaws.com/browserExamples/7a921087-8e62-4a93-a757-fd8cdbe1eb8f.consensus.20161006.somatic.indel.sorted.vcf.gz.tbi",
+      "type": "vcf",
+      "sampleLength": 5000
+    },
+    ... // other configurations of this track
+  }]
+}
+```
+
+<TableWrapper GoslingSchema={GoslingSchema} objName='VcfData' includeDescription={true}/>
 
 
 ### JSON (No HiGlass Server)
