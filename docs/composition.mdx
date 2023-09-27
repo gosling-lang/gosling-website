@@ -1,11 +1,18 @@
 ---
 title: Composition
+description: Visualizations organized into tracks and views. 
 ---
 
 import {TableWrapper} from '@site/react-components/DocComponments/table'
 import GoslingSchema from './assets/gosling.schema.json'
 
-A **`track`** is a unit building block in Gosling which can be represented as a bar chart, a line chart, or an ideogram. For the concurrent analysis of multiple datasets, multiple tracks can be grouped into **`views`** and navigated synchronously. In other words, a view defines the genomic location for all the tracks it contains, and the tracks define the data to be visualized.
+Gosling visualizations are composed from **tracks** and **views**. 
+
+<img src='/img/doc_images/track-view.png' />
+
+A **`track`** is a unit building block in Gosling which can be represented as a bar chart, a line chart, or an ideogram. 
+Multiple tracks can be grouped into together into a **`view`**. A view defines the genomic location for all the tracks it 
+contains, and the tracks define the data to be visualized.
 
 <!-- :pushpin: `mark + channel` :arrow_forward: `one track` :arrow_forward:`tracks` :arrow_forward: `one view` :arrow_forward: `views` :arrow_forward: `a multi-view visualization` -->
 

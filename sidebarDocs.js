@@ -7,13 +7,20 @@ module.exports = {
     {
       type: 'category',
       label: 'Grammar',
-      collapsed: false,
+      link: {
+        type: 'generated-index',
+        title: 'Grammar',
+        description:
+          'This is the documentation for the Gosling grammar. If this is your first time looking at the docs, we recommend starting with Composition, Mark, and Visual Channel.',
+        keywords: ['guides'],
+      },
+      collapsed: true,
       items: [
+        'composition',
         'data',
-        'genome-builds',
         'mark',
         'visual-channel',
-        'composition',
+        'genome-builds',
         'user-interaction',
         'semantic-zoom',
       ],
