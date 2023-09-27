@@ -15,10 +15,10 @@
     "tag_version": "docusaurus docs:version"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.3",
-    "@docusaurus/plugin-google-analytics": "^2.0.0-beta.3",
-    "@docusaurus/plugin-google-gtag": "^2.0.0-beta.3",
-    "@docusaurus/preset-classic": "^2.0.0-beta.3",
+    "@docusaurus/core": "2.4.3",
+    "@docusaurus/plugin-google-analytics": "2.4.3",
+    "@docusaurus/plugin-google-gtag": "2.4.3",
+    "@docusaurus/preset-classic": "2.4.3",
     "@mdx-js/react": "^1.6.21",
     "antd": "^4.19.5",
     "clsx": "^1.1.1",

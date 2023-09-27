@@ -19,20 +19,8 @@ module.exports = {
     },
     colorMode: {
       defaultMode: 'light',
-      disableSwitch: true,
+      disableSwitch: false,
       respectPrefersColorScheme: false,
-      switchConfig: {
-        darkIcon: '🌙',
-        lightIcon: '🌞',
-        // React inline style object
-        // see https://reactjs.org/docs/dom-elements.html#style
-        darkIconStyle: {
-          marginLeft: '2px',
-        },
-        lightIconStyle: {
-          marginLeft: '1px',
-        },
-      }
     },
     algolia: {
       appId: 'BH4D9OD16A',
@@ -57,6 +45,7 @@ module.exports = {
           position: 'left',
         },
         { to: 'tutorials/', label: 'Tutorials', position: 'left' },
+        { to: 'usage/', label: 'Usage', position: 'left' },
         { to: 'examples/', label: 'Examples', position: 'left' },
         { to: 'themes/', label: 'Themes', position: 'left' },
         { to: 'about/', label: 'About', position: 'left' },
@@ -141,22 +130,12 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Harvard. Built with Docusaurus.`,
     },
-    metadatas: [
+    metadata: [
       { name: 'twitter:card', content: 'summary' },
       { name: "twitter:title", content: "Gosling" },
       { name: 'twitter:description', content: 'A Grammar-based Toolkit for Scalable and Interactive Genomics Data Visualization' },
       { name: 'twitter:image', content: 'https://user-images.githubusercontent.com/9922882/109852545-e05f3400-7c22-11eb-90f3-7371e4ddeb42.png' }
     ],
-    gtag: {
-      trackingID: 'UA-96954979-4',
-      // Optional fields.
-      anonymizeIP: true, // Should IPs be anonymized?
-    },
-    googleAnalytics: {
-      trackingID: 'UA-96954979-4',
-      // Optional fields.
-      anonymizeIP: true, // Should IPs be anonymized?
-    },
   },
   presets: [
     [
@@ -178,6 +157,16 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        gtag: {
+          trackingID: 'UA-96954979-4',
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
+        },
+        googleAnalytics: {
+          trackingID: 'UA-96954979-4',
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
         },
       },
     ],
