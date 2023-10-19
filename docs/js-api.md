@@ -149,7 +149,7 @@ Subscribe the callback function to the specified event.
 
 - **eventName**: string
 Specify the event using its name.
-One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"onNewTrack"`, `"onNewView"`, `"location"`, `"specProcessed"`. 
+One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"onNewTrack"`, `"onNewView"`, `"location"`, `"specResolved"`. 
 
 - **callback**: `(msg:string, eventData)=>void`
   A function that is subscribed to the specified event.
@@ -201,7 +201,7 @@ One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"onNewTrack"`, `
   }
   ```
 
-    - For `"specProcessed"`, the `eventData` stores the spec as processed in the compiler, resolving defaults and attributes inherited from a parent view, as well as flattening overlaid tracks. 
+    - For `"specResolved"`, the `eventData` stores the spec as processed in the compiler, resolving defaults and attributes inherited from a parent view, as well as flattening overlaid tracks. 
   ```javascript
   { 
       id: string,
@@ -219,4 +219,4 @@ Unsubscribe the callback function from the specified event.
 
 - **eventName**: string
 Name of the event.
-One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"location"`, `"specProcessed"`. 
+One of `"mouseOver"`, `"rangeSelect"`, `"click"`, `"rawData"`, `"location"`, `"specResolved"`. 
