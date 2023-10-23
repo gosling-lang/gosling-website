@@ -16,21 +16,31 @@ const isExperimental = (descriptionInfo) => {
 export const TableWrapper = (props) => {
   return <PropertyTable {...props} />
 }
+/**
+ * @typedef {Object} TableProps
+ * @property {string} objName
+ * @property {Object} GoslingSchema
+ * @property {boolean} [includeDescription=false]
+ * @property {string[]} [hideProperties=[]] The properties you want to hide from the objName type
+ * @property {Object} [secondaryObject={name: '', interaction: 'intersect'}] If you want the table to show the intersection of two object properties, set the name of the secondary object and the interaction type to intersect. 
+ * For the difference between two objects, set the interaction to anything else.
+ */
 
 /**
  * 
- * @param {object} param0 
+ * @param {TableProps} props 
  * @returns {React.Component} <div><table>...</table></div>
  */
-const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) => {
+const PropertyTable = ({ objName, GoslingSchema, includeDescription = false, hideProperties=[], secondaryObject={name: '', interaction: 'intersect'}}) => {
 
-  var objDef = GoslingSchema["definitions"]
+  var allDef = GoslingSchema["definitions"]
   /**
    *  enable the parse of nested properties
    * e.g., For type boundingBox
    * objName = DisplacementTransform-properties-boundingBox 
    * =>  objDef = goslingSchema['definitions']['DisplaceTransform']['properties']['boundingBox]
    */
+  let objDef = allDef
   objName.split('-').forEach(k => {
     if(parseInt(k)){
       k = parseInt(k)
@@ -50,9 +60,14 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
   if (objDef['properties']) {
 
     //// sort properties based on whether it is required
-    const propertyList = Object.keys(objDef['properties']).sort((a, b) => (objDef.required || '').includes(a) - (objDef.required || '').includes(b)).reverse()
+    const allPropertyList = Object.keys(objDef['properties']).sort((a, b) => (objDef.required || '').includes(a) - (objDef.required || '').includes(b)).reverse()
+    let propertyList = allPropertyList.filter(propertyName => !hideProperties.includes(propertyName) && !propertyName.startsWith('_'));
 
-
+    if (secondaryObject.name != '') {
+      const shouldIntersect = secondaryObject.interaction == 'intersect'
+      const intersectPropertyList = Object.keys(allDef[secondaryObject.name]['properties'])
+      propertyList = propertyList.filter(propertyName => shouldIntersect ? intersectPropertyList.includes(propertyName) : !intersectPropertyList.includes(propertyName) )
+    }
 
     const propertyTableRows = propertyList.map(key => {
       const propertyInfo = objDef['properties'][key]
@@ -83,12 +98,9 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
           // notes.push(<ReactMarkdown key='desription' children={description.replace(/\n\n/g, '\n')} />)
         }
       }
-
-
-
-
+      const stylized = `\`${key}\``
       return <tr key={key}>
-        <td>{key}</td>
+        <td><ReactMarkdown children={stylized} /></td>
         <td className='type'> <ReactMarkdown children={pType} /> </td>
         <td><ReactMarkdown children={notes.join(' ')} /> </td>
       </tr>
@@ -107,6 +119,8 @@ const PropertyTable = ({ objName, GoslingSchema, includeDescription = false }) =
     </tr>
 
     tableRows.push(addtionalRow)
+  } else {
+    console.warn("PropertyTable: There were no properties found for the type " + objName);
   }
 
   return <div key={objName}>
@@ -170,8 +184,8 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
     }
     /** if an array of type reference */
     else if (propertyInfo?.items?.$ref != undefined) {
-      const typename = propertyInfo['items']['$ref'].replace('#/definitions/', '')
-      pType = `[${typename.toUpperCase()}](#type-${typename.toLowerCase()})`
+      const objName = propertyInfo['items']['$ref'].replace('#/definitions/', '')
+      pType = `[${objName}[]](reference#${objName.toLowerCase()})`
     }
   }
   /**
@@ -180,7 +194,11 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
   else if (pType === 'object') {
     /** if the number of properties is less than 3 or if the property do not have a type name */
     if (propertyInfo['properties'] && (Object.keys(propertyInfo['properties']).length < 3 || propertyName == '')) {
-      pType = 'object'
+      if (propertyName == '') {
+        pType = 'object'
+      } else {
+        pType = `[${propertyName}](reference#${propertyName.toLowerCase()})`
+      }
       const { objNotes, otherNotes } = obj2str(propertyInfo, GoslingSchema)
       notes.push(`Each object follows the format \`${objNotes}\` (${otherNotes})`)
 
@@ -189,7 +207,7 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
     else if (propertyInfo['additionalProperties']) {
       pType = `{[k: string]: ${parsePType(propertyInfo['additionalProperties'], [], '', GoslingSchema)['pType']}}`
     } else {
-      pType = `[${propertyName.toUpperCase()}](#type-${propertyName.toLowerCase()})`
+      pType = `[${propertyName}](reference#${propertyName.toLowerCase()})`
     }
   }
   else if (pType === 'string') {
@@ -203,7 +221,8 @@ const parsePType = (propertyInfo, notes, propertyName, GoslingSchema) => {
    * noType but an anyOf Array
    */
   else if (pType == undefined && propertyInfo['anyOf']) {
-    pType = propertyInfo['anyOf'].map(p => parsePType(p, [], '', GoslingSchema)['pType']).join('| ')
+    const uniqueValues = [...new Set(propertyInfo['anyOf'].map(p => parsePType(p, [], '', GoslingSchema)['pType']))];
+    pType = uniqueValues.join(' | ')
   }
   /**
    * no type but a reference 

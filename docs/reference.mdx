@@ -1,0 +1,443 @@
+---
+title: Grammar Reference
+description: Documentation of the Gosling grammar.
+---
+
+import { TableWrapper } from "@site/react-components/DocComponments/table";
+import GoslingSchema from "./assets/gosling.schema.json";
+
+This is the reference documentation for the Gosling grammar.
+
+A Gosling visualization is created using a **Gosling specification**, which is a JSON object.
+The possible keys and values of the JSON object are determined by the Gosling grammar.
+
+## Specification Root
+
+The root object a Gosling specification is a [View](#view) with the following optional properties.
+
+| property    | type   | description                                                |
+| ----------- | ------ | ---------------------------------------------------------- |
+| `title`       | string | Title of the visualization                                 |
+| `subtitle`    | number | Subtitle of the visualization, shown below the title       |
+| `description` | number | Description of the visualization, shown below the subtitle |
+
+#### Example:
+
+```javascript
+{
+  // highlight-start
+  "title": "My First Gosling Visualization",
+  "subtitle": "The first of many",
+  "description": "This describes what you see",
+  // highlight-end
+  "tracks": [
+    ...
+  ]
+}
+```
+
+<!-- Warning: Things link to this header -->
+
+## View
+
+There are two types of views: **track-containing views**, and **view-containing views**.
+
+### Track-containing view
+
+A view which contains the "track" property defines the genomic location for all the tracks it contains.
+
+:::info
+Track-containing views can also take any [Track](#track) property, which the tracks within it will inherit
+:::
+
+| property  | type                                 | description                                                                                                                                                                                                         |
+| --------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tracks`    | ([Track](#track) \| Track-containing [View](#view))[] | The tracks or views that are contained within the view. The axes of these tracks and views will be synced together. **Required**.                                                                                   |
+| `alignment` | string                               | One of `"stack"` or `"overlay"`. If `"overlay"` is set, the tracks within the view will be overlaid on top of each other. If `"stack"` is set, the tracks will be placed next to each other. **Default:** `"stack"` |
+
+#### Example
+
+This is an outline of a track-containing view. 
+
+```javascript
+{
+  // Optional properties from Track that the tracks will inherit 
+  "xDomain": {"chromosome": "chr1", "interval": [1, 3000500]},
+
+  // highlight-start 
+  // Track-containing view specific properties 
+  "alignment": "overlay", // How the tracks will be aligned
+  "tracks": [
+    ...
+  ]
+  // highlight-end
+}
+```
+
+### View-containing view
+
+A view can also contain multiple views. The genomic axes of these sub-views will not be synced together.
+
+| property    | type            | description                                                                                                                                                                   |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `views`       | [View[]](#view) | Views to show within the view. If a view takes this property, the `"tracks"` property should not be set. In addition, the view cannot contain any [Track](#track) properties. |
+| `arrangement` | string          | One of `"parallel"`, `"serial"`, `"vertical"`, `"horizontal"`                                                                                                                 |
+
+#### Example
+This is an outline of a Gosling specification containing multiple views. 
+
+```javascript
+{
+  "arrangement": "horizontal", // can be "parallel", "serial", "vertical", "horizontal"
+  "views": [
+    ...
+  ]
+}
+```
+
+### Optional properties
+
+Regardless of whether a view contains tracks or views, a view can these additional properties:
+
+<!--  SingleView-anyOf-2 is the same thing as FlatTracks -->
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="SingleView-anyOf-2"
+  hideProperties={["responsiveSpec", "tracks"]}
+/>
+
+<!-- Warning: Things link to this header -->
+
+## Track
+
+A **`track`** is a unit building block in Gosling which can be represented as a bar chart, a line chart, or an ideogram.
+The genomic range of multiple tracks can be synchronized when the tracks belong to the same [View](#view).
+
+### Track layout properties
+
+These properties specify the layout and data to be used in the track.
+
+<!-- Intersecting SingleTrack with DataTrack gives us all of of the non-encoding properties  -->
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="SingleTrack"
+  secondaryObject={{ name: "DataTrack", interaction: "intersect" }}
+/>
+
+
+### Track encoding properties
+
+These properties specify how to associate data to visual elements.
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="SingleTrack"
+  secondaryObject={{ name: "DataTrack", interaction: "diff" }}
+/>
+
+#### Example
+
+This is a Gosling specification of a view containing a single track. 
+
+``` javascript
+{
+  "tracks": [
+    // highlight-start
+    {
+      "layout": "linear",
+      "width": 800,
+      "height": 180,
+      "data": {
+        "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
+        "type": "multivec",
+        "row": "sample",
+        "column": "position",
+        "value": "peak",
+        "categories": ["sample 1"],
+        "binSize": 5
+      },
+      "mark": "bar",
+      "x": {"field": "start", "type": "genomic"},
+      "xe": {"field": "end", "type": "genomic"},
+      "y": {"field": "peak", "type": "quantitative"}
+    }
+    // highlight-end
+  ]
+}
+```
+
+### Track template property
+
+A track can use a preset track template using this property.
+
+| property | type   | description                         |
+| -------- | ------ | ----------------------------------- |
+| `template` | string | The template to use with the track. |
+
+### DummyTrack
+
+A DummyTrack is a track that is used a placeholder in a Gosling visualization. [Non-Gosling visualizations](non-gos-vis) can be incorporated using it.
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="DummyTrack"
+  hideProperties={["zoomLimits", "assembly", "overlayOnPreviousTrack"]}
+/>
+
+#### Example
+This is a Gosling specification containing a single DummyTrack. 
+
+``` javascript 
+
+{
+  "tracks": [
+    // highlight-start
+      {
+        "type": "dummy-track",
+        "title": "Placeholder",
+        "id": "my_track",
+        "height": 200,
+        "width": 300,
+        "style": {"background": "#e6e6e6", "textFontSize": 8, "textFontWeight": "normal"}
+      }
+    //highlight-end
+  ]
+}
+
+```
+
+## Visual Channel
+
+Different visual channels are supported depending on the mark type.
+
+| mark type                         | supported visual channels                                                                                                    |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [`point`](/docs/mark#point)       | [`x`](#x), [`y`](#), [`row`](#row), [`size`](#size), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity) |
+| [`line`](/docs/mark#line)         | [`x`](#x), [`y`](#y), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                        |
+| [`rect`](/docs/mark#rect)         | [`x`](#x), [`xe`](#x), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                |
+| [`bar`](/docs/mark#bar)           | [`x`](#x), [`y`](#y), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                 |
+| [`area`](/docs/mark#area)         | [`x`](#x), [`y`](#y), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                        |
+| [`link`](/docs/mark#link)         | [`x`](#x), [`xe`](#x), [`x1`](#x1-y1-x1e-y1e), [`x1e`](#x1-y1-x1e-y1e), [`color`](#color), [`opacity`](#opacity)             |
+| [`triangle`](/docs/mark#triangle) | [`x`](#x), [`xe`](#x), [`row`](#row), [`size`](#size), [`color`](#color), [`opacity`](#opacity)                              |
+| [`text`](/docs/mark#text)         | [`x`](#x), [`xe`](#x), [`row`](#row), [`color`](#color), [`opacity`](#opacity)                                               |
+
+### ChannelValue
+<TableWrapper GoslingSchema={GoslingSchema} objName="ChannelValue" />
+
+### X
+X specifies a mark's position in the horizontal direction. 
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="X" />
+
+#### DomainInterval
+<TableWrapper GoslingSchema={GoslingSchema} objName="DomainInterval" />
+
+#### DomainChr
+<TableWrapper GoslingSchema={GoslingSchema} objName="DomainChr" />
+
+#### DomainChrInterval
+<TableWrapper GoslingSchema={GoslingSchema} objName="DomainChrInterval" />
+
+
+### Y
+Y specifies a mark's position in the vertical direction. 
+
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Y" />
+
+### Text
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Text" />
+
+### Color
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Color" />
+
+### Size
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Size" />
+
+### Row
+
+Row is used with to stratify a visualization with categorical values. 
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Row" />
+
+### Opacity
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Opacity" />
+
+### Stroke
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Stroke" />
+
+### StrokeWidth
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="StrokeWidth" />
+
+### VisibilityCondition
+
+These are for [semantic zoom](semantic-zoom). 
+
+#### SizeVisibilityCondition
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="SizeVisibilityCondition" />
+
+#### ZoomLevelVisibilityCondition
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="ZoomLevelVisibilityCondition"
+/>
+
+### Tooltip
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Tooltip" />
+
+<!-- Warning: Things link to this header -->
+
+## Style
+
+A [View](#view) and [Track](#track) have a `style` property which can be set to an object with the following properties.
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Style" />
+
+#### linePattern
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Style-properties-linePattern" />
+
+
+### EventStyle
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="EventStyle" />
+
+### Brush
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Style-properties-brush" />
+
+### DummyTrackStyle
+
+A [DummyTrack](#dummytrack) can take an style object with the following properties:
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="DummyTrackStyle" />
+
+## Data
+
+### JsonData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="JsonData" />
+
+#### Datum
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Datum" />
+
+### CsvData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="CsvData" />
+
+### BedData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="BedData" />
+
+### BigWigData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="BigWigData" />
+
+### MultivecData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="MultivecData" />
+
+### BeddbData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="BeddbData" />
+
+### VectorData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="VectorData" />
+
+### MatrixData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="MatrixData" />
+
+### BamData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="BamData" />
+
+### VcfData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="VcfData" />
+
+### GffData
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="GffData" />
+
+<!-- Warning: Things link to this header -->
+
+## DataTransform
+
+### OneOfFilter
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="OneOfFilter" />
+
+### IncludeFilter
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="IncludeFilter" />
+
+### StrConcatTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="StrConcatTransform" />
+
+### StrReplaceTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="StrReplaceTransform" />
+
+### LogTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="LogTransform" />
+
+### DisplaceTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="DisplaceTransform" />
+
+#### boundingBox
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="DisplaceTransform-properties-boundingBox"
+/>
+
+### ExonSplitTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="ExonSplitTransform" />
+
+### GenomicLengthTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="GenomicLengthTransform" />
+
+### SvTypeTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="SvTypeTransform" />
+
+#### firstBp
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="SvTypeTransform-properties-firstBp"
+/>
+
+#### secondBp
+
+<TableWrapper
+  GoslingSchema={GoslingSchema}
+  objName="SvTypeTransform-properties-secondBp"
+/>
+
+### CoverageTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="CoverageTransform" />
+
+### JsonParseTransform
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="JsonParseTransform" />
