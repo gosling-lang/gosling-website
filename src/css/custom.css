@@ -59,6 +59,10 @@ code, .prism-code {
   left: var(--ifm-pre-padding);
 }
 
+.theme-code-block-highlighted-line {
+  background-color: rgb(227, 227, 227) !important;
+}
+
 .comment, 
 .doctype, 
 .doctype-type {
@@ -106,17 +110,6 @@ code, .prism-code {
 html[data-theme='dark'] {
   --ifm-color-primary: #faa433;
   /* any other colors you wish to overwrite */
-}
-
-.docusaurus-highlight-code-line {
-  background-color: rgb(222, 227, 241);;
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-}
-
-.docusaurus-highlight-code-line[data-theme='dark']{
-  background-color: rgb(72, 77, 91);
 }
 
 a {
