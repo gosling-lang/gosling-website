@@ -6,12 +6,12 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Grammar',
+      label: 'Grammar Guide',
       link: {
         type: 'generated-index',
-        title: 'Grammar',
+        title: 'Grammar Guide',
         description:
-          'This is the documentation for the Gosling grammar. If this is your first time looking at the docs, we recommend starting with Composition, Mark, and Visual Channel.',
+          'This is a guide to the Gosling grammar. If this is your first time looking at the docs, we recommend starting with Composition, Mark, and Visual Channel.',
         keywords: ['guides'],
       },
       collapsed: true,
@@ -24,6 +24,11 @@ module.exports = {
         'user-interaction',
         'semantic-zoom',
       ],
+    },
+    {
+      type: 'doc',
+      label: 'Grammar Reference',
+      id: 'reference',
     },
     {
       type: 'doc',
