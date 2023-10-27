@@ -45,7 +45,6 @@ module.exports = {
           position: 'left',
         },
         { to: 'tutorials/', label: 'Tutorials', position: 'left' },
-        { to: 'usage/', label: 'Usage', position: 'left' },
         { to: 'examples/', label: 'Examples', position: 'left' },
         { to: 'themes/', label: 'Themes', position: 'left' },
         { to: 'about/', label: 'About', position: 'left' },
