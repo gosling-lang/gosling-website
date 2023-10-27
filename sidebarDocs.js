@@ -36,7 +36,7 @@ module.exports = {
     },
     {
       type: 'doc',
-      label: 'JavaScript API Functions',
+      label: 'JavaScript API',
       id: 'js-api',
     },
     {
