@@ -5,6 +5,10 @@ module.exports = {
       id: 'getting-started',
     },
     {
+      type: 'doc',
+      id: 'usage'
+    },
+    {
       type: 'category',
       label: 'Grammar Guide',
       link: {
