@@ -68,6 +68,8 @@ const dummyGosling = <BrowserOnly>
 const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
+  <li>The HIDIVE Lab is looking for remote interview participants who create and use genome-mapped data visualizations (such as Gosling, IGV or Circos). Join a 1-hour online interview and receive a $25 Amazon gift card. Interested? <a href='https://forms.gle/v8QZ5kRjFpurfKiN8' class='primary-color' target='_blank'>Sign up via this form</a>. More info is shared on the <a href='https://hidivelab.org/news/2023-10-12-guisling-user-study/' class='primary-color' target='_blank'>HIDIVE Lab website</a>.
+   </li>
   <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.10.0' class='primary-color'>v0.10.0</a>, 
     which adds support for <a href='/docs/data#gff3-no-higlass-server' class='primary-color'>GFF files</a>, a <a href='docs/js-api#getviewids' class='primary-color'>Javscript API to get the ID of views</a>, and a <a href='/docs/non-gos-vis' class='primary-color'> placeholder track</a> for non-Gosling visualizations.
    </li>
