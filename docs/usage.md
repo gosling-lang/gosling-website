@@ -33,14 +33,13 @@ Gosling can be embedded directly into your HTML page by adding gosling.js and se
 <html>
 <head>
     <title>Gosling Visualization</title>
-    <link rel="stylesheet" href="https://esm.sh/higlass@1.13/dist/hglib.css">
     <script type="importmap">
       {
         "imports": {
           "react": "https://esm.sh/react@18",
           "react-dom": "https://esm.sh/react-dom@18",
           "pixi": "https://esm.sh/pixi.js@6",
-          "higlass": "https://esm.sh/higlass@1.13?external=react,react-dom,pixi",
+          "higlass": "https://esm.sh/higlass@1.13.3?external=react,react-dom,pixi",
           "gosling.js": "https://esm.sh/gosling.js@0.11.0?external=react,react-dom,pixi,higlass"
         }
       }
