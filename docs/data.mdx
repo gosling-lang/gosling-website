@@ -62,7 +62,7 @@ This format allows for files that follow the [GFF3 specification](https://github
 Currently, the GFF3 file must have an accompanying index file. If you do not have an index file for your GFF3 file, you 
 can create one using [tabix](http://www.htslib.org/doc/tabix.html). Otherwise, you can treat the GFF3 file as if it were a CSV file and use the CSV data specification, but this will not be as performant for large files. 
 
-The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column,
+The field names correspond to the names of the columns. For example, the field which corresponds to the "start" column
 is called "start". The standard GFF fields are as follows: `seq_id`, `source`, `type`, `start`, `end`, `score`, `strand`, `phase`, and `attributes`.
 
 Here is an example GFF3 file line:
@@ -154,7 +154,14 @@ This format allow files that follow the [VCF specification](https://samtools.git
 
 ### JSON (No HiGlass Server)
 
-This format allows users to include data directly in the Gosling's JSON specification.
+This format allows users to include data directly in Gosling's JSON specification.
+
+:::caution
+
+For the rendering performance, we recommended using JSON values only for small data (~1,000 rows).
+For larger data, consider using CSV or other files.
+
+:::
 
 ```javascript
 {
