@@ -1,6 +1,8 @@
 ---
 title: User Interaction
 ---
+import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './assets/gosling.schema.json'
 
 ## Zooming and Panning
 <!-- [:link: source code](https://github.com/gosling-lang/gosling.js/blob/43626eaf21417bf36128a405dceeaa6ee00d0851/src/core/gosling.schema.ts#L7) -->
@@ -131,4 +133,38 @@ Users can use **brushing** to select a subset of the data items using a rectangl
     ... // other tracks
   ]
 }
+```
+
+## Tooltip
+
+A track can take a `"tooltip"` property to show a tooltip when the user hovers over the track. The tooltip can display the values of the data fields in the track. The tooltip property takes an array of objects, where each objects has the following properties:
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Tooltip" />
+
+Here is an example of a tooltip being used in a track definition:
+
+<img src='/img/doc_images/tooltip.png' width='300' />
+
+Corresponding specification: 
+
+```javascript
+"tracks": [
+  {
+    ...,
+    // highlight-start
+    "tooltip": [
+      {"field": "start", "type": "genomic", "alt": "Start Position"},
+      {"field": "end", "type": "genomic", "alt": "End Position"},
+      {
+        "field": "peak",
+        "type": "quantitative",
+        "alt": "Value",
+        "format": ".2"
+      },
+      {"field": "sample", "type": "nominal", "alt": "Sample"}
+    ],
+    // highlight-end
+  }
+]
+
 ```
