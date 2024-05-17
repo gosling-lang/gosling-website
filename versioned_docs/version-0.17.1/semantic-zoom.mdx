@@ -1,0 +1,81 @@
+---
+title: Semantic Zoom
+description: Dynamically switch between different representations
+---
+
+import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './assets/gosling.schema.json'
+
+## Why Semantic Zoom
+
+Advanced zooming technique, called Semantic Zooming, allows users to dynamically switch between visual representations upon zooming in and out. 
+
+For example, detailed information of nucleotide bases can be shown with textual labels when zoomed in while it can be switched to show the overall distribution of the bases using a stacked bar chart when zoomed out.
+
+
+### Example: Sequence Visualization
+<img src="/img/doc_images/semantic_zoom_1.png" alt="semantic_zoom_fine" width="700"/>
+
+<img src="/img/doc_images/semantic_zoom_0.png" alt="semantic_zoom_coarse" width="700"/>  
+
+[Try this example in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_semantic_zoom_sequence>)
+
+### Example: Cyto Band
+<img src="/img/doc_images/semantic_zoom_2.png" alt="semantic_zoom_coarse" height="60" width="700"/>  
+
+<img src="/img/doc_images/semantic_zoom_3.png" alt="semantic_zoom_fine" height="60" width="700"/> 
+
+**Top**: only `rect` marks are represented; **Bottom:** `text` and `triangle` marks are presented when zooming in to show more details.  
+[Try this example in the online editor](<https://gosling-lang.github.io/gosling.js/?example=doc_semantic_zoom_cyto>)
+
+## Semantic Zooming in Gosling
+
+Semantic zoom is achieved by controlling `alignment` and `visibility`.
+[alignment](./composition#align-multiple-tracks-in-one-view) enables users to overlap multiple marks on top of one other, thus allowing users to create different visualizations for the same data.
+`visibility` controls the visibility of visual marks, thus allowing the switch between different visualizations based on the zoom level.
+
+
+The `visibility` of corresponding marks are decided by whether the `measure` of `target` and the `threshold` satisfy the specified `operation`.
+For example, in the code below, text marks only show when the width (`measure`) of the mark (`target`) is greater-than (`operation`) 20 (`threshold`).
+
+```javascript
+{
+  // example of semantic zoom: show text marks when zooming in
+
+  "tracks":[{
+    "data":...,
+    "x": ...,
+    "y": ...,
+    // overlay overlaps bar marks and text marks for the same data
+    "alignment": "overlay",
+    "tracks":[
+      //a track with bar marks always shows
+      {
+        "mark": "bar",
+        ...
+      },
+      //a track with text marks only shows when the width of mark is greater than 20 
+      {
+        "mark": "text",
+        "visibility": [{
+          "operation": "greater-than",
+          "measure": "width",
+          "threshold": "20",
+          "target": "mark"
+        }] 
+      }
+    ]
+  }]
+}
+```
+
+Gosling supports users in controlling the visibility based on either 
+the size of the specified target (`{"measure": "width"|"height"}`) 
+or the zoom level of the specified target (`{"measure": "zoomLevel"}`).
+
+### Control Visibility through Size
+<TableWrapper GoslingSchema={GoslingSchema} objName='SizeVisibilityCondition' />
+
+### Control Visibility through Zoom Level
+<TableWrapper GoslingSchema={GoslingSchema} objName='ZoomLevelVisibilityCondition' />
+
