@@ -1,0 +1,36 @@
+---
+title: Fixed and Responsive Layouts
+description: Make your visualization responsive to the screen size
+---
+
+Gosling visualizations can be fixed or responsive to the screen size.
+
+## Fixed size
+
+A Gosling visualization can have a fixed size by setting the `width` and `height` properties. The tracks will have a fixed size regardless of the screen size.
+
+When the `width` and `height` properties are set in the root of the spec, all tracks will have this height and width unless they are overridden in the track specification.
+
+```javascript
+{
+  // highlight-start
+  width: 800,
+  height: 200,
+  // highlight-end
+  // ... rest of the Gosling spec
+}
+```
+
+## Responsive size
+A Gosling visualization can be made responsive to the screen size by setting the `responsiveSize` property in the root of the Gosling specification. When the screen size changes, the visualization will automatically adjust its size to fit the screen.
+
+Here is an example of a Gosling specification with responsive size enabled:
+
+```javascript
+{
+  // highlight-start
+  responsiveSize: { width: true },
+  // highlight-end
+  // ... rest of the Gosling spec
+}
+```
