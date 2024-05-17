@@ -27,6 +27,7 @@ module.exports = {
         'genome-builds',
         'user-interaction',
         'semantic-zoom',
+        'fixed-responsive',
       ],
     },
     {
