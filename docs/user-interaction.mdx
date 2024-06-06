@@ -1,5 +1,6 @@
 ---
 title: User Interaction
+description: Zooming, panning, brushing, tooltip, mouse interactions
 ---
 import {TableWrapper} from '@site/react-components/DocComponments/table'
 import GoslingSchema from './assets/gosling.schema.json'
@@ -168,3 +169,38 @@ Corresponding specification:
 ]
 
 ```
+
+## Mouse interactions
+[Try in the editor](https://gosling.js.org/?example=MOUSE_EVENT)
+
+Mouse events can be enabled in Gosling by defining a `MouseEvents` object in the track definition. 
+
+You can can use the [Javascript API](js-api#subscribe) to subscribe to the mouse-related events: "mouseOver", "rangeSelect", "click" to create custom interactions with the visualization.
+
+Here is an example of a track with a range selection enabled:
+
+<img src='/img/doc_images/mouse_interaction.png' width='700' />
+
+```javascript
+"tracks": [
+  {
+    ...,
+    // highlight-start
+    "mouseEvents": {"mouseOver": true, "rangeSelect": true},
+    // highlight-end
+    // You can also specify the visual properties associated with the mouse events
+    // highlight-start
+    "style": {
+      "mouseOver": {"color": "blue", "opacity": 0.5, "strokeWidth": 0},
+      "select": {"color": "red", "opacity": 0.5},
+      "brush": {"color": "purple", "stroke": "purple"}
+    }
+    // highlight-end
+  }
+]
+
+```
+
+The `MouseEvents` object can have the following properties:
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="MouseEventsDeep" />
