@@ -22,6 +22,7 @@ import { GoslingComponent} from 'gosling.js';
 | `id`                | string | Id of the component                                                      |
 | `className`         | string | CSS class to apply to the component                                    |
 | `theme`             | object | See [themes](../../themes)                                               |
+| `reactive`          | boolean | Default: `true`. If `spec` is updated, the existing tracks will keep their zoom position |
 | `urlToFetchOptions` | object | Each object follows the form `"{[url: string]: RequestInit}"` where [RequestInit](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.requestinit.html) is also an object. When fetching data from URL which matches a key in this object, Gosling will use the corresponding `RequestInit` when making the fetch request.                   |
 
 
