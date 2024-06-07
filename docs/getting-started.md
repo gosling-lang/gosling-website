@@ -5,7 +5,7 @@ slug: /
 
 Gosling.js is a declarative grammar for interactive (epi)genomics visualization on the Web.
 
-To get started with Gosling, we recommend going through the [Create Single Track Visualization Tutorial](/tutorials). Then, you can explore examples in the [online editor](https://gosling.js.org), go through the [grammar guide](category/grammar-guide), and start building your own Gosling visualizations using the the [grammar reference](reference) and [Javascript API](js-api) documentation. 
+To get started with Gosling, we recommend going through the [Create Single Track Visualization Tutorial](/tutorials). Then, you can explore examples in the [online editor](https://gosling.js.org), go through the [grammar guide](category/grammar-guide), and start building your own Gosling visualizations using the the [grammar reference](reference) and [React Component API](react-api) documentation. 
 
 Please see [usage guide](usage) to learn about all the contexts in which Gosling can be used. 
 
