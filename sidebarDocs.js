@@ -37,8 +37,8 @@ module.exports = {
     },
     {
       type: 'doc',
-      label: 'JavaScript API',
-      id: 'js-api',
+      label: 'React Component API',
+      id: 'react-api',
     },
     {
       type: 'doc',

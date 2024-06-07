@@ -1,5 +1,5 @@
 ---
-title: JavaScript API
+title: React Component API
 ---
 
 ## GoslingComponent
