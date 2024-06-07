@@ -18,8 +18,8 @@ How is the Gosling grammar used in practice? A Gosling visualization is defined 
 
 <img src='/img/spec-vis.png'/>
 
-## Javascript API 
+## React Component API 
 
-**Gosling.js** takes the Gosling specification as an input and creates the visualization defined by it. You can programmatically interact with this visualization using **Javascript API functions**. 
+**Gosling.js** takes the Gosling specification as an input and creates the visualization defined by it. You can programmatically interact with this visualization using the [React component API](react-api).
 
 For example, you can use an API function to make the visualization zoom to a particular genomic position, or you can subscribe to click events in the visualization. This is useful to building your own interactive visualizations with Gosling! 
