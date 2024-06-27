@@ -5,16 +5,20 @@ title: Integrating non-Gosling visualizations
 import {TableWrapper} from '@site/react-components/DocComponments/table'
 import GoslingSchema from './assets/gosling.schema.json'
 
-# Integrating non-Gosling visualizations
+# Integrating Non-Gosling Visualizations
 
-You may want to visualize a non-Gosling visualization within a Gosling visualization, such as showing a lineage tree along with multiple sequences.
+You may want to visualize a non-Gosling visualization **within** a Gosling visualization, such as showing a lineage tree along with multiple sequences.
 
 In Gosling, you can do this by using `DummyTrack` as a placeholder to create space for your non-Gosling visualization. 
-Your non-Gosling visualization can then be overlaid on top of the `DummyTrack` using [JS API functions](./js-api) to 
+Your non-Gosling visualization can then be overlaid on top of the `DummyTrack` using [JS API functions](js-api) to 
 get the position of the placeholder.
 
 :::caution
 `DummyTrack` can only be used with a linear `layout` at the moment.
+:::
+
+:::
+You can also find another example of using Gosling with [Vega-Lite](https://vega.github.io/vega-lite/) at https://github.com/gosling-lang/gosling-react-example
 :::
 
 [DummyTrack demo in the Editor](https://gosling-lang.github.io/gosling.js/?example=doc_dummy_track)

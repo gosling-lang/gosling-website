@@ -2,13 +2,11 @@
 title: Frequently Asked Questions
 ---
 
-A list of frequently asked questions about Gosling.js.
-
 ## How to debug gosling specs?
 
-To check whether your gosling spec is valid, you can either
-- copy-and-paste your spec on the [online Editor](http://gosling.js.org) to see if there is any warning message.
-- call a validation function `console.log(gosling.validateGoslingSpec(yourSpec));`
+To check whether your gosling spec is valid, you can use either option.
+- Copy and paste your spec on the [online Editor](http://gosling.js.org) to see if there is any warning message.
+- Aall a validation function `console.log(gosling.validateGoslingSpec(yourSpec));`.
 
 ## How to show Gosling Tooltips that are hidden under other components?
 You can modify the z-index of the tooltip components to address this issue.

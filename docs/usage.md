@@ -7,7 +7,7 @@ title: Usage
 Gosling can be used and deployed in a variety of contexts.
 
 - In the [online editor](#online-editor)
-- In Python using [Gos](https://gosling-lang.github.io/gos/)
+- In Python using the [Gos](https://gosling-lang.github.io/gos/) package
 - In a [HTML page](#html)
 - In a [React application](#react)
 
@@ -15,18 +15,24 @@ Gosling can be used and deployed in a variety of contexts.
 
 You can visit the [online editor](https://gosling.js.org) to start trying Gosling immediately.
 
-### Load a Gosling Spec From Your Github Gist
+### Loading/Sharing Your Gosling Visualization
+
+If you want to share your Gosling visualization using the online editor with your fiends and collaborators, you use [GitHub Gist](https://gist.github.com/).
 
 1. To load a spec you first have to create a gist with a file named gosling.js\* that specifies the spec.
-1. You can additionally specify a `readme.md` file to describe your spec.
-1. Also be sure to give your gist a fabulous title. It'll be shown in the gosling editor.
-   You can then open your visualization at `http://<editor_url>/?gist=<github_username>/<gist_id>`.
-   <!-- For example, https://gosling.js.org/?gist=flekschas/e6e388332814886d4d714efd0e88093b -->
-   For example, https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379ae6a7c7b7b3
+1. You can additionally specify a `readme.md` file to describe your spec. This will be shown as a side panel on the online editor.
+1. Also, be sure to give your gist a fabulous title. It'll be shown in the gosling editor.
+1. You can then open your visualization at `http://<editor_url>/?gist=<github_username>/<gist_id>`.
+
+:::
+Example:
+- Demo: https://gosling.js.org/?gist=wangqianwen0418/1cc79f00990806f07b379ae6a7c7b7b3
+- Gist: https://gist.github.com/wangqianwen0418/1cc79f00990806f07b379ae6a7c7b7b3
+:::
 
 ## HTML
 
-Gosling can be embedded directly into your HTML page by adding gosling.js and several other dependencies in script tags.
+Gosling can be embedded directly into your HTML file by adding gosling.js and several other dependencies in script tags.
 
 ```html
 <!DOCTYPE html>
@@ -75,8 +81,10 @@ Gosling can be embedded directly into your HTML page by adding gosling.js and se
 
 ## React
 
+:::
 Beginning with version 0.9.30, Gosling now supports React v18 (You can still use React v16 or v17).
 If you are using a Gosling version prior to 0.9.30, please continue to use React v16.
+:::
 
 Install `gosling.js` and its dependent libraries:
 
@@ -104,4 +112,4 @@ function App() {
 }
 ```
 
-Please visit [gosling-react](https://github.com/gosling-lang/gosling-react) to find detailed instruction on using React.
+Please visit [gosling-react](https://github.com/gosling-lang/gosling-react-example) to find detailed instruction on using React.
