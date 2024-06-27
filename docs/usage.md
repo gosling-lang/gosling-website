@@ -22,7 +22,7 @@ If you want to share your Gosling visualization using the online editor with you
 1. To load a spec you first have to create a gist with a file named gosling.js\* that specifies the spec.
 1. You can additionally specify a `readme.md` file to describe your spec. This will be shown as a side panel on the online editor.
 1. Also, be sure to give your gist a fabulous title. It'll be shown in the gosling editor.
-1. You can then open your visualization at <a>http://<editor_url>/?gist=<github_username>/<gist_id></a>.
+1. You can then open your visualization at `http://<editor_url>/?gist=<github_username>/<gist_id>`.
 
 :::
 Example:

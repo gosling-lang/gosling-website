@@ -1,8 +1,8 @@
 {
-  "version-0.9.30/docs": [
+  "docs": [
     {
       "type": "doc",
-      "id": "version-0.9.30/getting-started"
+      "id": "getting-started"
     },
     {
       "type": "category",
@@ -11,46 +11,46 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-0.9.30/data"
+          "id": "data"
         },
         {
           "type": "doc",
-          "id": "version-0.9.30/genome-builds"
+          "id": "genome-builds"
         },
         {
           "type": "doc",
-          "id": "version-0.9.30/mark"
+          "id": "mark"
         },
         {
           "type": "doc",
-          "id": "version-0.9.30/visual-channel"
+          "id": "visual-channel"
         },
         {
           "type": "doc",
-          "id": "version-0.9.30/composition"
+          "id": "composition"
         },
         {
           "type": "doc",
-          "id": "version-0.9.30/user-interaction"
+          "id": "user-interaction"
         },
         {
           "type": "doc",
-          "id": "version-0.9.30/semantic-zoom"
+          "id": "semantic-zoom"
         }
       ],
       "collapsible": true
     },
     {
       "type": "doc",
-      "id": "version-0.9.30/js-api"
+      "id": "js-api"
     },
     {
       "type": "doc",
-      "id": "version-0.9.30/public-datasets"
+      "id": "public-datasets"
     },
     {
       "type": "doc",
-      "id": "version-0.9.30/FAQ"
+      "id": "FAQ"
     }
   ]
 }
