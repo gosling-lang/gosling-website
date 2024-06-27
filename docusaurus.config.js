@@ -1,4 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
+const { themes } = require('prism-react-renderer');
+const theme = themes.github;
 module.exports = {
   title: 'Gosling',
   url: 'https://gosling-lang.github.io', // Your website URL
@@ -15,7 +17,7 @@ module.exports = {
   ],
   themeConfig: {
     prism: {
-      theme: require('prism-react-renderer/themes/github'),
+      theme: theme,
     },
     colorMode: {
       defaultMode: 'light',
