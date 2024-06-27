@@ -36,12 +36,12 @@ const features = [
     ),
   },
   {
-    title: 'Interactivity',
+    title: 'User Interaction',
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Gosling has intuitive and effective user interactions built in, including zooming and panning and brushing and linking.
-        This enables flexible visualizations that cover a wide range of visual analysis scenarios, like overview + detail views with brushes or comparative views.
+        Gosling has intuitive and effective user interactions built in, including zooming, panning, brushing, and linking.
+        This enables the creation of flexible visualizations that cover a wide range of visual analysis scenarios, like overview + detail views with brushes or comparative views.
       </>
     ),
   },
@@ -57,20 +57,10 @@ function Feature({ imageUrl, title, description }) {
   );
 }
 
-const dummyGosling = <BrowserOnly>
-  {() => {
-    const { GoslingComponent } = require("gosling.js");
-    return <div className='dummyGosling'><GoslingComponent /></div>
-  }}
-</BrowserOnly>
-
-
 const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
-  <li>The HIDIVE Lab is looking for remote interview participants who create and use genome-mapped data visualizations (such as Gosling, IGV or Circos). Join a 1-hour online interview and receive a $25 Amazon gift card. Interested? <a href='https://forms.gle/v8QZ5kRjFpurfKiN8' class='primary-color' target='_blank'>Sign up via this form</a>. More info is shared on the <a href='https://hidivelab.org/news/2023-10-12-guisling-user-study/' class='primary-color' target='_blank'>HIDIVE Lab website</a>.
-   </li>
-  <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.10.0' class='primary-color'>v0.10.0</a>, 
+    <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.10.0' class='primary-color'>v0.10.0</a>, 
     which adds support for <a href='/docs/data#gff3-no-higlass-server' class='primary-color'>GFF files</a>, a <a href='docs/js-api#getviewids' class='primary-color'>Javscript API to get the ID of views</a>, and a <a href='/docs/non-gos-vis' class='primary-color'> placeholder track</a> for non-Gosling visualizations.
    </li>
   <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.9.30' class='primary-color'>v0.9.30</a>, 
