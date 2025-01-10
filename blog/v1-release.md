@@ -18,7 +18,7 @@ Considering Gosling’s successful and widespread application across a variety o
 ## Limitations of current Gosling.js
 Although we are releasing the first major version, we acknowledge that there are several limitations in the current Gosling that are worth noting here for users:
 
-- Gosling currently only supports React. This means you can embed Gosling visualizations to your webpage/application only if they are based on React.
+- Gosling currently only supports React. This means you can embed Gosling visualizations into your webpage or application only if they are based on React.
 - Several Gosling features are experimental and not ready for production. Such features are located under the “experimental” property of the Gosling specification (e.g., `experimental.performanceMode`), so be careful using them.
 - We recognize that Gosling's performance can significantly decrease with certain visual encodings(e.g., overly drawn line connections) and data types (e.g., large plain texts or BAM files).
 
