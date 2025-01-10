@@ -48,6 +48,7 @@ module.exports = {
         },
         { to: 'tutorials/', label: 'Tutorials', position: 'left' },
         { to: 'examples/', label: 'Examples', position: 'left' },
+        { to: 'blog/', label: 'Blog', position: 'left' },
         { to: 'themes/', label: 'Themes', position: 'left' },
         { to: 'about/', label: 'About', position: 'left' },
         {
@@ -144,11 +145,11 @@ module.exports = {
       {
         docs: {
           path: 'docs',
-          editUrl: ({versionDocsDirPath, docPath}) =>
-          `https://github.com/gosling-lang/gosling-website/edit/main/${versionDocsDirPath}/${docPath}`,
+          editUrl: ({ versionDocsDirPath, docPath }) =>
+            `https://github.com/gosling-lang/gosling-website/edit/main/${versionDocsDirPath}/${docPath}`,
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebarDocs.js'),
-         
+
         },
         blog: {
           showReadingTime: true,
@@ -182,7 +183,7 @@ module.exports = {
         path: 'tutorials/',
         sidebarPath: require.resolve('./sidebarTutorial.js'),
         routeBasePath: 'tutorials',
-        editUrl: ({versionDocsDirPath, docPath}) =>
+        editUrl: ({ versionDocsDirPath, docPath }) =>
           `https://github.com/gosling-lang/gosling-website/edit/main/${versionDocsDirPath}/${docPath}`,
         include: ['*.md', '*.mdx']
       },
