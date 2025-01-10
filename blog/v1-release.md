@@ -1,6 +1,6 @@
 # Gosling.js v1.0.0 Announcement
 
-> Authors: A, B, and C
+[Sehi L'Yi](https://sehilyi.com), [Huyen N. Nguyen](https://huyennguyen.com/), and [David Kouřil](https://www.davidkouril.com/)
 
 ## Background on the Gosling project
 The Gosling project began in 2020. That’s two years after the [HiGlass](http://higlass.io/) paper ([Kerpedjiev et al. Genome Biology](https://doi.org/10.1186/s13059-018-1486-1)) was published by the [HIDIVE Lab](https://hidivelab.org/). HiGlass’ powerful data infrastructure and efficient graphics rendering enabled quick navigation and comparison of large genome matrices. However, as its community rapidly grew, the HiGlass team had to implement new custom tracks to meet evolving visualization needs. This was a time-consuming process since implementing a new track easily involves writing thousands of lines of JavaScript code using [PixiJS](https://pixijs.com/). Inspired by the declarative approach of [Vega-Lite](https://vega.github.io/vega-lite/), we started building the Gosling visualization toolkit to enable easier and more flexible creation of genome-mapped data visualizations (hereafter, “genomics data visualizations”).
