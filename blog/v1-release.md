@@ -16,7 +16,7 @@ Given the flexibility of Gosling in building genomics data visualizations and to
 Considering Gosling’s successful and widespread application across a variety of the aforementioned use cases, it’s safe to say that Gosling has reached a certain feature set that’s proven useful in multiple scenarios. As for any software—and academic software nonetheless—there still are some rough edges and unpolished parts of the interface and implementation. We’re going to focus on improving those parts in the upcoming months. At the same time, we’re excited to bring larger changes to Gosling's implementation and features, too. That’s why it makes sense for us to draw a line in the sand and declare the current state to be the 1.0.0 version. This allows existing software that depends on the current state of Gosling to pin the major version 1, while more experimental projects can follow the minor versions that we’d make in the near future. Thank you for being a part of this journey. Gosling v1.0 is here and ready for you to get started!
 
 ## Limitations of current Gosling.js
-Although we are releasing the first major version, we are aware that there are several limitations in the current Gosling that are worth noting here for users:
+Although we are releasing the first major version, we acknowledge that there are several limitations in the current Gosling that are worth noting here for users:
 
 - Gosling currently only supports React. This means you can embed Gosling visualizations to your webpage/application only if they are based on React.
 - Several Gosling features are experimental and not ready for production. Such features are located under the “experimental” property of the Gosling specification (e.g., `experimental.performanceMode`), so be careful using them.
