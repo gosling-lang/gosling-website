@@ -16,7 +16,7 @@ Given the flexibility of Gosling in building genomics data visualizations and to
 Considering Gosling’s successful and widespread application across a variety of the aforementioned use cases, it’s safe to say that Gosling has reached a certain feature set that’s proven useful in multiple scenarios. As for any software—and academic software nonetheless—there still are some rough edges and unpolished parts of the interface and implementation. We’re going to focus on improving those parts in the upcoming months. At the same time, we’re excited to bring larger changes to Gosling's implementation and features, too. For these reasons, we believe now is the right time to mark this milestone by designating the current state as version 1.0.0. This allows existing software that depends on the current state of Gosling to pin the major version 1, while more experimental projects can follow the minor versions that we’d make in the near future. Thank you for being a part of this journey. Gosling v1.0 is here and ready for you to get started!
 
 ## What to expect in the future
-We aim to address the above limitations and release future versions with major improvements. Specifically:
+We aim to address some of the current limitations of Gosling.js and release future versions with major improvements. Specifically:
 
 - **Framework-agnostic design**: We are working to remove dependencies on React and HiGlass to reduce bottlenecks in maintaining the codebase and adding new functionalities. This will enable us to make Gosling framework-agnostic, supporting not only React but also Vue, Angular, and other of your favorite front-end frameworks. 
 
