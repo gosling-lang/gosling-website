@@ -60,6 +60,7 @@ function Feature({ imageUrl, title, description }) {
 const floatingWindow = <div className={styles.floatingNews}>
   <h3 style={{ textAlign: 'center' }}>News</h3>
   <ul>
+    <li>We released Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v1.0.0' class='primary-color'>v1.0.0</a>! Read more in the <a href='' class='primary-color'>announcement blog post</a>.</li>
     <li>We release documentations for Gosling <a href='https://github.com/gosling-lang/gosling.js/releases/tag/v0.10.0' class='primary-color'>v0.10.0</a>, 
     which adds support for <a href='/docs/data#gff3-no-higlass-server' class='primary-color'>GFF files</a>, a <a href='docs/js-api#getviewids' class='primary-color'>Javscript API to get the ID of views</a>, and a <a href='/docs/non-gos-vis' class='primary-color'> placeholder track</a> for non-Gosling visualizations.
    </li>
