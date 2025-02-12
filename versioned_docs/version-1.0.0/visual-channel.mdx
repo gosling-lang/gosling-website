@@ -1,0 +1,210 @@
+---
+title: Visual Channel
+description: Associate marks to data and change how marks look. 
+---
+
+import {TableWrapper} from '@site/react-components/DocComponments/table'
+import GoslingSchema from './assets/gosling.schema.json'
+
+The visual appearance of a mark is controlled by a set of visual channels (e.g., size, position, and color). 
+One visual channel can be either:
+- bound to a data field (as shown in line 13-16) 
+- assigned a constant value (as shown in line 23).
+
+```javascript 
+// an example configuration for a line chart (x and y are encoded)
+
+{
+    "tracks":[{
+      "data": {
+        "url": ...,
+        "type": ...
+      },
+      // specify the mark type
+      "mark": "line",
+      
+      // visual channel 'x' is bound to a genomic data field
+      // highlight-start
+      "x": {
+        "field": "position",
+        "type": "genomic"
+      },
+      // highlight-end
+      // visual channel 'y' is bound to a quantitative data field called "peak"
+      "y": {
+          "field": "peak", 
+          "type": "quantitative"
+          },
+      // visual channel color is assigned a constant value
+      // highlight-start
+      "color": {"value": "steelblue"}
+      // highlight-end
+    }]
+}
+
+```
+
+## Encode a Visual Channel
+
+To bind a visual channel to a data field, Gosling creates a mapping from the values of the data field (e.g., `[gnes, gpos25, gpos50, ...]`) to the values of the visual channel (e.g., the position of a bar). 
+We call the values of a data field **domain** and the values of a visual channel **range**.
+
+For example, the code below creates a mapping from the data `field` "Stain" to the color of the `rect` mark. 
+"gneg" will show as a white rect mark, "gpos100" will show as a black rect mark.
+```javascript
+{
+  "tracks": [{
+    "mark": "rect",
+    "color": {
+      "field": "Stain",
+      "type": "nominal",
+      "domain": ["gneg", "gpos25", "gpos50", "gpos75", "gpos100", "gvar"],
+      "range": ["white", "#D9D9D9", "#979797", "#636363", "black", "#A0A0F2"]
+    },
+    ... // other visual channels
+  }]
+}
+```
+
+As the table shown below, different marks support different visual channels.
+
+| mark type               | supported visual channels                                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [`point`](/docs/mark#point)       | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`size`](#size), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity) |
+| [`line`](/docs/mark#line)         | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                         |
+| [`rect`](/docs/mark#rect)         | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                |
+| [`bar`](/docs/mark#bar)           | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth), [`opacity`](#opacity)                  |
+| [`area`](/docs/mark#area)         | [`x`](#x--xe), [`y`](#y--ye), [`row`](#row), [`color`](#color), [`strokeWidth`](#strokeWidth)                                         |
+| [`link`](/docs/mark#link)         | [`x`](#x--xe), [`xe`](#x--xe), [`x1`](#x1-y1-x1e-y1e), [`x1e`](#x1-y1-x1e-y1e), [`color`](#color), [`opacity`](#opacity)             |
+| [`triangle`](/docs/mark#triangle) | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`size`](#size), [`color`](#color), [`opacity`](#opacity)                              |
+| [`text`](/docs/mark#text)         | [`x`](#x--xe), [`xe`](#x--xe), [`row`](#row), [`color`](#color), [`opacity`](#opacity)                                               |
+
+## Supported Visual Channels
+
+### x & xe
+`x` specifies a mark's position in the horizontal direction. 
+Following the common practice in genomic visluazation, Gosling uses `x` axis inclusively for genomic coordinates. 
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="X" />
+
+`xe` stands for the end position of a visual mark along the x-axis. This is usually used together with `x` to specify the start and the end positions of a visual mark in the horizontal direction.
+
+### y & ye
+`y` specify a mark's position in the vertical direction.
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Y" />
+
+`ye` stands for the end of y axis. `ye` is usually used with `y` to specify the start position and the end position of a visual mark in the vertical direction, respectively.
+
+### x1 x1e y1 y1e
+The four channels are used together only with `betweenLink` and `withinLink` marks.
+In this case, `x` and `xe` are used with `x1` and `x1e` to specify a pair of genomic intervals that need to be connected using band representations. Similarly, `y` and `ye` can be used with `y1` and `y1e` to show band connection along the vertical axis.
+
+<img src="/img/doc_images/x_x1_example.png" width="400" alt="x x1 example"/>  
+
+
+### row
+
+Channel `row` is used with channel `y` to stratify a visualization with categorical values.
+
+- Without specifying `row`:
+<img src="/img/doc_images/without_row.png" width="500" alt="without row example"/>  
+
+- Line charts are stratified with sample names (`"row": { "field": "sample", "type": "nominal" }`).
+<img src="/img/doc_images/with_row.png" width="500" alt="with row example"/>  
+
+```javascript
+{
+  "tracks":[
+    {
+      // specify data source
+      "data": {
+        "url": "https://resgen.io/api/v1/tileset_info/?d=UvVPeLHuRDiYA3qwFlm7xQ",
+        "type": "tileset"
+      },
+      "metadata": {
+        "type": "higlass-multivec",
+        "row": "sample",
+        "column": "position",
+        "value": "peak",
+        "categories": ["sample 1", "sample 2", "sample 3", "sample 4"]
+      },
+      // specify the mark type
+      "mark": "line",
+      // specify visual channels
+      "x": {
+        "field": "position",
+        "type": "genomic",
+        "domain": {"chromosome": "1", "interval": [1, 3000500]},
+        "axis": "top"
+      },
+      "y": {"field": "peak", "type": "quantitative"},
+      "color": {"field": "sample", "type": "nominal", "legend": true},
+      // visual channel row is bound with the data field: sample
+      "row": {"field": "sample", "type": "nominal"}
+    }
+  ]
+      
+}
+```
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Row" />
+
+### size
+Channel `size` indicates the size of the visual mark. It determines either the radius of a circle (`mark: point`), the vertical length of a triangle (`mark: triangleRight`, `mark: triangleLeft`, `mark: triangleBottom`), the vertical length of a rectangle (`mark: rect`), the thickness of a line (`mark: line`).
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Size" />
+
+### text
+
+`text` channel is used only in `text` mark to specify what textual information to display.
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Text" />
+
+### color
+The channel `color` specifies the foreground color of a mark.
+<!-- Binding `color` with categorical values in `bar` and `area` marks stack marks that are positioned in the same genomic intervals to better show their cumulative values. -->
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Color" />
+
+### stroke
+Channel `stroke` defines the outline color of the specified mark. Gosling supports `stroke` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
+<TableWrapper GoslingSchema={GoslingSchema} objName="Stroke" />
+
+### strokeWidth
+Channel `strokeWidth` defines the outline thickness of the mark shape. Gosling supports `strokeWidth` in the following marks: `rect`, `area`, `point`, `bar`, `link`.
+<TableWrapper GoslingSchema={GoslingSchema} objName="StrokeWidth" />
+
+### opacity
+The `opacity` channel determines the transparency level of a mark. The opacity of the foreground color (i.e., `color`) and the outline color (i.e., `stroke`) will be affected by this channel.
+<!-- will it be better if we merge stroke, strokeWidth, background, opacity into a style option? -->
+<TableWrapper GoslingSchema={GoslingSchema} objName="Opacity" />
+
+
+## Style-related Properties
+
+```javascript
+{
+  "style": {
+    /** 
+     * style-related properties 
+     * specify the style of all tracks
+     */
+  }
+  "tracks": [
+    {
+      ...,
+      "style": {
+        /** specify the style of a single track */
+      }
+    },
+    ...
+  ],
+  ...
+}
+
+```
+
+These properties specify the visual appearances of a track that are not bound with data fields.
+
+<TableWrapper GoslingSchema={GoslingSchema} objName="Style"/>
