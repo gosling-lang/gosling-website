@@ -53,7 +53,7 @@ jobs:
           npm i
           fi
           npm run build
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credentials for S3
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
@@ -61,3 +61,12 @@ jobs:
       - name: Copy files to the s3 website content bucket
         run:
           aws s3 sync build s3://gosling-lang
+          
+      - name: Configure AWS Credentials for CF
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_CLOUDFRONT }}
+          aws-region: us-east-1
+      - name: Invalidate the CloudFront cache
+        run:
+          aws cloudfront create-invalidation --distribution-id ${{secrets.CF_DISTRIBUTION_ID}} --paths "/*"
