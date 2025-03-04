@@ -49,7 +49,6 @@ module.exports = {
         { to: 'tutorials/', label: 'Tutorials', position: 'left' },
         { to: 'examples/', label: 'Examples', position: 'left' },
         { to: 'blog/', label: 'Blog', position: 'left' },
-        { to: 'themes/', label: 'Themes', position: 'left' },
         { to: 'about/', label: 'About', position: 'left' },
         {
           href: 'https://github.com/gosling-lang/gosling.js/issues/new/choose',
