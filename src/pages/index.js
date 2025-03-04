@@ -175,7 +175,7 @@ export default function Home() {
                 styles.getStarted
               )}
               to={'https://github.com/gosling-lang/gosling-react'}>
-              Using Gosling in your <b>React</b> App
+              Use Gosling in your <b>React</b> App
             </Link>
 
             <Link
@@ -184,7 +184,7 @@ export default function Home() {
                 styles.getStarted
               )}
               to={'https://github.com/gosling-lang/streamlit-gosling'}>
-              Using Gosling in your <b>Streamlit</b> App
+              Use Gosling in your <b>Streamlit</b> App
             </Link>
           </div>
 
