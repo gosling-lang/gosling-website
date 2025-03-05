@@ -59,8 +59,6 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: us-east-1
       - name: Copy files to the s3 website content bucket
-        run:
-          aws s3 sync build s3://gosling-lang --cache-control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        run: aws s3 sync build s3://gosling-lang
       - name: Invalidate CloudFront cache
-        run:
-          aws cloudfront create-invalidation --distribution-id ${{secrets.CF_DISTRIBUTION_ID}} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.CF_DISTRIBUTION_ID}} --paths "/*"
