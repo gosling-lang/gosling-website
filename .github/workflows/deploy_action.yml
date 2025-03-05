@@ -61,3 +61,6 @@ jobs:
       - name: Copy files to the s3 website content bucket
         run:
           aws s3 sync build s3://gosling-lang --cache-control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+      - name: Invalidate CloudFront cache
+        run:
+          aws cloudfront create-invalidation --distribution-id ${{secrets.CF_DISTRIBUTION_ID}} --paths "/*"
