@@ -5,8 +5,8 @@ This is a repository for the official documentation of the Gosling project. The 
 ## Development
 
 ```sh
-yarn install
-yarn start
+pnpm install
+pnpm start
 ```
 
 The above commands will install all dependencies, start a local development server, and open a web browser. Most changes will be reflected live without having to restart the server.
@@ -23,7 +23,7 @@ cd assets
 ## Build
 
 ```sh
-yarn build
+pnpm build
 ```
 
 The above command generates static content into the `build` directory and can be served using any static contents hosting service.

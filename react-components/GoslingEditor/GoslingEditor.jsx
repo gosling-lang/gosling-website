@@ -71,7 +71,7 @@ const updateTheme = (isDarkTheme, editor) => {
     );
 }
 
-const configureEditor = (languages, uri, schema)=>{
+const configureEditor = (languages, uri, schema) => {
     languages.json.jsonDefaults.setDiagnosticsOptions({
         allowComments: true,
         enableSchemaRequest: true,
@@ -112,7 +112,6 @@ export const GoslingEditor = (props) => {
                 const { validateGoslingSpec, GoslingComponent } = require("gosling.js");
                 const { debounce } = require('lodash')
                 const MonacoEditor = require('react-monaco-editor').default;
-                const { editor, languages } = require('monaco-editor/esm/vs/editor/editor.api');
 
                 class GoslingEditorPre extends React.Component {
                     constructor(prop) {
@@ -127,10 +126,10 @@ export const GoslingEditor = (props) => {
                         this.reset = this.reset.bind(this)
                         this.WAIT = 500
                     }
-                    editorWillMount() {
-                        updateTheme(this.state.isDarkTheme, editor);
+                    editorWillMount(monaco) {
+                        updateTheme(this.state.isDarkTheme, monaco.editor);
                         const uri = 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.schema.json'
-                        configureEditor(languages, uri, GoslingSchema)
+                        configureEditor(monaco.languages, uri, GoslingSchema)
                     }
                     onChange(code, _) {
                         try {
@@ -204,7 +203,6 @@ export const GoslingStyle = (props) => {
             // to excluded from server side build
             const { GoslingComponent } = require("gosling.js");
             const MonacoEditor = require('react-monaco-editor').default;
-            const { editor, languages } = require('monaco-editor/esm/vs/editor/editor.api');
             const { debounce } = require('lodash')
 
             class GoslingStyleEditorPre extends React.Component {
@@ -228,10 +226,10 @@ export const GoslingStyle = (props) => {
                 reset() {
                     this.setState({ themeString: JSON.stringify(Themes[this.props.theme], null, 4) })
                 }
-                editorWillMount() {
-                    updateTheme(false, editor);
+                editorWillMount(monaco) {
+                    updateTheme(false, monaco.editor);
                     const uri = 'https://raw.githubusercontent.com/gosling-lang/gosling.js/master/schema/gosling.theme.json'
-                    configureEditor(languages, uri, GoslingThemeSchema)
+                    configureEditor(monaco.languages, uri, GoslingThemeSchema)
                 }
                 render() {
                     return <div className='row' id="goslingThemeEditor">
