@@ -1,6 +1,7 @@
 {
   "name": "gosling-website",
   "version": "0.0.0",
+  "packageManager": "pnpm@10.12.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
