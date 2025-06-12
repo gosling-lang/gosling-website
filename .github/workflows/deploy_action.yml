@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  checks:
+  build:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
@@ -22,18 +22,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-      - name: Test Build
+      - uses: pnpm/action-setup@v2
+      - name: Build
         run: |
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-          npm ci
-          else
-          npm i
-          fi
-          npm run build
+          pnpm i --frozen-lockfile
+          pnpm run build
   deploy-s3:
     if: github.event_name != 'pull_request'
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -42,17 +38,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-      - name: Test Build
-        run: |
-          if [ -e yarn.lock ]; then
-          npm i -g yarn
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-          npm ci
-          else
-          npm i
-          fi
-          npm run build
       - name: Configure AWS Credentials for S3
         uses: aws-actions/configure-aws-credentials@v3
         with:
